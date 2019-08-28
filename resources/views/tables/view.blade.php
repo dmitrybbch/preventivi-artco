@@ -7,20 +7,20 @@
       @if($table->nomeTavolo)
       {{ $table->nomeTavolo }}
       @else
-      Tavolo {{ $table->id }}
+      Fattura {{ $table->id }}
       @endif
     </h1>
     <div class="mb-2 mb-md-0 mr-auto ml-2">
       <form class="form-inline">
         <input type="text" id="searchBox" style="display: none;" class="form-control mr-1" placeholder="Search">
-        <button type="button" id="cartBtn" class="btn btn-outline-info">Menù</button>
+        <button type="button" id="cartBtn" class="btn btn-outline-info">Fornisci</button>
       </form>
     </div>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2" id="statusTable" role="group" aria-label="First group">
-        <button type="button" class="btn btn-outline-dark @if($table->stato == 'libero') active @endif" value="0">Libero</button>
-        <button type="button" class="btn btn-outline-danger @if($table->stato == 'occupato') active @endif" value="1">Da servire</button>
-        <button type="button" class="btn btn-outline-success @if($table->stato == 'servito') active @endif" value="2">Servito</button>
+        <button type="button" class="btn btn-outline-dark @if($table->stato == 'libero') active @endif" value="0">Da compilare</button>
+        <button type="button" class="btn btn-outline-danger @if($table->stato == 'occupato') active @endif" value="1">Compilando</button>
+        <button type="button" class="btn btn-outline-success @if($table->stato == 'servito') active @endif" value="2">Compilata</button>
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@
     <div class="col-md-9">
       <table class="table table-striped" id="foodTable">
             <thead>
-                <tr><th scope="col" class="d-none d-md-table-cell">id Prodotto</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Tags</th><th scope="col">Opzioni</th></tr>
+                <tr><th scope="col" class="d-none d-md-table-cell">ID Fornitura</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Tags</th><th scope="col">Opzioni</th></tr>
             </thead>
         <tbody>
           @php ($orders = $table->orders())
@@ -38,7 +38,7 @@
               <tr><th scope="row" class="d-none d-md-table-cell">{{ $order->food_id }}</th><td>{{ $food->nome }}</td><td>{{ $food->prezzo }}€</td><td class="total">{{ $order->total }}</td><td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td><td class="d-none d-sm-table-cell">{{ $food->tags }}</td><td><button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle"></i></button><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>
             @endforeach
           @else
-            <tr><td colspan="6">Nessun ordine.</td></tr>
+            <tr><td colspan="6">Nessuna Fornitura</td></tr>
           @endif
         </tbody>
       </table>
@@ -53,7 +53,7 @@
         @if(Auth::user()->isAdmin())
         <div class="card-footer">
           <button type="button" class="btn btn-danger" id="emptyBtn">Svuota</button>
-          <button type="button" id="precontoBtn" class="btn btn-info">Pre-conto</button>
+          <button type="button" id="precontoBtn" class="btn btn-info">Anteprima Fattura</button>
         </div>
         @endif
       </div>
@@ -70,7 +70,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-        Anteprima di stampa dell'ordine
+        Anteprima di stampa della fattura
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"></h4>
         </div>

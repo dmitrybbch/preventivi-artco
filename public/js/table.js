@@ -184,10 +184,10 @@ $(document).on('click' , '#precontoBtn' , function(){
     var nome = tr.eq(i).children('td').eq(0).text();
     var prezzo = tr.eq(i).children('td').eq(1).text();
     var quantita = tr.eq(i).children('td').eq(2).text();
-    $('.modal-body').append('<p>' + quantita + ' x ' + prezzo.slice(0, -1) + ' euro: ' + nome + '</p>');
+    $('.modal-body').append('<p>' + quantita + ' x ' + prezzo.slice(0, -1) + ' €: ' + nome + '</p>');
   }
 
   //console.log();
-  $('.modal-body').append('<p>Totale: ' + tot + ' euro</p>');
+  $('.modal-body').append('<p>Totale: ' + tot + ' Euro</p>');
   $('#myModal').modal();
 });

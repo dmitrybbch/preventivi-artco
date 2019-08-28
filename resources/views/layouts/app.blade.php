@@ -34,7 +34,7 @@
               @auth
               @if(Auth::user()->isAdmin())
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('menu') }}">{{ __('Menu') }}</a>
+                <a class="nav-link" href="{{ route('menu') }}">{{ __('Elenco Forniture') }}</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('users') }}">{{ __('Utenti') }}</a>
@@ -72,7 +72,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    
+
     @yield('scripts')
 </body>
 </html>
