@@ -20,27 +20,36 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('foods')->insert([
-          'nome' => 'caffè',  
-          'prezzo' => '1.20',
-          'descrizione' => '',
+            'nome' => 'Sedia di legno',
+            'prezzo' => '1.20',
+            'descrizione' => 'Una bella sedia di compensato.',
+            'tags' => 'compensato, sedia, arredamento'
         ]);
 
         DB::table('foods')->insert([
-          'nome' => 'acqua 1/2 litro',  
-          'prezzo' => '1.00',
-          'descrizione' => '',
+            'nome' => 'WC usato',
+            'prezzo' => '1.00',
+            'descrizione' => 'Un WC usato, pulizie a carico dell acquirente.',
+            'tags' => 'bagno, ceramica'
         ]);
 
         DB::table('foods')->insert([
-          'nome' => 'pizza margherita',  
-          'prezzo' => '5.00',
-          'descrizione' => 'pomodoro e mozzarella',
+            'nome' => 'Piantina',
+            'prezzo' => '5.00',
+            'descrizione' => 'Un vaso o una mappa?',
+            'tags' => 'mistero, vaso, mappa'
         ]);
 
         DB::table('foods')->insert([
-          'nome' => 'coca cola lattina',  
-          'prezzo' => '2.50',
-          'descrizione' => 'lattina 33 cl.',
+            'nome' => 'Letto matrimoniale per nani.',
+            'prezzo' => '2.50',
+            'descrizione' => 'Quindi un letto singolo.',
+            'tags' => 'legno, compensato'
         ]);
+
+
+
+
+
     }
   }

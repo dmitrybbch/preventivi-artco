@@ -1,26 +1,25 @@
 @extends('layouts.app')
 
 @section('title')
-Menu
+Prodotti
 @endsection
 
 @section('content')
 
 <div class="container-fluid">
     <div class="mb-3 border-bottom">
-        <h1 class="h2">Menù</h1>
+        <h1 class="h2">Prodotti</h1>
     </div>
     <input class="form-control mb-3" id="searchBox" type="search" placeholder="Search" aria-label="Search">
     <div class="row">
         <div class="col-md-8">
             <table class="table table-striped" id="foodTable">
                 <thead>
-                    <tr><th scope="col" class="d-none d-md-table-cell">id Prodotto</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col">Opzioni</th></tr>
-                </thead>
+                <tr><th scope="col" class="d-none d-md-table-cell">id Prodotto</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Tags</th><th scope="col">Opzioni</th></tr>                </thead>
                 <tbody>
                 @if( count($foods) )
                     @foreach($foods as $food)
-                        <tr><th scope="row" class="d-none d-md-table-cell">{{ $food->id }}</th><td>{{ $food->nome }}</td><td>{{ $food->prezzo }}</td><td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td><td><button type="button" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button><button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>
+                        <tr><th scope="row" class="d-none d-md-table-cell">{{ $food->id }}</th><td>{{ $food->nome }}</td><td>{{ $food->prezzo }}</td><td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td><td class="d-none d-sm-table-cell">{{ $food->tags }}</td><td><button type="button" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button><button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>
                     @endforeach
                 @else
                 <tr><td colspan="5">Nessun Prodotto</td></tr>
@@ -49,6 +48,11 @@ Menu
                     <div class="form-group">
                         <label for="descrizione">{{ __('Descrizione') }}</label>
                         <textarea class="form-control" id="descrizione"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tags">{{ __('Tags') }}</label>
+                        <textarea class="form-control" id="tags"></textarea>
                     </div>
                     <button type="button" onclick="newFood()" class="btn btn-primary">
                         {{ __('Crea') }}
@@ -99,6 +103,15 @@ Menu
                                 <textarea class="form-control" id="descrizioneModal"></textarea>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="tagsModal" class="col-md-4 col-form-label text-md-right">{{ __('Tags') }}</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" id="tagsModal"></textarea>
+                            </div>
+                        </div>
+
+
                     </form>
 
                 </div>
