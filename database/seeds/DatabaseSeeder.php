@@ -27,9 +27,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('foods')->insert([
-            'nome' => 'WC usato',
+            'nome' => 'WC',
             'prezzo' => '1.00',
-            'descrizione' => 'Un WC usato, pulizie a carico dell acquirente.',
+            'descrizione' => 'Heh!',
             'categoria' => 'Prodotti'
         ]);
 

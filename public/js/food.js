@@ -61,7 +61,7 @@ $(document).on("click" , "tr .btn-outline-info" , function(event){
   $('#nomeModal').val(nome);
   $('#prezzoModal').val(prezzo);
   $('#descrizioneModal').val(descrizione);
-  $('#categoriaModal').val(tags);
+  $('#categoriaModal').val(categoria);
 
   $('#foodModal').modal("show");
 

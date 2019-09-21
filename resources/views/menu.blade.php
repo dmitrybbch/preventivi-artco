@@ -15,11 +15,11 @@ Prodotti
         <div class="col-md-8">
             <table class="table table-striped" id="foodTable">
                 <thead>
-                <tr><th scope="col" class="d-none d-md-table-cell">id Prodotto</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Tags</th><th scope="col">Opzioni</th></tr>                </thead>
+                <tr><th scope="col" class="d-none d-md-table-cell">id Prodotto</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col">Opzioni</th></tr>                </thead>
                 <tbody>
                 @if( count($foods) )
                     @foreach($foods as $food)
-                        <tr><th scope="row" class="d-none d-md-table-cell">{{ $food->id }}</th><td>{{ $food->nome }}</td><td>{{ $food->prezzo }}</td><td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td><td class="d-none d-sm-table-cell">{{ $food->tags }}</td><td><button type="button" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button><button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>
+                        <tr><th scope="row" class="d-none d-md-table-cell">{{ $food->id }}</th><td>{{ $food->nome }}</td><td>{{ $food->prezzo }}</td><td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td><td class="d-none d-sm-table-cell">{{ $food->categoria }}</td><td><button type="button" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button><button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>
                     @endforeach
                 @else
                 <tr><td colspan="5">Nessun Prodotto</td></tr>
@@ -30,7 +30,7 @@ Prodotti
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                Aggiungi un prodotto
+                Aggiungi una fornitura
                 </div>
                 <div class="card-body">
                 <form>
@@ -51,8 +51,8 @@ Prodotti
                     </div>
 
                     <div class="form-group">
-                        <label for="tags">{{ __('Tags') }}</label>
-                        <textarea class="form-control" id="tags"></textarea>
+                        <label for="tags">{{ __('Categoria') }}</label>
+                        <textarea class="form-control" id="categoria"></textarea>
                     </div>
                     <button type="button" onclick="newFood()" class="btn btn-primary">
                         {{ __('Crea') }}
@@ -105,9 +105,9 @@ Prodotti
                         </div>
 
                         <div class="form-group row">
-                            <label for="tagsModal" class="col-md-4 col-form-label text-md-right">{{ __('Tags') }}</label>
+                            <label for="categoriaModal" class="col-md-4 col-form-label text-md-right">{{ __('Categoria') }}</label>
                             <div class="col-sm-6">
-                                <textarea class="form-control" id="tagsModal"></textarea>
+                                <textarea class="form-control" id="categoriaModal"></textarea>
                             </div>
                         </div>
 
