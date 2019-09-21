@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
-    <h1 class="h2">Fatture</h1>
+    <h1 class="h2">Preventivi</h1>
     @if(Auth::user()->isAdmin())
     <div class="btn-toolbar mb-2 mb-md-0">
       <button type="button" class="btn btn-sm btn-outline-secondary" id="modBtn">Modifica</button>
@@ -27,7 +27,7 @@
                 @if($table->nomeTavolo)
                 {{ $table->nomeTavolo }}
                 @else
-                Fattura {{ $table->id }}
+                Prev. {{ $table->id }}
                 @endif
               </div>
               <div class="card-body">

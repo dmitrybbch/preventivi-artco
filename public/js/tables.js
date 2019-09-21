@@ -51,7 +51,7 @@ $('#modBtn').click(function (){
             html += '<div class="card" data-id="' + table.id + '">\n';
           }
             if(table.nomeTavolo) html += '<div class="card-header">' + table.nomeTavolo + '</div>\n';
-            else html += '<div class="card-header">Tavolo ' + table.id + '</div>\n';
+            else html += '<div class="card-header">Prev. ' + table.id + '</div>\n';
             html +=  '<div class="card-body">\n' +
                 table.countOrders + ' portate\n' +
               '</div>\n' +
@@ -102,7 +102,7 @@ $('#modBtn').click(function (){
     var html = '<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3" id="newTable">' +
                     '<div class="card">' +
                       '<div class="card-body">' +
-                        '<h5 class="card-title">Nuove Fatture (#):</h5>' +
+                        '<h5 class="card-title">Nuovi Preventivi (#):</h5>' +
                         '<p class="card-text"><input type="number" class="form-control" step="1" id="nTable" value="1"></p>' +
                         '<a href="#" onclick="newTable()" class="btn btn-primary">Crea</a>' +
                       '</div>' +
@@ -159,7 +159,7 @@ function newTable(){
             '<div class="card" data-id="' + table.id + '">\n' +
                 '<div class="card-header">\n' +
                   '<div class="input-group">\n' +
-                    '<input type="text" class="form-control" value="Fattura ' + table.id + '">\n' +
+                    '<input type="text" class="form-control" value="Prev. ' + table.id + '">\n' +
                     '<div class="input-group-append">\n' +
                       '<button class="btn btn-outline-danger deleteBtn" type="button"><i class="far fa-trash-alt"></i></button>\n' +
                     '</div>\n' +

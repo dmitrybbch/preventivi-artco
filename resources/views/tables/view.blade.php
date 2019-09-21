@@ -7,7 +7,7 @@
       @if($table->nomeTavolo)
       {{ $table->nomeTavolo }}
       @else
-      Fattura {{ $table->id }}
+      Prev. {{ $table->id }}
       @endif
     </h1>
     <div class="mb-2 mb-md-0 mr-auto ml-2">
@@ -53,7 +53,7 @@
         @if(Auth::user()->isAdmin())
         <div class="card-footer">
           <button type="button" class="btn btn-danger" id="emptyBtn">Svuota</button>
-          <button type="button" id="precontoBtn" class="btn btn-info">Anteprima Fattura</button>
+          <button type="button" id="precontoBtn" class="btn btn-info">Anteprima Preventivo</button>
         </div>
         @endif
       </div>
@@ -70,7 +70,7 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-        Anteprima di stampa della fattura
+        Anteprima di stampa del preventivo
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"></h4>
         </div>
