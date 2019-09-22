@@ -1,0 +1,10 @@
+ZX-Dev
+
+Report Sviluppo per la piattaforma di gestione preventivi di ArtCO srl.
+
+Settembre 2019:
+-Creata la base funzionale per il progetto.
+
+Ottobre 2019:
+-"Preventivi", non "fatture"!
+-Il sistema dei tag per le forniture era inutile. Sostituito con il solo campo "categoria"
