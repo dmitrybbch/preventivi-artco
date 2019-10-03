@@ -28,14 +28,14 @@
     <div class="col-md-9">
       <table class="table table-striped" id="foodTable">
             <thead>
-                <tr><th scope="col" class="d-none d-md-table-cell">ID Fornitura</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col">Opzioni</th></tr>
+                <tr><th scope="col" class="d-none d-md-table-cell">ID Fornitura</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>
             </thead>
         <tbody>
           @php ($orders = $table->orders())
           @if(count($orders))
             @foreach($orders as $order)
               @php ($food = $order->food())
-              <tr><th scope="row" class="d-none d-md-table-cell">{{ $order->food_id }}</th><td>{{ $food->nome }}</td><td>{{ $food->prezzo }}€</td><td class="total">{{ $order->total }}</td><td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td><td class="d-none d-sm-table-cell">{{ $food->categoria }}</td><td><button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle"></i></button><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>
+              <tr><th scope="row" class="d-none d-md-table-cell">{{ $order->food_id }}</th><td>{{ $food->nome }}</td><td>{{ $food->prezzo }}€</td><td class="total">{{ $order->total }}</td><td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td><td class="d-none d-sm-table-cell">{{ $food->categoria }}</td><td class="d-none d-sm-table-cell">{{ $food->immagine }}</td><td><button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle"></i></button><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>
             @endforeach
           @else
             <tr><td colspan="6">Nessuna Fornitura</td></tr>

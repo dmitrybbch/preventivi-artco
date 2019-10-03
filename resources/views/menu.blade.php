@@ -15,11 +15,11 @@ Prodotti
         <div class="col-md-8">
             <table class="table table-striped" id="foodTable">
                 <thead>
-                <tr><th scope="col" class="d-none d-md-table-cell">id Prodotto</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col">Opzioni</th></tr>                </thead>
+                <tr><th scope="col" class="d-none d-md-table-cell">id Prodotto</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>                </thead>
                 <tbody>
                 @if( count($foods) )
                     @foreach($foods as $food)
-                        <tr><th scope="row" class="d-none d-md-table-cell">{{ $food->id }}</th><td>{{ $food->nome }}</td><td>{{ $food->prezzo }}</td><td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td><td class="d-none d-sm-table-cell">{{ $food->categoria }}</td><td><button type="button" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button><button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>
+                        <tr><th scope="row" class="d-none d-md-table-cell">{{ $food->id }}</th><td>{{ $food->nome }}</td><td>{{ $food->prezzo }}</td><td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td><td class="d-none d-sm-table-cell">{{ $food->categoria }}</td><td class="d-none d-sm-table-cell">{{ $food->immagine }}</td><td><button type="button" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button><button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>
                     @endforeach
                 @else
                 <tr><td colspan="5">Nessun Prodotto</td></tr>
@@ -51,9 +51,15 @@ Prodotti
                     </div>
 
                     <div class="form-group">
-                        <label for="tags">{{ __('Categoria') }}</label>
+                        <label for="categoria">{{ __('Categoria') }}</label>
                         <textarea class="form-control" id="categoria"></textarea>
                     </div>
+
+                    <div class="form-group">
+                        <label for="immagine">{{ __('Immagine') }}</label>
+                        <input type="file" name="immagine" id="immagine" />
+                    </div>
+
                     <button type="button" onclick="newFood()" class="btn btn-primary">
                         {{ __('Crea') }}
                     </button>
