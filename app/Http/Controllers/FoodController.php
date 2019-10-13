@@ -58,7 +58,6 @@ class FoodController extends Controller
         $food->prezzo = $input['prezzo'];
         $food->descrizione = $input['descrizione'];
         $food->categoria = $input['categoria'];
-        $food->immagine = $input['immagine'];
 
         $food->save();
         return response()->json($food);
