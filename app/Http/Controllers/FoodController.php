@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Food;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+
 
 class FoodController extends Controller
 {
@@ -37,7 +39,14 @@ class FoodController extends Controller
         $food->prezzo = $input['prezzo'];
         $food->descrizione = $input['descrizione'];
         $food->categoria = $input['categoria'];
-        $food->immagine = $input['immagine'];
+
+        if($request->hasFile('immagine')){
+            $file_immagine = $request->file('immagine');
+            $food->immagine = $file_immagine->getClientOriginalName();
+            Image::make($file_immagine)->save(public_path('img_uploads') . '/' . $food->immagine);
+        } else {
+            $food->immagine = "artco_logo_trasp_slim.png";
+        }
 
         $food->save();
         return response()->json($food);

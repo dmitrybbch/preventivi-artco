@@ -33,7 +33,7 @@ Prodotti
                 Aggiungi una fornitura
                 </div>
                 <div class="card-body">
-                <form>
+                <form id="form">
                     @csrf
                     <div class="form-group">
                         <label for="nome">{{ __('Nome') }}</label>
@@ -47,17 +47,17 @@ Prodotti
 
                     <div class="form-group">
                         <label for="descrizione">{{ __('Descrizione') }}</label>
-                        <textarea class="form-control" id="descrizione"></textarea>
+                        <textarea class="form-control" id="descrizione" name="descrizione"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="categoria">{{ __('Categoria') }}</label>
-                        <textarea class="form-control" id="categoria"></textarea>
+                        <textarea class="form-control" id="categoria" name="categoria"></textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="immagine">{{ __('Immagine') }}</label>
-                        <input type="file" name="immagine" id="immagine" />
+                        <input type="file" name="immagine" id="immagine" name="immagine" />
                     </div>
 
                     <button type="button" onclick="newFood()" class="btn btn-primary">
