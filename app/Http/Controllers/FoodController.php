@@ -45,7 +45,7 @@ class FoodController extends Controller
             $food->immagine = $file_immagine->getClientOriginalName();
             Image::make($file_immagine)->save(public_path('img_uploads') . '/' . $food->immagine);
         } else {
-            $food->immagine = "artco_logo_trasp_slim.png";
+            $food->immagine = "";
         }
 
         $food->save();

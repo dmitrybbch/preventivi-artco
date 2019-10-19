@@ -35,7 +35,7 @@ $('#cartBtn').click(function(e){
         method: 'GET',
         success: function(orders){
           if(orders.length){
-              $('thead').html('<tr><th scope="col" class="d-none d-md-table-cell">id Prodotto</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>');            $('tbody').html('');
+              $('thead').html('<tr><th scope="col" class="d-none d-md-table-cell">id Prodotto</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th>{{--<th scope="col" class="d-none d-sm-table-cell">Immagine</th>--}}<th scope="col">Opzioni</th></tr>');            $('tbody').html('');
             orders.forEach(function(food){
               $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + '€</td><td>' + food.total + '</td><td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td><td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td><td class="d-none d-sm-table-cell">' + (food.immagine ? food.immagine : "") + '</td><td><button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle"></i></button><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>');            })
           } else{

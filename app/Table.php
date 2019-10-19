@@ -26,7 +26,7 @@ class Table extends Model
     {
 
         $total = 0;
-
+        
         foreach (Table::orders() as $key => $order) {
           $total += $order->total * $order->food()->prezzo;
         }

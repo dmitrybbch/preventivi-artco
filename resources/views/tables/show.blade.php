@@ -34,20 +34,20 @@
                 {{ $table->countOrders() }} Forniture
               </div>
               <div class="card-footer">
-                Totale: {{ $table->totalOrders() }}€
+                Totale: {{-- $table->totalOrders() --}}€
               </div>
           </div>
       </div>
       @endforeach
-      <!--<div class="col-md-2 mb-3" id="newTable">
+      <div class="col-md-2 mb-3" id="newTable">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Nuovo tavolo</h5>
-              <p class="card-text">we</p>
-              <a href="#" onclick="newTable()" class="btn btn-primary">Crea</a>
+              <h5 class="card-title">Nuovo Preventivo</h5>
+              <p class="card-text"></p>
+              <a href="#" class="btn btn-primary">Crea</a>
             </div>
           </div>
-      </div>-->
+      </div>
   </div>
 </div>
 @endsection
