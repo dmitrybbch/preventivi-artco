@@ -50,7 +50,7 @@
 
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">Totale: {{-- $table->totalOrders() --}}€</div>
+            <div class="card-header">Totale: $table->totalOrders()€</div>
 
                 <div class="card-footer">
                     <button type="button" class="btn btn-danger" id="emptyBtn">Svuota</button>
