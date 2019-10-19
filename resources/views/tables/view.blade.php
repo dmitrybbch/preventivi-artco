@@ -37,7 +37,7 @@
           @if(count($orders))
             @foreach($orders as $order)
               @php($food = $order->food())
-              <tr><th scope="row" class="d-none d-md-table-cell">{{ $order->food_id }}</th><td>{{ $food->nome }}</td><td>{{ $food->prezzo }}€</td><td class="total">$order->total  </td><td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td><td class="d-none d-sm-table-cell">{{ $food->categoria }}</td><td class="d-none d-sm-table-cell">{{ $food->immagine }}</td><td><button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle"></i></button><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>
+              <tr><th scope="row" class="d-none d-md-table-cell">{{ $order->food_id }}</th><td>{{ $food->nome }}</td><td>{{ $food->prezzo }}€</td><td class="total">{{$order->total }} </td><td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td><td class="d-none d-sm-table-cell">{{ $food->categoria }}</td><td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $food->immagine)}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"> </td><td><button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle"></i></button><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>
             @endforeach
           @else
             <tr><td colspan="6">Nessuna Fornitura</td></tr>
@@ -50,7 +50,7 @@
 
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header">Totale: $table->totalOrders()€</div>
+            <div class="card-header">Totale: {{ $table->totalOrders() }}€</div>
 
                 <div class="card-footer">
                     <button type="button" class="btn btn-danger" id="emptyBtn">Svuota</button>

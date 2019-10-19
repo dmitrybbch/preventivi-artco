@@ -28,7 +28,7 @@ class Table extends Model
         $total = 0;
 
         foreach (Table::orders() as $key => $order) {
-            error_log("DEBUG orders(): key=" . $key . " - order=". $order);
+            //error_log("DEBUG orders(): key=" . $key . " - order=". $order);
             $total += $order->total * $order->food()->prezzo;
         }
 
