@@ -31,15 +31,16 @@
                 @endif
               </div>
               <div class="card-body">
-                {{ $table->countOrders() }} Forniture
+                {{ $table->countOrders() }} Forniture, <b>{{ $table->totalOrders() }} €</b>
               </div>
               <div class="card-footer">
-                Totale: {{ $table->totalOrders() }}€
+
               </div>
           </div>
       </div>
       @endforeach
-      <div class="col-md-2 mb-3" id="newTable">
+
+      <div class="col-md-2 mb-3" id="newTableCard">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Nuovo Preventivo</h5>
@@ -48,6 +49,7 @@
             </div>
           </div>
       </div>
+      -->
   </div>
 </div>
 @endsection
