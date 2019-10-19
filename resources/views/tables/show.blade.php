@@ -34,7 +34,7 @@
                 {{ $table->countOrders() }} Forniture
               </div>
               <div class="card-footer">
-                Totale: {{-- $table->totalOrders() --}}€
+                Totale: {{ $table->totalOrders() }}€
               </div>
           </div>
       </div>
