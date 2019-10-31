@@ -34,7 +34,11 @@
                 {{ $table->countOrders() }} Forniture, <b>{{ $table->totalOrders() }} €</b>
               </div>
               <div class="card-footer">
-
+                @if($table->cliente)
+                {{ $table->cliente }}
+                @else
+                 Cliente indefinito
+                @endif
               </div>
           </div>
       </div>

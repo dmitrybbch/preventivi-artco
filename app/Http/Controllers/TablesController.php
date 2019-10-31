@@ -68,7 +68,9 @@ class TablesController extends Controller
             $stati = array('libero', 'occupato', 'servito');
             $table->stato = $stati[$value['stato']];
           }
-
+          if(isset($value['cliente'])){
+            $table->cliente = $value['cliente'];
+          }
 
           $table->save();
         }

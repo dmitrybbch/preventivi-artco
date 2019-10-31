@@ -18,11 +18,13 @@ $('#modBtn').click(function (){
     var tables = [];
     $('.card').each(function(card){
       var id = $(this).data('id');
-      var nome = $(this).find('input[type=text]').val();
-      if(id != undefined)
-        tables.push({id: id, nome: nome});
+      var nome = $(this).find('input[id=scimmiaCodeNome]').val();
+      var cliente = $(this).find('input[id=scimmiaCodeCliente]').val();
 
-      console.log('id: ' + id + ' title: ' + nome);
+      if(id != undefined)
+        tables.push({id: id, nome: nome, cliente: cliente});
+
+      console.log( cliente);
     })
 
     var jsonString = JSON.stringify(tables)
@@ -53,10 +55,10 @@ $('#modBtn').click(function (){
             if(table.nomeTavolo) html += '<div class="card-header">' + table.nomeTavolo + '</div>\n';
             else html += '<div class="card-header">Prev. ' + table.id + '</div>\n';
             html +=  '<div class="card-body">\n' +
-                table.countOrders + ' portate\n' +
+              table.countOrders + ' forniture: <b>' + table.totalOrders + '€ </br>\n' +
               '</div>\n' +
               '<div class="card-footer">\n' +
-                'Totale: ' + table.totalOrders + '€\n' +
+              '@ ' + table.cliente
               '</div>\n' +
           '</div>\n' +
       '</div>\n';
@@ -81,19 +83,18 @@ $('#modBtn').click(function (){
           '<div class="card" data-id="' + table.id + '">\n' +
               '<div class="card-header">\n' +
                 '<div class="input-group">\n';
-                if(table.nomeTavolo) html += '<input type="text" class="form-control" value="' + table.nomeTavolo + '">\n';
-                else html += '<input type="text" class="form-control" value="Tavolo ' + table.id + '">\n';
-
+                if(table.nomeTavolo) html += '<input type="text" class="form-control" id ="scimmiaCodeNome" value="' + table.nomeTavolo + '">\n';
+                else html += '<input type="text" class="form-control" id ="scimmiaCodeNome" value="Prev."' + table.id + '">\n';
                 html +=  '<div class="input-group-append">\n' +
                     '<button class="btn btn-outline-danger deleteBtn" type="button"><i class="far fa-trash-alt"></i></button>\n' +
                   '</div>\n' +
                 '</div>\n' +
               '</div>\n' +
               '<div class="card-body">\n' +
-                'Vuota\n' +
+                'Vuota, totale: 0€\n' +
               '</div>\n' +
               '<div class="card-footer">\n' +
-                'Totale: 0€\n' +
+                '<input type="text" class="form-control" id="scimmiaCodeCliente" value="' + '" placeholder="Cliente '+ table.cliente +' " name="cliente"> \n' +
               '</div>\n' +
           '</div>\n' +
       '</div>\n';

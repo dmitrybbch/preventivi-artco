@@ -9,7 +9,7 @@ class Table extends Model
 {
     //
     protected $fillable = [
-      'nomeTavolo', 'stato'
+      'nomeTavolo', 'stato', 'cliente',
     ];
 
     public function orders()
