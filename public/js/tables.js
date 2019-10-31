@@ -55,10 +55,10 @@ $('#modBtn').click(function (){
             if(table.nomeTavolo) html += '<div class="card-header">' + table.nomeTavolo + '</div>\n';
             else html += '<div class="card-header">Prev. ' + table.id + '</div>\n';
             html +=  '<div class="card-body">\n' +
-              table.countOrders + ' forniture: <b>' + table.totalOrders + '€ </br>\n' +
+              table.countOrders + ' forniture: <b>' + table.totalOrders + '€ </b>\n' +
               '</div>\n' +
               '<div class="card-footer">\n' +
-              '@ ' + table.cliente
+              'Cliente: <b>' + table.cliente + '</b>' + 
               '</div>\n' +
           '</div>\n' +
       '</div>\n';
@@ -94,7 +94,7 @@ $('#modBtn').click(function (){
                 'Vuota, totale: 0€\n' +
               '</div>\n' +
               '<div class="card-footer">\n' +
-                '<input type="text" class="form-control" id="scimmiaCodeCliente" value="' + '" placeholder="Cliente '+ table.cliente +' " name="cliente"> \n' +
+                '<input type="text" class="form-control" id="scimmiaCodeCliente" value="' + table.cliente + '" placeholder="Cliente: '+ table.cliente +' "> \n' +
               '</div>\n' +
           '</div>\n' +
       '</div>\n';
