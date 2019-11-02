@@ -16,7 +16,7 @@
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3" >
           @switch($table->stato)
           @case('occupato')
-            <div class="card text-white bg-danger" data-id="{{ $table->id }}" style="cursor: pointer;">
+            <div class="card text-white bg-danger" data-id="{{ $table->id }}" >
             @break
           @case('servito')
             <div class="card text-white bg-success" data-id="{{ $table->id }}">
@@ -44,7 +44,7 @@
           </div>
       </div>
       @endforeach
-
+<!--
       <div class="col-md-2 mb-3" id="newTableCard">
           <div class="card">
             <div class="card-body">
@@ -54,7 +54,7 @@
             </div>
           </div>
       </div>
-
+-->
   </div>
 </div>
 @endsection

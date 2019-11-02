@@ -13,12 +13,14 @@ Prodotti
     <input class="form-control mb-3" id="searchBox" type="search" placeholder="Search" aria-label="Search">
     <div class="row">
         <div class="col-md-8">
-            <table class="table table-striped" id="foodTable">
-                <thead>
+            <table class="table table-striped" id="foodTable" id="table"
+                data-sortable="true"
+            >
+                <thead class="thead-dark">
                 <tr><th scope="col" class="d-none d-md-table-cell">id Prodotto</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>                </thead>
                 <tbody>
                 @if( count($foods) )
-                    @foreach($foods as $food)
+                    @foreach($foods->sortBy('categoria') as $food)
                         <tr><th scope="row" class="d-none d-md-table-cell">{{ $food->id }}</th>
                             <td>{{ $food->nome }}</td><td>{{ $food->prezzo }}</td>
                             <td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td>
@@ -140,4 +142,5 @@ Prodotti
 
 @section('scripts')
 <script src="{{ asset('js/food.js') }}"></script>
+<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
 @endsection
