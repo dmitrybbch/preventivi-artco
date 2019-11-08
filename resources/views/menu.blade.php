@@ -17,7 +17,7 @@ Prodotti
                 data-sortable="true"
             >
                 <thead class="thead-dark">
-                <tr><th scope="col" class="d-none d-md-table-cell">id Prodotto</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>                </thead>
+                <tr><th scope="col" class="d-none d-md-table-cell">id</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>                </thead>
                 <tbody>
                 @if( count($foods) )
                     @foreach($foods->sortBy('categoria') as $food)

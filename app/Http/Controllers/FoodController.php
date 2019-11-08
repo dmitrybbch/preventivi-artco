@@ -43,7 +43,9 @@ class FoodController extends Controller
         if($request->hasFile('immagine')){
             $file_immagine = $request->file('immagine');
             $food->immagine = $file_immagine->getClientOriginalName();
-            Image::make($file_immagine)->save(public_path('img_uploads') . '/' . $food->immagine);
+            Image::make($file_immagine)->resize(null, 600, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save(public_path('img_uploads') . '/' . $food->immagine);
         } else {
             $food->immagine = "";
         }
