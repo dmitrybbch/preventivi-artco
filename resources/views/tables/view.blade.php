@@ -76,6 +76,7 @@
           <h4 class="modal-title"></h4>
         </div>
         <div class="modal-body" id="PDFcontent">
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" id="gpdf">Stampa</button>

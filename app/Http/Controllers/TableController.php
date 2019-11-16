@@ -84,4 +84,9 @@ class TableController extends Controller
           $response = ['messaggio' => 'prodotto eliminato'];
           return response()->json($response);
      }
+
+     public function anteprima(Request $request){
+
+
+     }
 }

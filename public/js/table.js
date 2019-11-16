@@ -169,6 +169,14 @@ $(document).on('click', '#emptyBtn', function(){
 
 $(document).on('click' , '#gpdf' , function(){
   var pdfdoc = new jsPDF();
+/// TODO: fixa il fukkin font, è per quello che formatta di merda
+    /*
+    doc.addFileToVFS("PTSans.ttf", PTSans);
+    doc.addFont('PTSans.ttf', 'PTSans', 'normal');  Ma non hai PTSans
+
+    doc.setFont('PTSans'); // set font
+    doc.setFontSize(10);
+     */
 
   pdfdoc.fromHTML($('#PDFcontent').html(), 10, 10, {
 
@@ -185,17 +193,19 @@ $(document).on('click' , '#precontoBtn' , function(){
   var tot = parseInt($('#numTotalePrev').text().split(/[ ,]+/)[1]);
 
   console.log("Thot: "+ tot);
+
+  $('.modal-body').empty(); // Non si ripetano più tutte le anteprime precedenti a ogni pressione
   if(!tot) return;
   for(var i=0;i<tr.length;i++){
     var nome = tr.eq(i).children('td').eq(0).text();
     var prezzo = tr.eq(i).children('td').eq(1).text();
     var quantita = tr.eq(i).children('td').eq(2).text();
-    $('.modal-body').append('<p>' + quantita + ' x ' + prezzo.slice(0, -1) + ' €: ' + nome + '</p>');
+    $('.modal-body').append('<p>' + quantita + ' x ' + prezzo.slice(0, -1) + ' &#8364; mannaggia: ' + nome + '</p>');
       console.log("Quantita: "+ quantita);
   }
 
   //console.log();
-  $('.modal-body').append('<p>Totale: ' + tot + ' Euro</p>');
+  $('.modal-body').append('<p>Totale blyaaat: ' + tot + ' Euro</p>');
   $('#myModal').modal();
 });
 
