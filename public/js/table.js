@@ -178,13 +178,13 @@ $(document).on('click' , '#gpdf' , function(){
     doc.setFontSize(10);
      */
     //pdfdoc.fromHTML('/resources/artco_logo_trasp.png');
-    /*
+
       pdfdoc.fromHTML($('#PDFcontent').html(), 10, 10, {
 
         'width': 200
 
       });
-    */
+
   pdfdoc.save('Firstodes.pdf');
 });
 
