@@ -36,11 +36,23 @@
           @php ($orders = $table->orders())
           @if(count($orders))
 
-              {{ logger('Debag forniture da riordinate.') }}
+              @php($foodOrdinati = array())
+              {{ logger($foodOrdinati) }}
             @foreach($orders as $order)
+                @php($currentFood = array("food_id"=>95, "nome"=>90, "Chemistry"=>96, "English"=>93, "Computer"=>rand(1,10)))--}}
+
+              @php(sortedInsert($foodOrdinati, $currentFood))
+
               @php($food = $order->food())
               <tr><th scope="row" class="d-none d-md-table-cell">{{ $order->food_id }}</th><td>{{ $food->nome }}</td><td>{{ $food->prezzo }}€</td><td class="total">{{$order->total }} </td><td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td><td class="d-none d-sm-table-cell">{{ $food->categoria }}</td><td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $food->immagine)}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"> </td><td><button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle"></i></button><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>
             @endforeach
+
+
+
+            {{ logger('Debag forniture riordinate, si spera:') }}
+            {{ logger($foodOrdinati) }}
+
+
           @else
             <tr><td colspan="8">Nessuna Fornitura</td></tr>
           @endif

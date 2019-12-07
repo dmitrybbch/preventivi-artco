@@ -35,7 +35,7 @@ $('#cartBtn').click(function(e){
         method: 'GET',
         success: function(orders){
           if(orders.length){
-              $('thead').html('<tr><th scope="col" class="d-none d-md-table-cell">id</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>');            $('tbody').html('');
+              $('thead').html('<tr><th scope="col" class="d-none d-md-table-cell">ID f.</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>');            $('tbody').html('');
 
               orders.sort( compare );
 
@@ -81,7 +81,7 @@ function doSearch(input){
       res.results.sort( compare ); // Faccio il sort degli oggetti per categoria, vedi funz COMPARE
       //console.log(res.results);
       if(res.results.length){
-        $('thead').html('<tr><th scope="col" class="d-none d-md-table-cell">id</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>')
+        $('thead').html('<tr><th scope="col" class="d-none d-md-table-cell">ID</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>')
         $('tbody').html('');
 
         res.results.forEach(function(food){
@@ -177,14 +177,15 @@ $(document).on('click' , '#gpdf' , function(){
     doc.setFont('PTSans'); // set font
     doc.setFontSize(10);
      */
+    //pdfdoc.fromHTML('/resources/artco_logo_trasp.png');
+    /*
+      pdfdoc.fromHTML($('#PDFcontent').html(), 10, 10, {
 
-  pdfdoc.fromHTML($('#PDFcontent').html(), 10, 10, {
+        'width': 200
 
-    'width': 200
-
-  });
-
-  pdfdoc.save('First.pdf');
+      });
+    */
+  pdfdoc.save('Firstodes.pdf');
 });
 
 $(document).on('click' , '#precontoBtn' , function(){
@@ -196,16 +197,18 @@ $(document).on('click' , '#precontoBtn' , function(){
 
   $('.modal-body').empty(); // Non si ripetano più tutte le anteprime precedenti a ogni pressione
   if(!tot) return;
+
+
   for(var i=0;i<tr.length;i++){
     var nome = tr.eq(i).children('td').eq(0).text();
     var prezzo = tr.eq(i).children('td').eq(1).text();
     var quantita = tr.eq(i).children('td').eq(2).text();
-    $('.modal-body').append('<p>' + quantita + ' x ' + prezzo.slice(0, -1) + ' &#8364; mannaggia: ' + nome + '</p>');
+    $('.modal-body').append('<p>' + ' x ' + prezzo.slice(0, -1) + ' &#8364; mannaggia: ' + nome + '</p>');
       console.log("Quantita: "+ quantita);
   }
 
   //console.log();
-  $('.modal-body').append('<p>Totale blyaaat: ' + tot + ' Euro</p>');
+  $('.modal-body').append('<p>Totale: ' + tot + ' Euro</p>');
   $('#myModal').modal();
 });
 
