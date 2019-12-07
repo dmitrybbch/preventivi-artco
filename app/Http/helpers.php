@@ -2,7 +2,7 @@
 
 function sortedInsert(&$sortedArray, $element, $bythis){
 
-    logger("DEBUG helper - sortedInsert: ".$bythis." = ".$element[$bythis]);
+    //logger("DEBUG helper - sortedInsert: ".$bythis." = ".$element[$bythis]);
 
     $arraySize = count($sortedArray);
 

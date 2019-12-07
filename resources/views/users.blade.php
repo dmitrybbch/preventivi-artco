@@ -6,7 +6,7 @@ Utenti
 
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid ">
   <div class="mb-3 border-bottom">
     <h1 class="h2">Utenti</h1>
   </div>
@@ -14,7 +14,7 @@ Utenti
     <div class="col-md-8">
       <table class="table table-striped" id="userTable">
         <thead>
-          <tr><th scope="col">#</th><th scope="col">Username</th><th scope="col">Type</th><th scope="col">Opzioni</th></tr>
+          <tr class="bg-secondary text-white"><th scope="col">#</th><th scope="col">Username</th><th scope="col">Type</th><th scope="col">Opzioni</th></tr>
         </thead>
         <tbody>
           @foreach($users as $user)
@@ -26,7 +26,7 @@ Utenti
 
     <div class="col-md-4">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header bg-secondary text-white">
           Crea utente
         </div>
         <div class="card-body">
