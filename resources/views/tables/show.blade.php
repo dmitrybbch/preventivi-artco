@@ -12,7 +12,7 @@
   </div>
   <div class="row">
       @foreach($tables as $table)
-      
+
       <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3" >
           @switch($table->stato)
           @case('occupato')
@@ -32,7 +32,8 @@
                 @endif
               </div>
               <div class="card-body">
-                {{ $table->countOrders() }} Forniture, <b>{{ $table->totalOrders() }} €</b>
+                {{ $table->countOrders() }} Forniture
+                <br><b>{{ $table->totalOrders() }} €</b>
               </div>
               <div class="card-footer">
                 @if($table->cliente)

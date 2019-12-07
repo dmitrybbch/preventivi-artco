@@ -170,22 +170,21 @@ $(document).on('click', '#emptyBtn', function(){
 $(document).on('click' , '#gpdf' , function(){
   var pdfdoc = new jsPDF();
 /// TODO: fixa il fukkin font, è per quello che formatta di merda
-    /*
-    doc.addFileToVFS("PTSans.ttf", PTSans);
-    doc.addFont('PTSans.ttf', 'PTSans', 'normal');  Ma non hai PTSans
 
-    doc.setFont('PTSans'); // set font
-    doc.setFontSize(10);
-     */
-    //pdfdoc.fromHTML('/resources/artco_logo_trasp.png');
+    pdfdoc.addFileToVFS('/ArialUnicode.ttf', 'ArialUnicode');
+    pdfdoc.addFont('ArialUnicode.ttf', 'ArialUnicode', 'normal'); // Ma non hai PTSans
 
-      pdfdoc.fromHTML($('#PDFcontent').html(), 10, 10, {
+    pdfdoc.setFont('Arialunicode'); // set font
+    pdfdoc.setFontSize(100);
 
+    //pdfdoc.fromHTML('/resources/print/print_example.html');
+
+
+    pdfdoc.fromHTML($('#PDFcontent').html(), 10, 10, {
         'width': 200
+    });
 
-      });
-
-  pdfdoc.save('Firstodes.pdf');
+    pdfdoc.save('Firstodes.pdf');
 });
 
 $(document).on('click' , '#precontoBtn' , function(){
@@ -203,7 +202,8 @@ $(document).on('click' , '#precontoBtn' , function(){
     var nome = tr.eq(i).children('td').eq(0).text();
     var prezzo = tr.eq(i).children('td').eq(1).text();
     var quantita = tr.eq(i).children('td').eq(2).text();
-    $('.modal-body').append('<p>' + ' x ' + prezzo.slice(0, -1) + ' &#8364; mannaggia: ' + nome + '</p>');
+    // Tenendo stammerda : &#8364; si scazza tutto l'output. Con la 'è' no invece. Mettere char speciali in generale fotte tutto.
+    $('.modal-body').append('<p>' + ' x ' + prezzo.slice(0, -1) + ' EUR: ' + nome + '</p>');
       console.log("Quantita: "+ quantita);
   }
 
