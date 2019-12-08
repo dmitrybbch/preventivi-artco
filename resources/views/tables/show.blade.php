@@ -13,16 +13,16 @@
   <div class="row">
       @foreach($tables as $table)
 
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3" >
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">
           @switch($table->stato)
           @case('occupato')
-            <div class="card text-white bg-danger" data-id="{{ $table->id }}" >
+            <div class="card text-white bg-danger" data-id="{{ $table->id }}" style="cursor: pointer">
             @break
           @case('servito')
-            <div class="card text-white bg-success" data-id="{{ $table->id }}">
+            <div class="card text-white bg-success" data-id="{{ $table->id }}" style="cursor: pointer">
             @break
           @default
-            <div class="card bg-secondary text-white" data-id="{{ $table->id }}"> <!--  -->
+            <div class="card bg-secondary text-white" data-id="{{ $table->id }}" style="cursor: pointer">
           @endswitch
               <div class="card-header">
                 @if($table->nomeTavolo)

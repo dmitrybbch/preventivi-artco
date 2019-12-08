@@ -10,7 +10,7 @@
       Prev. {{ $table->id }}
       @endif
     </h1>
-    <div class="mb-2 mb-md-0 mr-auto ml-2">
+    <div class="mb-2 mb-md-0 mr-auto ml-2" >
       <form class="form-inline">
         <input type="text" id="searchBox" style="display: none;" class="form-control mr-1" placeholder="Search">
         <button type="button" id="cartBtn" class="btn btn-outline-info">Fornisci</button>
