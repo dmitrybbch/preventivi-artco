@@ -192,23 +192,46 @@ $(document).on('click' , '#precontoBtn' , function(){
   var tr = $('tbody').find('tr');
   var tot = parseInt($('#numTotalePrev').text().split(/[ ,]+/)[1]);
 
-  console.log("Thot: "+ tot);
+  console.log("Tot: "+ tot);
 
+  // Tenendo : &#8364; si scazza tutto l'output. Con la 'è' no invece. Mettere char speciali in generale fotte tutto.
   $('.modal-body').empty(); // Non si ripetano più tutte le anteprime precedenti a ogni pressione
   if(!tot) return;
 
+  $('.modal-body').append('');
+  $('.modal-body').append('<table style="padding: 70px">');
+  $('.modal-body').append('<tr><td colspan="3" height="110px"> <img src="/img/artco_logo_trasp.png" align="left" width="120px"> </td></tr>');
 
+  $('.modal-body').append('<tr> <td height="10px"><b>[Dove], li</b></td> <td></td><td><b>[data] </b></td></tr>');
+  $('.modal-body').append('<tr> <td height="40px"><b></b></td> <td></td><td>[destinatario]</td></tr>');
+
+  $('.modal-body').append('<tr> <td><b>Oggetto:</b></td> <td></td><td><b>[testo oggetto] </b></td></tr>');
+
+    $('.modal-body').append('<tr><td></td></tr>');
+  var categoria = 'nessuna';
   for(var i=0;i<tr.length;i++){
     var nome = tr.eq(i).children('td').eq(0).text();
     var prezzo = tr.eq(i).children('td').eq(1).text();
     var quantita = tr.eq(i).children('td').eq(2).text();
-    // Tenendo stammerda : &#8364; si scazza tutto l'output. Con la 'è' no invece. Mettere char speciali in generale fotte tutto.
-    $('.modal-body').append('<p>' + ' x ' + prezzo.slice(0, -1) + ' EUR: ' + nome + '</p>');
+    var descrizione = tr.eq(i).children('td').eq(3).text();
+
+    var nuovaCategoria = false;
+    if(categoria != tr.eq(i).children('td').eq(4).text()){
+        var nuovaCategoria = true;
+    }
+    categoria = tr.eq(i).children('td').eq(4).text();
+    if(nuovaCategoria)
+        $('.modal-body').append('<tr> <td> <b>'+ categoria +'</b> </td> </tr>');
+
+    $('.modal-body').append('<tr>' + ' <td width="65" align="right">' + quantita + '</td><td>:        '+ nome +'</td></tr>');
+
+
+
       console.log("Quantita: "+ quantita);
   }
+    var prezzoStr = prezzo.slice(0, -1);
 
-  //console.log();
-  $('.modal-body').append('<p>Totale: ' + tot + ' Euro</p>');
+  $('.modal-body').append('<p>Totale: EUR' + tot + '</p>');
   $('#myModal').modal();
 });
 
