@@ -23,28 +23,33 @@ class DatabaseSeeder extends Seeder
             'nome' => 'Sedia di legno',
             'prezzo' => '1.20',
             'descrizione' => 'Una bella sedia di compensato.',
-            'categoria' => 'Prodotti'
+            'categoria' => 'Prodotti',
+            'subcategoria' => 'Cose belle'
         ]);
 
         DB::table('foods')->insert([
             'nome' => 'WC',
             'prezzo' => '1.00',
             'descrizione' => 'Heh!',
-            'categoria' => 'Prodotti'
+            'categoria' => 'Prodotti',
+            'subcategoria' => 'Cose belle'
+
         ]);
 
         DB::table('foods')->insert([
             'nome' => 'Piantina',
             'prezzo' => '5.00',
             'descrizione' => 'Un vaso o una mappa?',
-            'categoria' => 'Prodotti'
+            'categoria' => 'Prodotti',
+            'subcategoria' => 'Cose belle'
         ]);
 
         DB::table('foods')->insert([
             'nome' => 'Letto matrimoniale per nani.',
             'prezzo' => '2.50',
             'descrizione' => 'Quindi un letto singolo.',
-            'categoria' => 'Prodotti'
+            'categoria' => 'Prodotti',
+            'subcategoria' => 'Cose brutte'
         ]);
 
 
