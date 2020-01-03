@@ -60,7 +60,7 @@
       </div>
 -->
   </div>
-  <div class="row">
+  <div class="row" id="rowtwo">
       @foreach($tables as $table)
           @if($table->stato != 'libero')
               <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">

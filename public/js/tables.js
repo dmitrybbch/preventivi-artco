@@ -62,7 +62,7 @@ $('#modBtn').click(function (){
               '</div>\n' +
           '</div>\n' +
       '</div>\n';
-      $('.row').append(html);
+      $('#rowtwo').append(html);
     })
 
     $('.card').click(function(event){
@@ -109,7 +109,7 @@ $('#modBtn').click(function (){
                       '</div>' +
                     '</div>' +
                 '</div>';
-    $('.row').append(html);
+    $('#rowtwo').append(html);
 
     //pulsante cancella tavolo
     $('.deleteBtn').click(function(btn){
