@@ -30,7 +30,7 @@
     <div class="col-md-12">
       <table class="table table-striped" id="foodTable">
             <thead class="thead-dark">
-                <tr><th scope="col" class="d-none d-md-table-cell">id f.</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Sub-Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>
+                <tr><th scope="col" class="d-none d-md-table-cell">id f.</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Unità</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>
             </thead>
         <tbody>
           @php ($orders = $table->orders())
@@ -42,7 +42,7 @@
             {{-- PRIMA LI INSERISCO IN UNA LISTA E LI ORDINO PER 'CATEGORIA'--}}
             @foreach($orders as $order)
                 @php($food = $order->food())
-                @php($currentFood = array("food_id"=> ($order->food_id), "nome"=>($food->nome), "prezzo"=>($food->prezzo), "total"=>($order->total), "descrizione"=> ($food->descrizione), "categoria"=> ($food->categoria), "subcategoria"=> ($food->subcategoria), "immagine"=> ($food->immagine) ))
+                @php($currentFood = array("food_id"=> ($order->food_id), "nome"=>($food->nome), "prezzo"=>($food->prezzo), "unita"=>($food->unita), "total"=>($order->total), "descrizione"=> ($food->descrizione), "categoria"=> ($food->categoria), "immagine"=> ($food->immagine) ))
                 @php(sortedInsert($foodOrdinati, $currentFood, 'categoria'))
             @endforeach
 
@@ -52,10 +52,10 @@
                     <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['food_id'] }}</th>
                     <td>{{ $fornitura['nome'] }}</td>
                     <td>{{ $fornitura['prezzo'] }}€</td>
+                    <td>{{ $fornitura['unita'] }}</td>
                     <td class="total">{{$fornitura['total'] }} </td>
                     <td class="d-none d-sm-table-cell">{{ $fornitura['descrizione'] }}</td>
                     <td class="d-none d-sm-table-cell">{{ $fornitura['categoria'] }}</td>
-                    <td class="d-none d-sm-table-cell">{{ $fornitura['subcategoria'] }}</td>
 
                     <td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $fornitura['immagine'])}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"> </td>
                     <td><button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle"></i></button><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td>

@@ -37,9 +37,9 @@ class FoodController extends Controller
         $food = new Food;
         $food->nome = $input['nome'];
         $food->prezzo = $input['prezzo'];
+        $food->unita = $input['unita'];
         $food->descrizione = $input['descrizione'];
         $food->categoria = $input['categoria'];
-        $food->subcategoria = $input['subcategoria'];
 
 
         if($request->hasFile('immagine')){
@@ -65,15 +65,12 @@ class FoodController extends Controller
     {
         $input = $request->all();
 
-
         $food = Food::find($input['id']);
         $food->nome = $input['nome'];
         $food->prezzo = $input['prezzo'];
+        $food->unita = $input['unita'];
         $food->descrizione = $input['descrizione'];
         $food->categoria = $input['categoria'];
-        $food->subcategoria = $input['subcategoria'];
-
-
 
         $food->save();
         return response()->json($food);

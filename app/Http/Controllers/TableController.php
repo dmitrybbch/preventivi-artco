@@ -44,7 +44,7 @@ class TableController extends Controller
 
           foreach (Table::find($id)->orders() as $key => $order) {
             $food = $order->food();
-            $json[] = array('id' => $order->food_id, 'nome' => $food->nome, 'prezzo' => $food->prezzo, 'total' => $order->total, 'descrizione' => $food->descrizione, 'categoria' => $food->categoria, 'subcategoria' => $food->subcategoria, 'immagine' => $food->immagine);
+            $json[] = array('id' => $order->food_id, 'nome' => $food->nome, 'prezzo' => $food->prezzo, 'unita' => $food->unita, 'total' => $order->total, 'descrizione' => $food->descrizione, 'categoria' => $food->categoria, 'immagine' => $food->immagine);
           }
          return response()->json($json);
      }
