@@ -171,12 +171,6 @@ $(document).on('click' , '#gpdf' , function(){
   var pdfdoc = new jsPDF();
 /// TODO: fixa il fukkin font, è per quello che formatta di merda
 
-    pdfdoc.addFileToVFS('/ArialUnicode.ttf', 'ArialUnicode');
-    pdfdoc.addFont('ArialUnicode.ttf', 'ArialUnicode', 'normal'); // Ma non hai PTSans
-
-    pdfdoc.setFont('Arialunicode'); // set font
-    pdfdoc.setFontSize(100);
-
     //pdfdoc.fromHTML('/resources/print/print_example.html');
 
 
@@ -200,16 +194,16 @@ $(document).on('click' , '#precontoBtn' , function(){
 
   $('.modal-body').append('');
   $('.modal-body').append('<table style="padding: 70px">');
-  $('.modal-body').append('<tr><td colspan="3" height="110px"> <img src="/img/artco_logo_trasp.png" align="left" width="120px"> </td></tr>');
-
   $('.modal-body').append('<tr> <td height="10px"><b>[Dove], li</b></td> <td></td><td><b>[data] </b></td></tr>');
   $('.modal-body').append('<tr> <td height="40px"><b></b></td> <td></td><td>[destinatario]</td></tr>');
 
   $('.modal-body').append('<tr> <td><b>Oggetto:</b></td> <td></td><td><b>[testo oggetto] </b></td></tr>');
 
     $('.modal-body').append('<tr><td></td></tr>');
+    
   var categoria = 'nessuna';
   for(var i=0;i<tr.length;i++){
+    
     var nome = tr.eq(i).children('td').eq(0).text();
     var prezzo = tr.eq(i).children('td').eq(1).text();
     var unita = tr.eq(i).children('td').eq(2).text();
@@ -225,15 +219,17 @@ $(document).on('click' , '#precontoBtn' , function(){
         $('.modal-body').append('<tr> <td> <b>'+ categoria +'</b> </td> </tr>');
 
     $('.modal-body').append('<tr>' + ' <td width="65" align="right">' + quantita + '</td><td>:        '+ nome +'</td></tr>');
-
-
-
+    
       console.log("Quantita: "+ quantita);
+      
   }
+  
     var prezzoStr = prezzo.slice(0, -1);
 
   $('.modal-body').append('<p>Totale: EUR' + tot + '</p>');
+  
   $('#myModal').modal();
+  
 });
 
 function compare( a, b ) {
