@@ -19,6 +19,8 @@ class CreateTablesTable extends Migration
             $table->string('stato')->default('libero');
             $table->string('cliente')->nullable();
 
+
+
             $table->timestamps();
         });
     }

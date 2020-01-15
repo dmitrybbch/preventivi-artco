@@ -79,12 +79,17 @@
 
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header" id="numTotalePrev">Totale: {{ $table->totalOrders() }}€</div>
+            <div class="card-header" id="numTotalePrev">
+                Totale: {{ $table->totalOrders() }}€
+            </div>
 
-                <div class="card-footer">
-                    <button type="button" class="btn btn-danger" id="emptyBtn">Svuota</button>
-                    <button type="button" id="precontoBtn" class="btn btn-info">Anteprima Preventivo</button>
-                </div>
+            <div class="card-body" id="card-body">
+                Lulul
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-danger" id="emptyBtn">Svuota</button>
+                <button type="button" id="precontoBtn" class="btn btn-info">Anteprima Preventivo</button>
+            </div>
         </div>
     </div>
 </div>

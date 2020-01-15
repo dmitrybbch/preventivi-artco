@@ -81,11 +81,11 @@ function doSearch(input){
       res.results.sort( compare ); // Faccio il sort degli oggetti per categoria, vedi funz COMPARE
       //console.log(res.results);
       if(res.results.length){
-        $('thead').html('<tr><th scope="col" class="d-none d-md-table-cell">ID</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>')
+        $('thead').html('<tr><th scope="col" class="d-none d-md-table-cell">ID</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col">Unità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>')
         $('tbody').html('');
 
         res.results.forEach(function(food){
-            $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + '€</td><td>' + food.unita + '</td><td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td><td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td><td><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>');        })
+            $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + '€</td><td>' + (food.unita ? food.unita : "") + '</td><td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td><td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td><td><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>');        })
       }
       else{
         $('tbody').html('<tr><td colspan="5">Nessun risultato per "' + input + '"</td></tr>');
@@ -168,17 +168,17 @@ $(document).on('click', '#emptyBtn', function(){
 });
 
 $(document).on('click' , '#gpdf' , function(){
-  var pdfdoc = new jsPDF();
+  //var pdfdoc = new jsPDF();
 /// TODO: fixa il fukkin font, è per quello che formatta di merda
 
     //pdfdoc.fromHTML('/resources/print/print_example.html');
-
+/*
 
     pdfdoc.fromHTML($('#PDFcontent').html(), 10, 10, {
         'width': 200
     });
-
-    pdfdoc.save('Firstodes.pdf');
+*/
+    //pdfdoc.save('Firstodes.pdf');
 });
 
 $(document).on('click' , '#precontoBtn' , function(){
@@ -200,10 +200,10 @@ $(document).on('click' , '#precontoBtn' , function(){
   $('.modal-body').append('<tr> <td><b>Oggetto:</b></td> <td></td><td><b>[testo oggetto] </b></td></tr>');
 
     $('.modal-body').append('<tr><td></td></tr>');
-    
+
   var categoria = 'nessuna';
   for(var i=0;i<tr.length;i++){
-    
+
     var nome = tr.eq(i).children('td').eq(0).text();
     var prezzo = tr.eq(i).children('td').eq(1).text();
     var unita = tr.eq(i).children('td').eq(2).text();
@@ -219,17 +219,17 @@ $(document).on('click' , '#precontoBtn' , function(){
         $('.modal-body').append('<tr> <td> <b>'+ categoria +'</b> </td> </tr>');
 
     $('.modal-body').append('<tr>' + ' <td width="65" align="right">' + quantita + '</td><td>:        '+ nome +'</td></tr>');
-    
+
       console.log("Quantita: "+ quantita);
-      
+
   }
-  
+
     var prezzoStr = prezzo.slice(0, -1);
 
   $('.modal-body').append('<p>Totale: EUR' + tot + '</p>');
-  
+
   $('#myModal').modal();
-  
+
 });
 
 function compare( a, b ) {
