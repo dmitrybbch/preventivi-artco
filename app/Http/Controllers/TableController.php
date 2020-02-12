@@ -66,6 +66,11 @@ class TableController extends Controller
          return response()->json($table);
      }
 
+     public function updateData(Request $request){
+         // COSE
+
+     }
+
      public function destroy(Request $request)
      {
           $input = $request->all();

@@ -19,6 +19,11 @@ class CreateTablesTable extends Migration
             $table->string('stato')->default('libero');
             $table->string('cliente')->nullable();
 
+            $table->string('noteAggiuntive')->nullable();
+            $table->float('ricarico')->nullable();
+            $table->string('creatoDa');
+            $table->date();
+
 
 
             $table->timestamps();

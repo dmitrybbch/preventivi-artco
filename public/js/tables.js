@@ -8,6 +8,7 @@ $.ajaxSetup({
 var mod = false;
 
 $('#modBtn').click(function (){
+    console.log('Chiamato la funzione!');
   var btn = $(this);
   btn.attr("disabled","disabled");
 
@@ -43,6 +44,10 @@ $('#modBtn').click(function (){
     tables.forEach(function(table){
       var html = '<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">\n';
           switch(table.stato){
+              case 'libero':
+                  html += '<div class="card text-white bg-secondary" data-id="' + table.id + '">\n';
+
+                  break;
             case 'occupato':
             html += '<div class="card text-white bg-danger" data-id="' + table.id + '">\n';
             break;
@@ -58,7 +63,7 @@ $('#modBtn').click(function (){
               table.countOrders + ' forniture: <b>' + table.totalOrders + '€ </b>\n' +
               '</div>\n' +
               '<div class="card-footer">\n' +
-              'Cliente: <b>' + table.cliente + '</b>' + 
+              'Cliente: <b>' + table.cliente + '</b>' +
               '</div>\n' +
           '</div>\n' +
       '</div>\n';
@@ -91,7 +96,7 @@ $('#modBtn').click(function (){
                 '</div>\n' +
               '</div>\n' +
               '<div class="card-body">\n' +
-                'Vuota, totale: 0€\n' +
+                'Totale: 0€\n' +
               '</div>\n' +
               '<div class="card-footer">\n' +
                 '<input type="text" class="form-control" id="scimmiaCodeCliente" value="' + table.cliente + '" placeholder="Cliente: '+ table.cliente +' "> \n' +

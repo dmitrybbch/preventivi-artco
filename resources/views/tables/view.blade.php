@@ -84,8 +84,39 @@
             </div>
 
             <div class="card-body" id="card-body">
-                Lulul
+
+
+                <form id="formdatipreventivo">
+                    <div class ="row">
+                        <div class="form-group">
+                            <label for="noteAggiuntive">Note:</label>
+                            <textarea class="form-control" id="noteAggiuntive" name="noteAggiuntive"></textarea>
+                        </div>
+                    </div>
+
+                    <div class ="row">
+                        <div class="form-group">
+                            <label for="ricarico">Ricarico:</label>
+                            <input class="form-control" id="ricarico" type="number" step="0.10" name="ricarico" default="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="creatoDa">Creato da:</label>
+                            <input class="form-control" id="creatoDa" type="text" name="creatoDa" value="{{ Auth::user()->username }}">
+                        </div>
+                        <div class="form-group">
+                            <button type="button" onclick="editData()" class="btn btn-primary">
+                                DIOCANE :)
+                            </button>
+                        </div>
+                    </div>
+
+
+                </form>
+
+
+
             </div>
+
             <div class="card-footer">
                 <button type="button" class="btn btn-danger" id="emptyBtn">Svuota</button>
                 <button type="button" id="precontoBtn" class="btn btn-info">Anteprima Preventivo</button>

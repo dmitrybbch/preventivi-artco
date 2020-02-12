@@ -39,7 +39,7 @@ Prodotti
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header bg-secondary text-white">
-                Aggiungi una fornitura
+                    Aggiungi una fornitura
                 </div>
                 <div class="card-body">
                 <form id="form">

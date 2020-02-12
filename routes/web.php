@@ -25,6 +25,8 @@ Route::patch('/tables', 'TablesController@update')->middleware('is_admin');
 Route::delete('/tables', 'TablesController@destroy')->middleware('is_admin');
 
 // Table
+Route::post('/table/{id}', 'TableController@updateData');
+
 Route::get('/orders/{id}', 'TableController@orders');
 Route::delete('/orders', 'TableController@destroy');
 Route::get('/table/{id}', 'TableController@index');

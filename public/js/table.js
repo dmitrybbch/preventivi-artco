@@ -154,6 +154,39 @@ function deleteFood(id, total){
   })
 }
 
+function editData(){
+    var fd = new FormData($('#formdatipreventivo')[0]);
+    console.log(fd);
+
+    /*
+    jQuery.ajax({
+        url: "{{ url('/table/{id}') }}", MA SERVE L'ID VERO
+
+        method: 'post',
+        data: {
+            estate_cod: "{{$estate->cod}}"
+        },
+        dataType: "text",
+        success: function (result) {
+            // jQuery('.alert').show();
+            // jQuery('.alert').html(result.success);
+            $(".btnfavoff").toggle();
+            $(".btnfavon").toggle();
+        },
+        error: function (xhr, status, error) {
+            if(xhr.status === 403)
+            // alert('L'account non è ancora stato verificato: controlla la tua casella di posta elettronica per attivare questa funzionalità.\n
+            // Altrimenti ');
+                $('#modal403').modal('show')
+            else
+                alert("Impossibile aggiungere immobile ai preferiti!")
+        }
+
+
+    });
+    */
+}
+
 //$("#emptyBtn").click(function(){
 $(document).on('click', '#emptyBtn', function(){
   $.ajax({
@@ -231,6 +264,7 @@ $(document).on('click' , '#precontoBtn' , function(){
   $('#myModal').modal();
 
 });
+
 
 function compare( a, b ) {
   if ( a.categoria < b.categoria ){
