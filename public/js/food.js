@@ -8,6 +8,7 @@ $.ajaxSetup({
 
 function newFood(){
   var fd = new FormData($('#form')[0]);
+  console.log(fd);
   $.ajax({
     url:'/menu',
     method: "POST",

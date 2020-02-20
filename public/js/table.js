@@ -60,6 +60,45 @@ $('#cartBtn').click(function(e){
     }
 })
 
+$("#bottoneBlasfemo").click(function() {
+
+    //var formDati = new FormData($('#formdatipreventivo')[0]);
+    //console.log(formDati[0].text());
+    var formDati = $('#formdatipreventivo');
+    var isvalidate = formDati[0].checkValidity();
+    if (isvalidate) {
+        // Cose del Gando
+        event.preventDefault();
+        // Trasforma un array di 3 elementi, ognuno array associativo,
+        // in un unico array associativo con 3 indici e 3 valori
+        var dati = formDati.serializeArray();
+        var arrayAssociativo = [];
+        for(var i=0; i<3; i++)
+            arrayAssociativo[dati[i]['name']] = dati[i]['value'];
+
+    }
+
+    var obj = $.extend({}, arrayAssociativo);
+
+    var urlPathname = window.location.pathname;
+    console.log('Creato array associativo. Stringa splittata: ' + urlPathname); // /table/1
+
+    jQuery.ajax({
+        url: urlPathname,
+        method: 'post',
+        data: obj,
+        success: function (result) {
+            // jQuery('.alert').show();
+            // jQuery('.alert').html(result.success);
+            console.log("Chebello");
+        },
+        error: function (xhr, status, error) {
+            console.log("Chebrutto :((((((((((");
+        }
+    });
+
+})
+
 //settaggio dei risultati della ricerca con un timeout
 $("#searchBox").keyup(function(){
   var input = $(this).val();
@@ -68,6 +107,8 @@ $("#searchBox").keyup(function(){
   }, 800);
 
 })
+
+
 
 //funzione per la ricerca
 function doSearch(input){
@@ -120,6 +161,7 @@ $(document).on('click', 'tr .btn-outline-danger', function(event){
   deleteFood(id, total); //richiamo la funzione di cancellazione
 })
 
+
 //funzione di aggiunta prodotto all'ordine
 function addFood(id, total){
   console.log('id: ' + id);
@@ -154,38 +196,6 @@ function deleteFood(id, total){
   })
 }
 
-function editData(){
-    var fd = new FormData($('#formdatipreventivo')[0]);
-    console.log(fd);
-
-    /*
-    jQuery.ajax({
-        url: "{{ url('/table/{id}') }}", MA SERVE L'ID VERO
-
-        method: 'post',
-        data: {
-            estate_cod: "{{$estate->cod}}"
-        },
-        dataType: "text",
-        success: function (result) {
-            // jQuery('.alert').show();
-            // jQuery('.alert').html(result.success);
-            $(".btnfavoff").toggle();
-            $(".btnfavon").toggle();
-        },
-        error: function (xhr, status, error) {
-            if(xhr.status === 403)
-            // alert('L'account non è ancora stato verificato: controlla la tua casella di posta elettronica per attivare questa funzionalità.\n
-            // Altrimenti ');
-                $('#modal403').modal('show')
-            else
-                alert("Impossibile aggiungere immobile ai preferiti!")
-        }
-
-
-    });
-    */
-}
 
 //$("#emptyBtn").click(function(){
 $(document).on('click', '#emptyBtn', function(){

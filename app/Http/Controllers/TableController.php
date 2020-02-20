@@ -67,7 +67,13 @@ class TableController extends Controller
      }
 
      public function updateData(Request $request){
-         // COSE
+         logger("TableController: Log richiesta updateData: ");
+         $table = Table::find($request['id']);
+         $table['noteAggiuntive'] = $request['note'];
+         $table['ricarico'] = $request['ricarico'];
+         $table['creatoDa'] = $request['creatoDa'];
+
+         $table->save();
 
      }
 

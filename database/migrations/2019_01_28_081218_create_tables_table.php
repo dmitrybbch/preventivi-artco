@@ -21,7 +21,7 @@ class CreateTablesTable extends Migration
 
             $table->string('noteAggiuntive')->nullable();
             $table->float('ricarico')->nullable();
-            $table->string('creatoDa');
+            $table->string('creatoDa')->nullable();
             $table->date();
 
 

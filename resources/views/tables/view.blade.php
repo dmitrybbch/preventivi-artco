@@ -29,9 +29,9 @@
 
     <div class="col-md-12">
       <table class="table table-striped" id="foodTable">
-            <thead class="thead-dark">
-                <tr><th scope="col" class="d-none d-md-table-cell">id f.</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Unità</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>
-            </thead>
+        <thead class="thead-dark">
+            <tr><th scope="col" class="d-none d-md-table-cell">id f.</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Unità</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>
+        </thead>
         <tbody>
           @php ($orders = $table->orders())
           @if(count($orders))
@@ -72,6 +72,12 @@
             <tr><td colspan="8">Nessuna Fornitura</td></tr>
           @endif
         </tbody>
+          <tfoot class="bg-secondary text-white">
+            <tr><th class="text-center" colspan="12">
+                    <strong><u>Totale:  {{ $table->totalOrders() }}€</u></strong>
+                </th>
+            </tr>
+          </tfoot>
       </table>
 
     </div>
@@ -79,33 +85,32 @@
 
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header" id="numTotalePrev">
-                Totale: {{ $table->totalOrders() }}€
+            <div class="card-header bg-dark text-white" id="numTotalePrev">
+                <strong>Dati aggiuntivi</strong>
             </div>
 
             <div class="card-body" id="card-body">
-
-
                 <form id="formdatipreventivo">
                     <div class ="row">
-                        <div class="form-group">
+                        <div class="form-group col-md-12">
                             <label for="noteAggiuntive">Note:</label>
-                            <textarea class="form-control" id="noteAggiuntive" name="noteAggiuntive"></textarea>
+                            <textarea class="form-control" id="note" name="note"></textarea>
                         </div>
                     </div>
-
                     <div class ="row">
-                        <div class="form-group">
+                        <div class="form-group col-md-3">
                             <label for="ricarico">Ricarico:</label>
-                            <input class="form-control" id="ricarico" type="number" step="0.10" name="ricarico" default="0">
+                            <input class="form-control" id="ricarico" type="number" step="0.10" name="ricarico" value="{{ Auth::user()->username }}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-3">
                             <label for="creatoDa">Creato da:</label>
-                            <input class="form-control" id="creatoDa" type="text" name="creatoDa" value="{{ Auth::user()->username }}">
+                            <input class="form-control" id="creatoDa" type="text" name="creatoDa" value="{{ $table->creatoDa }}">
                         </div>
+                    </div>
+                    <div>
                         <div class="form-group">
-                            <button type="button" onclick="editData()" class="btn btn-primary">
-                                DIOCANE :)
+                            <button id="bottoneBlasfemo" type="submit" class="btn btn-primary">
+                                MANNAJJA :)
                             </button>
                         </div>
                     </div>
