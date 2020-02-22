@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Table;
 use App\Order;
-
+use Illuminate\Support\Facades\App;
+use PDF;
 
 class TableController extends Controller
 {
@@ -75,6 +76,7 @@ class TableController extends Controller
 
          $table->save();
 
+         //return $pdf->download('Mannaggia.pdf');
      }
 
      public function destroy(Request $request)

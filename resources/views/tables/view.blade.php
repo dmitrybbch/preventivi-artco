@@ -94,13 +94,13 @@
                     <div class ="row">
                         <div class="form-group col-md-12">
                             <label for="noteAggiuntive">Note:</label>
-                            <textarea class="form-control" id="note" name="note"></textarea>
+                            <textarea class="form-control" id="note" name="note" ></textarea>
                         </div>
                     </div>
                     <div class ="row">
                         <div class="form-group col-md-3">
                             <label for="ricarico">Ricarico:</label>
-                            <input class="form-control" id="ricarico" type="number" step="0.10" name="ricarico" value="{{ Auth::user()->username }}">
+                            <input class="form-control" id="ricarico" type="number" step="0.10" name="ricarico" value="{{ $table->ricarico }}">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="creatoDa">Creato da:</label>

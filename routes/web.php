@@ -26,7 +26,6 @@ Route::delete('/tables', 'TablesController@destroy')->middleware('is_admin');
 
 // Table
 Route::post('/table/{id}', 'TableController@updateData');
-
 Route::get('/orders/{id}', 'TableController@orders');
 Route::delete('/orders', 'TableController@destroy');
 Route::get('/table/{id}', 'TableController@index');
@@ -47,3 +46,8 @@ Route::get('/users', 'AdminController@users')->name('users');
 Route::post('/users', 'AdminController@create')->name('users');
 Route::delete('/users', 'AdminController@destroy')->name('users');
 Route::patch('/users', 'AdminController@editUser')->name('users');
+
+// PDF Generation
+Route::get('/pdf_view/{id}', 'PrintController@index');
+Route::post('/pdf_view/{id}', 'PrintController@printpdf');
+
