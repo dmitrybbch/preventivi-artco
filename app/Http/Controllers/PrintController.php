@@ -10,7 +10,7 @@ class PrintController extends Controller
 {
     public function index($id)
     {
-        return view('pdf_view', ['table' => Table::find($id)]);
+        return view('pdf_view', ['datat' => Table::find($id)]);
     }
 
     public function printpdf()

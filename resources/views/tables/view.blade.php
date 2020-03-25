@@ -30,7 +30,7 @@
     <div class="col-md-12">
       <table class="table table-striped" id="foodTable">
         <thead class="thead-dark">
-            <tr><th scope="col" class="d-none d-md-table-cell">id f.</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Unità</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>
+            <tr><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Quantità (unità) </th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>
         </thead>
         <tbody>
           @php ($orders = $table->orders())
