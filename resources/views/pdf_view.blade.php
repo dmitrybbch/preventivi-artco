@@ -18,7 +18,7 @@
             <div class="col-md-12">
                 <table class="table table-striped" id="foodTable">
                     <thead class="thead-dark">
-                    <tr><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Unità</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th></tr>
+                    <tr><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th></tr>
                     </thead>
                     <tbody>
 
@@ -46,8 +46,7 @@
                             {{-- <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['food_id'] }}</th> --}}
                             <td>{{ $fornitura['nome'] }}</td>
                             <td>{{ $fornitura['prezzo'] }}€</td>
-                            <td>{{ $fornitura['unita'] }}</td>
-                            <td class="total">{{$fornitura['total'] }} </td>
+                            <td class="total">{{$fornitura['total'] }} {{ $fornitura['unita'] }}</td>
                             <td class="d-none d-sm-table-cell">{{ $fornitura['descrizione'] }}</td>
                             <td class="d-none d-sm-table-cell">{{ $fornitura['categoria'] }}</td>
 

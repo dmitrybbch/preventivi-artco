@@ -30,7 +30,7 @@
     <div class="col-md-12">
       <table class="table table-striped" id="foodTable">
         <thead class="thead-dark">
-            <tr><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Quantità (unità) </th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>
+            <tr><th scope="col" class="d-none d-md-table-cell">id f.</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Quantità</th><th scope="col">Unità </th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>
         </thead>
         <tbody>
           @php ($orders = $table->orders())
@@ -52,8 +52,8 @@
                     <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['food_id'] }}</th>
                     <td>{{ $fornitura['nome'] }}</td>
                     <td>{{ $fornitura['prezzo'] }}€</td>
+                    <td class="total">{{$fornitura['total'] }}</td>
                     <td>{{ $fornitura['unita'] }}</td>
-                    <td class="total">{{$fornitura['total'] }} </td>
                     <td class="d-none d-sm-table-cell">{{ $fornitura['descrizione'] }}</td>
                     <td class="d-none d-sm-table-cell">{{ $fornitura['categoria'] }}</td>
 
@@ -94,7 +94,7 @@
                     <div class ="row">
                         <div class="form-group col-md-12">
                             <label for="noteAggiuntive">Note:</label>
-                            <textarea class="form-control" id="note" name="note" ></textarea>
+                            <textarea class="form-control" id="note" name="note">{{ $table->noteAggiuntive }}</textarea>
                         </div>
                     </div>
                     <div class ="row">
