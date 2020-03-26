@@ -74,7 +74,7 @@
 
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-2">
                 <div class="card">
                     <div class="card-header bg-dark text-white" id="numTotalePrev">
                         <strong>Dati aggiuntivi</strong>
