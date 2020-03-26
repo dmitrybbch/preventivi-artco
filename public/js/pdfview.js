@@ -16,20 +16,6 @@ $("#correggi").click(function() {
     console.log("Torniamo indietro al tavolo "+ id[id.length - 1]);
 
     window.location = '/table/' + id[id.length -1];
-/*
-    jQuery.ajax({
-        url: urlPathname,
-        method: 'post',
-        data: obj,
-        success: function (result) {
-            // jQuery('.alert').show();
-            // jQuery('.alert').html(result.success);
-            console.log("Chebello");
-        },
-        error: function (xhr, status, error) {
-            console.log("Chebrutto :((((((((((");
-        }
-    });
-*/
+
 
 })

@@ -109,13 +109,7 @@
 
                             </div>
                         </div>
-                        <div>
-                            <div class="form-group">
-                                <button id="bottoneBlasfemo" type="submit" class="btn btn-primary">
-                                    MANNAJJA :)
-                                </button>
-                            </div>
-                        </div>
+
 
 
                     </form>
@@ -136,11 +130,11 @@
 
 
 
-<!-- Modal -->
+<!-- Modal
 <div class="modal fade" id="myModal" role="dialog" width="100%" style="font-size: 10px;">
     <div class="modal-dialog">
 
-      <!-- Modal content-->
+       Modal content
       <div class="modal-content">
         <div class="modal-header">
         Anteprima di stampa del preventivo
@@ -157,6 +151,7 @@
 
     </div>
   </div>
+    -->
 @endsection
 
 @section('scripts')

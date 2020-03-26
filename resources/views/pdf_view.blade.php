@@ -5,9 +5,9 @@
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
             <h1 class="h2" data-id="{{ $datat->id}}">
                 @if($datat->nomeTavolo)
-                    {{ $datat->nomeTavolo }}
+                    Anteprima "{{ $datat->nomeTavolo }}"
                 @else
-                    Anteprima del preventivo "Prev. {{ $datat->id }}"
+                    Anteprima Prev. {{ $datat->id }}"
                 @endif
             </h1>
 

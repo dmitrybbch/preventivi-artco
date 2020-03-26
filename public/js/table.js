@@ -225,25 +225,8 @@ $(document).on('click' , '#gpdf' , function(){
 });
 
 $(document).on('click' , '#precontoBtn' , function(){
-    console.log("Anteprima Preventivo");
-  var tr = $('tbody').find('tr');
-  var tot = parseInt($('#numTotalePrev').text().split(/[ ,]+/)[1]);
 
-  console.log("Tot: "+ tot);
-
-  // Tenendo : &#8364; si scazza tutto l'output. Con la 'è' no invece. Mettere char speciali in generale fotte tutto.
-  $('.modal-body').empty(); // Non si ripetano più tutte le anteprime precedenti a ogni pressione
-  if(!tot) return;
-
-  $('.modal-body').append('');
-  $('.modal-body').append('<table style="padding: 70px">');
-  $('.modal-body').append('<tr> <td height="10px"><b>[Dove], li</b></td> <td></td><td><b>[data] </b></td></tr>');
-  $('.modal-body').append('<tr> <td height="40px"><b></b></td> <td></td><td>[destinatario]</td></tr>');
-
-  $('.modal-body').append('<tr> <td><b>Oggetto:</b></td> <td></td><td><b>[testo oggetto] </b></td></tr>');
-
-    $('.modal-body').append('<tr><td></td></tr>');
-
+/*
   var categoria = 'nessuna';
   for(var i=0;i<tr.length;i++){
 
@@ -272,6 +255,45 @@ $(document).on('click' , '#precontoBtn' , function(){
   $('.modal-body').append('<p>Totale: EUR' + tot + '</p>');
 
   $('#myModal').modal();
+*/
+//var formDati = new FormData($('#formdatipreventivo')[0]);
+    //console.log(formDati[0].text());
+    var formDati = $('#formdatipreventivo');
+    var isvalidate = formDati[0].checkValidity();
+    if (isvalidate) {
+        // Cose del Gando
+        event.preventDefault();
+        // Trasforma un array di 3 elementi, ognuno array associativo,
+        // in un unico array associativo con 3 indici e 3 valori
+        var dati = formDati.serializeArray();
+        var arrayAssociativo = [];
+        for(var i=0; i<3; i++)
+            arrayAssociativo[dati[i]['name']] = dati[i]['value'];
+
+    }
+
+    var obj = $.extend({}, arrayAssociativo);
+
+    var urlPathname = window.location.pathname;
+    console.log('Creato array associativo. Stringa splittata: ' + urlPathname); // /table/1
+
+    jQuery.ajax({
+        url: urlPathname,
+        method: 'post',
+        data: obj,
+        success: function (result) {
+            // jQuery('.alert').show();
+            // jQuery('.alert').html(result.success);
+            var id = window.location.href;
+
+            id = id.split("/");
+            console.log("Chiamata Ajax effettuata con successo. Spostamento alla pagina di anteprima "+ id[id.length - 1]);
+            window.location = '/pdf_view/' + id[id.length -1];
+        },
+        error: function (xhr, status, error) {
+            console.log("Chebrutto :((((((((((");
+        }
+    });
 
 });
 
