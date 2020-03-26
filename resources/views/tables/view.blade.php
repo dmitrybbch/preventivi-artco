@@ -83,51 +83,55 @@
     </div>
   </div>
 
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header bg-dark text-white" id="numTotalePrev">
-                <strong>Dati aggiuntivi</strong>
-            </div>
+    <div class="container-fluid">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-dark text-white" id="numTotalePrev">
+                    <strong>Dati aggiuntivi</strong>
+                </div>
 
-            <div class="card-body" id="card-body">
-                <form id="formdatipreventivo">
-                    <div class ="row">
-                        <div class="form-group col-md-12">
-                            <label for="noteAggiuntive">Note:</label>
-                            <textarea class="form-control" id="note" name="note">{{ $table->noteAggiuntive }}</textarea>
+                <div class="card-body" id="card-body">
+                    <form id="formdatipreventivo">
+                        <div class ="row">
+                            <div class="form-group col-md-12">
+                                <label for="noteAggiuntive">Note:</label>
+                                <textarea class="form-control" id="note" name="note">{{ $table->noteAggiuntive }}</textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class ="row">
-                        <div class="form-group col-md-3">
-                            <label for="ricarico">Ricarico:</label>
-                            <input class="form-control" id="ricarico" type="number" step="0.10" name="ricarico" value="{{ $table->ricarico }}">
+                        <div class ="row">
+                            <div class="form-group col-md-6">
+                                <label for="ricarico">Ricarico:</label>
+                                <input class="form-control" id="ricarico" type="number" step="0.10" name="ricarico" value="{{ $table->ricarico }}">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="creatoDa">Creato da:</label>
+                                <input class="form-control" id="creatoDa" type="text" name="creatoDa" value="@if($table->creatoDa){{$table->creatoDa}} @else{{Auth::user()->username }} @endif">
+
+                            </div>
                         </div>
-                        <div class="form-group col-md-3">
-                            <label for="creatoDa">Creato da:</label>
-                            <input class="form-control" id="creatoDa" type="text" name="creatoDa" value="{{ $table->creatoDa }}">
+                        <div>
+                            <div class="form-group">
+                                <button id="bottoneBlasfemo" type="submit" class="btn btn-primary">
+                                    MANNAJJA :)
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="form-group">
-                            <button id="bottoneBlasfemo" type="submit" class="btn btn-primary">
-                                MANNAJJA :)
-                            </button>
-                        </div>
-                    </div>
 
 
-                </form>
+                    </form>
 
 
 
-            </div>
+                </div>
 
-            <div class="card-footer">
-                <button type="button" class="btn btn-danger" id="emptyBtn">Svuota</button>
-                <button type="button" id="precontoBtn" class="btn btn-info">Anteprima Preventivo</button>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-danger" id="emptyBtn">Svuota</button>
+                    <button type="button" id="precontoBtn" class="btn btn-info">Anteprima Preventivo</button>
+                </div>
             </div>
         </div>
     </div>
+
 </div>
 
 

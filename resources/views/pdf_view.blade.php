@@ -11,7 +11,14 @@
                 @endif
             </h1>
 
+            <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group mr-2" id="statusTable" role="group" aria-label="First group">
+                    <b>{{$datat->cliente}}</b> ({{$datat->creatoDa}})
+                </div>
+            </div>
         </div>
+
+
 
         <div class="row">
 
@@ -69,6 +76,36 @@
                     </tfoot>
                 </table>
 
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-dark text-white" id="numTotalePrev">
+                        <strong>Dati aggiuntivi</strong>
+                    </div>
+
+                    <div class="card-body" id="card-body">
+                        <form id="formdatipreventivo">
+                            <div class ="row">
+                                <div class="form-group col-md-12">
+                                    <label for="note"><b>Note:</b></label>
+                                    <div id="note">{{ $datat->noteAggiuntive }}</div>
+                                </div>
+                            </div>
+                            <div class ="row">
+                                <div class="form-group col-md-6">
+                                    <label for="ricarico"><b>Ricarico:</b></label>
+                                    <div id="ricarico">{{ $datat->ricarico }}%</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-danger" id="correggi">Correggi</button>
+                        <button type="button" class="btn btn-info" id="generaPdf">Genera PDF</button>
+                    </div>
+                </div>
             </div>
         </div>
 
