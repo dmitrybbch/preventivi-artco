@@ -36,8 +36,6 @@
 
                     {{-- PRIMA LI INSERISCO IN UNA LISTA E LI ORDINO PER 'CATEGORIA'--}}
 
-
-
                     @foreach($orders as $order)
                         @php($food = $order->food())
                         @php($currentFood = array("food_id"=> ($order->food_id), "nome"=>($food->nome), "prezzo"=>($food->prezzo), "unita"=>($food->unita), "total"=>($order->total), "descrizione"=> ($food->descrizione), "categoria"=> ($food->categoria), "immagine"=> ($food->immagine) ))
@@ -45,8 +43,6 @@
                     @endforeach
 
                     {{-- POI LI METTO IN TABELLA A PARTIRE DALLA LISTA ORDINATA --}}
-
-
 
                     @foreach($foodOrdinati as $fornitura)
                         <tr>

@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/pdfview.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/pdfview.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/pdf_view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/pdf_view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/tables/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tables/view.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +236,7 @@
       <workItem from="1585084040980" duration="9137000" />
       <workItem from="1585151303569" duration="2662000" />
       <workItem from="1585154028496" duration="9944000" />
-      <workItem from="1585176523884" duration="4311000" />
+      <workItem from="1585176523884" duration="6045000" />
     </task>
     <servers />
   </component>
