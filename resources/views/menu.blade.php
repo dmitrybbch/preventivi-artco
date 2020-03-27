@@ -10,7 +10,7 @@ Prodotti
     <div class="mb-3 border-bottom">
         <h1 class="h2">Prodotti</h1>
     </div>
-    <input class="form-control mb-3" id="searchBox" type="search" placeholder="Search" aria-label="Search">
+    <input class="form-control mb-3" id="searchBox" type="search" placeholder="Cerca" aria-label="Search">
     <div class="row">
         <div class="col-md-8">
             <table class="table table-striped" id="foodTable" id="table"

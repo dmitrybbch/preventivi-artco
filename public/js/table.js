@@ -266,13 +266,15 @@ $(document).on('click' , '#precontoBtn' , function(){
         // Trasforma un array di 3 elementi, ognuno array associativo,
         // in un unico array associativo con 3 indici e 3 valori
         var dati = formDati.serializeArray();
+
         var arrayAssociativo = [];
-        for(var i=0; i<3; i++)
+        for(var i=0; i<dati.length; i++){
             arrayAssociativo[dati[i]['name']] = dati[i]['value'];
+        }
 
     }
-
     var obj = $.extend({}, arrayAssociativo);
+
 
     var urlPathname = window.location.pathname;
     console.log('Creato array associativo. Stringa splittata: ' + urlPathname); // /table/1

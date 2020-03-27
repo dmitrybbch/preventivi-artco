@@ -9,8 +9,8 @@ var mod = false;
 
 $('#modBtn').click(function (){
     console.log('Chiamato la funzione!');
-  var btn = $(this);
-  btn.attr("disabled","disabled");
+    var btn = $(this);
+    btn.attr("disabled","disabled");
 
 
   if(mod){

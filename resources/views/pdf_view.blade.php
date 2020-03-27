@@ -94,6 +94,7 @@
                                     <div id="ricarico">{{ $datat->ricarico }}%</div>
                                 </div>
                             </div>
+
                         </form>
                     </div>
 

@@ -68,12 +68,13 @@ class TableController extends Controller
      }
 
      public function updateData(Request $request){
-         logger("TableController: Log richiesta updateData: ");
+
          $table = Table::find($request['id']);
          $table['noteAggiuntive'] = $request['note'];
          $table['ricarico'] = $request['ricarico'];
          $table['creatoDa'] = $request['creatoDa'];
-
+         $table['cliente'] = $request['cliente'];
+         logger("TableController: Log richiesta updateData: ". $request['creatoDa'] . " a " . $request['cliente']);
          $table->save();
 
          //return $pdf->download('Mannaggia.pdf');

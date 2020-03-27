@@ -51,3 +51,5 @@ Route::patch('/users', 'AdminController@editUser')->name('users');
 Route::get('/pdf_view/{id}', 'PrintController@index')->name("datat");
 Route::post('/pdf_view/{id}', 'PrintController@printpdf');
 
+// PREVIEW DA TOGLIERE
+Route::view('/pdf', 'pdf');

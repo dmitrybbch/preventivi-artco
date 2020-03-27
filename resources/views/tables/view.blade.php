@@ -84,7 +84,7 @@
   </div>
 
     <div class="container-fluid">
-        <div class="col-md-6">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-header bg-dark text-white" id="numTotalePrev">
                     <strong>Dati aggiuntivi</strong>
@@ -99,19 +99,19 @@
                             </div>
                         </div>
                         <div class ="row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="ricarico">Ricarico:</label>
                                 <input class="form-control" id="ricarico" type="number" step="0.10" name="ricarico" value="{{ $table->ricarico }}">
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="creatoDa">Creato da:</label>
                                 <input class="form-control" id="creatoDa" type="text" name="creatoDa" value="@if($table->creatoDa){{$table->creatoDa}} @else{{Auth::user()->username }} @endif">
-
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="cliente">Cliente:</label>
+                                <input class="form-control" id="cliente" type="text" name="cliente" value="{{ $table->cliente }}">
                             </div>
                         </div>
-
-
-
                     </form>
 
 

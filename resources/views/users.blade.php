@@ -14,7 +14,7 @@ Utenti
     <div class="col-md-8">
       <table class="table table-striped" id="userTable">
         <thead>
-          <tr class="bg-secondary text-white"><th scope="col">#</th><th scope="col">Username</th><th scope="col">Type</th><th scope="col">Opzioni</th></tr>
+          <tr class="bg-secondary text-white"><th scope="col">#</th><th scope="col">Utente</th><th scope="col">Tipo</th><th scope="col">Opzioni</th></tr>
         </thead>
         <tbody>
           @foreach($users as $user)
@@ -51,12 +51,13 @@ Utenti
                 </span>
                 @endif
             </div>
+              <!--
             <div class="form-check form-group">
               <input class="form-check-input" type="checkbox" value="" id="adminCheck">
               <label class="form-check-label" for="adminCheck">
               Admin
               </label>
-            </div>
+            </div> -->
 
             <button type="button" onclick="newUser()" class="btn btn-primary">
               {{ __('Crea') }}
