@@ -17,14 +17,13 @@ Prodotti
                 data-sortable="true"
             >
                 <thead class="bg-secondary text-white">
-                <tr><th scope="col" class="d-none d-md-table-cell">id</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Unità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>                </thead>
+                <tr><th scope="col" class="d-none d-md-table-cell">id</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>                </thead>
                 <tbody>
                 @if( count($foods) )
                     @foreach($foods->sortBy('categoria') as $food)
                         <tr><th scope="row" class="d-none d-md-table-cell">{{ $food->id }}</th>
                             <td>{{ $food->nome }}</td>
-                            <td>{{ $food->prezzo }}</td>
-                            <td>{{ $food->unita }}</td>
+                            <td>{{ $food->prezzo }}  @if($food->unita) x {{ $food->unita }}@endif </td>
                             <td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td>
                             <td class="d-none d-sm-table-cell">{{ $food->categoria }}</td>
                             <td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $food->immagine)}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"></td>
