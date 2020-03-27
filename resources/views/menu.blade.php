@@ -8,7 +8,7 @@ Prodotti
 
 <div class="container-fluid">
     <div class="mb-3 border-bottom">
-        <h1 class="h2">Prodotti</h1>
+        <h1 class="h2">Forniture</h1>
     </div>
     <input class="form-control mb-3" id="searchBox" type="search" placeholder="Cerca" aria-label="Search">
     <div class="row">
@@ -17,7 +17,7 @@ Prodotti
                 data-sortable="true"
             >
                 <thead class="bg-secondary text-white">
-                <tr><th scope="col" class="d-none d-md-table-cell">id</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col">Unità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>                </thead>
+                <tr><th scope="col" class="d-none d-md-table-cell">id</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Unità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>                </thead>
                 <tbody>
                 @if( count($foods) )
                     @foreach($foods->sortBy('categoria') as $food)
@@ -38,46 +38,51 @@ Prodotti
         </div>
         <div class="col-md-4">
             <div class="card">
-                <div class="card-header bg-secondary text-white">
+                <div class="card-header bg-secondary text-white col-md-12">
                     Aggiungi una fornitura
                 </div>
                 <div class="card-body">
                 <form id="form">
                     @csrf
-                    <div class="form-group">
-                        <label for="nome">{{ __('Nome') }}</label>
-                       <input class="form-control" id="nome" type="text" name="nome">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="nome">Nome</label>
+                            <input class="form-control" id="nome" type="text" name="nome">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="prezzo">Prezzo</label>
+                            <input class="form-control" id="prezzo" type="number" step="0.10" name="prezzo" placeholder="Prezzo unitario">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="nome">Unità</label>
+                            <input class="form-control" id="unita" type="text" name="unita" placeholder="Unità di misura della fornitura. Es: kg, m, mquadri, mcubi, ecc..">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="descrizione">Descrizione</label>
+                            <textarea class="form-control" id="descrizione" name="descrizione"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="categoria">Categoria</label>
+                            <textarea class="form-control" id="categoria" name="categoria" placeholder="NOTA: Inserire nel formato 'Categoria - Subcategoria'"></textarea>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="immagine">Immagine</label><br>
+                            <input type="file" name="immagine" id="immagine" name="immagine" />
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="prezzo">{{ __('Prezzo') }}</label>
-                        <input class="form-control" id="prezzo" type="number" step="0.10" name="prezzo" placeholder="Prezzo unitario">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nome">{{ __('Unità') }}</label>
-                       <input class="form-control" id="unita" type="text" name="unita" placeholder="Unità di misura della fornitura. Es: kg, m, mquadri, mcubi, ecc..">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="descrizione">{{ __('Descrizione') }}</label>
-                        <textarea class="form-control" id="descrizione" name="descrizione"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="categoria">{{ __('Categoria') }}</label>
-                        <textarea class="form-control" id="categoria" name="categoria" placeholder="NOTA: Inserire nel formato 'Categoria-Subcategoria'"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="immagine">{{ __('Immagine') }}</label><br>
-                        <input type="file" name="immagine" id="immagine" name="immagine" />
-                    </div>
-
-                    <button type="button" onclick="newFood()" class="btn btn-primary">
+                </form>
+                </div>
+                <div class="card-footer">
+                    <button type="button" onclick="newFood()" class="btn btn-info">
                         {{ __('Crea') }}
                     </button>
-                </form>
                 </div>
             </div>
         </div>

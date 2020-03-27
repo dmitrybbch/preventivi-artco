@@ -22,7 +22,7 @@
 
         <div class="row">
 
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <table class="table table-striped" id="foodTable">
                     <thead class="thead-dark">
                     <tr><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th></tr>
@@ -52,7 +52,6 @@
                             <td class="total">{{$fornitura['total'] }} {{ $fornitura['unita'] }}</td>
                             <td class="d-none d-sm-table-cell">{{ $fornitura['descrizione'] }}</td>
                             <td class="d-none d-sm-table-cell">{{ $fornitura['categoria'] }}</td>
-
                             <td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $fornitura['immagine'])}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"> </td>
                         </tr>
                     @endforeach
