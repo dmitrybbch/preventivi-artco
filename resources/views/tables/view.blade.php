@@ -13,14 +13,14 @@
     <div class="mb-2 mb-md-0 mr-auto ml-2" >
       <form class="form-inline">
         <input type="text" id="searchBox" style="display: none;" class="form-control mr-1" placeholder="Search">
-        <button type="button" id="cartBtn" class="btn btn-outline-info">Fornisci</button>
+        <button type="button" id="cartBtn" class="btn btn-outline-info">Forniture</button>
       </form>
     </div>
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2" id="statusTable" role="group" aria-label="First group">
         <button type="button" class="btn btn-outline-dark @if($table->stato == 'libero') active @endif" value="0">Modulo</button>
         <button type="button" class="btn btn-outline-danger @if($table->stato == 'occupato') active @endif" value="1">Compilando</button>
-        <button type="button" class="btn btn-outline-success @if($table->stato == 'servito') active @endif" value="2">Compilata</button>
+        <button type="button" class="btn btn-outline-success @if($table->stato == 'servito') active @endif" value="2">Compilato</button>
       </div>
     </div>
   </div>

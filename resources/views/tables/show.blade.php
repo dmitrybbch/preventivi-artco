@@ -6,11 +6,11 @@
     <h1 class="h2">Preventivi</h1>
     {{--@if(Auth::user()->isAdmin())--}}
     <div class="btn-toolbar mb-2 mb-md-0">
-      <button type="button" class="btn btn-sm btn-outline-secondary" id="modBtn">Modifica</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary" id="modBtn">Crea/ Cancella/ Rinomina</button>
     </div>
     {{--@endif--}}
   </div>
-  <div class="row">
+  <div class="row" id="rowone">
       @foreach($tables as $table)
       @if($table->stato == 'libero')
               <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">
@@ -38,7 +38,7 @@
                                   </div>
                                   <div class="card-footer">
                                       @if($table->cliente)
-                                          Cliente: <b>{{ $table->cliente }} </b>
+                                          <b>{{ $table->cliente }} </b>
                                       @else
                                           Cliente indefinito
                                       @endif
@@ -88,7 +88,7 @@
                                   </div>
                                   <div class="card-footer">
                                       @if($table->cliente)
-                                          Cliente: <b>{{ $table->cliente }} </b>
+                                          <b>{{ $table->cliente }} </b>
                                       @else
                                           Cliente indefinito
                                       @endif

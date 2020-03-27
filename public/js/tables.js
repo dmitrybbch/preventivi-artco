@@ -39,50 +39,13 @@ $('#modBtn').click(function (){
 
     console.log(res);
 
-    tables = getTables();
-    $('.row').html("");
-    tables.forEach(function(table){
-      var html = '<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">\n';
-          switch(table.stato){
-              case 'libero':
-                  html += '<div class="card text-white bg-secondary" data-id="' + table.id + '">\n';
-
-                  break;
-            case 'occupato':
-            html += '<div class="card text-white bg-danger" data-id="' + table.id + '">\n';
-            break;
-            case 'servito':
-            html += '<div class="card text-white bg-success" data-id="' + table.id + '">\n';
-            break;
-            default:
-            html += '<div class="card" data-id="' + table.id + '">\n';
-          }
-            if(table.nomeTavolo) html += '<div class="card-header">' + table.nomeTavolo + '</div>\n';
-            else html += '<div class="card-header">Prev. ' + table.id + '</div>\n';
-            html +=  '<div class="card-body">\n' +
-              table.countOrders + ' forniture: <b>' + table.totalOrders + '€ </b>\n' +
-              '</div>\n' +
-              '<div class="card-footer">\n' +
-              'Cliente: <b>' + table.cliente + '</b>' +
-              '</div>\n' +
-          '</div>\n' +
-      '</div>\n';
-      $('#rowtwo').append(html);
-    })
-
-    $('.card').click(function(event){
-      if(!mod){
-        var id = $(this).data('id');
-        window.location = '/table/' + id;
-      }
-    });
-
-    btn.text('Modifica');
+    window.location = '/tables';
     btn.removeAttr('disabled');
   } else {
     mod = true;
     var tables = getTables();
     $('.row').html("");
+
     tables.forEach(function(table){
       var html = '<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">\n' +
           '<div class="card" data-id="' + table.id + '">\n' +
@@ -96,14 +59,14 @@ $('#modBtn').click(function (){
                 '</div>\n' +
               '</div>\n' +
               '<div class="card-body">\n' +
-                'Totale: 0€\n' +
+
               '</div>\n' +
-              '<div class="card-footer">\n' +
-                '<input type="text" class="form-control" id="scimmiaCodeCliente" value="' + table.cliente + '" placeholder="Cliente: '+ table.cliente +' "> \n' +
-              '</div>\n' +
+              '<div class="card-footer">\n <b>'
+                    + table.cliente +
+              '</b> </div>\n' +
           '</div>\n' +
       '</div>\n';
-      $('.row').append(html);
+      $('#rowone').append(html);
     })
     var html = '<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3" id="newTable">' +
                     '<div class="card">' +
