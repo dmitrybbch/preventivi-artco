@@ -34,12 +34,15 @@ Route::patch('/table', 'TableController@update');
 Route::delete('/table', 'TableController@empty');
 
 
-// Food
-Route::get('/menu', 'FoodController@index')->name('menu')->middleware('is_admin');
-Route::post('/menu', 'FoodController@create')->middleware('is_admin');
+// Forniture
+Route::get('/menu', 'FoodController@index')->name('menu');
+Route::post('/menu', 'FoodController@create');
 Route::post('/menu/search', 'FoodController@search');
-Route::delete('/menu', 'FoodController@destroy')->middleware('is_admin');
-Route::patch('/menu', 'FoodController@edit')->middleware('is_admin');
+Route::delete('/menu', 'FoodController@destroy');
+Route::patch('/menu', 'FoodController@edit');
+
+// Categories
+Route::get('/categories', 'CategoriesController@index');
 
 // Users
 Route::get('/users', 'AdminController@users')->name('users');

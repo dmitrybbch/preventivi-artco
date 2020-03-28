@@ -14,9 +14,9 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         DB::table('users')->insert([
-          'username' => 'admin',
-          'password' => Hash::make('superadmin'),
-          'type' => 'admin',
+            'username' => 'admin',
+            'password' => Hash::make('superadmin'),
+            'type' => 'admin',
         ]);
 
         DB::table('foods')->insert([
@@ -49,6 +49,21 @@ class DatabaseSeeder extends Seeder
             'categoria' => 'ABC - AAA',
         ]);
 
+        DB::table('sections')->insert([
+            'name' => 'A) Camion Cino',
+        ]);
+
+        DB::table('sections')->insert([
+            'name' => 'B) Alpa Cino',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'ABC',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'CBC',
+        ]);
 
     }
   }

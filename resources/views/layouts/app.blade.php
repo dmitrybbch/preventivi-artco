@@ -31,16 +31,17 @@
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              @auth
-              @if(Auth::user()->isAdmin())
+
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('menu') }}">{{ __('Elenco Forniture') }}</a>
+                <a class="nav-link" href="{{ route('menu') }}">Forniture</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('users') }}">{{ __('Utenti') }}</a>
+                <a class="nav-link" href="{{ route('categories') }}">Categorie</a>
               </li>
-              @endif
-              @endauth
+              <li class="nav-item">
+                    <a class="nav-link" href="{{ route('users') }}">Utenti</a>
+              </li>
+
             </ul>
             <ul class="navbar-nav">
               @auth
