@@ -33,13 +33,13 @@
             <ul class="navbar-nav mr-auto">
 
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('menu') }}">Forniture</a>
+                <a class="nav-link" href="{{ url('menu') }}">Forniture</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('categories') }}">Categorie</a>
+                <a class="nav-link" href="{{ url('categories') }}">Categorie</a>
               </li>
               <li class="nav-item">
-                    <a class="nav-link" href="{{ route('users') }}">Utenti</a>
+                    <a class="nav-link" href="{{ url('users') }}">Utenti</a>
               </li>
 
             </ul>

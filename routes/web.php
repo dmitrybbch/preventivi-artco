@@ -42,7 +42,7 @@ Route::delete('/menu', 'FoodController@destroy');
 Route::patch('/menu', 'FoodController@edit');
 
 // Categories
-Route::get('/categories', 'CategoriesController@index');
+Route::get('/categories/', 'CategoriesController@index')->name('cats', 'secs');
 
 // Users
 Route::get('/users', 'AdminController@users')->name('users');
