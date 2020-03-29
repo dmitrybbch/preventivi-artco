@@ -12,20 +12,62 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-5">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Nuova Categoria" aria-label="Nuova Categoria" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">Crea</button>
+                    </div>
+                </div>
                 <table class="table table-striped" id="foodTable" id="table" data-sortable="true">
                     <thead class="bg-secondary text-white">
-                        <tr><th scope="col" class="d-none d-md-table-cell">id</th><th scope="col">Nome</th><th scope="col">Opzioni</th></tr>
+                        <tr>
+                            <th scope="col" class="d-none d-md-table-cell">id</th>
+                            <th scope="col">Categorie</th><th scope="col"></th>
+                        </tr>
                     </thead>
                     <tbody>
                     @if( count($cats) )
                         @foreach($cats->sortBy('name') as $cat)
-                            <tr><th scope="row" class="d-none d-md-table-cell">{{ $cat->id }}</th>
-                                <td>{{ $cat->name }}</td>
-                                <td><button type="button" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button><button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>
+                            <tr>
+                                <th scope="row" class="d-none d-md-table-cell">{{ $cat->id }}</th>
+                                <td>{{ $cat->name }} </td>
+                                <td class="text-md-right"> <button type="button" id="deleteCat" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button></td>
+                            </tr>
                         @endforeach
                     @else
-                        <tr><td colspan="5">Nessuna Categoria</td></tr>
+                        <tr><td colspan="3">Nessuna Categoria</td></tr>
+                    @endif
+                    </tbody>
+                </table>
+            </div>
+            <!-- Tabella sezioni -->
+            <div class="col-md-5">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Nuova Sezione" aria-label="Nuova Sezione" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">Crea</button>
+                    </div>
+                </div>
+
+                <table class="table table-striped" id="foodTable" id="table" data-sortable="true">
+                    <thead class="bg-secondary text-white">
+                    <tr>
+                        <th scope="col" class="d-none d-md-table-cell">id</th>
+                        <th scope="col">Sezioni</th><th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @if( count($secs) )
+                        @foreach($secs->sortBy('name') as $sec)
+                            <tr>
+                                <th scope="row" class="d-none d-md-table-cell">{{ $sec->id }}</th>
+                                <td>{{ $sec->name }} </td>
+                                <td class="text-md-right"> <button type="button" id="deleteSec" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button></td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr><td colspan="3">Nessuna Sezione</td></tr>
                     @endif
                     </tbody>
                 </table>
