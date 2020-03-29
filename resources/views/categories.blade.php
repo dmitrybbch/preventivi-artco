@@ -13,13 +13,15 @@
 
         <div class="row">
             <div class="col-md-5">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Nuova Categoria" aria-label="Nuova Categoria" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Crea</button>
+                <form id="categoriaForm">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control"  id="creaCategoria" name="name" placeholder="Nuova Categoria" aria-label="Nuova Categoria" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" onclick="newCat()">Crea</button>
+                        </div>
                     </div>
-                </div>
-                <table class="table table-striped" id="foodTable" id="table" data-sortable="true">
+                </form>
+                <table class="table table-striped" id="catTable" data-sortable="true">
                     <thead class="bg-secondary text-white">
                         <tr>
                             <th scope="col" class="d-none d-md-table-cell">id</th>

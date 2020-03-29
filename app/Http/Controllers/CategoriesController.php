@@ -13,4 +13,26 @@ class CategoriesController extends Controller
     {
         return view('categories', ['cats' => Category::All(), 'secs' => Section::All()]);
     }
+
+    public function store(Request $request)
+    {
+        $input = $request;
+
+
+
+        // If it's a Category
+
+        //if($input['sezcat'] == "cat"){
+
+            $cat = new Category();
+            $cat->name = $input['name'];
+
+            $cat->save();
+
+
+
+        //}
+
+        return response($input, 204);
+    }
 }

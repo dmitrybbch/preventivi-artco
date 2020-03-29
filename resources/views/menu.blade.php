@@ -80,7 +80,7 @@ Prodotti
                 </div>
                 <div class="card-footer">
                     <button type="button" onclick="newFood()" class="btn btn-info">
-                        {{ __('Crea') }}
+                        Crea
                     </button>
                 </div>
             </div>

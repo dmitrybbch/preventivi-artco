@@ -42,7 +42,8 @@ Route::delete('/menu', 'FoodController@destroy');
 Route::patch('/menu', 'FoodController@edit');
 
 // Categories
-Route::get('/categories/', 'CategoriesController@index')->name('cats', 'secs');
+Route::get('/categories', 'CategoriesController@index')->name('cats', 'secs');
+Route::post('/categories', 'CategoriesController@store');
 
 // Users
 Route::get('/users', 'AdminController@users')->name('users');
@@ -54,5 +55,3 @@ Route::patch('/users', 'AdminController@editUser')->name('users');
 Route::get('/pdf_view/{id}', 'PrintController@index')->name("datat");
 Route::post('/pdf_view/{id}', 'PrintController@printpdf');
 
-// PREVIEW DA TOGLIERE
-Route::view('/pdf', 'pdf');
