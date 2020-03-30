@@ -41,7 +41,7 @@ Prodotti
                         @endif
                         <tr><th scope="row" class="d-none d-md-table-cell">{{ $food->id }}</th>
                             <td>{{ $food->nome }}</td>
-                            <td>{{ $food->prezzo }}  @if($food->unita) x {{ $food->unita }}@endif </td>
+                            <td>€ {{ $food->prezzo }}  @if($food->unita) x {{ $food->unita }}@endif </td>
                             <td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td>
                             <td class="d-none d-sm-table-cell">{{ $food->categoria }}</td>
                             <td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $food->immagine)}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"></td>
@@ -66,15 +66,13 @@ Prodotti
                             <label for="nome">Nome</label>
                             <input class="form-control" id="nome" type="text" name="nome">
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label for="prezzo">Prezzo</label>
                             <input class="form-control" id="prezzo" type="number" step="0.10" name="prezzo" placeholder="Prezzo unitario">
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label for="nome">Unità</label>
-                            <input class="form-control" id="unita" type="text" name="unita" placeholder="Unità di misura della fornitura. Es: kg, m, mquadri, mcubi, ecc..">
+                        <div class="form-group col-md-2">
+                            <label for="unita">Unità:</label>
+                            <input list="unitaMisura" id="unita" class="form-control"  name="unita" />
                         </div>
                     </div>
                     <div class="row">
@@ -87,12 +85,10 @@ Prodotti
                         <div class="form-group col-md-6">
                             <label for="sezione">Sezione:</label>
                                 <input list="sezioni" class="form-control"  name="sezione" />
-
                         </div>
                         <div class="form-group col-md-6">
                             <label for="categoria">Categoria:</label>
                                 <input list="categorie" class="form-control" name="categoria" />
-
                         </div>
 
                     </div>
@@ -238,7 +234,13 @@ Prodotti
     <option value="Impianto di video controllo e videoregistrazione">
     <option value="Materiali nuovi">
 
+</datalist>
 
+<datalist id="unitaMisura">
+    <option value="crp">
+    <option value="n">
+    <option value="mq">
+    <option value="ml">
 </datalist>
 @endsection
 
