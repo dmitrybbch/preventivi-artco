@@ -48,6 +48,12 @@ class DatabaseSeeder extends Seeder
             'descrizione' => 'Quindi un letto singolo.',
             'categoria' => 'ABC - AAA',
         ]);
+        DB::table('foods')->insert([
+            'nome' => 'Bomba Nucleare',
+            'prezzo' => '9999999.99',
+            'descrizione' => 'Il sogno di Mohammad.',
+            'categoria' => 'CORPI ILLUMINANTI - Demolizioni',
+        ]);
 
         DB::table('sections')->insert([
             'name' => 'A) Camion Cino',

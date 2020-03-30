@@ -39,7 +39,10 @@ class FoodController extends Controller
         $food->prezzo = $input['prezzo'];
         $food->unita = $input['unita'];
         $food->descrizione = $input['descrizione'];
-        $food->categoria = $input['categoria'];
+
+        $sezione = $input['sezione'];
+        $subcategoria = $input['categoria'];
+        $food->categoria = $sezione . " - " . $subcategoria;
 
 
         if($request->hasFile('immagine')){
@@ -70,7 +73,9 @@ class FoodController extends Controller
         $food->prezzo = $input['prezzo'];
         $food->unita = $input['unita'];
         $food->descrizione = $input['descrizione'];
+
         $food->categoria = $input['categoria'];
+
 
         $food->save();
         return response()->json($food);

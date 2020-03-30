@@ -18,7 +18,7 @@ function newFood(){
     contentType: false,
     success: function(food) {
       console.log(food);
-      $('#foodTable tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + '</td><td>' + food.unita + '</td><td class="d-none d-sm-table-cell">' + food.descrizione + '</td><td class="d-none d-sm-table-cell">' + food.categoria + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/'+ food.immagine +'" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td> <td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');
+      $('#foodTable tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + food.descrizione + '</td><td class="d-none d-sm-table-cell">' + food.categoria + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/'+ food.immagine +'" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td> <td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');
     }
 
 
@@ -73,23 +73,28 @@ $(document).on("click" , "tr .btn-outline-info" , function(event){
   //recupero valori del prodotto
   var id = tr.children('th').text();
   var nome = tr.children('td').eq(0).text();
-  var prezzo = tr.children('td').eq(1).text();
-  var unita = tr.children('td').eq(2).text();
-  var descrizione = tr.children('td').eq(3).text();
-  var categoria = tr.children('td').eq(4).text();
-  var immagine = tr.children('td').eq(5).text();
-    //console.log(nome);
+  // Prendo prima della x e tolgo gli spazi
+  var prezzo = tr.children('td').eq(1).text().split("x")[0].replace(/\s/g, '');
+  var unita = tr.children('td').eq(1).text().split("x")[1];
+  if(unita === undefined) {} else {unita.replace(/\s/g, '');}
+  var descrizione = tr.children('td').eq(2).text();
+
+  var sezione = tr.children('td').eq(3).text().split("-")[0].replace(/\s/g, '');
+  var categoria = tr.children('td').eq(3).text().split("-")[1].replace(/\s/g, '');
+  var immagine = tr.children('td').eq(4).text();
+
 
   $('#idModal').val(id);
   $('#nomeModal').val(nome);
   $('#prezzoModal').val(prezzo);
   $('#unitaModal').val(unita);
   $('#descrizioneModal').val(descrizione);
+  $('#sezioneModal').val(sezione);
   $('#categoriaModal').val(categoria);
   $('#immagineModal').val(immagine);
 
 
-    $('#foodModal').modal("show");
+  $('#foodModal').modal("show");
 
 })
 
@@ -101,20 +106,23 @@ $(document).on("click" , "#btnSave" , function(){
   var prezzo = $('#prezzoModal').val();
   var unita = $('#unitaModal').val();
   var descrizione = $('#descrizioneModal').val();
+  var sezione = $('#sezioneModal').val();
   var categoria = $('#categoriaModal').val();
   var immagine = $('#immagineModal').val();
 
+  categoria = sezione + " - " + categoria;
+
+  console.log("Categoria :" + categoria);
     $.ajax({
     url: '/menu',
     method: "PATCH",
     data: {id : id, nome : nome , prezzo : prezzo, unita : unita, descrizione : descrizione,  categoria : categoria, immagine : immagine},
     success: function(res){ //recupero valori aggiornati
       tempr.children('td').eq(0).text(res.nome);
-      tempr.children('td').eq(1).text(res.prezzo);
-      tempr.children('td').eq(2).text(res.unita);
-      tempr.children('td').eq(3).text(res.descrizione);
-      tempr.children('td').eq(4).text(res.categoria);
-      tempr.children('td').eq(5).text(res.immagine);
+      tempr.children('td').eq(1).text(res.prezzo + " x " + res.unita);
+      tempr.children('td').eq(2).text(res.descrizione);
+      tempr.children('td').eq(3).text(res.categoria);
+      tempr.children('td').eq(4).text(res.immagine);
 
     }
   })

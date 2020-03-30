@@ -66,10 +66,20 @@ Prodotti
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="categoria">Categoria</label>
-                            <textarea class="form-control" id="categoria" name="categoria" placeholder="NOTA: Inserire nel formato 'Categoria - Subcategoria'"></textarea>
+                        <div class="form-group col-md-5">
+                            <label>Sezione:
+                                <input list="sezioni" name="sezione" /></label>
+
                         </div>
+                         -
+                        <div class="form-group col-md-5">
+                            <label>Categoria:
+                                <input list="categorie" name="categoria" /></label>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
                         <div class="form-group col-md-6">
                             <label for="immagine">Immagine</label><br>
                             <input type="file" name="immagine" id="immagine" name="immagine" />
@@ -98,11 +108,11 @@ Prodotti
                     </button>
                 </div>
 
-                <div class="modal-body">
+                <div class="modal-body col-md-12">
                     <form>
                         <div class="form-group row">
                             <label for="idModal" class="col-md-4 col-form-label text-md-right">{{ __('Id') }}</label>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <input type="text" readonly class="form-control-plaintext" id="idModal" value="">
                             </div>
                         </div>
@@ -117,7 +127,7 @@ Prodotti
                         <div class="form-group row">
                             <label for="prezzoModal" class="col-md-4 col-form-label text-md-right">{{ __('Prezzo') }}</label>
                             <div class="col-md-6">
-                                <input class="form-control"id="prezzoModal" type="number" step="0.10">
+                                <input class="form-control"id="prezzoModal" type="number" step="0.10" value="">
                             </div>
                         </div>
 
@@ -136,10 +146,14 @@ Prodotti
                         </div>
 
                         <div class="form-group row">
-                            <label for="categoriaModal" class="col-md-4 col-form-label text-md-right">{{ __('Categoria') }}</label>
-                            <div class="col-sm-6">
-                                <textarea class="form-control" id="categoriaModal"></textarea>
-                            </div>
+                            <label for="sezioneModal" class="col-md-4 col-form-label text-md-right">Sezione:</label>
+                                <input id="sezioneModal" list="sezioni" name="sezione" />
+
+                        </div>
+                        <div class="form-group row">
+                            <label for="categoriaModal" class="col-md-4 col-form-label text-md-right">Categoria:</label>
+                            <input id="categoriaModal" list="categorie" name="categoria" />
+
                         </div>
 
                     </form>
@@ -155,6 +169,60 @@ Prodotti
     </div>
 
 </div>
+
+<datalist id="sezioni">
+    <option value="OPERE EDILI INTERNE">
+    <option value="OPERE DA GESSINO E PITTURA">
+    <option value="OPERE DA FALEGNAME E PARETI DIVISORIE INTERNE">
+    <option value="SERRAMENTI DI SICUREZZA ESTERNI ED INTERNI">
+    <option value="ARREDI SU MISURA">
+    <option value="ARREDI DI SERIE E ATTESA">
+    <option value="SEDUTE E ACCESSORI VARI">
+    <option value="VETROFANIE INTERNE ED ESTERNE TENDAGGI INSEGNE">
+    <option value="PRATICHE AMMINISTRATIVE E PROGETTI IMPIANTI">
+    <option value="IMPIANTO ELETTRICO">
+    <option value="CORPI ILLUMINANTI">
+    <option value="RETE STRUTTURATA E TRASMISSIONE DATI">
+    <option value="IMPIANTO DI CLIMATIZZAZIONE">
+    <option value="IMPIANTO DI ALLARME,  E TVCC">
+    <option value="MOVIMENTAZIONE MATERIALI">
+
+</datalist>
+
+<datalist id="categorie">
+    <option value="Impianto di cantiere">
+    <option value="Assistenze">
+    <option value="Demolizioni">
+    <option value="Pavimentazione">
+    <option value="Varie">
+    <option value="Controsoffitto">
+    <option value="Velette">
+    <option value="Pareti in cartongesso">
+    <option value="Tinteggiatura interna">
+    <option value="Porte interne, pedana, rivestimenti, mensole, pareti, battiscopa">
+    <option value="Serramenti di sicurezza esterni">
+    <option value="Serramenti sicurezza ingresso / interni">
+    <option value="Box cassa operatore">
+    <option value="Postazioni lavoro">
+    <option value="Cassettiera casse">
+    <option value="Armadi contenitori">
+    <option value="Ufficio direzionale e consulenza">
+    <option value="Sedute operative casse">
+    <option value="Sedute visitatori">
+    <option value="Sedute attesa">
+    <option value="Sgabelli">
+    <option value="Accessori">
+    <option value="Distribuzione generale impianto su tubazioni in PVC pesanti esistenti">
+    <option value="Predisposizione per impianti tecnologici">
+    <option value="Corpi illuminanti a fluorescenza">
+    <option value="Impianto di climatizzazione">
+    <option value="Impianto antintrusione">
+    <option value="Materiali nuovi">
+    <option value="Impianto di video controllo e videoregistrazione">
+    <option value="Materiali nuovi">
+
+
+</datalist>
 @endsection
 
 @section('scripts')
