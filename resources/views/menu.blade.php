@@ -6,21 +6,39 @@ Prodotti
 
 @section('content')
 
-<div class="container-fluid">
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
     <div class="mb-3 border-bottom">
         <h1 class="h2">Forniture</h1>
     </div>
     <input class="form-control mb-3" id="searchBox" type="search" placeholder="Cerca" aria-label="Search">
     <div class="row">
-        <div class="col-md-8">
-            <table class="table table-striped" id="foodTable" id="table"
-                data-sortable="true"
-            >
+        <div class="col-md-8" >
+            <table class="table table-borderless" id="inseritiTable" data-sortable="true">
+                <thead class="bg-secondary text-white col-md-7">
+                <tr>
+                    <th scope="col" colspan ="7" class="d-md-table-cell">Ultime Inserite (aggiornare per metterle in tabella)</th>
+                </tr>
+                </thead>
+            </table>
+
+            <table class="table table-borderless" id="foodTable" id="table" data-sortable="true">
                 <thead class="bg-secondary text-white">
-                <tr><th scope="col" class="d-none d-md-table-cell">id</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>                </thead>
+                    <tr>
+                        <th scope="col" class="d-none d-md-table-cell">id</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th>
+                    </tr>
+                </thead>
                 <tbody>
                 @if( count($foods) )
+                    @php($categoriaTabella = "nuffin")
                     @foreach($foods->sortBy('categoria') as $food)
+                        @if($categoriaTabella != ($catAttuale = explode(" - ", $food->categoria)[0]))
+                            <thead class="thead-light text-white" id={{$catAttuale}}>
+                                <tr>
+                                    <th scope="row" colspan="7" class="d-none d-md-table-cell">{{ $catAttuale }}</th>
+                                </tr>
+                            </thead>
+                            @php($categoriaTabella = $catAttuale)
+                        @endif
                         <tr><th scope="row" class="d-none d-md-table-cell">{{ $food->id }}</th>
                             <td>{{ $food->nome }}</td>
                             <td>{{ $food->prezzo }}  @if($food->unita) x {{ $food->unita }}@endif </td>
@@ -30,7 +48,7 @@ Prodotti
                             <td><button type="button" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button><button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>
                     @endforeach
                 @else
-                <tr><td colspan="5">Nessun Prodotto</td></tr>
+                <tr><td colspan="7">Nessun Prodotto</td></tr>
                 @endif
                 </tbody>
             </table>
@@ -66,15 +84,14 @@ Prodotti
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-5">
-                            <label>Sezione:
-                                <input list="sezioni" name="sezione" /></label>
+                        <div class="form-group col-md-6">
+                            <label for="sezione">Sezione:</label>
+                                <input list="sezioni" class="form-control"  name="sezione" />
 
                         </div>
-                         -
-                        <div class="form-group col-md-5">
-                            <label>Categoria:
-                                <input list="categorie" name="categoria" /></label>
+                        <div class="form-group col-md-6">
+                            <label for="categoria">Categoria:</label>
+                                <input list="categorie" class="form-control" name="categoria" />
 
                         </div>
 
@@ -108,7 +125,7 @@ Prodotti
                     </button>
                 </div>
 
-                <div class="modal-body col-md-12">
+                <div class="modal-body">
                     <form>
                         <div class="form-group row">
                             <label for="idModal" class="col-md-4 col-form-label text-md-right">{{ __('Id') }}</label>
@@ -146,13 +163,13 @@ Prodotti
                         </div>
 
                         <div class="form-group row">
-                            <label for="sezioneModal" class="col-md-4 col-form-label text-md-right">Sezione:</label>
-                                <input id="sezioneModal" list="sezioni" name="sezione" />
+                            <label for="sezioneModal" class="col-form-label text-md-right">Sezione:</label>
+                                <input id="sezioneModal" class="form-control" list="sezioni" name="sezione" />
 
                         </div>
                         <div class="form-group row">
                             <label for="categoriaModal" class="col-md-4 col-form-label text-md-right">Categoria:</label>
-                            <input id="categoriaModal" list="categorie" name="categoria" />
+                            <input id="categoriaModal" class="form-control" list="categorie" name="categoria" />
 
                         </div>
 
