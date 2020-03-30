@@ -12,51 +12,21 @@
         </div>
 
         <div class="row">
+            <!-- Tabella sezioni -->
             <div class="col-md-5">
-                <form id="categoriaForm">
+                <form id="sezioneForm">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control"  id="creaCategoria" name="name" placeholder="Nuova Categoria" aria-label="Nuova Categoria" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control"  id="creaSezione" name="name" placeholder="Nuova Sezione" aria-label="Nuova Sezione" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="submit" onclick="newCat()">Crea</button>
+                            <button class="btn btn-outline-secondary" type="submit" onclick="newSec()">Crea</button>
                         </div>
                     </div>
                 </form>
-                <table class="table table-striped" id="catTable" data-sortable="true">
-                    <thead class="bg-secondary text-white">
-                        <tr>
-                            <th scope="col" class="d-none d-md-table-cell">id</th>
-                            <th scope="col">Categorie</th><th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    @if( count($cats) )
-                        @foreach($cats->sortBy('name') as $cat)
-                            <tr>
-                                <th scope="row" class="d-none d-md-table-cell">{{ $cat->id }}</th>
-                                <td>{{ $cat->name }} </td>
-                                <td class="text-md-right"> <button type="button" id="deleteCat" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button></td>
-                            </tr>
-                        @endforeach
-                    @else
-                        <tr><td colspan="3">Nessuna Categoria</td></tr>
-                    @endif
-                    </tbody>
-                </table>
-            </div>
-            <!-- Tabella sezioni -->
-            <div class="col-md-5">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Nuova Sezione" aria-label="Nuova Sezione" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Crea</button>
-                    </div>
-                </div>
-
-                <table class="table table-striped" id="foodTable" id="table" data-sortable="true">
+                <table class="table table-striped" id="secTable" data-sortable="true">
                     <thead class="bg-secondary text-white">
                     <tr>
                         <th scope="col" class="d-none d-md-table-cell">id</th>
-                        <th scope="col">Sezioni</th><th scope="col"></th>
+                        <th scope="col">Sezione</th><th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -74,6 +44,43 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Tabella Categorie -->
+            <div class="col-md-5">
+                <form id="categoriaForm">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control"  id="creaCategoria" name="name" placeholder="Nuova Categoria" aria-label="Nuova Categoria" aria-describedby="basic-addon2">
+                        <input type="text" class="form-control"  id="section_id" name="section_id" placeholder="id Sezione (perdonatemi sta bruttura, sistemo)" aria-label="Nuova Sezione" aria-describedby="basic-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" onclick="newCat()">Crea</button>
+                        </div>
+                    </div>
+                </form>
+                <table class="table table-striped" id="catTable" data-sortable="true">
+                    <thead class="bg-secondary text-white">
+                        <tr>
+                            <th scope="col" class="d-none d-md-table-cell">id</th>
+                            <th scope="col">Id della sua Sezione</th>
+                            <th scope="col">Categoria</th><th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @if( count($cats) )
+                        @foreach($cats->sortBy('name') as $cat)
+                            <tr>
+                                <th scope="row" class="d-none d-md-table-cell">{{ $cat->id }}</th>
+                                <td>{{ $cat->section_id }} </td>
+                                <td>{{ $cat->name }} </td>
+                                <td class="text-md-right"> <button type="button" id="deleteCat" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button></td>
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr><td colspan="3">Nessuna Categoria</td></tr>
+                    @endif
+                    </tbody>
+                </table>
+            </div>
+
             <!--
             <div class="col-md-4">
                 <div class="card">

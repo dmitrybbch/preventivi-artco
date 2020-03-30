@@ -44,6 +44,8 @@ Route::patch('/menu', 'FoodController@edit');
 // Categories
 Route::get('/categories', 'CategoriesController@index')->name('cats', 'secs');
 Route::post('/categories', 'CategoriesController@store');
+Route::post('/categories/create_section', 'CategoriesController@store');
+Route::delete('/categories', 'CategoriesController@destroy');
 
 // Users
 Route::get('/users', 'AdminController@users')->name('users');

@@ -52,17 +52,29 @@ class DatabaseSeeder extends Seeder
         DB::table('sections')->insert([
             'name' => 'A) Camion Cino',
         ]);
-
         DB::table('sections')->insert([
             'name' => 'B) Alpa Cino',
         ]);
+        DB::table('sections')->insert([
+            'name' => 'C) Man Cino',
+        ]);
+
 
         DB::table('categories')->insert([
             'name' => 'ABC',
+            'section_id' => 1,
         ]);
-
         DB::table('categories')->insert([
-            'name' => 'CBC',
+            'name' => 'AAA',
+            'section_id' => 1,
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'BBB',
+            'section_id' => 1,
+        ]);
+        DB::table('categories')->insert([
+            'name' => 'CCC',
+            'section_id' => 1,
         ]);
 
     }
