@@ -39,48 +39,51 @@ class DatabaseSeeder extends Seeder
             'prezzo' => '5.00',
             'unita' => 'kg',
             'descrizione' => 'Un vaso o una mappa?',
-            'categoria' => 'BCD - AAA',
+            'capitolo' => 'EEE',
+            'categoria' => 'AAA',
         ]);
 
         DB::table('foods')->insert([
             'nome' => 'Letto matrimoniale per nani.',
             'prezzo' => '2.50',
             'descrizione' => 'Quindi un letto singolo.',
-            'categoria' => 'ABC - AAA',
+            'capitolo' => 'EEE',
+            'categoria' => 'AAA',
         ]);
         DB::table('foods')->insert([
             'nome' => 'Bomba Nucleare',
             'prezzo' => '9999999.99',
             'descrizione' => 'Il sogno di Mohammad.',
-            'categoria' => 'CORPI ILLUMINANTI - Demolizioni',
+            'capitolo' => 'HEYH',
+            'categoria' => 'Demolizioni',
         ]);
 
-        DB::table('sections')->insert([
+        DB::table('chapters')->insert([
             'name' => 'A) Camion Cino',
         ]);
-        DB::table('sections')->insert([
+        DB::table('chapters')->insert([
             'name' => 'B) Alpa Cino',
         ]);
-        DB::table('sections')->insert([
+        DB::table('chapters')->insert([
             'name' => 'C) Man Cino',
         ]);
 
 
         DB::table('categories')->insert([
             'name' => 'ABC',
-            'section_id' => 1,
+            //'section_id' => 1,
         ]);
         DB::table('categories')->insert([
             'name' => 'AAA',
-            'section_id' => 1,
+            //'section_id' => 1,
         ]);
         DB::table('categories')->insert([
             'name' => 'BBB',
-            'section_id' => 1,
+            //'section_id' => 1,
         ]);
         DB::table('categories')->insert([
             'name' => 'CCC',
-            'section_id' => 1,
+            //'section_id' => 1,
         ]);
 
     }

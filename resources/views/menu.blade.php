@@ -24,25 +24,26 @@ Prodotti
             <table class="table table-borderless" id="foodTable" id="table" data-sortable="true">
                 <thead class="bg-secondary text-white">
                     <tr>
-                        <th scope="col" class="d-none d-md-table-cell">id</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th>
+                        <th scope="col" class="d-none d-md-table-cell">id</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Capitolo</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th>
                     </tr>
                 </thead>
                 <tbody>
                 @if( count($foods) )
-                    @php($categoriaTabella = "nuffin")
-                    @foreach($foods->sortBy('categoria') as $food)
-                        @if($categoriaTabella != ($catAttuale = explode(" - ", $food->categoria)[0]))
-                            <thead class="thead-light text-white" id={{$catAttuale}}>
+                    @php($capitoloTabella = "nuffin")
+                    @foreach($foods->sortBy('capitolo') as $food)
+                        @if($capitoloTabella != ($capAttuale = explode(" - ", $food->capitolo)[0]))
+                            <thead class="thead-light text-white" id={{$capAttuale}}>
                                 <tr>
-                                    <th scope="row" colspan="7" class="d-none d-md-table-cell">{{ $catAttuale }}</th>
+                                    <th scope="row" colspan="7" class="d-none d-md-table-cell">{{ $capAttuale }}</th>
                                 </tr>
                             </thead>
-                            @php($categoriaTabella = $catAttuale)
+                            @php($capitoloTabella = $capAttuale)
                         @endif
                         <tr><th scope="row" class="d-none d-md-table-cell">{{ $food->id }}</th>
                             <td>{{ $food->nome }}</td>
                             <td>€ {{ $food->prezzo }}  @if($food->unita) x {{ $food->unita }}@endif </td>
                             <td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $food->capitolo }}</td>
                             <td class="d-none d-sm-table-cell">{{ $food->categoria }}</td>
                             <td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $food->immagine)}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"></td>
                             <td><button type="button" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button><button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>
@@ -83,8 +84,8 @@ Prodotti
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="sezione">Sezione:</label>
-                                <input list="sezioni" class="form-control"  name="sezione" />
+                            <label for="capitolo">Capitolo:</label>
+                                <input list="capitoli" class="form-control"  name="capitolo" />
                         </div>
                         <div class="form-group col-md-6">
                             <label for="categoria">Categoria:</label>
@@ -140,7 +141,7 @@ Prodotti
                         <div class="form-group row">
                             <label for="prezzoModal" class="col-md-4 col-form-label text-md-right">{{ __('Prezzo') }}</label>
                             <div class="col-md-6">
-                                <input class="form-control"id="prezzoModal" type="number" step="0.10" value="">
+                                <input class="form-control"id="prezzoModal" type="number" step="0.10">
                             </div>
                         </div>
 
@@ -152,20 +153,24 @@ Prodotti
                         </div>
 
                         <div class="form-group row">
-                            <label for="descrizioneModal" class="col-md-4 col-form-label text-md-right">{{ __('Descrizione') }}</label>
+                            <label for="descrizioneModal" class="col-md-4 col-form-label text-md-right">Descrizione</label>
                             <div class="col-sm-6">
                                 <textarea class="form-control" id="descrizioneModal"></textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="sezioneModal" class="col-form-label text-md-right">Sezione:</label>
-                                <input id="sezioneModal" class="form-control" list="sezioni" name="sezione" />
+                            <label for="capitoloModal" class="col-form-label col-md-4 text-md-right">Capitolo:</label>
+                            <div class="col-sm-6">
+                                <input id="capitoloModal" class="form-control" list="capitoli"/>
+                            </div>
 
                         </div>
                         <div class="form-group row">
                             <label for="categoriaModal" class="col-md-4 col-form-label text-md-right">Categoria:</label>
-                            <input id="categoriaModal" class="form-control" list="categorie" name="categoria" />
+                            <div class="col-sm-6">
+                                <input id="categoriaModal" class="form-control" list="categorie"/>
+                            </div>
 
                         </div>
 
@@ -183,7 +188,7 @@ Prodotti
 
 </div>
 
-<datalist id="sezioni">
+<datalist id="capitoli">
     <option value="OPERE EDILI INTERNE">
     <option value="OPERE DA GESSINO E PITTURA">
     <option value="OPERE DA FALEGNAME E PARETI DIVISORIE INTERNE">

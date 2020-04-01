@@ -12,9 +12,9 @@
         </div>
 
         <div class="row">
-            <!-- Tabella sezioni -->
+            <!-- Tabella capitoli -->
             <div class="col-md-5">
-                <form id="sezioneForm">
+                <form id="capitoloForm">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control"  id="creaSezione" name="name" placeholder="Nuova Sezione" aria-label="Nuova Sezione" aria-describedby="basic-addon2">
                         <div class="input-group-append">
@@ -50,7 +50,7 @@
                 <form id="categoriaForm">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control"  id="creaCategoria" name="name" placeholder="Nuova Categoria" aria-label="Nuova Categoria" aria-describedby="basic-addon2">
-                        <input type="text" class="form-control"  id="section_id" name="section_id" placeholder="id Sezione (perdonatemi sta bruttura, sistemo)" aria-label="Nuova Sezione" aria-describedby="basic-addon2">
+                        {{-- <input type="text" class="form-control"  id="section_id" name="section_id" placeholder="id Sezione (perdonatemi sta bruttura, sistemo)" aria-label="Nuova Sezione" aria-describedby="basic-addon2"> --}}
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="submit" onclick="newCat()">Crea</button>
                         </div>
@@ -60,7 +60,7 @@
                     <thead class="bg-secondary text-white">
                         <tr>
                             <th scope="col" class="d-none d-md-table-cell">id</th>
-                            <th scope="col">Id della sua Sezione</th>
+                            {{-- <th scope="col">Id della sua Sezione</th> --}}
                             <th scope="col">Categoria</th><th scope="col"></th>
                         </tr>
                     </thead>
@@ -69,7 +69,7 @@
                         @foreach($cats->sortBy('name') as $cat)
                             <tr>
                                 <th scope="row" class="d-none d-md-table-cell">{{ $cat->id }}</th>
-                                <td>{{ $cat->section_id }} </td>
+                                {{-- <td>{{ $cat->section_id }} </td> --}}
                                 <td>{{ $cat->name }} </td>
                                 <td class="text-md-right"> <button type="button" id="deleteCat" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button></td>
                             </tr>

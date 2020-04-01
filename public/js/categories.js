@@ -23,7 +23,7 @@ function newCat(){
 }
 
 function newSec(){
-    var nomeSez = new FormData($('#sezioneForm')[0]);
+    var nomeSez = new FormData($('#capitoloForm')[0]);
     // Cambiare il sezcat = cat, prenderlo in input
 
     $.ajax({

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Section;
+use App\Chapter;
 use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
@@ -11,7 +11,7 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        return view('categories', ['cats' => Category::All(), 'secs' => Section::All()]);
+        return view('categories', ['cats' => Category::All(), 'secs' => Chapter::All()]);
     }
 
     public function store(Request $request)
@@ -36,7 +36,7 @@ class CategoriesController extends Controller
 
         // If it's a Category
         //if($input['sezcat'] == "cat"){
-        $cat = new Section();
+        $cat = new Chapter();
         $cat->name = $input['name'];
 
         $cat->save();
@@ -48,7 +48,7 @@ class CategoriesController extends Controller
     {
         $input = $request->all();
 
-        $sec = Section::find($input['id']);
+        $sec = Chapter::find($input['id']);
         $sec->delete();
 
         $response = ['messaggio' => 'Categoria Eliminata'];

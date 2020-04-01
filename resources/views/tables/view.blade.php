@@ -42,8 +42,8 @@
             {{-- PRIMA LI INSERISCO IN UNA LISTA E LI ORDINO PER 'CATEGORIA'--}}
             @foreach($orders as $order)
                 @php($food = $order->food())
-                @php($currentFood = array("food_id"=> ($order->food_id), "nome"=>($food->nome), "prezzo"=>($food->prezzo), "unita"=>($food->unita), "total"=>($order->total), "descrizione"=> ($food->descrizione), "categoria"=> ($food->categoria), "immagine"=> ($food->immagine) ))
-                @php(sortedInsert($foodOrdinati, $currentFood, 'categoria'))
+                @php($currentFood = array("food_id"=> ($order->food_id), "nome"=>($food->nome), "prezzo"=>($food->prezzo), "unita"=>($food->unita), "total"=>($order->total), "descrizione"=> ($food->descrizione), "capitolo"=> ($food->capitolo), "categoria"=> ($food->categoria), "immagine"=> ($food->immagine) ))
+                @php(sortedInsert($foodOrdinati, $currentFood, 'capitolo'))
             @endforeach
 
             {{-- POI LI METTO IN TABELLA A PARTIRE DALLA LISTA ORDINATA --}}
@@ -55,6 +55,7 @@
                     <td class="total">{{$fornitura['total'] }} {{ $fornitura['unita'] }}</td>
                     <td class="total">{{$fornitura['prezzo'] * $fornitura['total'] }} €</td>
                     <td class="d-none d-sm-table-cell">{{ $fornitura['descrizione'] }}</td>
+                    <td class="d-none d-sm-table-cell">{{ $fornitura['capitolo'] }}</td>
                     <td class="d-none d-sm-table-cell">{{ $fornitura['categoria'] }}</td>
 
                     <td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $fornitura['immagine'])}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"> </td>

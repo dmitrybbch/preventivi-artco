@@ -35,7 +35,7 @@ $('#cartBtn').click(function(e){
         method: 'GET',
         success: function(orders){
           if(orders.length){
-              $('thead').html('<tr><th scope="col" class="d-none d-md-table-cell">ID f.</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col">Unità</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>');            $('tbody').html('');
+              $('thead').html('<tr><th scope="col" class="d-none d-md-table-cell">ID f.</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col">Unità</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Capitolo</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>');            $('tbody').html('');
 
               orders.sort( compare );
 
@@ -126,7 +126,7 @@ function doSearch(input){
         $('tbody').html('');
 
         res.results.forEach(function(food){
-            $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + '€</td><td>' + (food.unita ? food.unita : "") + '</td><td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td><td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td><td><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>');        })
+            $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + '€</td><td>' + (food.unita ? food.unita : "") + '</td><td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td><td class="d-none d-sm-table-cell">' + (food.capitolo ? food.capitolo : "") + '</td><td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td><td><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>');        })
       }
       else{
         $('tbody').html('<tr><td colspan="5">Nessun risultato per "' + input + '"</td></tr>');
@@ -301,10 +301,10 @@ $(document).on('click' , '#precontoBtn' , function(){
 
 
 function compare( a, b ) {
-  if ( a.categoria < b.categoria ){
+  if ( a.capitolo < b.capitolo ){
     return -1;
   }
-  if ( a.categoria > b.categoria ){
+  if ( a.capitolo > b.capitolo ){
     return 1;
   }
   return 0;

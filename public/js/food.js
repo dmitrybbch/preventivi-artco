@@ -20,7 +20,7 @@ function newFood(){
 
         //$('#'+ $.trim(food.categoria)).after('<tr><td>LELLELELE</td></tr>');
         //$("#foodTable").find("thead");
-        $('#inseritiTable').append('<tr><th scope="row">' + food.id + '</th><td>' + food.nome + '</td><td>€ ' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + food.descrizione + '</td><td class="d-none d-sm-table-cell">' + food.categoria + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/'+ food.immagine +'" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td> <td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');
+        $('#inseritiTable').append('<tr><th scope="row">' + food.id + '</th><td>' + food.nome + '</td><td>€ ' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + food.descrizione + '</td><td class="d-none d-sm-table-cell">' + food.capitolo + '</td><td class="d-none d-sm-table-cell">' + food.categoria + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/'+ food.immagine +'" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td> <td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');
         //$('#inseritiTable').show();
 
     }
@@ -83,9 +83,9 @@ $(document).on("click" , "tr .btn-outline-info" , function(event){
   if(unita === undefined) {} else {unita.replace(/\s/g, '');}
   var descrizione = tr.children('td').eq(2).text();
 
-  var sezione = tr.children('td').eq(3).text().split("-")[0].replace(/\s/g, '');
-  var categoria = tr.children('td').eq(3).text().split("-")[1].replace(/\s/g, '');
-  var immagine = tr.children('td').eq(4).text();
+  var capitolo = tr.children('td').eq(3).text();
+  var categoria = tr.children('td').eq(4).text();
+  var immagine = tr.children('td').eq(5).text();
 
 
   $('#idModal').val(id);
@@ -93,7 +93,7 @@ $(document).on("click" , "tr .btn-outline-info" , function(event){
   $('#prezzoModal').val(prezzo);
   $('#unitaModal').val(unita);
   $('#descrizioneModal').val(descrizione);
-  $('#sezioneModal').val(sezione);
+  $('#capitoloModal').val(capitolo);
   $('#categoriaModal').val(categoria);
   $('#immagineModal').val(immagine);
 
@@ -105,63 +105,58 @@ $(document).on("click" , "tr .btn-outline-info" , function(event){
 // conferma modifica prodotto
 $(document).on("click" , "#btnSave" , function(){
 
-  var id = $('#idModal').val();
-  var nome = $('#nomeModal').val();
-  var prezzo = $('#prezzoModal').val();
-  var unita = $('#unitaModal').val();
-  var descrizione = $('#descrizioneModal').val();
-  var sezione = $('#sezioneModal').val();
-  var categoria = $('#categoriaModal').val();
-  var immagine = $('#immagineModal').val();
+    var id = $('#idModal').val();
+    var nome = $('#nomeModal').val();
+    var prezzo = $('#prezzoModal').val();
+    var unita = $('#unitaModal').val();
+    var descrizione = $('#descrizioneModal').val();
+    var capitolo = $('#capitoloModal').val();
+    var categoria = $('#categoriaModal').val();
+    var immagine = $('#immagineModal').val();
 
-  categoria = sezione + " - " + categoria;
 
-  console.log("Categoria :" + categoria);
     $.ajax({
-    url: '/menu',
-    method: "PATCH",
-    data: {id : id, nome : nome , prezzo : prezzo, unita : unita, descrizione : descrizione,  categoria : categoria, immagine : immagine},
-    success: function(res){ //recupero valori aggiornati
-      tempr.children('td').eq(0).text(res.nome);
-      tempr.children('td').eq(1).text(res.prezzo + " x " + res.unita);
-      tempr.children('td').eq(2).text(res.descrizione);
-      tempr.children('td').eq(3).text(res.categoria);
-      tempr.children('td').eq(4).text(res.immagine);
-
-    }
-  })
+        url: '/menu',
+        method: "PATCH",
+        data: {id : id, nome : nome , prezzo : prezzo, unita : unita, descrizione : descrizione, capitolo: capitolo, categoria : categoria, immagine : immagine},
+        success: function(res){ //recupero valori aggiornati
+            tempr.children('td').eq(0).text(res.nome);
+            tempr.children('td').eq(1).text(res.prezzo + " x " + res.unita);
+            tempr.children('td').eq(2).text(res.descrizione);
+            tempr.children('td').eq(3).text(res.capitolo);
+            tempr.children('td').eq(4).text(res.categoria);
+            tempr.children('td').eq(5).text(res.immagine);
+        }
+    })
 
   $('#foodModal').modal('toggle');
 
 })
 
 $("#searchBox").keyup(function(){
-  var input = $(this).val();
-  setTimeout(function() {
-    doSearch(input);
-  }, 800);
+    var input = $(this).val();
+    setTimeout(function() {
+        doSearch(input);
+    }, 800);
 
 })
 
 function doSearch(input){
 
-  $.ajax ({
-    url: '/menu/search',
-    method: "POST",
-    data: {input:input},
-    success: function(res){
-      console.log(res);
-      if(res.results.length){
-        $('tbody').html("");
-        res.results.forEach(function(food){
-
-            $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td><td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td><td class="d-none d-sm-table-cell">' + (food.immagine ? food.immagine : "") + '</td><td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');        })
-      }
-      else{
-        $('tbody').html('<tr><td colspan="7">Nessun risultato per "' + input + '"</td></tr>');
-      }
-    }
-
-  })
-
+    $.ajax ({
+        url: '/menu/search',
+        method: "POST",
+        data: {input:input},
+        success: function(res){
+            console.log(res);
+            if(res.results.length){
+                $('tbody').html("");
+                res.results.forEach(function(food){
+                    $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td><td class="d-none d-sm-table-cell">' + (food.capitolo ? food.capitolo : "") + '</td><td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td><td class="d-none d-sm-table-cell">' + (food.immagine ? food.immagine : "") + '</td><td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');        })
+            }
+            else{
+                $('tbody').html('<tr><td colspan="7">Nessun risultato per "' + input + '"</td></tr>');
+            }
+        }
+    })
 }

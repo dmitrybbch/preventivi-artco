@@ -38,8 +38,8 @@
 
                     @foreach($orders as $order)
                         @php($food = $order->food())
-                        @php($currentFood = array("food_id"=> ($order->food_id), "nome"=>($food->nome), "prezzo"=>($food->prezzo), "unita"=>($food->unita), "total"=>($order->total), "descrizione"=> ($food->descrizione), "categoria"=> ($food->categoria), "immagine"=> ($food->immagine) ))
-                        @php(sortedInsert($foodOrdinati, $currentFood, 'categoria'))
+                        @php($currentFood = array("food_id"=> ($order->food_id), "nome"=>($food->nome), "prezzo"=>($food->prezzo), "unita"=>($food->unita), "total"=>($order->total), "descrizione"=> ($food->descrizione), "capitolo"=> ($food->capitolo), "categoria"=> ($food->categoria), "immagine"=> ($food->immagine) ))
+                        @php(sortedInsert($foodOrdinati, $currentFood, 'capitolo'))
                     @endforeach
 
                     {{-- POI LI METTO IN TABELLA A PARTIRE DALLA LISTA ORDINATA --}}
