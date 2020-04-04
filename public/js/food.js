@@ -19,30 +19,38 @@ function newFood(){
         processData: false,
         contentType: false,
         success: function(food) {
-
-            //$('#'+ $.trim(food.categoria)).after('<tr><td>LELLELELE</td></tr>');
-            //$("#foodTable").find("thead");
-            //Controllo se esiste il thead del suo capitolo. Se non esiste chissà cosa stampa
-            console.log("Capitolo intabellato di questo prodotto: " + $('#'+ food.capitolo));//.children('tr').children('td').eq(1).text());
+            console.log("Cerco l'header #" + (food.capitolo).split(' ').join('_'));
 
             //Inserisco nella tabella sopra, degli appena inseriti
             $('#inseritiTable').append('<tr><th scope="row">' + food.id + '</th><td>' + food.nome + '</td><td>€ ' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + food.descrizione + '</td><td class="d-none d-sm-table-cell">' + food.capitolo + '</td><td class="d-none d-sm-table-cell">' + food.categoria + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/'+ food.immagine +'" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td> <td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');
-            //$('#inseritiTable').show();
 
+            // Se trovo l'header giusto (il capitolo), inserisco.
+            var header = $('#'+ (food.capitolo).split(' ').join('_')).children('th').eq(0).text();
+            var headerSelect = $('#' + header);
+
+            if(!headerSelect.length)
+                $('#foodTable').append('' +
+                    '<tr id="' + (food.capitolo).split(' ').join('_') +'" class="thead-light text-white">' +
+                    '<th scope="row" colspan="8" class="d-none d-md-table-cell">' + (food.capitolo).split(' ').join('_') +'</th>' +
+                    '</tr>');
+
+            // Poi inserisco nell'header
+            headerSelect.after('' +
+                '<tr>' +
+                '<th scope="row">' + food.id + '</th>' +
+                '<td>' + food.nome + '</td>' +
+                '<td>€ ' + food.prezzo + ' x ' + food.unita + '</td>' +
+                '<td class="d-none d-sm-table-cell">' + food.descrizione + '</td>' +
+                '<td class="d-none d-sm-table-cell">' + food.capitolo + '</td>' +
+                '<td class="d-none d-sm-table-cell">' + food.categoria + '</td>' +
+                '<td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/'+ food.immagine +'" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td>' +
+                '<td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td>' +
+                '</tr>');
         }
 
     });
 
-  /*
-  $.ajax({
-      url: '/menu',
-      method: "POST",
-        data: {id: $('#id').val(), nome: $('#nome').val(), prezzo: $('#prezzo').val(), descrizione: $('#descrizione').val(), categoria: $('#categoria').val(), immagine: $('#immagine').val()},
-      success: function(food){
-        console.log(food);
-          $('#foodTable tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + '</td><td class="d-none d-sm-table-cell">' + food.descrizione + '</td><td class="d-none d-sm-table-cell">' + food.categoria + '</td><td class="d-none d-sm-table-cell">' + food.immagine + '</td> <td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');      }
-    })
-    */
+
 }
 
 //delete food
@@ -87,7 +95,6 @@ $(document).on("click" , "tr .btn-outline-info" , function(event){
   var unita = prezzoCad[prezzoCad.length - 2];
   console.log(prezzoCad + ". Prezzo: " + prezzo + ". Unità: " + unita);
   var descrizione = tr.children('td').eq(2).text();
-
   var capitolo = tr.children('td').eq(3).text();
   var categoria = tr.children('td').eq(4).text();
   var immagine = tr.children('td').eq(5).text();
