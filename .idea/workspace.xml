@@ -3,14 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8de6ddee-b259-45aa-aa47-acf52695d548" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Food.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Food.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FoodController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FoodController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2019_01_28_081834_create_foods_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_01_28_081834_create_foods_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/food.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/food.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +253,7 @@
       <workItem from="1585766025851" duration="10645000" />
       <workItem from="1585840699199" duration="22000" />
       <workItem from="1585931606702" duration="598000" />
-      <workItem from="1586017263253" duration="6786000" />
+      <workItem from="1586017263253" duration="8947000" />
     </task>
     <servers />
   </component>
@@ -335,9 +331,10 @@
     </state>
     <state x="488" y="239" key="run.anything.popup/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1586017614139" />
     <state x="2267" y="170" key="run.anything.popup/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585607516379" />
-    <state x="2266" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1585501832757">
-      <screen x="1920" y="0" width="1366" height="768" />
+    <state x="486" y="125" width="945" height="954" key="search.everywhere.popup" timestamp="1586025641656">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="486" y="125" width="945" height="954" key="search.everywhere.popup/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1586025641656" />
     <state x="2266" y="89" width="672" height="678" key="search.everywhere.popup/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585501832757" />
   </component>
 </project>

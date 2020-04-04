@@ -44,7 +44,6 @@ class FoodController extends Controller
         $food->categoria = $input['categoria'];
         $food->capitolo_categoria = $food->capitolo . "_" . $food->categoria;
 
-
         if($request->hasFile('immagine')){
             $file_immagine = $request->file('immagine');
             $food->immagine = $file_immagine->getClientOriginalName();
@@ -75,6 +74,7 @@ class FoodController extends Controller
         $food->descrizione = $input['descrizione'];
         $food->capitolo = $input['capitolo'];
         $food->categoria = $input['categoria'];
+        $food->capitolo_categoria = $food->capitolo . "_" . $food->categoria;
 
         $food->save();
         return response()->json($food);

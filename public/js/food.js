@@ -73,24 +73,24 @@ var tempr;
 $(document).on("click" , "tr .btn-outline-info" , function(event){
 
   var target = $(event.target);
-  console.log(target.parents('tr'));
+  //console.log(target.parents('tr'));
 
   var tr = target.parents('tr');
-  console.log(tr.children('th').text());
+  //console.log(tr.children('th').text());
   tempr = tr;
   //recupero valori del prodotto
   var id = tr.children('th').text();
   var nome = tr.children('td').eq(0).text();
   // Prendo prima della x e tolgo gli spazi
-  var prezzo = tr.children('td').eq(1).text().split("x")[0].replace(/\s/g, '');
-  var unita = tr.children('td').eq(1).text().split("x")[1];
-  if(unita === undefined) {} else {unita.replace(/\s/g, '');}
+  var prezzoCad = tr.children('td').eq(1).text().split(" ");
+  var prezzo = prezzoCad[1];
+  var unita = prezzoCad[prezzoCad.length - 2];
+  console.log(prezzoCad + ". Prezzo: " + prezzo + ". Unità: " + unita);
   var descrizione = tr.children('td').eq(2).text();
 
   var capitolo = tr.children('td').eq(3).text();
   var categoria = tr.children('td').eq(4).text();
   var immagine = tr.children('td').eq(5).text();
-
 
   $('#idModal').val(id);
   $('#nomeModal').val(nome);
@@ -100,7 +100,6 @@ $(document).on("click" , "tr .btn-outline-info" , function(event){
   $('#capitoloModal').val(capitolo);
   $('#categoriaModal').val(categoria);
   $('#immagineModal').val(immagine);
-
 
   $('#foodModal').modal("show");
 

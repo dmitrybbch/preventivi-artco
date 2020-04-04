@@ -127,30 +127,30 @@ Prodotti
                 <div class="modal-body">
                     <form>
                         <div class="form-group row">
-                            <label for="idModal" class="col-md-4 col-form-label text-md-right">{{ __('Id') }}</label>
+                            <label for="idModal" class="col-md-4 col-form-label text-md-right">Id</label>
                             <div class="col-md-3">
                                 <input type="text" readonly class="form-control-plaintext" id="idModal" value="">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="nomeModal" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
+                            <label for="nomeModal" class="col-md-4 col-form-label text-md-right">Nome</label>
                             <div class="col-md-6">
                                 <input class="form-control" id="nomeModal" type="text">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="prezzoModal" class="col-md-4 col-form-label text-md-right">{{ __('Prezzo') }}</label>
+                            <label for="prezzoModal" class="col-md-4 col-form-label text-md-right">Prezzo</label>
                             <div class="col-md-6">
                                 <input class="form-control"id="prezzoModal" type="number" step="0.10">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="unitaModal" class="col-md-4 col-form-label text-md-right">{{ __('Unità') }}</label>
+                            <label for="unitaModal" class="col-md-4 col-form-label text-md-right">Unità</label>
                             <div class="col-sm-6">
-                                <textarea class="form-control" id="unitaModal"></textarea>
+                                <input list="unitaMisura" id="unitaModal" class="form-control"/>
                             </div>
                         </div>
 

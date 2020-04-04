@@ -22,7 +22,6 @@ class CreateFoodsTable extends Migration
 
             $table->string('capitolo')->nullable();
             $table->string('categoria')->nullable();
-
             $table->string('capitolo_categoria')->nullable();
 
             $table->string('immagine')->nullable();
