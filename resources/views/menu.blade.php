@@ -16,7 +16,7 @@ Prodotti
             <table class="table table-borderless" id="inseritiTable" data-sortable="true">
                 <thead class="bg-secondary text-white col-md-7">
                 <tr>
-                    <th scope="col" colspan ="7" class="d-md-table-cell">Ultime Inserite (aggiornare per metterle in tabella)</th>
+                    <th scope="col" colspan="8" class="d-md-table-cell">Ultime Inserite (aggiornare per metterle in tabella)</th>
                 </tr>
                 </thead>
             </table>
@@ -34,7 +34,7 @@ Prodotti
                         @if($capitoloTabella != ($capAttuale = explode(" - ", $food->capitolo)[0]))
                             <thead class="thead-light text-white" id={{$capAttuale}}>
                                 <tr>
-                                    <th scope="row" colspan="7" class="d-none d-md-table-cell">{{ $capAttuale }}</th>
+                                    <th scope="row" colspan="8" class="d-none d-md-table-cell">{{ $capAttuale }}</th>
                                 </tr>
                             </thead>
                             @php($capitoloTabella = $capAttuale)
@@ -49,7 +49,7 @@ Prodotti
                             <td><button type="button" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button><button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>
                     @endforeach
                 @else
-                <tr><td colspan="7">Nessun Prodotto</td></tr>
+                <tr><td colspan="8">Nessun Prodotto</td></tr>
                 @endif
                 </tbody>
             </table>
@@ -62,6 +62,17 @@ Prodotti
                 <div class="card-body">
                 <form id="form">
                     @csrf
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="capitolo">Capitolo:</label>
+                            <input list="capitoli" class="form-control"  name="capitolo" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="categoria">Categoria:</label>
+                            <input list="categorie" class="form-control" name="categoria" />
+                        </div>
+
+                    </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="nome">Nome</label>
@@ -82,17 +93,7 @@ Prodotti
                             <textarea class="form-control" id="descrizione" name="descrizione"></textarea>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="capitolo">Capitolo:</label>
-                                <input list="capitoli" class="form-control"  name="capitolo" />
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="categoria">Categoria:</label>
-                                <input list="categorie" class="form-control" name="categoria" />
-                        </div>
 
-                    </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="immagine">Immagine</label><br>
