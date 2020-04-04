@@ -24,7 +24,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-light">
-          <a class="navbar-brand" href="{{ route('tables') }}">{{-- {{ config('app.name') }} --}} <img src="{{URL::asset('/img/artco_logo_trasp_slim.png')}}" class="align-middle" alt="ArtCO" style="max-height: 19px; width:auto"> </a>
+          <a class="navbar-brand" href="{{ route('menu') }}">{{-- {{ config('app.name') }} --}} <img src="{{URL::asset('/img/artco_logo_trasp_slim.png')}}" class="align-middle" alt="ArtCO" style="max-height: 19px; width:auto"> </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -35,9 +35,12 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ url('menu') }}">Forniture</a>
               </li>
-              <li class="nav-item">
+                {{--
+                <li class="nav-item">
                 <a class="nav-link" href="{{ url('categories') }}">Categorie</a>
               </li>
+                --}}
+
               <li class="nav-item">
                     <a class="nav-link" href="{{ url('users') }}">Utenti</a>
               </li>

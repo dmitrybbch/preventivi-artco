@@ -30,8 +30,9 @@ Prodotti
                 <tbody>
                 @if( count($foods) )
                     @php($capitoloTabella = "nuffin")
-                    @foreach($foods->sortBy('capitolo') as $food)
-                        @if($capitoloTabella != ($capAttuale = explode(" - ", $food->capitolo)[0]))
+                    @foreach($foods->sortBy('capitolo_categoria') as $food)
+                        @php(logger($food->capitolo_categoria))
+                        @if($capitoloTabella != ($capAttuale = $food->capitolo))
                             <thead class="thead-light text-white" id={{$capAttuale}}>
                                 <tr>
                                     <th scope="row" colspan="8" class="d-none d-md-table-cell">{{ $capAttuale }}</th>
@@ -43,13 +44,13 @@ Prodotti
                             <td>{{ $food->nome }}</td>
                             <td>€ {{ $food->prezzo }}  @if($food->unita) x {{ $food->unita }}@endif </td>
                             <td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $food->capitolo }}</td>
+                            <td class="d-none d-sm-table-cell" headers="{{ $food->capitolo }}">{{ $food->capitolo }}</td>
                             <td class="d-none d-sm-table-cell">{{ $food->categoria }}</td>
                             <td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $food->immagine)}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"></td>
                             <td><button type="button" class="btn btn-outline-danger mr-2"><i class="far fa-trash-alt"></i></button><button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>
                     @endforeach
                 @else
-                <tr><td colspan="8">Nessun Prodotto</td></tr>
+                <tr><td colspan="8">Nessuna Fornitura</td></tr>
                 @endif
                 </tbody>
             </table>

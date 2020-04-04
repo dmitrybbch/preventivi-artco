@@ -23,14 +23,20 @@ class DatabaseSeeder extends Seeder
             'nome' => 'Sedia di legno',
             'prezzo' => '1.20',
             'descrizione' => 'Una bella sedia di compensato.',
-            'categoria' => 'ABC - BBB',
+
+            'capitolo' => 'EEE',
+            'categoria' => 'BBB',
+            'capitolo_categoria' => 'EEE_BBB'
         ]);
 
         DB::table('foods')->insert([
             'nome' => 'WC',
             'prezzo' => '1.00',
             'descrizione' => 'Heh!',
-            'categoria' => 'BCD - BBB',
+
+            'capitolo' => 'EEE',
+            'categoria' => 'BBB',
+            'capitolo_categoria' => 'EEE_BBB'
 
         ]);
 
@@ -41,14 +47,17 @@ class DatabaseSeeder extends Seeder
             'descrizione' => 'Un vaso o una mappa?',
             'capitolo' => 'EEE',
             'categoria' => 'AAA',
+            'capitolo_categoria' => 'EEE_AAA'
         ]);
 
         DB::table('foods')->insert([
             'nome' => 'Letto matrimoniale per nani.',
             'prezzo' => '2.50',
             'descrizione' => 'Quindi un letto singolo.',
+
             'capitolo' => 'EEE',
             'categoria' => 'AAA',
+            'capitolo_categoria' => 'EEE_AAA'
         ]);
         DB::table('foods')->insert([
             'nome' => 'Bomba Nucleare',
@@ -56,6 +65,7 @@ class DatabaseSeeder extends Seeder
             'descrizione' => 'Il sogno di Mohammad.',
             'capitolo' => 'HEYH',
             'categoria' => 'Demolizioni',
+            'capitolo_categoria' => 'HEYH_Demolizioni'
         ]);
 
         DB::table('chapters')->insert([

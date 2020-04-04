@@ -7,27 +7,31 @@ $.ajaxSetup({
 
 
 function newFood(){
-  var fd = new FormData($('#form')[0]);
-  console.log(fd);
-  $.ajax({
-    url:'/menu',
-    method: "POST",
-    data: fd,
-    cache: false,
-    processData: false,
-    contentType: false,
-    success: function(food) {
+    var fd = new FormData($('#form')[0]);
+    console.log('Inserisco una fornitura di capitolo: ' + fd.get("nome"));
+    //fd.append("capitolo_categoria", fd.get("capitolo") + "_" + fd.get("categoria"));
 
-        //$('#'+ $.trim(food.categoria)).after('<tr><td>LELLELELE</td></tr>');
-        //$("#foodTable").find("thead");
-        $('#inseritiTable').append('<tr><th scope="row">' + food.id + '</th><td>' + food.nome + '</td><td>€ ' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + food.descrizione + '</td><td class="d-none d-sm-table-cell">' + food.capitolo + '</td><td class="d-none d-sm-table-cell">' + food.categoria + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/'+ food.immagine +'" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td> <td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');
-        //$('#inseritiTable').show();
+    $.ajax({
+        url:'/menu',
+        method: "POST",
+        data: fd,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success: function(food) {
 
-    }
+            //$('#'+ $.trim(food.categoria)).after('<tr><td>LELLELELE</td></tr>');
+            //$("#foodTable").find("thead");
+            //Controllo se esiste il thead del suo capitolo. Se non esiste chissà cosa stampa
+            console.log("Capitolo intabellato di questo prodotto: " + $('#'+ food.capitolo));//.children('tr').children('td').eq(1).text());
 
+            //Inserisco nella tabella sopra, degli appena inseriti
+            $('#inseritiTable').append('<tr><th scope="row">' + food.id + '</th><td>' + food.nome + '</td><td>€ ' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + food.descrizione + '</td><td class="d-none d-sm-table-cell">' + food.capitolo + '</td><td class="d-none d-sm-table-cell">' + food.categoria + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/'+ food.immagine +'" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td> <td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');
+            //$('#inseritiTable').show();
 
-  });
+        }
 
+    });
 
   /*
   $.ajax({
@@ -155,7 +159,7 @@ function doSearch(input){
                     $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td><td class="d-none d-sm-table-cell">' + (food.capitolo ? food.capitolo : "") + '</td><td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td><td class="d-none d-sm-table-cell">' + (food.immagine ? food.immagine : "") + '</td><td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');        })
             }
             else{
-                $('tbody').html('<tr><td colspan="7">Nessun risultato per "' + input + '"</td></tr>');
+                $('tbody').html('<tr><td colspan="8">Nessun risultato per "' + input + '"</td></tr>');
             }
         }
     })

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect('tables');
+    return redirect('menu');
 });
 
 Auth::routes();

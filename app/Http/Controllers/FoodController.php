@@ -42,6 +42,7 @@ class FoodController extends Controller
 
         $food->capitolo = $input['capitolo'];
         $food->categoria = $input['categoria'];
+        $food->capitolo_categoria = $food->capitolo . "_" . $food->categoria;
 
 
         if($request->hasFile('immagine')){

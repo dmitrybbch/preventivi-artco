@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Food extends Model
 {
     protected $fillable = [
-        'nome', 'prezzo' , 'unita', 'descrizione', 'capitolo', 'categoria', 'immagine',
+        'nome', 'prezzo' , 'unita', 'descrizione', 'capitolo', 'categoria', 'capitolo_categoria', 'immagine',
     ];
 
     public function scopeSearch($query, $input)
