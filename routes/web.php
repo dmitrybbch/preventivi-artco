@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect('menu');
+    return redirect('tables');
 });
 
 Auth::routes();
@@ -33,8 +33,7 @@ Route::post('/table', 'TableController@add');
 Route::patch('/table', 'TableController@update');
 Route::delete('/table', 'TableController@empty');
 
-// Quotations
-Route::get('/quots', 'TablesController@index')->name('tables');
+
 
 // Forniture
 Route::get('/menu', 'FoodController@index')->name('menu');
