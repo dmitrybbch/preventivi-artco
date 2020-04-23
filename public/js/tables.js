@@ -115,52 +115,58 @@ function getTables(){
 }
 
 function newTable(){
-  console.log('new');
-  var n = $('#nTable').val();
-  $.ajax({
-    url: '/tables',
-    method: 'POST',
-    data: {n: n},
-    success: function(tables){
-      //console.log(user);
-      Array.from(tables).forEach(function(table){
-        var html = '<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">\n' +
-            '<div class="card" data-id="' + table.id + '">\n' +
-                '<div class="card-header">\n' +
-                  '<div class="input-group">\n' +
-                    '<input type="text" class="form-control" value="Prev. ' + table.id + '">\n' +
-                    '<div class="input-group-append">\n' +
-                      '<button class="btn btn-outline-danger deleteBtn" type="button"><i class="far fa-trash-alt"></i></button>\n' +
+    var prev = $("#nomePrevInput").val();
+    console.log('Inserisco: '+ prev);
+
+
+    $.ajax({
+        url: '/tables',
+        method: 'POST',
+        data: {prev: prev},
+
+        success: function(tables){
+          //console.log(user);
+            /*
+            Array.from(tables).forEach(function(table){
+            var html = '<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3">\n' +
+                '<div class="card" data-id="' + table.id + '">\n' +
+                    '<div class="card-header">\n' +
+                      '<div class="input-group">\n' +
+                        '<input type="text" class="form-control" value="Prev. ' + table.id + '">\n' +
+                        '<div class="input-group-append">\n' +
+                          '<button class="btn btn-outline-danger deleteBtn" type="button"><i class="far fa-trash-alt"></i></button>\n' +
+                        '</div>\n' +
+                      '</div>\n' +
                     '</div>\n' +
-                  '</div>\n' +
+                    '<div class="card-body">\n' +
+                      'Vuoto\n' +
+                    '</div>\n' +
+                    '<div class="card-footer">\n' +
+                      'Totale: 0€\n' +
+                    '</div>\n' +
                 '</div>\n' +
-                '<div class="card-body">\n' +
-                  'Vuoto\n' +
-                '</div>\n' +
-                '<div class="card-footer">\n' +
-                  'Totale: 0€\n' +
-                '</div>\n' +
-            '</div>\n' +
-        '</div>\n';
-        $(html).insertBefore('#newTable');
-      })
+            '</div>\n';
+            $(html).insertBefore('#newTable');
+          })
 
-      $('.deleteBtn').click(function(btn){
-        $(this).attr("disabled","disabled");
-        var card = $(this).parents('div .card');
+          $('.deleteBtn').click(function(btn){
+            $(this).attr("disabled","disabled");
+            var card = $(this).parents('div .card');
 
-        $.ajax({
-          url: '/tables',
-          method: 'DELETE',
-          data: {id: card.data('id')},
-          success: function(result){
-            console.log(result);
-            console.log(card.parents('div')[0].remove());
-          }
-        })
-      })
+            $.ajax({
+              url: '/tables',
+              method: 'DELETE',
+              data: {id: card.data('id')},
+              success: function(result){
+                console.log(result);
+                console.log(card.parents('div')[0].remove());
+              }
+            })
+          })
+        * */
+
     }
-  })
+    })
 }
 
 $('.card').click(function(event){

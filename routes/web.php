@@ -20,7 +20,7 @@ Auth::routes();
 // Tables
 Route::get('/tables', 'TablesController@index')->name('tables');
 Route::get('/tables/get', 'TablesController@get');
-Route::post('/tables', 'TablesController@create')->middleware('is_admin');
+Route::post('/tables', 'TablesController@create');
 Route::patch('/tables', 'TablesController@update')->middleware('is_admin');
 Route::delete('/tables', 'TablesController@destroy')->middleware('is_admin');
 
@@ -33,6 +33,8 @@ Route::post('/table', 'TableController@add');
 Route::patch('/table', 'TableController@update');
 Route::delete('/table', 'TableController@empty');
 
+// Quotations
+Route::get('/quots', 'TablesController@index')->name('tables');
 
 // Forniture
 Route::get('/menu', 'FoodController@index')->name('menu');

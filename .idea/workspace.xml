@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8de6ddee-b259-45aa-aa47-acf52695d548" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/quotations/quots.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/food.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/food.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TablesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TablesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/tables.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/tables.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tables/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tables/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,15 +165,15 @@
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/resources/fonts" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views" />
       <recent name="$PROJECT_DIR$/public/js" />
       <recent name="$PROJECT_DIR$/resources/fonts" />
       <recent name="$PROJECT_DIR$/resources/print" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/resources/fonts" />
     </key>
   </component>
   <component name="RunManager">
@@ -251,7 +254,11 @@
       <workItem from="1585766025851" duration="10645000" />
       <workItem from="1585840699199" duration="22000" />
       <workItem from="1585931606702" duration="598000" />
-      <workItem from="1586017263253" duration="15557000" />
+      <workItem from="1586017263253" duration="15671000" />
+      <workItem from="1586113392162" duration="10000" />
+      <workItem from="1587054153789" duration="13353000" />
+      <workItem from="1587570398920" duration="6388000" />
+      <workItem from="1587661130970" duration="3170000" />
     </task>
     <servers />
   </component>
@@ -308,15 +315,16 @@
       <screen x="1920" y="0" width="1366" height="768" />
     </state>
     <state x="2336" y="141" width="524" height="479" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585523946384" />
-    <state x="2421" y="309" width="354" height="142" key="NewPhpFileDialog" timestamp="1585432508383">
-      <screen x="1920" y="0" width="1366" height="768" />
+    <state x="830" y="418" width="354" height="142" key="NewPhpFileDialog" timestamp="1587056570911">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="830" y="418" width="354" height="142" key="NewPhpFileDialog/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587056570911" />
     <state x="2421" y="309" width="354" height="142" key="NewPhpFileDialog/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585432508383" />
-    <state x="366" y="735" key="com.intellij.ide.util.TipDialog" timestamp="1586017271227">
+    <state x="366" y="735" key="com.intellij.ide.util.TipDialog" timestamp="1587661130902">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="366" y="1319" key="com.intellij.ide.util.TipDialog/0.0.1920.1848@0.0.1920.1848" timestamp="1585937688840" />
-    <state x="366" y="735" key="com.intellij.ide.util.TipDialog/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1586017271227" />
+    <state x="366" y="735" key="com.intellij.ide.util.TipDialog/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587661130902" />
     <state x="514" y="324" key="com.intellij.ide.util.TipDialog/0.40.1920.1040/0.1080.1366.768@0.40.1920.1040" timestamp="1585840703906" />
     <state x="2286" y="210" key="com.intellij.ide.util.TipDialog/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585753510710" />
     <state x="505" y="55" width="910" height="1008" key="find.popup" timestamp="1585778117025">
@@ -324,10 +332,10 @@
     </state>
     <state x="505" y="55" width="910" height="1008" key="find.popup/0.40.1920.1040/0.1080.1366.768@0.40.1920.1040" timestamp="1585778117025" />
     <state x="2279" y="11" width="647" height="744" key="find.popup/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585502632283" />
-    <state x="488" y="239" key="run.anything.popup" timestamp="1586028769804">
+    <state x="488" y="239" width="672" height="677" key="run.anything.popup" timestamp="1587066798654">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="488" y="239" key="run.anything.popup/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1586028769804" />
+    <state x="488" y="239" width="672" height="677" key="run.anything.popup/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587066798654" />
     <state x="2267" y="170" key="run.anything.popup/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585607516379" />
     <state x="486" y="125" width="945" height="954" key="search.everywhere.popup" timestamp="1586029742319">
       <screen x="0" y="0" width="1920" height="1080" />

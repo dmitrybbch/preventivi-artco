@@ -30,11 +30,11 @@ class TablesController extends Controller
     public function get()
     {
         if($tables = Table::all()){
-          foreach ($tables as $key => $table) {
-            $table->countOrders = $table->countOrders();
-            $table->totalOrders = round($table->totalOrders(), 2);
-          }
-          return response()->json($tables);
+            foreach ($tables as $key => $table) {
+                $table->countOrders = $table->countOrders();
+                $table->totalOrders = round($table->totalOrders(), 2);
+            }
+            return response()->json($tables);
         }
 
     }
@@ -42,16 +42,12 @@ class TablesController extends Controller
     public function create(Request $request)
     {
         $input = $request->all();
+        logger($input['prev']);
+        $preventivo = new Table;
+        $preventivo->nomeTavolo = $input['prev'];
+        $preventivo->save();
 
-        $tables = array();
-        for($i = 0; $i < $input['n']; $i++){
-          $table = new Table;
-          $table->save();
-
-          $tables[] = $table;
-        }
-
-        return $tables;
+        return response()->json($preventivo);
     }
 
     public function update(Request $request)
