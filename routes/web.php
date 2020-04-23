@@ -33,8 +33,6 @@ Route::post('/table', 'TableController@add');
 Route::patch('/table', 'TableController@update');
 Route::delete('/table', 'TableController@empty');
 
-
-
 // Forniture
 Route::get('/menu', 'FoodController@index')->name('menu');
 Route::post('/menu', 'FoodController@create');

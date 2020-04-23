@@ -33,7 +33,7 @@
             <ul class="navbar-nav mr-auto">
 
               <li class="nav-item">
-                <a class="nav-link" href="{{ url('menu') }}">Forniture</a>
+                <a class="nav-link" href="{{ url('menu') }}"><i class="fas fa-chair"></i> Forniture</a>
               </li>
                 {{--
                 <li class="nav-item">
@@ -42,7 +42,7 @@
                 --}}
 
               <li class="nav-item">
-                    <a class="nav-link" href="{{ url('users') }}">Utenti</a>
+                  <a class="nav-link" href="{{ url('users') }}"><i class="fas fa-user"></i> Utenti</a>
               </li>
 
             </ul>

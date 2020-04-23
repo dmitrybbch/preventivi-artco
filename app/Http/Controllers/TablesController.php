@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Table;
+use Illuminate\Support\Facades\Auth;
+
 
 class TablesController extends Controller
 {
@@ -45,6 +47,7 @@ class TablesController extends Controller
         logger($input['prev']);
         $preventivo = new Table;
         $preventivo->nomeTavolo = $input['prev'];
+        $preventivo->creatoDa = Auth::user()->username;
         $preventivo->save();
 
         return response()->json($preventivo);
