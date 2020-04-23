@@ -29,7 +29,7 @@ class TablesController extends Controller
         return view('tables.show', ['tables' => Table::all()]);
     }
 
-    public function get()
+    public function get()  // Restituisce tutti i tavoli con conto degli ordini e prezzo totale
     {
         if($tables = Table::all()){
             foreach ($tables as $key => $table) {

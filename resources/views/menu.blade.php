@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Prodotti
+Forniture
 @endsection
 
 @section('content')

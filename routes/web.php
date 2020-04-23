@@ -46,6 +46,9 @@ Route::post('/categories', 'CategoriesController@store');
 Route::post('/categories/create_section', 'CategoriesController@store');
 Route::delete('/categories', 'CategoriesController@destroy');
 
+// Quotes
+Route::get('/clients', 'ClientController@index');
+
 // Users
 Route::get('/users', 'AdminController@users')->name('users');
 Route::post('/users', 'AdminController@create')->name('users');

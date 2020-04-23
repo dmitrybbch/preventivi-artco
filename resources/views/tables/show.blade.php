@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Preventivi
+@endsection
+
 @section('content')
 <div class="container-fluid">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
