@@ -169,10 +169,9 @@ function newTable(){
     })
 }
 
-$('.card').click(function(event){
-  if(!mod){
+$('.prevTr').click(function(event){
+
     var id = $(this).data('id');
     window.location = '/table/' + id;
-  }
 });
 

@@ -40,12 +40,12 @@
             </thead>
             <tbody>
                 @foreach($tables as $table)
-                    <tr class="">
+                    <tr class="prevTr" style="cursor: pointer" data-id="{{ $table->id }}">
                         <td class="d-none d-md-table-cell">{{ $table->id }}</td>
                         <td>{{ $table->nomeTavolo }}</td>
                         <td>{{ $table->cliente }}</td>
                         <td></td>
-                        <td class="text-right"> <button type="button" class="btn btn-sm btn-outline-danger mr-2"><i class="far fa-trash-alt"> Cancella </i></button> </td>
+                        <td class="text-right"><!-- <button type="button" class="btn btn-sm btn-outline-danger mr-2"><i class="far fa-trash-alt"> Cancella </i></button>--> </td>
                     </tr>
                 @endforeach
             </tbody>

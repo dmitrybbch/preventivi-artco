@@ -70,7 +70,7 @@
 
 
           @else
-            <tr><td colspan="8">Nessuna Fornitura</td></tr>
+            <tr><td colspan="9">Nessuna Fornitura</td></tr>
           @endif
         </tbody>
           <tfoot class="bg-secondary text-white">
