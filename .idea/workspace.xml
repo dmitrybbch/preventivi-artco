@@ -2,16 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8de6ddee-b259-45aa-aa47-acf52695d548" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Client.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_04_23_214626_create_clients_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/clients.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/client.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TablesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TablesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Table.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_04_23_214626_create_clients_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_04_23_214626_create_clients_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/clients.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/clients.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/menu.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/tables/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tables/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/tables/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tables/view.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -264,6 +262,8 @@
       <workItem from="1587054153789" duration="13353000" />
       <workItem from="1587570398920" duration="6388000" />
       <workItem from="1587661130970" duration="12313000" />
+      <workItem from="1587744018170" duration="1126000" />
+      <workItem from="1587761187023" duration="4973000" />
     </task>
     <servers />
   </component>
@@ -316,20 +316,21 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="712" y="144" width="476" height="821" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.40.1920.1040/0.1080.1366.768@0.40.1920.1040" timestamp="1585767560222" />
-    <state x="2336" y="141" width="524" height="479" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1585523946384">
-      <screen x="1920" y="0" width="1366" height="768" />
+    <state x="585" y="198" width="524" height="479" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1587762354124">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
+    <state x="585" y="198" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587762354124" />
     <state x="2336" y="141" width="524" height="479" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585523946384" />
     <state x="830" y="418" width="354" height="142" key="NewPhpFileDialog" timestamp="1587680628613">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="830" y="418" width="354" height="142" key="NewPhpFileDialog/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587680628613" />
     <state x="2421" y="309" width="354" height="142" key="NewPhpFileDialog/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585432508383" />
-    <state x="366" y="735" key="com.intellij.ide.util.TipDialog" timestamp="1587661130902">
+    <state x="403" y="623" key="com.intellij.ide.util.TipDialog" timestamp="1587761190110">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="366" y="1319" key="com.intellij.ide.util.TipDialog/0.0.1920.1848@0.0.1920.1848" timestamp="1585937688840" />
-    <state x="366" y="735" key="com.intellij.ide.util.TipDialog/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587661130902" />
+    <state x="403" y="623" key="com.intellij.ide.util.TipDialog/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587761190110" />
     <state x="514" y="324" key="com.intellij.ide.util.TipDialog/0.40.1920.1040/0.1080.1366.768@0.40.1920.1040" timestamp="1585840703906" />
     <state x="2286" y="210" key="com.intellij.ide.util.TipDialog/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585753510710" />
     <state x="505" y="55" width="910" height="1008" key="find.popup" timestamp="1585778117025">

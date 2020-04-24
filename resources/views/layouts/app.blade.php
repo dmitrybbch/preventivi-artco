@@ -41,7 +41,7 @@
               </li>
                 --}}
               <li class="nav-item">
-                  <a class="nav-link" href="{{ url('users') }}"><i class="fas fa-handshake"></i> Clienti</a>
+                  <a class="nav-link" href="{{ url('clients') }}"><i class="fas fa-handshake"></i> Clienti</a>
               </li>
 
               <li class="nav-item">

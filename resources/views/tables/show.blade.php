@@ -33,7 +33,7 @@
         </form>
 
         <table class="table table-sm table-hover table-bordereless table-striped" id="quotesTable" data-sortable="true">
-            <thead class="bg-secondary text-white">
+            <thead class="bg-dark text-white">
             <tr>
                 <th scope="col" class="d-none d-md-table-cell">id</th>
                 <th scope="col">Nome Preventivo</th>

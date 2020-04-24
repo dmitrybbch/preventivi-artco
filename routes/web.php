@@ -46,7 +46,7 @@ Route::post('/categories', 'CategoriesController@store');
 Route::post('/categories/create_section', 'CategoriesController@store');
 Route::delete('/categories', 'CategoriesController@destroy');
 
-// Quotes
+// Clients
 Route::get('/clients', 'ClientController@index');
 
 // Users

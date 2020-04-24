@@ -15,7 +15,6 @@ class Table extends Model
     public function orders()
     {
         $elenco = $this->hasMany('App\Order')->selectRaw('table_id, food_id, COUNT(food_id) AS total')->groupBy('food_id')->get();
-
         return $elenco;
     }
 
