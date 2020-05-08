@@ -35,12 +35,29 @@ $('#cartBtn').click(function(e){
         method: 'GET',
         success: function(orders){
           if(orders.length){
-              $('thead').html('<tr><th scope="col" class="d-none d-md-table-cell">ID f.</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col">Unità</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Capitolo</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>');            $('tbody').html('');
+              $('thead').html('' +
+                  '<tr><th scope="col" class="d-none d-md-table-cell">ID f.</th>' +
+                  '<th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th>' +
+                  '<th scope="col">Unità</th><th scope="col">Quantità</th>' +
+                  '<th scope="col" class="d-none d-sm-table-cell">Descrizione</th>' +
+                  '<th scope="col" class="d-none d-sm-table-cell">Capitolo</th>' +
+                  '<th scope="col" class="d-none d-sm-table-cell">Categoria</th>' +
+                  '<th scope="col" class="d-none d-sm-table-cell">Immagine</th>' +
+                  '<th scope="col">Opzioni</th></tr>');
+              $('tbody').html('');
 
               orders.sort( compare );
 
               orders.forEach(function(food){
-              $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + '€</td><td>' + food.unita + '</td><td>' + food.total + '</td><td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td><td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td><td><button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle"></i></button><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>');            })
+              $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th>' +
+                  '<td>' + food.nome + '</td>' +
+                  '<td>' + food.prezzo + '€</td>' +
+                  '<td>' + food.unita + '</td>' +
+                  '<td>' + food.total + '</td>' +
+                  '<td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td>' +
+                  '<td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td>' +
+                  '<td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td>' +
+                  '<td><button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle"></i></button><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>');            })
           } else{
             $('tbody').html('<tr><td colspan="5">Nessun ordine.</td></tr>');
           }
@@ -122,14 +139,31 @@ function doSearch(input){
       res.results.sort( compare ); // Faccio il sort degli oggetti per categoria, vedi funz COMPARE
       //console.log(res.results);
       if(res.results.length){
-        $('thead').html('<tr><th scope="col" class="d-none d-md-table-cell">ID</th><th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th><th scope="col">Unità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th></tr>')
+        $('thead').html('<tr><th scope="col" class="d-none d-md-table-cell">ID</th><th scope="col">Nome Prodotto</th>' +
+            '<th scope="col">Prezzo</th>' +
+            '<th scope="col">Unità</th>' +
+            '<th scope="col" class="d-none d-sm-table-cell">Descrizione</th>' +
+            '<th scope="col" class="d-none d-sm-table-cell">Capitolo</th>' +
+            '<th scope="col" class="d-none d-sm-table-cell">Categoria</th>' +
+            '<th scope="col" class="d-none d-sm-table-cell">Immagine</th>' +
+            '<th scope="col">Opzioni</th></tr>')
         $('tbody').html('');
 
         res.results.forEach(function(food){
-            $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + '€</td><td>' + (food.unita ? food.unita : "") + '</td><td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td><td class="d-none d-sm-table-cell">' + (food.capitolo ? food.capitolo : "") + '</td><td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td><td><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>');        })
+            $('tbody').append('' +
+                '<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th>' +
+                '<td>' + food.nome + '</td>' +
+                '<td>' + food.prezzo + '€</td>' +
+                '<td>' + (food.unita ? food.unita : "") + '</td>' +
+                '<td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td>' +
+                '<td class="d-none d-sm-table-cell">' + (food.capitolo ? food.capitolo : "") + '</td>' +
+                '<td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td>' +
+                '<td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td>' +
+                '<td><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>');
+        })
       }
       else{
-        $('tbody').html('<tr><td colspan="5">Nessun risultato per "' + input + '"</td></tr>');
+        $('tbody').html('<tr><td colspan="9">Nessun risultato per "' + input + '"</td></tr>');
       }
     }
 
@@ -145,7 +179,7 @@ $(document).on('click', 'tr .btn-outline-success', function(event){
   //recupero valori del prodotto
   var id = tr.children('th').text();
   var total = tr.children('td').eq(2);
-  addFood(id, total); //richiamo la funzione di aggiunta
+  addFood(id, total); // Richiamo la funzione di aggiunta
 })
 
 //funzione click del bottone di cancellazione un prodotto dall'ordine
@@ -162,7 +196,7 @@ $(document).on('click', 'tr .btn-outline-danger', function(event){
 })
 
 
-//funzione di aggiunta prodotto all'ordine
+// Funzione di aggiunta prodotto all'ordine
 function addFood(id, total){
   console.log('id: ' + id);
   $.ajax({

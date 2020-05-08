@@ -16,7 +16,10 @@ class Order extends Model
       'table_id', 'food_id',
   ];
 
-  public function table()
+
+
+
+    public function table()
   {
       return $this->belongsTo('App\Table', 'table_id');
   }
@@ -25,5 +28,6 @@ class Order extends Model
   {
       return $this->hasOne('App\Food', 'id', 'food_id')->get()[0];
   }
+
 
 }

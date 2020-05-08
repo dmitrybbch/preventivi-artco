@@ -16,6 +16,8 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->integer('table_id')->unsigned();
             $table->integer('food_id')->unsigned();
+            $table->integer('amount')->unsigned();
+            $table->float('add_percent');
             $table->timestamps();
         });
 
