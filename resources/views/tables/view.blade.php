@@ -150,17 +150,17 @@
                 <br>
                 <div class="card">
                     <div class="card-header bg-dark text-white">
-                        <strong>Forniture</strong>
+                        <div class="mb-2 mb-md-0 mr-auto ml-0">
+                            <form class="form-inline">
+                                <input type="text" id="searchBox" style="display: none;" class="form-control mr-0"
+                                       placeholder="Search">
+                                <button type="button" id="cartBtn" class="text-white btn btn-secondary"><strong>Forniture</strong></button>
+                            </form>
+                        </div>
                     </div>
 
                     <div class="card-body" id="card-body">
-                        <div class="mb-2 mb-md-0 mr-auto ml-2">
-                            <form class="form-inline">
-                                <input type="text" id="searchBox" style="display: none;" class="form-control mr-1"
-                                       placeholder="Search">
-                                <button type="button" id="cartBtn" class="btn btn-outline-info">Forniture</button>
-                            </form>
-                        </div>
+
                     </div>
 
                     <div class="card-footer">

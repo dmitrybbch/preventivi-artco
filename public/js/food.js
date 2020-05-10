@@ -5,33 +5,32 @@ $.ajaxSetup({
 });
 
 
-
-function newFood(){
+function newFood() {
     var fd = new FormData($('#form')[0]);
     console.log('Inserisco una fornitura di capitolo: ' + fd.get("nome"));
     //fd.append("capitolo_categoria", fd.get("capitolo") + "_" + fd.get("categoria"));
 
     $.ajax({
-        url:'/menu',
+        url: '/menu',
         method: "POST",
         data: fd,
         cache: false,
         processData: false,
         contentType: false,
-        success: function(food) {
+        success: function (food) {
             console.log("Cerco l'header #" + (food.capitolo).split(' ').join('_'));
 
             //Inserisco nella tabella sopra, degli appena inseriti
-            $('#inseritiTable').append('<tr><th scope="row">' + food.id + '</th><td>' + food.nome + '</td><td>€ ' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + food.descrizione + '</td><td class="d-none d-sm-table-cell">' + food.capitolo + '</td><td class="d-none d-sm-table-cell">' + food.categoria + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/'+ food.immagine +'" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td> <td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');
+            $('#inseritiTable').append('<tr><th scope="row">' + food.id + '</th><td>' + food.nome + '</td><td>€ ' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + food.descrizione + '</td><td class="d-none d-sm-table-cell">' + food.capitolo + '</td><td class="d-none d-sm-table-cell">' + food.categoria + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td> <td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');
 
             // Se trovo l'header giusto (il capitolo), inserisco.
-            var header = $('#'+ (food.capitolo).split(' ').join('_')).children('th').eq(0).text();
+            var header = $('#' + (food.capitolo).split(' ').join('_')).children('th').eq(0).text();
             var headerSelect = $('#' + header);
 
-            if(!headerSelect.length)
+            if (!headerSelect.length)
                 $('#foodTable').append('' +
-                    '<tr id="' + (food.capitolo).split(' ').join('_') +'" class="thead-light text-white">' +
-                    '<th scope="row" colspan="8" class="d-none d-md-table-cell">' + (food.capitolo).split(' ').join('_') +'</th>' +
+                    '<tr id="' + (food.capitolo).split(' ').join('_') + '" class="thead-light text-white">' +
+                    '<th scope="row" colspan="8" class="d-none d-md-table-cell">' + (food.capitolo).split(' ').join('_') + '</th>' +
                     '</tr>');
 
             // Poi inserisco nell'header
@@ -43,7 +42,7 @@ function newFood(){
                 '<td class="d-none d-sm-table-cell">' + food.descrizione + '</td>' +
                 '<td class="d-none d-sm-table-cell">' + food.capitolo + '</td>' +
                 '<td class="d-none d-sm-table-cell">' + food.categoria + '</td>' +
-                '<td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/'+ food.immagine +'" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td>' +
+                '<td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td>' +
                 '<td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td>' +
                 '</tr>');
         }
@@ -54,66 +53,66 @@ function newFood(){
 }
 
 //delete food
-$(document).on("click" , "tr .btn-outline-danger" , function(event){
+$(document).on("click", "tr .btn-outline-danger", function (event) {
 
     var resp = confirm("Confermare la cancellazione?");
-    if(resp == true){
-      var target = $(event.target);
-      console.log(target.parents('tr'));
+    if (resp == true) {
+        var target = $(event.target);
+        console.log(target.parents('tr'));
 
-      var tr = target.parents('tr');
-      console.log(tr.children('th').text());
+        var tr = target.parents('tr');
+        console.log(tr.children('th').text());
 
-      $.ajax({
-        url: '/menu',
-        method: "DELETE",
-        data: {id: tr.children('th').text() },
-        success: function(){
-          tr.remove();
-        }
-      })
+        $.ajax({
+            url: '/menu',
+            method: "DELETE",
+            data: {id: tr.children('th').text()},
+            success: function () {
+                tr.remove();
+            }
+        })
     }
 })
 
 var tempr;
 
 //edit
-$(document).on("click" , "tr .btn-outline-info" , function(event){
+$(document).on("click", "tr .btn-outline-info", function (event) {
 
-  var target = $(event.target);
-  //console.log(target.parents('tr'));
+    var target = $(event.target);
+    //console.log(target.parents('tr'));
 
-  var tr = target.parents('tr');
-  //console.log(tr.children('th').text());
-  tempr = tr;
-  //recupero valori del prodotto
-  var id = tr.children('th').text();
-  var nome = tr.children('td').eq(0).text();
-  // Prendo prima della x e tolgo gli spazi
-  var prezzoCad = tr.children('td').eq(1).text().split(" ");
-  var prezzo = prezzoCad[1];
-  var unita = prezzoCad[prezzoCad.length - 2];
-  console.log(prezzoCad + ". Prezzo: " + prezzo + ". Unità: " + unita);
-  var descrizione = tr.children('td').eq(2).text();
-  var capitolo = tr.children('td').eq(3).text();
-  var categoria = tr.children('td').eq(4).text();
-  var immagine = tr.children('td').eq(5).text();
+    var tr = target.parents('tr');
+    //console.log(tr.children('th').text());
+    tempr = tr;
+    //recupero valori del prodotto
+    var id = tr.children('th').text();
+    var nome = tr.children('td').eq(0).text();
+    // Prendo prima della x e tolgo gli spazi
+    var prezzoCad = tr.children('td').eq(1).text().split(" ");
+    var prezzo = prezzoCad[1];
+    var unita = prezzoCad[prezzoCad.length - 2];
+    console.log(prezzoCad + ". Prezzo: " + prezzo + ". Unità: " + unita);
+    var descrizione = tr.children('td').eq(2).text();
+    var capitolo = tr.children('td').eq(3).text();
+    var categoria = tr.children('td').eq(4).text();
+    var immagine = tr.children('td').eq(5).text();
 
-  $('#idModal').val(id);
-  $('#nomeModal').val(nome);
-  $('#prezzoModal').val(prezzo);
-  $('#unitaModal').val(unita);
-  $('#descrizioneModal').val(descrizione);
-  $('#capitoloModal').val(capitolo);
-  $('#categoriaModal').val(categoria);
-  $('#immagineModal').val(immagine);
+    $('#idModal').val(id);
+    $('#nomeModal').val(nome);
+    $('#prezzoModal').val(prezzo);
+    $('#unitaModal').val(unita);
+    $('#descrizioneModal').val(descrizione);
+    $('#capitoloModal').val(capitolo);
+    $('#categoriaModal').val(categoria);
+    $('#immagineModal').val(immagine);
 
-  $('#foodModal').modal("show");
+    $('#foodModal').modal("show");
 
 })
 
 // conferma modifica prodotto
-$(document).on("click" , "#btnSave" , function(){
+$(document).on("click", "#btnSave", function () {
 
     var id = $('#idModal').val();
     var nome = $('#nomeModal').val();
@@ -128,8 +127,17 @@ $(document).on("click" , "#btnSave" , function(){
     $.ajax({
         url: '/menu',
         method: "PATCH",
-        data: {id : id, nome : nome , prezzo : prezzo, unita : unita, descrizione : descrizione, capitolo: capitolo, categoria : categoria, immagine : immagine},
-        success: function(res){ //recupero valori aggiornati
+        data: {
+            id: id,
+            nome: nome,
+            prezzo: prezzo,
+            unita: unita,
+            descrizione: descrizione,
+            capitolo: capitolo,
+            categoria: categoria,
+            immagine: immagine
+        },
+        success: function (res) { //recupero valori aggiornati
             tempr.children('td').eq(0).text(res.nome);
             tempr.children('td').eq(1).text(res.prezzo + " x " + res.unita);
             tempr.children('td').eq(2).text(res.descrizione);
@@ -139,32 +147,32 @@ $(document).on("click" , "#btnSave" , function(){
         }
     })
 
-  $('#foodModal').modal('toggle');
+    $('#foodModal').modal('toggle');
 
 })
 
-$("#searchBox").keyup(function(){
+$("#searchBox").keyup(function () {
     var input = $(this).val();
-    setTimeout(function() {
+    setTimeout(function () {
         doSearch(input);
     }, 800);
 
 })
 
-function doSearch(input){
+function doSearch(input) {
 
-    $.ajax ({
+    $.ajax({
         url: '/menu/search',
         method: "POST",
-        data: {input:input},
-        success: function(res){
+        data: {input: input},
+        success: function (res) {
             console.log(res);
-            if(res.results.length){
+            if (res.results.length) {
                 $('tbody').html("");
-                res.results.forEach(function(food){
-                    $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td><td class="d-none d-sm-table-cell">' + (food.capitolo ? food.capitolo : "") + '</td><td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td><td class="d-none d-sm-table-cell">' + (food.immagine ? food.immagine : "") + '</td><td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');        })
-            }
-            else{
+                res.results.forEach(function (food) {
+                    $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th><td>' + food.nome + '</td><td>' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td><td class="d-none d-sm-table-cell">' + (food.capitolo ? food.capitolo : "") + '</td><td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td><td class="d-none d-sm-table-cell">' + (food.immagine ? food.immagine : "") + '</td><td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');
+                })
+            } else {
                 $('tbody').html('<tr><td colspan="8">Nessun risultato per "' + input + '"</td></tr>');
             }
         }
