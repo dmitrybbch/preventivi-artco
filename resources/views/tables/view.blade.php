@@ -68,7 +68,6 @@
                                 <td class="total">{{$fornitura['add_percent']}}</td>
                                 <td class="d-none d-sm-table-cell">{{ $fornitura['capitolo'] }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $fornitura['categoria'] }}</td>
-
                                 {{--
                                 <td class="d-none d-sm-table-cell"><img
                                         src="{{URL::asset('img_uploads/'. $fornitura['immagine'])}}"
@@ -160,7 +159,11 @@
                     </div>
 
                     <div class="card-body" id="card-body">
+                        <table class="table table-striped" id="fornitureTable">
+                            <tbody>
 
+                            </tbody>
+                        </table>
                     </div>
 
                     <div class="card-footer">
