@@ -14,13 +14,7 @@
                     Prev. {{ $table->id }}
                 @endif
             </h1>
-            <div class="mb-2 mb-md-0 mr-auto ml-2">
-                <form class="form-inline">
-                    <input type="text" id="searchBox" style="display: none;" class="form-control mr-1"
-                           placeholder="Search">
-                    <button type="button" id="cartBtn" class="btn btn-outline-info">Forniture</button>
-                </form>
-            </div>
+
             <div class="btn-toolbar mb-2 mb-md-0">
                 <div class="btn-group mr-2" id="statusTable" role="group" aria-label="First group">
                     <button type="button" class="btn btn-outline-dark @if($table->stato == 'libero') active @endif"
@@ -38,7 +32,7 @@
 
         <div class="row">
 
-            <div class="col-md-9">
+            <div class="col-md-5">
                 <table class="table table-striped" id="foodTable">
                     <thead class="thead-dark">
                     <tr>
@@ -72,7 +66,6 @@
                                 <td>{{ $fornitura['descrizione'] }}</td>
                                 <td class="total">€ {{$fornitura['prezzo']}}</td>
                                 <td class="total">{{$fornitura['add_percent']}}</td>
-
                                 <td class="d-none d-sm-table-cell">{{ $fornitura['capitolo'] }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $fornitura['categoria'] }}</td>
 
@@ -113,7 +106,7 @@
 
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-7">
                 <div class="card">
                     <div class="card-header bg-dark text-white" id="numTotalePrev">
                         <strong>Dati aggiuntivi</strong>
@@ -152,6 +145,27 @@
                     <div class="card-footer">
                         <button type="button" class="btn btn-danger" id="emptyBtn">Svuota</button>
                         <button type="button" id="precontoBtn" class="btn btn-info">Anteprima Preventivo</button>
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <strong>Forniture</strong>
+                    </div>
+
+                    <div class="card-body" id="card-body">
+                        <div class="mb-2 mb-md-0 mr-auto ml-2">
+                            <form class="form-inline">
+                                <input type="text" id="searchBox" style="display: none;" class="form-control mr-1"
+                                       placeholder="Search">
+                                <button type="button" id="cartBtn" class="btn btn-outline-info">Forniture</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-danger" id="tgf">Svuota</button>
+                        <button type="button" class="btn btn-info">lullu Preventivo</button>
                     </div>
                 </div>
             </div>
