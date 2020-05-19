@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="8de6ddee-b259-45aa-aa47-acf52695d548" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TableController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TableController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/table.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/tables/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tables/view.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +161,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -264,7 +267,14 @@
       <workItem from="1588950759723" duration="7024000" />
       <workItem from="1589040413108" duration="1463000" />
       <workItem from="1589042717291" duration="3785000" />
-      <workItem from="1589126445150" duration="6293000" />
+      <workItem from="1589126445150" duration="6882000" />
+      <workItem from="1589210866037" duration="6849000" />
+      <workItem from="1589308668127" duration="1495000" />
+      <workItem from="1589562351428" duration="5718000" />
+      <workItem from="1589639727407" duration="9260000" />
+      <workItem from="1589728465478" duration="4025000" />
+      <workItem from="1589740369940" duration="1204000" />
+      <workItem from="1589899227442" duration="5690000" />
     </task>
     <servers />
   </component>
@@ -327,10 +337,10 @@
     </state>
     <state x="830" y="418" width="354" height="142" key="NewPhpFileDialog/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587680628613" />
     <state x="2421" y="309" width="354" height="142" key="NewPhpFileDialog/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585432508383" />
-    <state x="2384" y="188" width="992" height="737" key="SettingsEditor" timestamp="1588791009925">
+    <state x="2384" y="188" width="992" height="737" key="SettingsEditor" timestamp="1589574548012">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2384" y="188" width="992" height="737" key="SettingsEditor/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1588791009925" />
+    <state x="2384" y="188" width="992" height="737" key="SettingsEditor/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1589574548012" />
     <state x="403" y="623" key="com.intellij.ide.util.TipDialog" timestamp="1587761190110">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -338,11 +348,12 @@
     <state x="403" y="623" key="com.intellij.ide.util.TipDialog/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587761190110" />
     <state x="514" y="324" key="com.intellij.ide.util.TipDialog/0.40.1920.1040/0.1080.1366.768@0.40.1920.1040" timestamp="1585840703906" />
     <state x="2286" y="210" key="com.intellij.ide.util.TipDialog/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585753510710" />
-    <state x="505" y="55" width="910" height="1008" key="find.popup" timestamp="1585778117025">
-      <screen x="0" y="40" width="1920" height="1040" />
+    <state x="2425" y="27" width="910" height="1047" key="find.popup" timestamp="1589574575515">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="505" y="55" width="910" height="1008" key="find.popup/0.40.1920.1040/0.1080.1366.768@0.40.1920.1040" timestamp="1585778117025" />
     <state x="2279" y="11" width="647" height="744" key="find.popup/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585502632283" />
+    <state x="2425" y="27" width="910" height="1047" key="find.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1589574575515" />
     <state x="488" y="239" width="672" height="677" key="run.anything.popup" timestamp="1587066798654">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

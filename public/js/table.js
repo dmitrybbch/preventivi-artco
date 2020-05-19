@@ -11,9 +11,11 @@ $('#statusTable button').click(function () {
     var that = $(this);
 
     $('#badgeTable').text(that.text());
+    var id = window.location.href;
+    id = id.split("/");
 
     $.ajax({
-        url: '/table',
+        url: '/table/' + id,
         method: 'PATCH',
         dataType: 'html',
         data: {id: $('h1').data('id'), stato: that.val()},
@@ -35,9 +37,11 @@ $('#cartBtn').click(function (e) {
             method: 'GET',
             success: function (orders) {
                 if (orders.length) {
+                    /*
                     $('thead').html('' +
                         '<tr><th scope="col" class="d-none d-md-table-cell">ID f.</th>' +
-                        '<th scope="col">Nome Prodotto</th><th scope="col">Prezzo</th>' +
+                        '<th scope="col">Nome Prodotto</th>' +
+                        '<th scope="col">Prezzo</th>' +
                         '<th scope="col">Unità</th><th scope="col">Quantità</th>' +
                         '<th scope="col" class="d-none d-sm-table-cell">Descrizione</th>' +
                         '<th scope="col" class="d-none d-sm-table-cell">Capitolo</th>' +
@@ -58,7 +62,7 @@ $('#cartBtn').click(function (e) {
                             '<td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td>' +
                             '<td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td>' +
                             '<td><button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle"></i></button><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>');
-                    })
+                    })*/
                 } else {
                     $('tbody').html('<tr><td colspan="5">Nessun ordine.</td></tr>');
                 }
@@ -66,8 +70,7 @@ $('#cartBtn').click(function (e) {
         })
 
         $('#searchBox').hide(250);
-
-        $('tbody').html("");
+        $('#fornitureTable').html("");
     } else {
         that.text('Fine');
         cart = 1;
@@ -97,7 +100,6 @@ $("#bottoneBlasfemo").click(function () {
     }
 
     var obj = $.extend({}, arrayAssociativo);
-
     var urlPathname = window.location.pathname;
     console.log('Creato array associativo. Stringa splittata: ' + urlPathname); // /table/1
 
@@ -123,9 +125,7 @@ $("#searchBox").keyup(function () {
     setTimeout(function () {
         doSearch(input); //richiamo la funzione di ricerca di un prodotto
     }, 800);
-
 })
-
 
 //funzione per la ricerca
 function doSearch(input) {
@@ -139,23 +139,11 @@ function doSearch(input) {
             res.results.sort(compare); // Faccio il sort degli oggetti per categoria, vedi funz COMPARE
             //console.log(res.results);
             if (res.results.length) {
-                $('#fornitureTable').html('<tr><th scope="col" class="d-none d-md-table-cell">ID</th><th scope="col">Nome Prodotto</th>' +
-                    '<th scope="col">Prezzo</th>' +
-                    '<th scope="col">Unità</th>' +
-                    '<th scope="col" class="d-none d-sm-table-cell">Descrizione</th>' +
-                    '<th scope="col" class="d-none d-sm-table-cell">Capitolo</th>' +
-                    '<th scope="col" class="d-none d-sm-table-cell">Categoria</th>' +
-                    '<th scope="col" class="d-none d-sm-table-cell">Immagine</th>' +
-                    '<th scope="col">Opzioni</th></tr>')
-                $('#fornitureTable').html('');
-
                 res.results.forEach(function (food) {
                     $('#fornitureTable').append('' +
                         '<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th>' +
-                        '<td>' + food.nome + '</td>' +
                         '<td>' + food.prezzo + '€</td>' +
-                        '<td>' + (food.unita ? food.unita : "") + '</td>' +
-                        '<td class="d-none d-sm-table-cell">' + (food.descrizione ? food.descrizione : "") + '</td>' +
+                        '<td>' + food.nome + '</td>' +
                         '<td class="d-none d-sm-table-cell">' + (food.capitolo ? food.capitolo : "") + '</td>' +
                         '<td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td>' +
                         '<td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td>' +
@@ -189,9 +177,9 @@ $(document).on('click', 'tr .btn-outline-danger', function (event) {
 
     //recupero valori del prodotto
     var id = tr.children('th').text();
-    var total = tr.children('td').eq(2);
+    var amount = tr.children('td').eq(2);
     console.log('delete: ' + id);
-    deleteFood(id, total); //richiamo la funzione di cancellazione
+    deleteFood(id, amount); //richiamo la funzione di cancellazione
 })
 
 
@@ -203,7 +191,8 @@ function addFood(id, total) {
         method: 'POST',
         data: {table_id: $('h1').data('id'), food_id: id},
         success: function (res) {
-            $('h2').text(res.total + '€');
+
+            $('#totaleOrdini').text('Totale: ' + res.total + '€');
             if (cart == 0)
                 total.text(parseInt(total.text()) + 1);
         }
@@ -211,24 +200,42 @@ function addFood(id, total) {
 }
 
 //funzione di cancellazione di un prodotto dall'ordine
-function deleteFood(id, total) {
+function deleteFood(id /*, total*/) {
     $.ajax({
         url: '/orders',
         method: 'DELETE',
         data: {table_id: $('h1').data('id'), food_id: id},
         success: function (res) {
+            /*
             $('h2').text(res.total + '€');
             res = parseInt(res.order);
-            if (parseInt(total.text()) - res) {
+            if (parseInt(total.text()) - res)
                 total.text(parseInt(total.text()) - res);
-            } else {
+            else
                 total.parents('tr').remove();
-            }
-
+            */
         }
     })
 }
 
+function updateOrder(id, newAmount){
+    console.log("UpdateOrder: table " + $('h1').data('id') +  ", food: " + id)
+    $.ajax({
+        url: '/orders',
+        method: 'patch',
+        data: {table_id: $('h1').data('id'), food_id: id, amount: newAmount},
+        success: function (res) {
+            /*
+            $('h2').text(res.total + '€');
+            res = parseInt(res.order);
+            if (parseInt(total.text()) - res)
+                total.text(parseInt(total.text()) - res);
+            else
+                total.parents('tr').remove();
+            */
+        }
+    })
+}
 
 //$("#emptyBtn").click(function(){
 $(document).on('click', '#emptyBtn', function () {
@@ -245,7 +252,7 @@ $(document).on('click', '#emptyBtn', function () {
 
 $(document).on('click', '#gpdf', function () {
     //var pdfdoc = new jsPDF();
-/// TODO: fixa il fukkin font, è per quello che formatta di merda
+    // TODO: fixa il fukkin font, è per quello che formatta di merda
 
     //pdfdoc.fromHTML('/resources/print/print_example.html');
     /*
@@ -257,7 +264,7 @@ $(document).on('click', '#gpdf', function () {
     //pdfdoc.save('Firstodes.pdf');
 });
 
-$(document).on('click', '#precontoBtn', function () {
+$(document).on('click', '#precontoBtn', function (event) {
 
     /*
       var categoria = 'nessuna';
@@ -308,7 +315,6 @@ $(document).on('click', '#precontoBtn', function () {
     }
     var obj = $.extend({}, arrayAssociativo);
 
-
     var urlPathname = window.location.pathname;
     console.log('Creato array associativo. Stringa splittata: ' + urlPathname); // /table/1
 
@@ -331,6 +337,25 @@ $(document).on('click', '#precontoBtn', function () {
     });
 
 });
+
+$(document).on('change', '.amount', function (event) {
+    var newVal = $(event.target).val();
+
+    //recupero id del prodotto
+    var target = $(event.target);
+    var tr = target.parents('tr');
+    var id = tr.children('th').text();
+
+    console.log("Cambio numero. Id: " + id + " newVal: " + newVal);
+    if(newVal == 0){
+        console.log('Cancellazione ordine: ' + id);
+        deleteFood(id);
+    } else {
+        updateOrder(id, newVal);
+    }
+});
+
+
 
 
 function compare(a, b) {

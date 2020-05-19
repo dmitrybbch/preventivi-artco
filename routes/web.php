@@ -28,9 +28,11 @@ Route::delete('/tables', 'TablesController@destroy')->middleware('is_admin');
 Route::post('/table/{id}', 'TableController@updateData');
 Route::get('/orders/{id}', 'TableController@orders');
 Route::delete('/orders', 'TableController@destroy');
+Route::patch('/orders', 'TableController@updateOrderAmount');
+
 Route::get('/table/{id}', 'TableController@index');
 Route::post('/table', 'TableController@add');
-Route::patch('/table', 'TableController@update');
+Route::patch('/table/{id}', 'TableController@update');
 Route::delete('/table', 'TableController@empty');
 
 // Forniture

@@ -12,121 +12,114 @@ use PDF;
 class TableController extends Controller
 {
     //controllo autorizzazione ad accedere alle risorse
-     public function __construct()
-     {
-         $this->middleware('auth');
-     }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Handle the incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-     public function index($id)
-     {
-         return view('tables.view', ['table' => Table::find($id)]);
-     }
+    public function index($id)
+    {
+        return view('tables.view', ['table' => Table::find($id)]);
+    }
 
 
-     public function add(Request $request)
-     {
-         $input = $request->all();
+    public function add(Request $request)
+    {
+        $input = $request->all();
 
-         $ordine = DB::table('orders')->where('table_id', $input['table_id'])->where('food_id', $input['food_id']);
-         logger(count($ordine->get()));
+        //$ordine = DB::table('orders')->where('table_id', $input['table_id'])->where('food_id', $input['food_id']);
+        //logger(count($ordine->get()));
 
-         /*
-         // Modifico l'esistente
-         if(count($ordine->get())){
-             $ord = $ordine->first();
-             $ord->amount = $ord->amount + 1;
-             $ord->save();
+        $ordinen = DB::table('orders')->updateOrInsert(
+            ['table_id' => $input['table_id'], 'food_id' => $input['food_id']],
+            ['amount' => DB::table('orders')->raw('amount + 1')]
+        );
 
-             return response()->json(array('order' => $ord, 'total' => Table::find($input['table_id'])->totalOrders())); // TODO: da fixare il calcolo del totale. Usare la variabile amount
-         }
-         // Altrimenti creo un nuovo
-         else {
-             $order = new Order();
+        return response()->json(array('order' => $ordinen, 'total' => Table::find($input['table_id'])->totalOrders()));
+        //TODO: Correggere la funzione totalOrders con gli amount rifatti
+    }
 
-             $order->table_id = $input['table_id'];
-             $order->food_id = $input['food_id'];
-             $order->amount = 1; // TODO: Togliere il numero magico
-             $order->add_percent = 0;
+    public function updateOrderAmount(Request $request){
 
-             $order->save();
+        $input = $request->all();
+        logger("Aggiorno l'amount dell'ordine " . $input['table_id'] . "-" . $input['food_id'] );
+        // TODO: sì. Esiste il join. Muovere il culo ora.
+        //$ordine = DB::table('orders')->join();
+        $ordine = DB::table('orders')->where('table_id', $input['table_id'])->where('food_id', $input['food_id'])->update(['amount' => $input["amount"] ]);
 
-             return response()->json(array('order' => $order, 'total' => Table::find($input['table_id'])->totalOrders()));
-         }
-*/
-         $ordinen = DB::table('orders')->updateOrInsert(
-             ['table_id' => $input['table_id'], 'food_id' => $input['food_id']],
-             ['amount' => DB::table('orders')->raw('amount + 1') ]
-         );
+        //$ordine->amount = $input["amount"];
+        //$ordine->save();
+    }
 
-     }
+    public function orders($id)
+    {
+        $json = array();
 
-     public function orders($id)
-     {
-          $json = array();
-
-          foreach (Table::find($id)->orders() as $key => $order) {
+        foreach (Table::find($id)->orders() as $key => $order) {
             $food = $order->food();
             $json[] = array('id' => $order->food_id, 'nome' => $food->nome, 'prezzo' => $food->prezzo, 'unita' => $food->unita, 'total' => $order->total, 'descrizione' => $food->descrizione, 'capitolo' => $food->capitolo, 'categoria' => $food->categoria, 'immagine' => $food->immagine);
-          }
-         return response()->json($json);
-     }
+        }
+        return response()->json($json);
+    }
 
 
-     public function update(Request $request)
-     {
-         $input = $request->all();
 
-         $table = Table::find($input['id']);
+    public function update(Request $request)
+    {
+        $input = $request->all();
+        $table = Table::find($input['id']);
 
-         if(isset($input['stato'])){
-           $stati = array('libero', 'occupato', 'servito');
-           $table->stato = $stati[$input['stato']];
-         }
+        if (isset($input['stato'])) {
+            $stati = array('libero', 'occupato', 'servito');
+            $table->stato = $stati[$input['stato']];
+        }
 
-         $table->save();
+        $table->save();
+        return response()->json($table);
+    }
 
-         return response()->json($table);
-     }
+    public function updateData(Request $request)
+    {
 
-     public function updateData(Request $request){
+        $table = Table::find($request['id']);
+        $table['noteAggiuntive'] = $request['note'];
+        $table['ricarico'] = $request['ricarico'];
+        $table['creatoDa'] = $request['creatoDa'];
+        $table['cliente'] = $request['cliente'];
+        logger("TableController: Log richiesta updateData: " . $request['creatoDa'] . " a " . $request['cliente']);
+        $table->save();
 
-         $table = Table::find($request['id']);
-         $table['noteAggiuntive'] = $request['note'];
-         $table['ricarico'] = $request['ricarico'];
-         $table['creatoDa'] = $request['creatoDa'];
-         $table['cliente'] = $request['cliente'];
-         logger("TableController: Log richiesta updateData: ". $request['creatoDa'] . " a " . $request['cliente']);
-         $table->save();
+        //return $pdf->download('Mannaggia.pdf');
+    }
 
-         //return $pdf->download('Mannaggia.pdf');
-     }
+    public function destroy(Request $request)
+    {
+        $input = $request->all();
 
-     public function destroy(Request $request)
-     {
-          $input = $request->all();
+        $order = Order::where('table_id', $input['table_id'])->where('food_id', $input['food_id'])->limit(1)->delete();
 
-          $order = Order::where('table_id', $input['table_id'])->where('food_id', $input['food_id'])->limit(1)->delete();
+        return response()->json(array('order' => $order, 'total' => Table::find($input['table_id'])->totalOrders()));
+    }
 
-          return response()->json(array('order' => $order, 'total' => Table::find($input['table_id'])->totalOrders()));
-     }
+    public function empty(Request $request)
+    {
+        $input = $request->all();
 
-     public function empty(Request $request)
-     {
-          $input = $request->all();
+        $order = Order::where('table_id', $input['table_id'])->delete();
 
-          $order = Order::where('table_id', $input['table_id'])->delete();
+        $response = ['messaggio' => 'prodotto eliminato'];
+        return response()->json($response);
+    }
 
-          $response = ['messaggio' => 'prodotto eliminato'];
-          return response()->json($response);
-     }
+    public function anteprima(Request $request)
+    {
 
-     public function anteprima(Request $request){
+    }
 
-
-     }
 }

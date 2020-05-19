@@ -7,27 +7,25 @@ use App\Food;
 
 class Order extends Model
 {
-  /**
-   * The attributes that are mass assignable.
-   *
-   * @var array
-   */
-  protected $fillable = [
-      'table_id', 'food_id', 'amount', 'add_percent',
-  ];
-
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'table_id', 'food_id', 'amount', 'add_percent',
+    ];
 
 
     public function table()
-  {
-      return $this->belongsTo('App\Table', 'table_id');
-  }
+    {
+        return $this->belongsTo('App\Table', 'table_id');
+    }
 
-  public function food()
-  {
-      return $this->hasOne('App\Food', 'id', 'food_id')->get()[0];
-  }
+    public function food()
+    {
+        return $this->hasOne('App\Food', 'id', 'food_id')->get()[0];
+    }
 
 
 }

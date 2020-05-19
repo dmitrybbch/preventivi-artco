@@ -62,7 +62,10 @@
                         @foreach($foodOrdinati as $fornitura)
                             <tr>
                                 <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['food_id'] }}</th>
-                                <td class="total">{{$fornitura['amount'] }} {{ $fornitura['unita'] }}</td>
+                                <td class="amount">
+                                    <input class="form-control amount" type="number" step="1" name="quantitaTab" value="{{$fornitura['amount'] }}">
+                                    {{ $fornitura['unita'] }}
+                                </td>
                                 <td>{{ $fornitura['descrizione'] }}</td>
                                 <td class="total">€ {{$fornitura['prezzo']}}</td>
                                 <td class="total">{{$fornitura['add_percent']}}</td>
@@ -75,9 +78,12 @@
                                 </td>
                                 --}}
                                 <td>
+                                    {{--
                                     <button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle"></i>
                                     </button>
                                     <button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button>
+                                    --}}
+
                                 </td>
                             </tr>
                         @endforeach
@@ -96,7 +102,7 @@
                     </tbody>
                     <tfoot class="bg-secondary text-white">
                     <tr>
-                        <th class="text-center" colspan="12">
+                        <th class="text-center" colspan="12" id="totaleOrdini">
                             <strong><u>Totale: {{ $table->totalOrders() }}€</u></strong>
                         </th>
                     </tr>
@@ -107,11 +113,23 @@
 
             <div class="col-md-7">
                 <div class="card">
-                    <div class="card-header bg-dark text-white" id="numTotalePrev">
-                        <strong>Dati aggiuntivi</strong>
+
+                    <div class="card-header bg-dark text-white">
+                        <div class="mb-2 mb-md-0 mr-auto ml-0">
+                            <form class="form-inline">
+                                <input type="text" id="searchBox" style="display: none;" class="form-control mr-0"
+                                       placeholder="Search">
+                                <button type="button" id="cartBtn" class="text-white btn btn-secondary"><strong>Forniture</strong></button>
+                            </form>
+                        </div>
                     </div>
 
                     <div class="card-body" id="card-body">
+                        <table class="table table-sm table-striped" id="fornitureTable">
+                            <tbody>
+                            </tbody>
+                        </table>
+
                         <form id="formdatipreventivo">
                             <div class="row">
                                 <div class="form-group col-md-12">
@@ -138,37 +156,12 @@
                                 </div>
                             </div>
                         </form>
-
-                    </div>
-
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-danger" id="emptyBtn">Svuota</button>
-                        <button type="button" id="precontoBtn" class="btn btn-info">Anteprima Preventivo</button>
-                    </div>
-                </div>
-                <br>
-                <div class="card">
-                    <div class="card-header bg-dark text-white">
-                        <div class="mb-2 mb-md-0 mr-auto ml-0">
-                            <form class="form-inline">
-                                <input type="text" id="searchBox" style="display: none;" class="form-control mr-0"
-                                       placeholder="Search">
-                                <button type="button" id="cartBtn" class="text-white btn btn-secondary"><strong>Forniture</strong></button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <div class="card-body" id="card-body">
-                        <table class="table table-striped" id="fornitureTable">
-                            <tbody>
-
-                            </tbody>
-                        </table>
                     </div>
 
                     <div class="card-footer">
                         <button type="button" class="btn btn-danger" id="tgf">Svuota</button>
-                        <button type="button" class="btn btn-info">lullu Preventivo</button>
+                        <button type="button" class="btn btn-outline-info" id="tgf">Salva</button>
+                        <button type="button" class="btn btn-info">Anteprima</button>
                     </div>
                 </div>
             </div>
