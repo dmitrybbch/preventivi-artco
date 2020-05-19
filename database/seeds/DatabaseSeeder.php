@@ -68,6 +68,14 @@ class DatabaseSeeder extends Seeder
             'capitolo_categoria' => 'HEYH_Demolizioni'
         ]);
 
+        DB::table('clients')->insert([
+            'nome' => 'ClientoneComodo',
+            'email' => 'como@comodo.com',
+            'telefono' => '34234223',
+            'indirizzo' => 'Via Coma 30',
+            'capCittaProv' => "20202 Como (CO)"
+        ]);
+
         DB::table('chapters')->insert([
             'name' => 'A) Camion Cino',
         ]);
@@ -96,5 +104,6 @@ class DatabaseSeeder extends Seeder
             //'section_id' => 1,
         ]);
 
+
     }
-  }
+}

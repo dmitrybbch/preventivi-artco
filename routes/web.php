@@ -26,14 +26,16 @@ Route::delete('/tables', 'TablesController@destroy')->middleware('is_admin');
 
 // Table
 Route::post('/table/{id}', 'TableController@updateData');
-Route::get('/orders/{id}', 'TableController@orders');
-Route::delete('/orders', 'TableController@destroy');
-Route::patch('/orders', 'TableController@updateOrderAmount');
-
 Route::get('/table/{id}', 'TableController@index');
 Route::post('/table', 'TableController@add');
 Route::patch('/table/{id}', 'TableController@update');
 Route::delete('/table', 'TableController@empty');
+
+Route::get('/orders/{id}', 'TableController@orders');
+Route::delete('/orders', 'TableController@destroy');
+Route::patch('/orders', 'TableController@updateOrderAmount');
+
+
 
 // Forniture
 Route::get('/menu', 'FoodController@index')->name('menu');
@@ -50,6 +52,7 @@ Route::delete('/categories', 'CategoriesController@destroy');
 
 // Clients
 Route::get('/clients', 'ClientController@index');
+Route::post('/clients', 'ClientController@create');
 
 // Users
 Route::get('/users', 'AdminController@users')->name('users');

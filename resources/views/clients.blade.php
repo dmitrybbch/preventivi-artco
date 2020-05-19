@@ -29,7 +29,7 @@
                         @foreach($prevs as $prev)
                             <tr>
                                 <td> {{$prev->id}}</td>
-                                <td> <b> {{$prev->nome}} </b> </td>
+                                <td> <b>{{$prev->nome}}</b> </td>
                                 <td> {{$prev->email}}</td>
                                 <td> {{$prev->telefono}}</td>
                                 <td> {{$prev->indirizzo}}</td>
@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="descrizione">Città</label>
-                                    <input type="text" class="form-control" id="descrizione" name="citta" placeholder="es. 20202 Città (PD)">
+                                    <input type="text" class="form-control" id="descrizione" name="capCittaProv" placeholder="es. 20202 Città (PD)">
                                 </div>
                             </div>
                             <div class="row">
@@ -84,7 +84,7 @@
                         </form>
                     </div>
                     <div class="card-footer">
-                        <button type="button" class="btn btn-info">
+                        <button type="button" class="btn btn-info" onclick="newClient()">
                             Crea
                         </button>
                     </div>
@@ -92,7 +92,7 @@
             </div>
         </div>
 
-        <!-- modal per modifica prodotto -->
+        <!-- modal per modifica cliente TODO: da riformare come modifica cliente invece che fornitura-->
         <div class="modal" tabindex="-1" role="dialog" id="foodModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -104,7 +104,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <form>
+                        <form id="newClientForm">
                             <div class="form-group row">
                                 <label for="idModal" class="col-md-4 col-form-label text-md-right">Id</label>
                                 <div class="col-md-3">

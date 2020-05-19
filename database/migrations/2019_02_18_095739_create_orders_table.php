@@ -18,6 +18,9 @@ class CreateOrdersTable extends Migration
             $table->integer('food_id')->unsigned();
             $table->integer('amount')->unsigned();
             $table->float('add_percent');
+
+            $table->primary(['table_id', 'food_id']);
+
             $table->timestamps();
         });
 

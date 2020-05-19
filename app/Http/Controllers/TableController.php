@@ -25,23 +25,30 @@ class TableController extends Controller
      */
     public function index($id)
     {
-        return view('tables.view', ['table' => Table::find($id)]);
+        return view('tables.view', ['table' => Table::find($id), 'clients' => Table::all()]);
     }
-
 
     public function add(Request $request)
     {
         $input = $request->all();
 
-        //$ordine = DB::table('orders')->where('table_id', $input['table_id'])->where('food_id', $input['food_id']);
-        //logger(count($ordine->get()));
-
+        /*
         $ordinen = DB::table('orders')->updateOrInsert(
             ['table_id' => $input['table_id'], 'food_id' => $input['food_id']],
             ['amount' => DB::table('orders')->raw('amount + 1')]
         );
+        */
 
-        return response()->json(array('order' => $ordinen, 'total' => Table::find($input['table_id'])->totalOrders()));
+        // TODO: si creano duplicati. Fare una query per vedere se ci sono già le righe da inserire. NON è urgente, cancellare cancella tutto
+        $new = new Order;
+        $new->table_id = $input["table_id"];
+        $new->food_id = $input["food_id"];
+        $new->amount = 1;
+        $new->add_percent = 0;
+
+        $new->save();
+
+        return response()->json(array('order' => $new, 'total' => Table::find($input['table_id'])->totalOrders()));
         //TODO: Correggere la funzione totalOrders con gli amount rifatti
     }
 
@@ -49,12 +56,12 @@ class TableController extends Controller
 
         $input = $request->all();
         logger("Aggiorno l'amount dell'ordine " . $input['table_id'] . "-" . $input['food_id'] );
-        // TODO: sì. Esiste il join. Muovere il culo ora.
-        //$ordine = DB::table('orders')->join();
-        $ordine = DB::table('orders')->where('table_id', $input['table_id'])->where('food_id', $input['food_id'])->update(['amount' => $input["amount"] ]);
 
-        //$ordine->amount = $input["amount"];
-        //$ordine->save();
+        $ordine = DB::table('orders')
+            ->where('table_id', $input['table_id'])
+            ->where('food_id', $input['food_id'])
+            ->update(['amount' => $input["amount"] ]);
+
     }
 
     public function orders($id)

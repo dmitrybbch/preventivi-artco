@@ -8,11 +8,11 @@ class Client extends Model
 {
     //
     protected $fillable = [
-        'nome', 'email', 'telefono', 'indirizzo', 'CAP', 'citta',
+        'nome', 'email', 'telefono', 'indirizzo', 'capCittaProv',
     ];
 
     public function scopeSearch($query, $input)
     {
-        return $query->where('nome' , 'like' , "%{$input}%")->orwhere('email' , 'like' , "%{$input}%")->orwhere('citta' , 'like' , "%{$input}%")->orwhere('indirizzo' , 'like' , "%{$input}%");
+        return $query->where('nome' , 'like' , "%{$input}%")->orwhere('email' , 'like' , "%{$input}%")->orwhere('capCittaProv' , 'like' , "%{$input}%")->orwhere('indirizzo' , 'like' , "%{$input}%");
     }
 }

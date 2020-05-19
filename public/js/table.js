@@ -165,8 +165,10 @@ $(document).on('click', 'tr .btn-outline-success', function (event) {
 
     //recupero valori del prodotto
     var id = tr.children('th').text();
-    var total = tr.children('td').eq(2);
-    addFood(id, total); // Richiamo la funzione di aggiunta
+
+    console.log("Aggiunta in preventivo della fornitura dall'ID: " + id);
+    addFood(id); // Richiamo la funzione di aggiunta
+
 })
 
 //funzione click del bottone di cancellazione un prodotto dall'ordine
@@ -184,17 +186,14 @@ $(document).on('click', 'tr .btn-outline-danger', function (event) {
 
 
 // Funzione di aggiunta prodotto all'ordine
-function addFood(id, total) {
-    console.log('id: ' + id);
+function addFood(id) {
     $.ajax({
         url: '/table',
         method: 'POST',
         data: {table_id: $('h1').data('id'), food_id: id},
         success: function (res) {
-
-            $('#totaleOrdini').text('Totale: ' + res.total + '€');
-            if (cart == 0)
-                total.text(parseInt(total.text()) + 1);
+            // TODO: aggiorna il totale in display
+            // TODO: aggiornare la tabella
         }
     })
 }
@@ -206,6 +205,7 @@ function deleteFood(id /*, total*/) {
         method: 'DELETE',
         data: {table_id: $('h1').data('id'), food_id: id},
         success: function (res) {
+            // TODO: Aggiornare la tabella e il totale
             /*
             $('h2').text(res.total + '€');
             res = parseInt(res.order);

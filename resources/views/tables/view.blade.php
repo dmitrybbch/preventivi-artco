@@ -125,6 +125,10 @@
                     </div>
 
                     <div class="card-body" id="card-body">
+                        @foreach($clients as $client)
+                            {{$client->email}}
+                        @endforeach
+
                         <table class="table table-sm table-striped" id="fornitureTable">
                             <tbody>
                             </tbody>

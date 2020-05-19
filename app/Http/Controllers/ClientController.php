@@ -22,9 +22,19 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $input = $request->all();
+
+        $food = new Client;
+        $food->nome = $input['nome'];
+        $food->email = $input['email'];
+        $food->telefono = $input['telefono'];
+        $food->indirizzo = $input['indirizzo'];
+        $food->capCittaProv = $input['capCittaProv'];
+
+        $food->save();
+        return response()->json($food);
     }
 
     /**
