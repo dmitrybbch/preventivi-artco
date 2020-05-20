@@ -9,6 +9,8 @@ function newClient() {
     var fd = new FormData($('#formCliente')[0]);
     console.log('Inserisco una fornitura di capitolo: ' + fd.get("nome"));
 
+    $('#formCliente')[0].reset();
+
     $.ajax({
         url: '/clients',
         method: "POST",

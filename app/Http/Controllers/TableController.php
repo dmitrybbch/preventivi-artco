@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Table;
 use App\Order;
+use App\Client;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use PDF;
@@ -25,7 +26,7 @@ class TableController extends Controller
      */
     public function index($id)
     {
-        return view('tables.view', ['table' => Table::find($id), 'clients' => Table::all()]);
+        return view('tables.view', ['table' => Table::find($id), 'clients' => Client::all()]);
     }
 
     public function add(Request $request)

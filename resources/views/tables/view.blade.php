@@ -125,9 +125,7 @@
                     </div>
 
                     <div class="card-body" id="card-body">
-                        @foreach($clients as $client)
-                            {{$client->email}}
-                        @endforeach
+
 
                         <table class="table table-sm table-striped" id="fornitureTable">
                             <tbody>
@@ -154,9 +152,8 @@
                                            value="@if($table->creatoDa){{$table->creatoDa}} @else{{Auth::user()->username }} @endif">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="cliente">Cliente:</label>
-                                    <input class="form-control" id="cliente" type="text" name="cliente"
-                                           value="{{ $table->cliente }}">
+                                    <label for="client">Cliente:</label>
+                                    <input list="clienti" class="form-control"  name="client" value="{{ $table->cliente }}"/>
                                 </div>
                             </div>
                         </form>
@@ -201,6 +198,13 @@
         </div>
       </div>
         -->
+
+    <datalist id="clienti">
+
+        @foreach($clients as $client)
+            <option value="{{$client->nome}}">
+        @endforeach
+    </datalist>
 @endsection
 
 @section('scripts')

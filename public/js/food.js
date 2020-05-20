@@ -9,6 +9,7 @@ function newFood() {
     var fd = new FormData($('#form')[0]);
     console.log('Inserisco una fornitura di capitolo: ' + fd.get("nome"));
     //fd.append("capitolo_categoria", fd.get("capitolo") + "_" + fd.get("categoria"));
+    $('#form')[0].reset();
 
     $.ajax({
         url: '/menu',
