@@ -33,7 +33,8 @@ Route::delete('/table', 'TableController@empty');
 
 Route::get('/orders/{id}', 'TableController@orders');
 Route::delete('/orders', 'TableController@destroy');
-Route::patch('/orders', 'TableController@updateOrderAmount');
+Route::patch('/ordersamount', 'TableController@updateOrderAmount');
+Route::patch('/ordersaddpercent', 'TableController@updateOrderAddpercent');
 
 
 

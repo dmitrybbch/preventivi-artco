@@ -68,7 +68,9 @@
                                 </td>
                                 <td>{{ $fornitura['descrizione'] }}</td>
                                 <td class="total">€ {{$fornitura['prezzo']}}</td>
-                                <td class="total">{{$fornitura['add_percent']}}</td>
+                                <td class="add_percent">
+                                    <input class="form-control add_percent" type="number" step="0.1" name="addTab" value="{{$fornitura['add_percent'] }}">
+                                </td>
                                 <td class="d-none d-sm-table-cell">{{ $fornitura['capitolo'] }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $fornitura['categoria'] }}</td>
                                 {{--
@@ -142,7 +144,7 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <label for="ricarico">Ricarico:</label>
+                                    <label for="ricarico">Ricarico Tot:</label>
                                     <input class="form-control" id="ricarico" type="number" step="0.10" name="ricarico"
                                            value="{{ $table->ricarico }}">
                                 </div>
@@ -160,8 +162,8 @@
                     </div>
 
                     <div class="card-footer">
-                        <button type="button" class="btn btn-danger" id="tgf">Svuota</button>
-                        <button type="button" class="btn btn-outline-info" id="tgf">Salva</button>
+                        {{--<button type="button" class="btn btn-danger" id="tgf">Svuota</button> --}}
+                        <button type="button" class="btn btn-outline-info" >Salva Dati Aggiuntivi</button>
                         <button type="button" class="btn btn-info">Anteprima</button>
                     </div>
                 </div>
@@ -202,7 +204,7 @@
     <datalist id="clienti">
 
         @foreach($clients as $client)
-            <option value="{{$client->nome}}">
+            <option value="{{$client->id}}"> {{$client->nome}}</option>
         @endforeach
     </datalist>
 @endsection

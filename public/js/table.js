@@ -141,13 +141,15 @@ function doSearch(input) {
             if (res.results.length) {
                 res.results.forEach(function (food) {
                     $('#fornitureTable').append('' +
-                        '<tr><th scope="row" class="d-none d-md-table-cell">' + food.id + '</th>' +
+                        '<tr>' +
+                        '<td><button class="btn btn-outline-success"><i class="fas fa-arrow-alt-circle-left"></i></button></td>' +
+                        '<th scope="row" class="d-none d-md-table-cell">' + food.id + '</th>' +
                         '<td>' + food.prezzo + '€</td>' +
                         '<td>' + food.nome + '</td>' +
                         '<td class="d-none d-sm-table-cell">' + (food.capitolo ? food.capitolo : "") + '</td>' +
                         '<td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td>' +
                         '<td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td>' +
-                        '<td><button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button></td></tr>');
+                        '</tr>');
                 })
             } else {
                 $('#fornitureTable').html('<tr><td colspan="9">Nessun risultato per "' + input + '"</td></tr>');
@@ -218,23 +220,40 @@ function deleteFood(id /*, total*/) {
     })
 }
 
-function updateOrder(id, newAmount){
-    console.log("UpdateOrder: table " + $('h1').data('id') +  ", food: " + id)
-    $.ajax({
-        url: '/orders',
-        method: 'patch',
-        data: {table_id: $('h1').data('id'), food_id: id, amount: newAmount},
-        success: function (res) {
-            /*
-            $('h2').text(res.total + '€');
-            res = parseInt(res.order);
-            if (parseInt(total.text()) - res)
-                total.text(parseInt(total.text()) - res);
-            else
-                total.parents('tr').remove();
-            */
-        }
-    })
+function updateOrder(id, newVal, amountOrAddpercent) {
+    console.log("UpdateOrder: table " + $('h1').data('id') + ", food: " + id);
+    if(amountOrAddpercent.localeCompare("amount") == 0)
+        $.ajax({
+            url: '/ordersamount',
+            method: 'patch',
+            data: {table_id: $('h1').data('id'), food_id: id, amount: newVal},
+            success: function (res) {
+                /*
+                $('h2').text(res.total + '€');
+                res = parseInt(res.order);
+                if (parseInt(total.text()) - res)
+                    total.text(parseInt(total.text()) - res);
+                else
+                    total.parents('tr').remove();
+                */
+            }
+        })
+    else
+        $.ajax({
+            url: '/ordersaddpercent',
+            method: 'patch',
+            data: {table_id: $('h1').data('id'), food_id: id, add_percent: newVal},
+            success: function (res) {
+                /*
+                $('h2').text(res.total + '€');
+                res = parseInt(res.order);
+                if (parseInt(total.text()) - res)
+                    total.text(parseInt(total.text()) - res);
+                else
+                    total.parents('tr').remove();
+                */
+            }
+        })
 }
 
 //$("#emptyBtn").click(function(){
@@ -347,15 +366,26 @@ $(document).on('change', '.amount', function (event) {
     var id = tr.children('th').text();
 
     console.log("Cambio numero. Id: " + id + " newVal: " + newVal);
-    if(newVal == 0){
+    if (newVal == 0) {
         console.log('Cancellazione ordine: ' + id);
         deleteFood(id);
     } else {
-        updateOrder(id, newVal);
+        updateOrder(id, newVal, "amount");
     }
 });
 
+$(document).on('change', '.add_percent', function (event) {
+    var newVal = $(event.target).val();
 
+    //recupero id del prodotto
+    var target = $(event.target);
+    var tr = target.parents('tr');
+    var id = tr.children('th').text();
+
+    console.log("Cambio numero. Id: " + id + " newVal: " + newVal);
+
+    updateOrder(id, newVal, "addpercent");
+});
 
 
 function compare(a, b) {

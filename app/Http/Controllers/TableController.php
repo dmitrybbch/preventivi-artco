@@ -65,6 +65,18 @@ class TableController extends Controller
 
     }
 
+    public function updateOrderAddpercent(Request $request){
+
+        $input = $request->all();
+        logger("Aggiorno l'add_percentage dell'ordine " . $input['table_id'] . "-" . $input['food_id'] );
+
+        $ordine = DB::table('orders')
+            ->where('table_id', $input['table_id'])
+            ->where('food_id', $input['food_id'])
+            ->update(['add_percent' => $input["add_percent"] ]);
+
+    }
+
     public function orders($id)
     {
         $json = array();
