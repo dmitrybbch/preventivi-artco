@@ -81,7 +81,8 @@ $('#cartBtn').click(function (e) {
     }
 })
 
-$("#bottoneBlasfemo").click(function () {
+
+$("#salvaDatiAggiuntivi").click(function () {
 
     //var formDati = new FormData($('#formdatipreventivo')[0]);
     //console.log(formDati[0].text());
@@ -94,7 +95,7 @@ $("#bottoneBlasfemo").click(function () {
         // in un unico array associativo con 3 indici e 3 valori
         var dati = formDati.serializeArray();
         var arrayAssociativo = [];
-        for (var i = 0; i < 3; i++)
+        for (var i = 0; i < 4; i++)
             arrayAssociativo[dati[i]['name']] = dati[i]['value'];
 
     }
@@ -105,11 +106,9 @@ $("#bottoneBlasfemo").click(function () {
 
     jQuery.ajax({
         url: urlPathname,
-        method: 'post',
+        method: 'post', //Richiama la funzione updateData
         data: obj,
         success: function (result) {
-            // jQuery('.alert').show();
-            // jQuery('.alert').html(result.success);
             console.log("Chebello");
         },
         error: function (xhr, status, error) {
@@ -221,6 +220,7 @@ function deleteFood(id /*, total*/) {
 }
 
 function updateOrder(id, newVal, amountOrAddpercent) {
+    // TODO: fatto sta maialata per semplicità. Fixare unendo i due casi e mettendo un check nel controller
     console.log("UpdateOrder: table " + $('h1').data('id') + ", food: " + id);
     if(amountOrAddpercent.localeCompare("amount") == 0)
         $.ajax({
@@ -228,14 +228,6 @@ function updateOrder(id, newVal, amountOrAddpercent) {
             method: 'patch',
             data: {table_id: $('h1').data('id'), food_id: id, amount: newVal},
             success: function (res) {
-                /*
-                $('h2').text(res.total + '€');
-                res = parseInt(res.order);
-                if (parseInt(total.text()) - res)
-                    total.text(parseInt(total.text()) - res);
-                else
-                    total.parents('tr').remove();
-                */
             }
         })
     else
@@ -270,17 +262,7 @@ $(document).on('click', '#emptyBtn', function () {
 });
 
 $(document).on('click', '#gpdf', function () {
-    //var pdfdoc = new jsPDF();
-    // TODO: fixa il fukkin font, è per quello che formatta di merda
 
-    //pdfdoc.fromHTML('/resources/print/print_example.html');
-    /*
-
-        pdfdoc.fromHTML($('#PDFcontent').html(), 10, 10, {
-            'width': 200
-        });
-    */
-    //pdfdoc.save('Firstodes.pdf');
 });
 
 $(document).on('click', '#precontoBtn', function (event) {

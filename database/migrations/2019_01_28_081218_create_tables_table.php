@@ -17,13 +17,12 @@ class CreateTablesTable extends Migration
             $table->increments('id');
             $table->string('nomeTavolo')->nullable();
             $table->string('stato')->default('libero');
-            $table->string('cliente')->nullable();
 
             $table->string('noteAggiuntive')->nullable();
             $table->float('ricarico')->nullable();
+            $table->integer('client_id')->unsigned()->nullable();
             $table->string('creatoDa')->nullable();
             $table->date('creatoInData')->nullable();
-
 
 
             $table->timestamps();

@@ -163,8 +163,8 @@
 
                     <div class="card-footer">
                         {{--<button type="button" class="btn btn-danger" id="tgf">Svuota</button> --}}
-                        <button type="button" class="btn btn-outline-info" >Salva Dati Aggiuntivi</button>
-                        <button type="button" class="btn btn-info">Anteprima</button>
+                        <button type="button" class="btn btn-outline-info" id="salvaDatiAggiuntivi">Salva Dati Aggiuntivi</button>
+                        <button type="button" class="btn btn-info" id="anteprima">Anteprima</button>
                     </div>
                 </div>
             </div>
@@ -176,31 +176,6 @@
 
     </div>
 
-
-
-    <!-- Modal
-    <div class="modal fade" id="myModal" role="dialog" width="100%" style="font-size: 10px;">
-        <div class="modal-dialog">
-
-           Modal content
-          <div class="modal-content">
-            <div class="modal-header">
-            Anteprima di stampa del preventivo
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title"></h4>
-            </div>
-            <div class="modal-body" id="PDFcontent">
-
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="gpdf">Stampa</button>
-            </div>
-          </div>
-
-        </div>
-      </div>
-        -->
-
     <datalist id="clienti">
 
         @foreach($clients as $client)
@@ -211,5 +186,4 @@
 
 @section('scripts')
     <script src="{{ asset('js/table.js') }}"></script>
-
 @endsection
