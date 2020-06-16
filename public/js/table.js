@@ -173,7 +173,7 @@ $(document).on('click', 'tr .btn-outline-success', function (event) {
 })
 
 //funzione click del bottone di cancellazione un prodotto dall'ordine
-$(document).on('click', 'tr .btn-outline-danger', function (event) {
+$(document).on('click', 'tr .togliFornitura', function (event) {
 
     var target = $(event.target);
     var tr = target.parents('tr');
@@ -182,7 +182,8 @@ $(document).on('click', 'tr .btn-outline-danger', function (event) {
     var id = tr.children('th').text();
     var amount = tr.children('td').eq(2);
     console.log('delete: ' + id);
-    deleteFood(id, amount); //richiamo la funzione di cancellazione
+
+    deleteFood(id); //richiamo la funzione di cancellazione
 })
 
 
@@ -265,40 +266,8 @@ $(document).on('click', '#gpdf', function () {
 
 });
 
-$(document).on('click', '#precontoBtn', function (event) {
+$(document).on('click', '#anteprima', function (event) {
 
-    /*
-      var categoria = 'nessuna';
-      for(var i=0;i<tr.length;i++){
-
-        var nome = tr.eq(i).children('td').eq(0).text();
-        var prezzo = tr.eq(i).children('td').eq(1).text();
-        var unita = tr.eq(i).children('td').eq(2).text();
-        var quantita = tr.eq(i).children('td').eq(3).text();
-        var descrizione = tr.eq(i).children('td').eq(4).text();
-
-        var nuovaCategoria = false;
-        if(categoria != tr.eq(i).children('td').eq(5).text()){
-            var nuovaCategoria = true;
-        }
-        categoria = tr.eq(i).children('td').eq(5).text();
-        if(nuovaCategoria)
-            $('.modal-body').append('<tr> <td> <b>'+ categoria +'</b> </td> </tr>');
-
-        $('.modal-body').append('<tr>' + ' <td width="65" align="right">' + quantita + '</td><td>:        '+ nome +'</td></tr>');
-
-          console.log("Quantita: "+ quantita);
-
-      }
-
-        var prezzoStr = prezzo.slice(0, -1);
-
-      $('.modal-body').append('<p>Totale: EUR' + tot + '</p>');
-
-      $('#myModal').modal();
-    */
-//var formDati = new FormData($('#formdatipreventivo')[0]);
-    //console.log(formDati[0].text());
     var formDati = $('#formdatipreventivo');
     var isvalidate = formDati[0].checkValidity();
     if (isvalidate) {

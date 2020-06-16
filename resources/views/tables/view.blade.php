@@ -79,14 +79,7 @@
                                         class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">
                                 </td>
                                 --}}
-                                <td>
-                                    {{--
-                                    <button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle"></i>
-                                    </button>
-                                    <button class="btn btn-outline-success"><i class="fas fa-plus-circle"></i></button>
-                                    --}}
-
-                                </td>
+                                <td><button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle togliFornitura"></i></button></td>
                             </tr>
                         @endforeach
 

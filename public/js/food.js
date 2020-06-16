@@ -54,7 +54,7 @@ function newFood() {
 }
 
 //delete food
-$(document).on("click", "tr .btn-outline-danger", function (event) {
+$(document).on("click", "tr .fa-trash-alt", function (event) {
 
     var resp = confirm("Confermare la cancellazione?");
     if (resp == true) {
@@ -78,7 +78,7 @@ $(document).on("click", "tr .btn-outline-danger", function (event) {
 var tempr;
 
 //edit
-$(document).on("click", "tr .btn-outline-info", function (event) {
+$(document).on("click", "tr .fa-edit", function (event) {
 
     var target = $(event.target);
     //console.log(target.parents('tr'));

@@ -22,6 +22,7 @@
                         <th scope="col" class="d-none d-sm-table-cell">Telefono</th>
                         <th scope="col" class="d-none d-sm-table-cell">Indirizzo</th>
                         <th scope="col" class="d-none d-sm-table-cell">Città</th>
+                        <th scope="col" class="d-none d-sm-table-cell">Opzioni</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,6 +35,7 @@
                                 <td> {{$prev->telefono}}</td>
                                 <td> {{$prev->indirizzo}}</td>
                                 <td> {{$prev->capCittaProv}}</td>
+                                <td> <i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i><i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i></td>
                             </tr>
                         @endforeach
                     @else

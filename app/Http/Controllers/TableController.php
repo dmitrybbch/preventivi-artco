@@ -122,7 +122,7 @@ class TableController extends Controller
     {
         $input = $request->all();
 
-        $order = Order::where('table_id', $input['table_id'])->where('food_id', $input['food_id'])->limit(1)->delete();
+        $order = Order::where('table_id', $input['table_id'])->where('food_id', $input['food_id'])->delete();
 
         return response()->json(array('order' => $order, 'total' => Table::find($input['table_id'])->totalOrders()));
     }
