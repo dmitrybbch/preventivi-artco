@@ -29,13 +29,13 @@
                     @if( count($prevs) )
                         @foreach($prevs as $prev)
                             <tr>
-                                <td> {{$prev->id}}</td>
+                                <th> {{$prev->id}}</th>
                                 <td> <b>{{$prev->nome}}</b> </td>
                                 <td> {{$prev->email}}</td>
                                 <td> {{$prev->telefono}}</td>
                                 <td> {{$prev->indirizzo}}</td>
                                 <td> {{$prev->capCittaProv}}</td>
-                                <td> <i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i><i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i></td>
+                                <td> <i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i></td>
                             </tr>
                         @endforeach
                     @else

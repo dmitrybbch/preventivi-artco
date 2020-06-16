@@ -54,6 +54,7 @@ Route::delete('/categories', 'CategoriesController@destroy');
 // Clients
 Route::get('/clients', 'ClientController@index');
 Route::post('/clients', 'ClientController@create');
+Route::delete('clients', 'ClientController@destroy');
 
 // Users
 Route::get('/users', 'AdminController@users')->name('users');

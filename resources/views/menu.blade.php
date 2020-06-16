@@ -53,7 +53,7 @@ Forniture
                             <td class="d-none d-sm-table-cell" headers="{{ str_replace(" ", "_",$capAttuale) }}">{{ $food->capitolo }}</td>
                             <td class="d-none d-sm-table-cell">{{ $food->categoria }}</td>
                             <td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $food->immagine)}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"></td>
-                            <td><i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i> <i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i></td>
+                            <td><i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i></td>
                         </tr>
                     @endforeach
                 @else
