@@ -35,7 +35,7 @@
                                 <td> {{$prev->telefono}}</td>
                                 <td> {{$prev->indirizzo}}</td>
                                 <td> {{$prev->capCittaProv}}</td>
-                                <td> <i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i></td>
+                                <td> <i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;<!--&nbsp;<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i>--></td>
                             </tr>
                         @endforeach
                     @else

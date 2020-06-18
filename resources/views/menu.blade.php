@@ -53,7 +53,7 @@ Forniture
                             <td class="d-none d-sm-table-cell" headers="{{ str_replace(" ", "_",$capAttuale) }}">{{ $food->capitolo }}</td>
                             <td class="d-none d-sm-table-cell">{{ $food->categoria }}</td>
                             <td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $food->immagine)}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"></td>
-                            <td><i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i></td>
+                            <td><i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;<i class="far fa-copy" style="font-size: 20px;cursor: pointer"></i></td>
                         </tr>
                     @endforeach
                 @else
@@ -73,11 +73,11 @@ Forniture
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="capitolo">Capitolo:</label>
-                            <input list="capitoli" class="form-control"  name="capitolo" />
+                            <input list="capitoli" class="form-control"  name="capitolo" id="capitoloForm"/>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="categoria">Categoria:</label>
-                            <input list="categorie" class="form-control" name="categoria" />
+                            <input list="categorie" class="form-control" name="categoria" id="categoriaForm"/>
                         </div>
 
                     </div>

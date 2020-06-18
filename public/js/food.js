@@ -112,6 +112,40 @@ $(document).on("click", "tr .fa-edit", function (event) {
 
 })
 
+// Copy food
+$(document).on("click", "tr .fa-copy", function (event) {
+    // TODO: copia i valori nel modal di aggiunta fornitura
+    var target = $(event.target);
+    console.log(target.parents('tr'));
+
+    var tr = target.parents('tr');
+
+    $('#capitoloForm').val(tr.data('capitolo'));
+    $('#categoriaForm').val(tr.data('categoria'));
+    $('#nome').val(tr.children('td').eq(0).text());
+
+    var prezzoUnitaSplit = tr.children('td').eq(1).text().split(" ");
+    var prezzo = prezzoUnitaSplit[1];
+    $('#prezzo').val(prezzo);
+
+    if(prezzoUnitaSplit.length > 3) {
+        var unita = prezzoUnitaSplit[5]; // Per qualche motivo la posizione 5 è quella dell'unità
+        $('#unita').val(unita);
+    } else $('#unita').val("");
+
+    $('#descrizione').val(tr.children('td').eq(2).text());
+
+    $("#form").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+
+    console.log(tr.children('td').eq(0).text());
+    console.log(tr.children('td').eq(1).text());
+    console.log(tr.children('td').eq(2).text());
+    console.log(tr.data('capitolo'));
+
+
+
+})
+
 // conferma modifica prodotto
 $(document).on("click", "#btnSave", function () {
 
