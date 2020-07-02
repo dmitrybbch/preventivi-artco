@@ -135,13 +135,12 @@ function doSearch(input) {
         method: "POST",
         data: {input: input},
         success: function (res) {
-            res.results.sort(compare); // Faccio il sort degli oggetti per categoria, vedi funz COMPARE
-            //console.log(res.results);
+
             if (res.results.length) {
-                res.results.forEach(function (food) {
+                res.results.forEach(function (food) { // TODO: fare il check del capitolo e categoria come in menu
                     $('#fornitureTable').append('' +
                         '<tr>' +
-                        '<td><button class="btn btn-outline-success"><i class="fas fa-arrow-alt-circle-left"></i></button></td>' +
+                        '<td><i class="fas fa-chevron-left inputRicerca" style="cursor: pointer"></i></td>' +
                         '<th scope="row" class="d-none d-md-table-cell">' + food.id + '</th>' +
                         '<td>' + food.prezzo + '€</td>' +
                         '<td>' + food.nome + '</td>' +
@@ -159,7 +158,7 @@ function doSearch(input) {
 }
 
 //funzione click del bottone di aggiunta di un prodotto all'ordine
-$(document).on('click', 'tr .btn-outline-success', function (event) {
+$(document).on('click', 'tr .inputRicerca', function (event) {
 
     var target = $(event.target);
     var tr = target.parents('tr');

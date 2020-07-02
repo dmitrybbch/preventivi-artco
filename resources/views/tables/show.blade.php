@@ -39,17 +39,17 @@
                 <th scope="col">Nome Preventivo</th>
                 <th scope="col" class="d-none d-sm-table-cell">Verso</th>
                 <th scope="col" class="d-none d-sm-table-cell">Creato Da</th>
-                <th scope="col"></th>
+                <th scope="col">Opzioni</th>
             </tr>
             </thead>
             <tbody>
                 @foreach($tables as $table)
-                    <tr class="prevTr" style="cursor: pointer" data-id="{{ $table->id }}">
+                    <tr class=""  data-id="{{ $table->id }}">
                         <td class="d-none d-md-table-cell">{{ $table->id }}</td>
-                        <td>{{ $table->nomeTavolo }}</td>
+                        <td class="prevTr" style="cursor: pointer">{{ $table->nomeTavolo }}</td>
                         <td>{{ $table->cliente }}</td>
                         <td>{{ $table->creatoDa }}</td>
-                        <td class="text-right"><!-- <button type="button" class="btn btn-sm btn-outline-danger mr-2"><i class="far fa-trash-alt"> Cancella </i></button>--> </td>
+                        <td><i class="far fa-trash-alt eliminaPrev" style="cursor: pointer"></i></td>
                     </tr>
                 @endforeach
             </tbody>

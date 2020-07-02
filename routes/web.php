@@ -22,6 +22,7 @@ Route::get('/tables', 'TablesController@index')->name('tables');
 Route::get('/tables/get', 'TablesController@get');
 Route::post('/tables', 'TablesController@create');
 Route::patch('/tables', 'TablesController@update')->middleware('is_admin');
+
 Route::delete('/tables', 'TablesController@destroy')->middleware('is_admin');
 
 // Table

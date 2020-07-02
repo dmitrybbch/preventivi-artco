@@ -65,7 +65,7 @@ Forniture
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header bg-secondary text-white col-md-12">
-                    Aggiungi una fornitura
+                    <b>Aggiungi una fornitura</b>
                 </div>
                 <div class="card-body">
                 <form id="form">

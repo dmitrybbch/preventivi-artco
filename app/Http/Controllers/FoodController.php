@@ -105,7 +105,7 @@ class FoodController extends Controller
         ->orwhere('descrizione' , 'like' , "%{$input}%")
         ->get();*/
 
-        $food["results"] = Food::search($input)->get();
+        $food["results"] = Food::search($input)->orderBy('capitolo', 'ASC')->orderBy('categoria', 'ASC')->get();
         $food["admin"] = Auth::user()->isAdmin() ? 1 : 0;
         return response()->json($food);
     }

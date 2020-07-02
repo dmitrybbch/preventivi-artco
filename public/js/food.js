@@ -135,7 +135,7 @@ $(document).on("click", "tr .fa-copy", function (event) {
 
     $('#descrizione').val(tr.children('td').eq(2).text());
 
-    $("#form").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+    $("#form").fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
 
     console.log(tr.children('td').eq(0).text());
     console.log(tr.children('td').eq(1).text());

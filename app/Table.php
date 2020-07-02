@@ -14,7 +14,7 @@ class Table extends Model
 
     public function orders()
     {
-        $elenco = $this->hasMany('App\Order')->groupBy('food_id')->get();
+        $elenco = $this->hasMany('App\Order')->orderBy('capitolo', 'ASC')->orderBy('categoria', 'ASC')->get();
         return $elenco;
     }
 
