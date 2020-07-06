@@ -14,7 +14,12 @@ class Table extends Model
 
     public function orders()
     {
-        $elenco = $this->hasMany('App\Order')->orderBy('capitolo', 'ASC')->orderBy('categoria', 'ASC')->get();
+        $elenco = $this->hasMany('App\Order')
+            //->join("foods", "orders.food_id", "=", "foods.id")
+            //->select("food_id, table_id, amount, add_percent, foods.capitolo, foods.categoria")
+            //->orderBy("foods.capitolo", "ASC")
+            //->orderBy("foods.categoria", "ASC")
+            ->get();
         return $elenco;
     }
 
@@ -25,9 +30,7 @@ class Table extends Model
 
     public function totalOrders()
     {
-
         $total = 0;
-
         foreach (Table::orders() as $key => $order) {
             //error_log("DEBUG orders(): key=" . $key . " - order=". $order);
             $total += $order->total * $order->food()->prezzo;

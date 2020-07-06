@@ -139,10 +139,10 @@ function doSearch(input) {
             if (res.results.length) {
                 res.results.forEach(function (food) { // TODO: fare il check del capitolo e categoria come in menu
                     $('#fornitureTable').append('' +
-                        '<tr>' +
+                        '<tr data-capitolo="'+ food.capitolo +'" data-categoria="'+ food.categoria +'">' +
                         '<td><i class="fas fa-chevron-left inputRicerca" style="cursor: pointer"></i></td>' +
                         '<th scope="row" class="d-none d-md-table-cell">' + food.id + '</th>' +
-                        '<td>' + food.prezzo + '€</td>' +
+                        '<td>€ ' + food.prezzo + '</td>' +
                         '<td>' + food.nome + '</td>' +
                         '<td class="d-none d-sm-table-cell">' + (food.capitolo ? food.capitolo : "") + '</td>' +
                         '<td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td>' +

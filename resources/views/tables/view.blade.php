@@ -59,6 +59,7 @@
                         @endforeach
 
                         {{-- POI LI METTO IN TABELLA A PARTIRE DALLA LISTA ORDINATA --}}
+                        @php($foodOrdinati = collect($foodOrdinati)->sortBy('categoria')->sortBy('capitolo')->all())
                         @foreach($foodOrdinati as $fornitura)
                             <tr>
                                 <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['food_id'] }}</th>
