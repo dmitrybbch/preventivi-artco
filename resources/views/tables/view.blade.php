@@ -37,7 +37,7 @@
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col" class="d-none d-md-table-cell">id f.</th>
-                        <th scope="col">Qtà</th>
+                        <th scope="col">Quantità</th>
                         <th scope="col">Descrizione</th>
                         <th scope="col">Prezzo (Cad.)</th>
                         <th scope="col">Ricarico</th>
@@ -51,15 +51,16 @@
                     @if(count($orders))
                         @php($foodOrdinati = array())
                         {{ logger($foodOrdinati) }}
+
                         {{-- PRIMA LI INSERISCO IN UNA LISTA E LI ORDINO PER 'CATEGORIA'--}}
                         @foreach($orders as $order)
                             @php($food = $order->food())
                             @php($currentFood = array("food_id"=> ($order->food_id), "nome"=>($food->nome), "prezzo"=>($food->prezzo), "unita"=>($food->unita), "amount"=>($order->amount), "add_percent"=>($order->add_percent), "descrizione"=> ($food->descrizione), "capitolo"=> ($food->capitolo), "categoria"=> ($food->categoria), "immagine"=> ($food->immagine) ))
                             @php(array_push($foodOrdinati, $currentFood))
                         @endforeach
+                        @php($foodOrdinati = collect($foodOrdinati)->sortBy('categoria')->sortBy('capitolo')->all())
 
                         {{-- POI LI METTO IN TABELLA A PARTIRE DALLA LISTA ORDINATA --}}
-                        @php($foodOrdinati = collect($foodOrdinati)->sortBy('categoria')->sortBy('capitolo')->all())
                         @foreach($foodOrdinati as $fornitura)
                             <tr>
                                 <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['food_id'] }}</th>
