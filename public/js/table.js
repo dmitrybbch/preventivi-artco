@@ -137,15 +137,32 @@ function doSearch(input) {
         success: function (res) {
 
             if (res.results.length) {
+                var capitoloTabella = "Errore: Cap. Vuoto";
+                var categoriaTabella = "Errore: Cat. Vuota";
                 res.results.forEach(function (food) { // TODO: fare il check del capitolo e categoria come in menu
+                    var capAttuale = food.capitolo;
+                    if(capitoloTabella.localeCompare(capAttuale)){
+                        $('#fornitureTable').append('' +
+                            '<tr class="table-active">' +
+                            '<th scope="row" colspan="6" class="d-none d-md-table-cell">' + capAttuale + '</th>' +
+                            '</tr>');
+                        capitoloTabella = capAttuale;
+                    }
+                    var catAttuale = food.categoria;
+                    if(categoriaTabella.localeCompare(catAttuale)){
+                        $('#fornitureTable').append('' +
+                            '<tr class="thead-light text-white">' +
+                            '<th><i class="fas fa-long-arrow-alt-right "></i></th><th scope="row" colspan="5" class="d-none d-md-table-cell">' + catAttuale + '</th>' +
+                            '</tr>');
+                        categoriaTabella = catAttuale;
+                    }
+
                     $('#fornitureTable').append('' +
                         '<tr data-capitolo="'+ food.capitolo +'" data-categoria="'+ food.categoria +'">' +
                         '<td><i class="fas fa-chevron-left inputRicerca" style="cursor: pointer"></i></td>' +
                         '<th scope="row" class="d-none d-md-table-cell">' + food.id + '</th>' +
                         '<td>€ ' + food.prezzo + '</td>' +
                         '<td>' + food.nome + '</td>' +
-                        '<td class="d-none d-sm-table-cell">' + (food.capitolo ? food.capitolo : "") + '</td>' +
-                        '<td class="d-none d-sm-table-cell">' + (food.categoria ? food.categoria : "") + '</td>' +
                         '<td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td>' +
                         '</tr>');
                 })

@@ -33,7 +33,7 @@
         <div class="row">
 
             <div class="col-md-5">
-                <table class="table table-striped table-sm" id="foodTable">
+                <table class="table table-borderless table-sm" id="foodTable">
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col" class="d-none d-md-table-cell">id f.</th>
@@ -80,13 +80,16 @@
                             <tr data-capitolo="{{ $fornitura['capitolo'] }}" data-categoria="{{ $fornitura['categoria'] }}">
                                 <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['food_id'] }}</th>
                                 <td class="amount">
-                                    <input class="form-control amount" type="number" step="1" name="quantitaTab" value="{{$fornitura['amount'] }}">
-                                    {{ $fornitura['unita'] }}
+                                    <div class="col-md-8">
+                                        <input class="form-control amount" type="number" step="1" name="quantitaTab" value="{{$fornitura['amount'] }}">{{ $fornitura['unita'] }}
+                                    </div>
                                 </td>
                                 <td>{{ $fornitura['descrizione'] }}</td>
                                 <td class="total">€ {{$fornitura['prezzo']}}</td>
-                                <td class="add_percent">
-                                    <input class="form-control add_percent" type="number" step="0.1" name="addTab" value="{{$fornitura['add_percent'] }}"> %
+                                <td class="add_percent ">
+                                    <div class="col-md-8">
+                                        <input class="form-control add_percent" type="number" step="0.1" name="addTab" value="{{$fornitura['add_percent'] }}"> %
+                                    </div>
                                 </td>
                                 {{--
                                 <td class="d-none d-sm-table-cell"><img
@@ -137,7 +140,7 @@
                     <div class="card-body" id="card-body">
 
 
-                        <table class="table table-sm table-striped" id="fornitureTable">
+                        <table class="table table-sm table-borderless" id="fornitureTable">
                             <tbody>
                             </tbody>
                         </table>
