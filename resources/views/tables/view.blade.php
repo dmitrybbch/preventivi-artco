@@ -139,7 +139,6 @@
 
                     <div class="card-body" id="card-body">
 
-
                         <table class="table table-sm table-borderless" id="fornitureTable">
                             <tbody>
                             </tbody>

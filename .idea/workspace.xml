@@ -163,15 +163,15 @@
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/resources/fonts" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/resources/views" />
       <recent name="$PROJECT_DIR$/public/js" />
       <recent name="$PROJECT_DIR$/resources/fonts" />
       <recent name="$PROJECT_DIR$/resources/print" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/resources/fonts" />
     </key>
   </component>
   <component name="RunManager">
@@ -344,7 +344,6 @@
     <state x="2486" y="266" width="549" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588702186000">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2323" y="189" width="549" height="383" key="#com.intellij.fileTypes.FileTypeChooser/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585158353969" />
     <state x="2486" y="266" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1588702186000" />
     <state x="712" y="144" width="476" height="821" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1585767560222">
       <screen x="0" y="40" width="1920" height="1040" />
@@ -360,7 +359,6 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="830" y="418" width="354" height="142" key="NewPhpFileDialog/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587680628613" />
-    <state x="2421" y="309" width="354" height="142" key="NewPhpFileDialog/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585432508383" />
     <state x="2384" y="188" width="992" height="737" key="SettingsEditor" timestamp="1589574548012">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -384,10 +382,11 @@
     <state x="488" y="239" width="672" height="677" key="run.anything.popup/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587066798654" />
     <state x="2267" y="170" key="run.anything.popup/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585607516379" />
     <state x="2408" y="239" width="672" height="677" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1589910515419" />
-    <state x="2406" y="125" width="945" height="954" key="search.everywhere.popup" timestamp="1590258367928">
-      <screen x="1920" y="0" width="1920" height="1080" />
+    <state x="346" y="124" width="673" height="644" key="search.everywhere.popup" timestamp="1594134270379">
+      <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="486" y="125" width="945" height="954" key="search.everywhere.popup/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1586029742319" />
+    <state x="346" y="124" width="673" height="644" key="search.everywhere.popup/0.40.1366.728@0.40.1366.728" timestamp="1594134270379" />
     <state x="2266" y="89" width="672" height="678" key="search.everywhere.popup/0.40.1920.1040/1920.0.1366.768@1920.0.1366.768" timestamp="1585501832757" />
     <state x="2406" y="125" width="945" height="954" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1590258367928" />
   </component>

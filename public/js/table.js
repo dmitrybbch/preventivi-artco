@@ -38,18 +38,6 @@ $('#cartBtn').click(function (e) {
             success: function (orders) {
                 if (orders.length) {
                     /*
-                    $('thead').html('' +
-                        '<tr><th scope="col" class="d-none d-md-table-cell">ID f.</th>' +
-                        '<th scope="col">Nome Prodotto</th>' +
-                        '<th scope="col">Prezzo</th>' +
-                        '<th scope="col">Unità</th><th scope="col">Quantità</th>' +
-                        '<th scope="col" class="d-none d-sm-table-cell">Descrizione</th>' +
-                        '<th scope="col" class="d-none d-sm-table-cell">Capitolo</th>' +
-                        '<th scope="col" class="d-none d-sm-table-cell">Categoria</th>' +
-                        '<th scope="col" class="d-none d-sm-table-cell">Immagine</th>' +
-                        '<th scope="col">Opzioni</th></tr>');
-                    $('tbody').html('');
-
                     orders.sort(compare);
 
                     orders.forEach(function (food) {
@@ -139,7 +127,7 @@ function doSearch(input) {
             if (res.results.length) {
                 var capitoloTabella = "Errore: Cap. Vuoto";
                 var categoriaTabella = "Errore: Cat. Vuota";
-                res.results.forEach(function (food) { // TODO: fare il check del capitolo e categoria come in menu
+                res.results.forEach(function (food) {
                     var capAttuale = food.capitolo;
                     if(capitoloTabella.localeCompare(capAttuale)){
                         $('#fornitureTable').append('' +
@@ -176,7 +164,8 @@ function doSearch(input) {
 
 //funzione click del bottone di aggiunta di un prodotto all'ordine
 $(document).on('click', 'tr .inputRicerca', function (event) {
-
+    //TODO: aggiornare la tabella di sinistra. Non c'è verso, qui aggiornare è cancro.
+    ////TODO: mostrare in qualche modo le forniture già messe in preventivo.
     var target = $(event.target);
     var tr = target.parents('tr');
 
@@ -185,7 +174,7 @@ $(document).on('click', 'tr .inputRicerca', function (event) {
 
     console.log("Aggiunta in preventivo della fornitura dall'ID: " + id);
     addFood(id); // Richiamo la funzione di aggiunta
-
+    window.location.reload();
 })
 
 //funzione click del bottone di cancellazione un prodotto dall'ordine
