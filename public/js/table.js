@@ -183,6 +183,8 @@ $(document).on('click', 'tr .togliFornitura', function (event) {
     console.log('delete: ' + id);
 
     deleteFood(id); //richiamo la funzione di cancellazione
+
+    window.location.reload();
 })
 
 

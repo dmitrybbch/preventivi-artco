@@ -33,7 +33,7 @@
         <div class="row">
 
             <div class="col-md-5">
-                <table class="table table-striped" id="foodTable">
+                <table class="table table-striped table-sm" id="foodTable">
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col" class="d-none d-md-table-cell">id f.</th>
@@ -41,8 +41,6 @@
                         <th scope="col">Descrizione</th>
                         <th scope="col">Prezzo (Cad.)</th>
                         <th scope="col">Ricarico</th>
-                        <th scope="col">Capitolo</th>
-                        <th scope="col">Categoria</th>
                         <th scope="col">Opzioni</th>
                     </tr>
                     </thead>
@@ -61,8 +59,25 @@
                         @php($foodOrdinati = collect($foodOrdinati)->sortBy('categoria')->sortBy('capitolo')->all())
 
                         {{-- POI LI METTO IN TABELLA A PARTIRE DALLA LISTA ORDINATA --}}
+
+                        @php($capitoloTabella = "Cap_Vuoto_Error")
+                        @php($categoriaTabella = "Cat_Vuoto_Error")
+
+
                         @foreach($foodOrdinati as $fornitura)
-                            <tr>
+                            @if($capitoloTabella != ($capAttuale = $fornitura['capitolo']))
+                                <tr class="table-active">
+                                    <th scope="row" colspan="6" class="d-none d-md-table-cell">{{$capAttuale}}</th>
+                                </tr>
+                                @php($capitoloTabella = $capAttuale)
+                            @endif
+                            @if($categoriaTabella != ($catAttuale = $fornitura['categoria']))
+                                <tr class="thead-light text-white">
+                                    <th><i class="fas fa-long-arrow-alt-right "></i></th><th scope="row" colspan="5" class="d-none d-md-table-cell">{{$catAttuale}}</th>
+                                </tr>
+                                @php($categoriaTabella = $catAttuale)
+                            @endif
+                            <tr data-capitolo="{{ $fornitura['capitolo'] }}" data-categoria="{{ $fornitura['categoria'] }}">
                                 <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['food_id'] }}</th>
                                 <td class="amount">
                                     <input class="form-control amount" type="number" step="1" name="quantitaTab" value="{{$fornitura['amount'] }}">
@@ -71,17 +86,15 @@
                                 <td>{{ $fornitura['descrizione'] }}</td>
                                 <td class="total">€ {{$fornitura['prezzo']}}</td>
                                 <td class="add_percent">
-                                    <input class="form-control add_percent" type="number" step="0.1" name="addTab" value="{{$fornitura['add_percent'] }}">
+                                    <input class="form-control add_percent" type="number" step="0.1" name="addTab" value="{{$fornitura['add_percent'] }}"> %
                                 </td>
-                                <td class="d-none d-sm-table-cell">{{ $fornitura['capitolo'] }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $fornitura['categoria'] }}</td>
                                 {{--
                                 <td class="d-none d-sm-table-cell"><img
                                         src="{{URL::asset('img_uploads/'. $fornitura['immagine'])}}"
                                         class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">
                                 </td>
                                 --}}
-                                <td><button class="btn btn-outline-danger mr-1"><i class="fas fa-minus-circle togliFornitura"></i></button></td>
+                                <td><i class="fas fa-eraser togliFornitura" style="cursor:pointer"></i></td>
                             </tr>
                         @endforeach
 
