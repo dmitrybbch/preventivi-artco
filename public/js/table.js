@@ -201,6 +201,7 @@ function addFood(id) {
         method: 'POST',
         data: {table_id: $('h1').data('id'), food_id: id},
         success: function (res) {
+
             // TODO: aggiorna il totale in display
             // TODO: aggiornare la tabella
         }

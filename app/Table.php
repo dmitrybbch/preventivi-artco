@@ -31,11 +31,16 @@ class Table extends Model
     public function totalOrders()
     {
         $total = 0;
-        foreach (Table::orders() as $key => $order) {
-            //error_log("DEBUG orders(): key=" . $key . " - order=". $order);
-            $total += $order->total * $order->food()->prezzo;
-        }
+        foreach (Table::orders() as $key => $order)
+            $total += $order->amount * $order->food()->prezzo;
+        return $total;
+    }
 
+    public function totalPercentAdded()
+    {
+        $total = 0;
+        foreach (Table::orders() as $key => $order)
+            $total += $order->amount * $order->food()->prezzo+ $order->amount * $order->food()->prezzo * ($order->add_percent/100);
         return $total;
     }
 

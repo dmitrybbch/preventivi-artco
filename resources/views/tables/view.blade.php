@@ -41,6 +41,7 @@
                         <th scope="col">Descrizione</th>
                         <th scope="col">Prezzo (Cad.)</th>
                         <th scope="col">Ricarico</th>
+                        <th scope="col">Parziale</th>
                         <th scope="col">Opzioni</th>
                     </tr>
                     </thead>
@@ -67,13 +68,13 @@
                         @foreach($foodOrdinati as $fornitura)
                             @if($capitoloTabella != ($capAttuale = $fornitura['capitolo']))
                                 <tr class="table-active">
-                                    <th scope="row" colspan="6" class="d-none d-md-table-cell">{{$capAttuale}}</th>
+                                    <th scope="row" colspan="10" class="d-none d-md-table-cell">{{$capAttuale}}</th>
                                 </tr>
                                 @php($capitoloTabella = $capAttuale)
                             @endif
                             @if($categoriaTabella != ($catAttuale = $fornitura['categoria']))
                                 <tr class="thead-light text-white">
-                                    <th><i class="fas fa-long-arrow-alt-right "></i></th><th scope="row" colspan="5" class="d-none d-md-table-cell">{{$catAttuale}}</th>
+                                    <th><i class="fas fa-long-arrow-alt-right "></i></th><th scope="row" colspan="10" class="d-none d-md-table-cell">{{$catAttuale}}</th>
                                 </tr>
                                 @php($categoriaTabella = $catAttuale)
                             @endif
@@ -86,7 +87,7 @@
                                 </td>
                                 <td>{{ $fornitura['descrizione'] }}</td>
                                 <td class="total">€ {{$fornitura['prezzo']}}</td>
-                                <td class="add_percent ">
+                                <td class="add_percent">
                                     <div class="col-md-8">
                                         <input class="form-control add_percent" type="number" step="0.1" name="addTab" value="{{$fornitura['add_percent'] }}"> %
                                     </div>
@@ -97,6 +98,7 @@
                                         class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">
                                 </td>
                                 --}}
+                                <td class="totalR">€ {{$fornitura['prezzo'] * $fornitura['amount'] + $fornitura['prezzo'] * $fornitura['amount'] * $fornitura['add_percent']/100}}</td>
                                 <td><i class="fas fa-eraser togliFornitura" style="cursor:pointer"></i></td>
                             </tr>
                         @endforeach
@@ -113,10 +115,15 @@
                         </tr>
                     @endif
                     </tbody>
-                    <tfoot class="bg-secondary text-white">
+                    <tfoot class="bg-dark text-white">
                     <tr>
                         <th class="text-center" colspan="12" id="totaleOrdini">
-                            <strong><u>Totale: {{ $table->totalOrders() }}€</u></strong>
+                            <strong>Totale: {{ $table->totalOrders() }}€</strong>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th class="text-center" colspan="12" id="totaleConRicarico">
+                            <strong>Totale + R: {{ $table->totalPercentAdded() }}€</strong>
                         </th>
                     </tr>
                     </tfoot>
