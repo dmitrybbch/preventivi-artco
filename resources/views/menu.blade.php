@@ -24,7 +24,11 @@ Forniture
             <table class="table table-borderless table-sm" id="foodTable" id="table" data-sortable="true">
                 <thead class="bg-secondary text-white">
                     <tr>
-                        <th scope="col" class="d-none d-md-table-cell">id</th><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Capitolo</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th><th scope="col">Opzioni</th>
+                        <th scope="col" class="d-none d-md-table-cell">id</th>
+                        <th scope="col">Nome</th><th scope="col">Prezzo</th>
+                        <th scope="col" class="d-none d-sm-table-cell">Descrizione</th>
+                        <th scope="col" class="d-none d-sm-table-cell">Immagine</th>
+                        <th scope="col">Opzioni</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,7 +44,7 @@ Forniture
                             @php($capitoloTabella = $capAttuale)
                         @endif
                         @if($categoriaTabella != ($catAttuale = $food->categoria))
-                            <tr id="{{ str_replace(" ", "_",$catAttuale) }}" class="thead-light text-white">
+                            <tr id="{{ str_replace(" ", "_",($capAttuale.$catAttuale)) }}" class="thead-light text-white"> {{--id per facilitare l'inserimento--}}
                                 <th><i class="fas fa-long-arrow-alt-right "></i></th><th scope="row" colspan="7" class="d-none d-md-table-cell">{{$catAttuale}}</th>
                             </tr>
                             @php($categoriaTabella = $catAttuale)
@@ -50,8 +54,6 @@ Forniture
                             <td>{{ $food->nome }}</td>
                             <td>€ {{ $food->prezzo }}  @if($food->unita) x {{ $food->unita }}@endif </td>
                             <td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td>
-                            <td class="d-none d-sm-table-cell" headers="{{ str_replace(" ", "_",$capAttuale) }}">{{ $food->capitolo }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $food->categoria }}</td>
                             <td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $food->immagine)}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"></td>
                             <td><i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;<i class="far fa-copy" style="font-size: 20px;cursor: pointer"></i></td>
                         </tr>
