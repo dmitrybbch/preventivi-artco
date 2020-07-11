@@ -32,12 +32,14 @@
             </div>
         </form>
 
-        <table class="table table-sm table-hover table-bordereless table-striped" id="quotesTable" data-sortable="true" style="margin: auto; width: 90%" >
+        <table class="table table-sm table-hover table-bordereless table-striped sortable" data-reorderable-rows="true" id="quotesTable" data-sortable="true" style="margin: auto; width: 90%" >
             <thead class="bg-dark text-white">
             <tr>
                 <th scope="col" class="d-none d-md-table-cell" style="width: 4%">#</th>
                 <th scope="col">Nome Preventivo</th>
-                <th scope="col" class="d-none d-sm-table-cell" style="width: 10%">Verso</th>
+                <th scope="col" class="d-none d-sm-table-cell" style="width: 7%">Cliente</th>
+                <th style="width: 6%">#OU</th>
+                <th style="width: 9%">Totale</th>
                 <th scope="col" class="d-none d-sm-table-cell" style="width: 10%">Creato Da</th>
                 <th scope="col" style="width: 4%"></th>
             </tr>
@@ -48,6 +50,8 @@
                         <td class="d-none d-md-table-cell"><b>{{ $table->id }}</b></td>
                         <td class="prevTr" style="cursor: pointer">{{ $table->nomeTavolo }}</td>
                         <td>{{ $table->cliente }}</td>
+                        <td>{{ $table->countOrders() }}</td>
+                        <td>{{ $table->totalOrders() }} €</td>
                         <td>{{ $table->creatoDa }}</td>
                         <td><i class="far fa-trash-alt eliminaPrev" style="cursor: pointer"></i></td>
                     </tr>
@@ -63,4 +67,5 @@
 
 @section('scripts')
 <script src="{{ asset('js/tables.js') }}"></script>
+
 @endsection
