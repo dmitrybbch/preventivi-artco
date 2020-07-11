@@ -22,7 +22,7 @@
 
     <div class="panel panel-default rounded-sm">
 
-        <form id="formNuovoPreventivo">
+        <form id="formNuovoPreventivo" style="width: 90%; margin: auto">
             <div class="input-group input-group-sm mb-3 col-sm-12">
                 <input type="text" id="nomePrevInput" name="nomePrev" class="form-control" placeholder="Nuovo Preventivo" aria-label="Nome Preventivo" aria-describedby="basic-addon2">
                 {{--<input type="text" class="form-control" aria-label="Cliente">--}}
@@ -32,20 +32,20 @@
             </div>
         </form>
 
-        <table class="table table-sm table-hover table-bordereless table-striped" id="quotesTable" data-sortable="true">
+        <table class="table table-sm table-hover table-bordereless table-striped" id="quotesTable" data-sortable="true" style="margin: auto; width: 90%" >
             <thead class="bg-dark text-white">
             <tr>
-                <th scope="col" class="d-none d-md-table-cell">id</th>
+                <th scope="col" class="d-none d-md-table-cell" style="width: 4%">#</th>
                 <th scope="col">Nome Preventivo</th>
-                <th scope="col" class="d-none d-sm-table-cell">Verso</th>
-                <th scope="col" class="d-none d-sm-table-cell">Creato Da</th>
-                <th scope="col">Opzioni</th>
+                <th scope="col" class="d-none d-sm-table-cell" style="width: 10%">Verso</th>
+                <th scope="col" class="d-none d-sm-table-cell" style="width: 10%">Creato Da</th>
+                <th scope="col" style="width: 4%"></th>
             </tr>
             </thead>
             <tbody>
                 @foreach($tables as $table)
-                    <tr class=""  data-id="{{ $table->id }}">
-                        <td class="d-none d-md-table-cell">{{ $table->id }}</td>
+                    <tr class="" data-id="{{ $table->id }}">
+                        <td class="d-none d-md-table-cell"><b>{{ $table->id }}</b></td>
                         <td class="prevTr" style="cursor: pointer">{{ $table->nomeTavolo }}</td>
                         <td>{{ $table->cliente }}</td>
                         <td>{{ $table->creatoDa }}</td>

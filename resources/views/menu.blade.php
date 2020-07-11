@@ -24,11 +24,11 @@ Forniture
             <table class="table table-borderless table-sm" id="foodTable" id="table" data-sortable="true">
                 <thead class="bg-secondary text-white">
                     <tr>
-                        <th scope="col" class="d-none d-md-table-cell">id</th>
+                        <th scope="col" class="d-none d-md-table-cell">#</th>
                         <th scope="col">Nome</th><th scope="col">Prezzo</th>
                         <th scope="col" class="d-none d-sm-table-cell">Descrizione</th>
                         <th scope="col" class="d-none d-sm-table-cell">Immagine</th>
-                        <th scope="col">Opzioni</th>
+                        <td style="width: 9%"></td>
                     </tr>
                 </thead>
                 <tbody>

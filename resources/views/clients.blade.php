@@ -16,13 +16,13 @@
                 <table class="table table-striped" id="clientsTable" data-sortable="true">
                     <thead class="bg-secondary text-white">
                     <tr>
-                        <th scope="col" class="d-none d-md-table-cell">id</th>
+                        <th scope="col" class="d-none d-md-table-cell"></th>
                         <th scope="col">Nome</th>
                         <th scope="col" class="d-none d-sm-table-cell">Email</th>
                         <th scope="col" class="d-none d-sm-table-cell">Telefono</th>
                         <th scope="col" class="d-none d-sm-table-cell">Indirizzo</th>
                         <th scope="col" class="d-none d-sm-table-cell">Città</th>
-                        <th scope="col" class="d-none d-sm-table-cell">Opzioni</th>
+                        <td class="d-none d-sm-table-cell" style="width: 4%"></td>
                     </tr>
                     </thead>
                     <tbody>
@@ -35,7 +35,7 @@
                                 <td> {{$prev->telefono}}</td>
                                 <td> {{$prev->indirizzo}}</td>
                                 <td> {{$prev->capCittaProv}}</td>
-                                <td> <i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;<!--&nbsp;<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i>--></td>
+                                <td> <i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i><!--&nbsp;<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i>--></td>
                             </tr>
                         @endforeach
                     @else
