@@ -21,37 +21,54 @@ function newFood() {
         success: function (food) {
             console.log("Cerco il tr #" + (food.capitolo+food.categoria).replace(/ /g,"_"));
 
-            //Inserisco nella tabella sopra, degli appena inseriti
+            //Inserisco la sintesi nella tabella sopra, degli appena inseriti
             $('#inseritiTable').append('<tr>' +
                     '<th scope="row">' + food.id + '</th>' +
                     '<td>' + food.nome + '</td>' +
-                    '<td>€ ' + food.prezzo + ' x ' + food.unita + '</td>' +
                     '<td class="d-none d-sm-table-cell">' + food.descrizione + '</td>' +
-                    '<td class="d-none d-sm-table-cell">' + food.capitolo + '</td>' +
-                    '<td class="d-none d-sm-table-cell">' + food.categoria + '</td>' +
                     '<td class="d-none d-sm-table-cell">' +
                     '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td> ' +
-
                 '</tr>');
 
-            // Se trovo l'header giusto (il capitolo), inserisco.
-            var capCatUnderscored = (food.capitolo+food.categoria).replace(/ /g,"_");
-            $('#'+capCatUnderscored).after('' +
+            // Se non esiste la sezione del capitolo la creo
+            var capUscore = food.capitolo.replace(/ /g,"_");
+            if(!$("#" + capUscore).length){
+                console.log('Non esiste il capitolo. Creo il capitolo ' + capUscore);
+                $('#foodTable').prepend(
+                    '<tr id="'+ capUscore +'" class="table-active">' +
+                    '<th scope="row" colspan="8" class="d-none d-md-table-cell">'+ food.capitolo +'</th>' +
+                    '</tr>'
+                );
+            }
+
+            // Se non esiste la categoria, la creo
+            var capUscoreCat = capUscore+food.categoria;
+            if( !$("#" + capUscoreCat).length){
+                console.log('Non esiste la categoria per questo capitolo. Creo la categoria per il cap. ' + capUscore);
+                $('#' + capUscore).after(
+                    '<tr id="'+ capUscoreCat +'" class="thead-light text-white">' +
+                    '<th><i class="fas fa-long-arrow-alt-right "></i></th>' +
+                    '<th scope="row" colspan="7" class="d-none d-md-table-cell">'+ food.categoria +'</th>' +
+                    '</tr>'
+                );
+            }
+
+            // Inserisco la fornitura
+            $('#'+capUscoreCat).after('' +
                 '<tr>' +
                 '<th scope="row">' + food.id + '</th>' +
                 '<td>' + food.nome + '</td>' +
                 '<td>€ ' + food.prezzo + ' x ' + food.unita + '</td>' +
                 '<td class="d-none d-sm-table-cell">' + food.descrizione + '</td>' +
                 '<td class="d-none d-sm-table-cell">' +
-                    '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' +
+                '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' +
                 '</td>' +
                 '<td>' +
-                    '<i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;' +
-                    '<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;' +
-                    '<i class="far fa-copy" style="font-size: 20px;cursor: pointer"></i>'+
+                '<i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;' +
+                '<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;' +
+                '<i class="far fa-copy" style="font-size: 20px;cursor: pointer"></i>'+
                 '</td>' +
                 '</tr>');
-
         }
 
     });

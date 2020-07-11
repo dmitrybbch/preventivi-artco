@@ -35,7 +35,8 @@ Forniture
                 @if( count($foods) )
                     @php($capitoloTabella = "Cap_Vuoto_Error")
                     @php($categoriaTabella = "Cat_Vuoto_Error")
-                    @foreach($foods->sortBy('capitolo_categoria') as $food)
+                    @php($foods = collect($foods)->sortBy('categoria')->sortBy('capitolo')->all())
+                    @foreach($foods as $food)
 
                         @if($capitoloTabella != ($capAttuale = $food->capitolo))
                             <tr id="{{ str_replace(" ", "_",$capAttuale) }}" class="table-active">
