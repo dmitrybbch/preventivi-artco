@@ -36,10 +36,10 @@
                 <table class="table table-borderless table-sm" id="foodTable">
                     <thead class="bg-dark text-white font-weight-bold">
                     <tr>
-                        <th scope="col" class="d-none d-md-table-cell">id f.</th>
+                        <th scope="col" class="d-none d-md-table-cell">#</th>
                         <td>Quantità</td>
                         <td>Descrizione</td>
-                        <td>Prezzo (Cad.)</td>
+                        <td>Prezzo</td>
                         <td>Ricarico</td>
                         <td>Parziale</td>
                         <td style="padding-right: 20px">Opzioni</td>
@@ -82,14 +82,14 @@
                                 <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['food_id'] }}</th>
                                 <td class="amount">
                                     <div class="col-md-8">
-                                        <input class="form-control amount" type="number" step="1" name="quantitaTab" value="{{$fornitura['amount'] }}">{{ $fornitura['unita'] }}
+                                        <input class="form-control amount" type="number" step="1" name="quantitaTab" value="{{$fornitura['amount'] }}">
                                     </div>
                                 </td>
                                 <td>{{ $fornitura['descrizione'] }}</td>
                                 <td class="total">€ {{$fornitura['prezzo']}}</td>
                                 <td class="add_percent">
                                     <div class="col-md-9">
-                                        <input class="form-control add_percent" type="number" step="0.1" name="addTab" value="{{$fornitura['add_percent'] }}"> %
+                                        <input class="form-control add_percent" type="number" step="0.1" name="addTab" value="{{$fornitura['add_percent'] }}">
                                     </div>
                                 </td>
                                 {{--

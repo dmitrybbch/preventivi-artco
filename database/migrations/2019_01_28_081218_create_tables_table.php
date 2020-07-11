@@ -24,7 +24,6 @@ class CreateTablesTable extends Migration
             $table->string('creatoDa')->nullable();
             $table->date('creatoInData')->nullable();
 
-
             $table->timestamps();
         });
     }
