@@ -34,15 +34,15 @@
 
             <div class="col-md-5">
                 <table class="table table-borderless table-sm" id="foodTable">
-                    <thead class="thead-dark">
+                    <thead class="bg-dark text-white font-weight-bold">
                     <tr>
                         <th scope="col" class="d-none d-md-table-cell">id f.</th>
-                        <th scope="col">Quantità</th>
-                        <th scope="col">Descrizione</th>
-                        <th scope="col">Prezzo (Cad.)</th>
-                        <th scope="col">Ricarico</th>
-                        <th scope="col">Parziale</th>
-                        <th scope="col">Opzioni</th>
+                        <td>Quantità</td>
+                        <td>Descrizione</td>
+                        <td>Prezzo (Cad.)</td>
+                        <td>Ricarico</td>
+                        <td>Parziale</td>
+                        <td style="padding-right: 20px">Opzioni</td>
                     </tr>
                     </thead>
                     <tbody>
@@ -88,7 +88,7 @@
                                 <td>{{ $fornitura['descrizione'] }}</td>
                                 <td class="total">€ {{$fornitura['prezzo']}}</td>
                                 <td class="add_percent">
-                                    <div class="col-md-8">
+                                    <div class="col-md-9">
                                         <input class="form-control add_percent" type="number" step="0.1" name="addTab" value="{{$fornitura['add_percent'] }}"> %
                                     </div>
                                 </td>

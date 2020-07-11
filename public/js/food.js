@@ -19,21 +19,37 @@ function newFood() {
         processData: false,
         contentType: false,
         success: function (food) {
-            console.log("Cerco l'header #" + (food.capitolo+food.categoria).replace(/ /g,"_"));
+            console.log("Cerco il tr #" + (food.capitolo+food.categoria).replace(/ /g,"_"));
 
             //Inserisco nella tabella sopra, degli appena inseriti
-            $('#inseritiTable').append('<tr><th scope="row">' + food.id + '</th><td>' + food.nome + '</td><td>€ ' + food.prezzo + ' x ' + food.unita + '</td><td class="d-none d-sm-table-cell">' + food.descrizione + '</td><td class="d-none d-sm-table-cell">' + food.capitolo + '</td><td class="d-none d-sm-table-cell">' + food.categoria + '</td><td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td> <td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');
+            $('#inseritiTable').append('<tr>' +
+                    '<th scope="row">' + food.id + '</th>' +
+                    '<td>' + food.nome + '</td>' +
+                    '<td>€ ' + food.prezzo + ' x ' + food.unita + '</td>' +
+                    '<td class="d-none d-sm-table-cell">' + food.descrizione + '</td>' +
+                    '<td class="d-none d-sm-table-cell">' + food.capitolo + '</td>' +
+                    '<td class="d-none d-sm-table-cell">' + food.categoria + '</td>' +
+                    '<td class="d-none d-sm-table-cell">' +
+                    '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td> ' +
 
+                '</tr>');
 
             // Se trovo l'header giusto (il capitolo), inserisco.
-            $('#'+(food.capitolo+food.categoria).replace(/ /g,"_")).insertAfter('' +
+            var capCatUnderscored = (food.capitolo+food.categoria).replace(/ /g,"_");
+            $('#'+capCatUnderscored).after('' +
                 '<tr>' +
                 '<th scope="row">' + food.id + '</th>' +
                 '<td>' + food.nome + '</td>' +
                 '<td>€ ' + food.prezzo + ' x ' + food.unita + '</td>' +
                 '<td class="d-none d-sm-table-cell">' + food.descrizione + '</td>' +
-
-                '<td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td>' +
+                '<td class="d-none d-sm-table-cell">' +
+                    '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' +
+                '</td>' +
+                '<td>' +
+                    '<i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;' +
+                    '<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;' +
+                    '<i class="far fa-copy" style="font-size: 20px;cursor: pointer"></i>'+
+                '</td>' +
                 '</tr>');
 
         }

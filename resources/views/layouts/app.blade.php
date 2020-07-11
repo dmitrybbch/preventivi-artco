@@ -14,6 +14,7 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- Styles -->
@@ -30,22 +31,16 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url('menu') }}"><i class="fas fa-chair"></i> Forniture</a>
+            <ul class="navbar-nav mr-auto font-weight-bolder" style="font-family: Quicksand, sans-serif; font-size: 0.95rem; padding-left: 2rem">
+              <li class="nav-item px-3">
+                <a class="nav-link" href="{{ url('menu') }}"><i class="fas fa-chair"></i>&nbsp;&nbsp;FORNITURE</a>
               </li>
-                {{--
-                <li class="nav-item">
-                <a class="nav-link" href="{{ url('categories') }}">Categorie</a>
-              </li>
-                --}}
-              <li class="nav-item">
-                  <a class="nav-link" href="{{ url('clients') }}"><i class="fas fa-handshake"></i> Clienti</a>
+              <li class="nav-item px-3">
+                  <a class="nav-link" href="{{ url('clients') }}"><i class="fas fa-handshake"></i>&nbsp;&nbsp;CLIENTI</a>
               </li>
 
-              <li class="nav-item">
-                  <a class="nav-link" href="{{ url('users') }}"><i class="fas fa-user"></i> Utenti</a>
+              <li class="nav-item px-3">
+                  <a class="nav-link" href="{{ url('users') }}"><i class="fas fa-user"></i>&nbsp;&nbsp;UTENTI</a>
               </li>
 
             </ul>
