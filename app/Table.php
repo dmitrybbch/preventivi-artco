@@ -12,6 +12,7 @@ class Table extends Model
       'nomeTavolo', 'stato', 'cliente', 'noteAggiuntive', 'creatoDa', 'ricarico', 'creatoInData',
     ];
 
+
     public function orders()
     {
         $elenco = $this->hasMany('App\Order')

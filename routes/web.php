@@ -19,6 +19,7 @@ Auth::routes();
 
 // Tables
 Route::get('/tables', 'TablesController@index')->name('tables');
+Route::get('/tables/{id}', 'TablesController@clientIndex');
 Route::get('/tables/get', 'TablesController@get');
 Route::post('/tables', 'TablesController@create');
 Route::patch('/tables', 'TablesController@update')->middleware('is_admin');
@@ -36,8 +37,6 @@ Route::get('/orders/{id}', 'TableController@orders');
 Route::delete('/orders', 'TableController@destroy');
 Route::patch('/ordersamount', 'TableController@updateOrderAmount');
 Route::patch('/ordersaddpercent', 'TableController@updateOrderAddpercent');
-
-
 
 // Forniture
 Route::get('/menu', 'FoodController@index')->name('menu');

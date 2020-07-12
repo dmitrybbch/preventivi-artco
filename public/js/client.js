@@ -31,9 +31,9 @@ function newClient() {
     });
 }
 
-$(document).on("click", "tr .fa-trash-alt", function (event) {
+$(document).on("click", "tr .deleteClient", function (event) {
 
-    var resp = confirm("Confermare la cancellazione?");
+    var resp = confirm("Cancellare questo cliente? Perderai TUTTI I PREVENTIVI associati.");
     if (resp == true) {
         var target = $(event.target);
         console.log(target.parents('tr'));
@@ -51,3 +51,12 @@ $(document).on("click", "tr .fa-trash-alt", function (event) {
         })
     }
 })
+
+$(document).on("click", "tr .clientQuotes", function (event) {
+    var target = $(event.target);
+    var tr = target.parents('tr');
+    var id = tr.data('id');
+    console.log(id);
+    window.location = '/tables/' + id;
+})
+

@@ -5,10 +5,6 @@ $.ajaxSetup({
   }
 });
 
-$(document).ready(function() {
-    $('#quotesTable').DataTable();
-});
-
 function getTables(){
   return $.ajax({
     url: '/tables/get',

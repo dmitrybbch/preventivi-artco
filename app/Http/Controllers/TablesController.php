@@ -29,6 +29,10 @@ class TablesController extends Controller
         return view('tables.show', ['tables' => Table::all()]);
     }
 
+    public function clientIndex($clientId){
+        return view('tables.show', ['tables' => Table::where('cliente', $clientId)->get()]);
+    }
+
     public function get()  // Restituisce tutti i tavoli con conto degli ordini e prezzo totale
     {
         if($tables = Table::all()){

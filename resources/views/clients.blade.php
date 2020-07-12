@@ -13,29 +13,33 @@
         <input class="form-control mb-3" id="searchBoxClienti" type="search" placeholder="Cerca" aria-label="Search">
         <div class="row">
             <div class="col-md-8" >
-                <table class="table table-striped" id="clientsTable" data-sortable="true">
+                <table class="table table-striped sortable" id="clientsTable" data-sortable="true">
                     <thead class="bg-secondary text-white">
                     <tr>
-                        <th scope="col" class="d-none d-md-table-cell"></th>
+                        <th scope="col" class="d-none d-md-table-cell">#</th>
                         <th scope="col">Nome</th>
                         <th scope="col" class="d-none d-sm-table-cell">Email</th>
                         <th scope="col" class="d-none d-sm-table-cell">Telefono</th>
                         <th scope="col" class="d-none d-sm-table-cell">Indirizzo</th>
                         <th scope="col" class="d-none d-sm-table-cell">Città</th>
-                        <td class="d-none d-sm-table-cell" style="width: 4%"></td>
+                        <td class="d-none d-sm-table-cell" style="width: 6%"></td>
                     </tr>
                     </thead>
                     <tbody>
                     @if( count($prevs) )
                         @foreach($prevs as $prev)
-                            <tr>
+                            <tr data-id="{{ $prev->id }}">
                                 <th> {{$prev->id}}</th>
                                 <td> <b>{{$prev->nome}}</b> </td>
                                 <td> {{$prev->email}}</td>
                                 <td> {{$prev->telefono}}</td>
                                 <td> {{$prev->indirizzo}}</td>
                                 <td> {{$prev->capCittaProv}}</td>
-                                <td> <i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i><!--&nbsp;<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i>--></td>
+                                <td>
+                                    <i class="far fa-trash-alt deleteClient" style="font-size: 20px;cursor: pointer"></i>
+                                    <i class="fas fa-tags clientQuotes" style="font-size: 20px;cursor: pointer"></i>
+                                    <!--&nbsp;<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i>-->
+                                </td>
                             </tr>
                         @endforeach
                     @else
@@ -49,7 +53,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-header bg-secondary text-white col-md-12">
+                    <div class="card-header bg-secondary text-white col-md-12 font-weight-bold">
                         Nuovo Cliente
                     </div>
                     <div class="card-body">
