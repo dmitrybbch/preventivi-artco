@@ -174,7 +174,6 @@ $(document).on('click', 'tr .inputRicerca', function (event) {
 
     console.log("Aggiunta in preventivo della fornitura dall'ID: " + id);
     addFood(id); // Richiamo la funzione di aggiunta
-    window.location.reload();
 })
 
 //funzione click del bottone di cancellazione un prodotto dall'ordine

@@ -42,7 +42,7 @@
                         <td>Prezzo</td>
                         <td>Ricarico</td>
                         <td>Parziale</td>
-                        <td style="padding-right: 20px">Opzioni</td>
+                        <td style="padding-right: 20px"></td>
                     </tr>
                     </thead>
                     <tbody>
@@ -99,7 +99,7 @@
                                 </td>
                                 --}}
                                 <td class="totalR">€ {{$fornitura['prezzo'] * $fornitura['amount'] + $fornitura['prezzo'] * $fornitura['amount'] * $fornitura['add_percent']/100}}</td>
-                                <td><i class="fas fa-eraser togliFornitura" style="cursor:pointer"></i></td>
+                                <td><i class="fas fa-eraser togliFornitura" style="cursor:pointer"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                             </tr>
                         @endforeach
 
@@ -110,20 +110,26 @@
 
 
                     @else
-                        <tr>
-                            <td colspan="9">Nessuna Fornitura</td>
+                        <tr class="bg-light">
+                            <td colspan="20"><b>Fare click su "Forniture" nella scheda a destra per riempire il preventivo.</b></td>
                         </tr>
                     @endif
                     </tbody>
                     <tfoot class="bg-dark text-white">
                     <tr>
-                        <th class="text-center" colspan="12" id="totaleOrdini">
-                            <strong>Totale: {{ $table->totalOrders() }}€</strong>
+                        <th class="text-left" colspan="2">
+                            <strong>Totale:</strong>
                         </th>
+                        <td class="text-right" id="totaleOrdini" colspan="20">
+                            <strong>{{ $table->totalOrders()}} €</strong>
+                        </td>
                     </tr>
                     <tr>
-                        <th class="text-center" colspan="12" id="totaleConRicarico">
-                            <strong>Totale + R: {{ $table->totalPercentAdded() }}€</strong>
+                        <th class="text-left" colspan="2">
+                            <strong>Totale + Ricarico:</strong>
+                        </th>
+                        <th class="text-right" colspan="12" id="totaleConRicarico">
+                            <strong>{{ $table->totalPercentAdded() }} €</strong>
                         </th>
                     </tr>
                     </tfoot>
