@@ -106,7 +106,7 @@ Forniture
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <label for="immagine">Immagine</label><br>
                             <input type="file" class="form-control-file" id="immagine" name="immagine" />
                         </div>
