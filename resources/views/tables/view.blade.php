@@ -120,16 +120,16 @@
                         <th class="text-left" colspan="2">
                             <strong>Totale:</strong>
                         </th>
-                        <td class="text-right" id="totaleOrdini" colspan="20">
-                            <strong>{{ $table->totalOrders()}} €</strong>
+                        <td class="text-right font-weight-bold" id="totaleOrdini" colspan="20">
+                            {{ $table->totalOrders()}} €
                         </td>
                     </tr>
                     <tr>
                         <th class="text-left" colspan="2">
                             <strong>Totale + Ricarico:</strong>
                         </th>
-                        <th class="text-right" colspan="12" id="totaleConRicarico">
-                            <strong>{{ $table->totalPercentAdded() }} €</strong>
+                        <th class="text-right font-weight-bold" colspan="12" id="totaleConRicarico">
+                            {{ $table->totalPercentAdded() }} €
                         </th>
                     </tr>
                     </tfoot>

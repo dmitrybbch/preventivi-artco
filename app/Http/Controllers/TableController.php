@@ -49,7 +49,7 @@ class TableController extends Controller
 
         $new->save();
 
-        return response()->json(array('order' => $new, 'total' => Table::find($input['table_id'])->totalOrders()));
+        return response()->json(array('order' => $new, 'total' => Table::find($input['table_id'])->totalOrders(), 'totalMargin' => Table::find($input['table_id'])->totalPercentAdded()));
         //TODO: Correggere la funzione totalOrders con gli amount rifatti
     }
 
