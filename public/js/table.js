@@ -189,7 +189,6 @@ $(document).on('click', 'tr .togliFornitura', function (event) {
 
     deleteFood(id); //richiamo la funzione di cancellazione
 
-    window.location.reload();
 })
 
 
@@ -200,9 +199,9 @@ function addFood(id) {
         method: 'POST',
         data: {table_id: $('h1').data('id'), food_id: id},
         success: function (res) {
+            // TODO: Aggiornare tabella
             $('#totaleOrdini').text(res.total + " €");
             $('#totaleConRicarico').text(res.totalMargin + " €");
-
         }
     })
 }
@@ -214,15 +213,9 @@ function deleteFood(id /*, total*/) {
         method: 'DELETE',
         data: {table_id: $('h1').data('id'), food_id: id},
         success: function (res) {
-            // TODO: Aggiornare la tabella e il totale
-            /*
-            $('h2').text(res.total + '€');
-            res = parseInt(res.order);
-            if (parseInt(total.text()) - res)
-                total.text(parseInt(total.text()) - res);
-            else
-                total.parents('tr').remove();
-            */
+            // TODO: Aggiornare tabella
+            $('#totaleOrdini').text(res.total + " €");
+            $('#totaleConRicarico').text(res.totalMargin + " €");
         }
     })
 }

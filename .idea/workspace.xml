@@ -5,8 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TableController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TableController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/table.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/tables/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tables/view.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +304,7 @@
       <workItem from="1594640301731" duration="1298000" />
       <workItem from="1594734733115" duration="1049000" />
       <workItem from="1594740703887" duration="90000" />
-      <workItem from="1594741075201" duration="2080000" />
+      <workItem from="1594741075201" duration="2483000" />
     </task>
     <servers />
   </component>
