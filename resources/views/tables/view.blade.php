@@ -67,17 +67,18 @@
 
                         @foreach($foodOrdinati as $fornitura)
                             @if($capitoloTabella != ($capAttuale = $fornitura['capitolo']))
-                                <tr class="table-active">
+                                <tr class="table-active" id="{{ str_replace(" ", "_",$capAttuale) }}">
                                     <th scope="row" colspan="10" class="d-none d-md-table-cell">{{$capAttuale}}</th>
                                 </tr>
                                 @php($capitoloTabella = $capAttuale)
                             @endif
                             @if($categoriaTabella != ($catAttuale = $fornitura['categoria']))
-                                <tr class="thead-light text-white">
+                                <tr class="thead-light text-white" id="{{ str_replace(" ", "_",($capAttuale.$catAttuale)) }}">
                                     <th><i class="fas fa-long-arrow-alt-right "></i></th><th scope="row" colspan="10" class="d-none d-md-table-cell">{{$catAttuale}}</th>
                                 </tr>
                                 @php($categoriaTabella = $catAttuale)
                             @endif
+                            {{-- PER LE RIGHE DEI PRODOTTI inserisco --}}
                             <tr data-capitolo="{{ $fornitura['capitolo'] }}" data-categoria="{{ $fornitura['categoria'] }}">
                                 <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['food_id'] }}</th>
                                 <td class="amount">
@@ -120,16 +121,16 @@
                         <th class="text-left" colspan="2">
                             <strong>Totale:</strong>
                         </th>
-                        <td class="text-right font-weight-bold" id="totaleOrdini" colspan="20">
-                            {{ $table->totalOrders()}} €
+                        <td class="text-right" id="totaleOrdini" colspan="20">
+                            <strong>{{ $table->totalOrders()}} €</strong>
                         </td>
                     </tr>
                     <tr>
                         <th class="text-left" colspan="2">
                             <strong>Totale + Ricarico:</strong>
                         </th>
-                        <th class="text-right font-weight-bold" colspan="12" id="totaleConRicarico">
-                            {{ $table->totalPercentAdded() }} €
+                        <th class="text-right" colspan="12" id="totaleConRicarico">
+                            <strong>{{ $table->totalPercentAdded() }} €</strong>
                         </th>
                     </tr>
                     </tfoot>

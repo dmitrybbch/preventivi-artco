@@ -75,8 +75,8 @@ $("#salvaDatiAggiuntivi").click(function () {
     //var formDati = new FormData($('#formdatipreventivo')[0]);
     //console.log(formDati[0].text());
     var formDati = $('#formdatipreventivo');
-    var isvalidate = formDati[0].checkValidity();
-    if (isvalidate) {
+    var isvalid = formDati[0].checkValidity();
+    if (isvalid) {
         // Cose del Gando
         event.preventDefault();
         // Trasforma un array di 3 elementi, ognuno array associativo,
@@ -85,7 +85,6 @@ $("#salvaDatiAggiuntivi").click(function () {
         var arrayAssociativo = [];
         for (var i = 0; i < 4; i++)
             arrayAssociativo[dati[i]['name']] = dati[i]['value'];
-
     }
 
     var obj = $.extend({}, arrayAssociativo);
@@ -146,7 +145,7 @@ function doSearch(input) {
                     }
 
                     $('#fornitureTable').append('' +
-                        '<tr data-capitolo="'+ food.capitolo +'" data-categoria="'+ food.categoria +'">' +
+                        '<tr data-capitolo="'+ food.capitolo +'" data-categoria="'+ food.categoria +'" data-price="' + food.prezzo + '">' +
                         '<td><i class="fas fa-chevron-left inputRicerca" style="cursor: pointer"></i></td>' +
                         '<th scope="row" class="d-none d-md-table-cell">' + food.id + '</th>' +
                         '<td>€ ' + food.prezzo + '</td>' +
@@ -169,12 +168,56 @@ $(document).on('click', 'tr .inputRicerca', function (event) {
     var target = $(event.target);
     var tr = target.parents('tr');
 
-    //recupero valori del prodotto
+    // Recupero valori del prodotto
     var id = tr.children('th').text();
-
+    var price = tr.data('price');
     console.log("Aggiunta in preventivo della fornitura dall'ID: " + id);
-    addFood(id); // Richiamo la funzione di aggiunta
+    addFood(id, price); // Richiamo la funzione di aggiunta
+
 })
+
+// Funzione di aggiunta prodotto all'ordine
+function addFood(id, price) {
+    $.ajax({
+        url: '/table',
+        method: 'POST',
+        data: {table_id: $('h1').data('id'), food_id: id},
+        success: function (res) {
+            // res['order'] = ordine, res['fornitura'] = fornitura
+            $('#totaleOrdini').text(res["total"] + ' €');
+            $('#totaleConRicarico').text(res["totalWithMargin"] + ' €');
+
+            // TODO: aggiorna il totale in display
+            // TODO: aggiornare la tabella
+
+            console.log("Ammontare da scrivere in tabella grafica:" + res["order"]["amount"]);
+            console.log(res["fornitura"]["nomeTavolo"]);
+
+            // Se non c'è il capitolo lo creo
+            var capUscore = res["fornitura"]["capitolo"].replace(/ /g,"_");
+            if(!$("#" + capUscore).length){
+                console.log("NON ho trovato il capitolo " + capUscore);
+                $('#foodTable').prepend(
+                    '<tr id="'+ capUscore +'" class="table-active">' +
+                    '<th scope="row" colspan="8" class="d-none d-md-table-cell">'+ res["fornitura"]["capitolo"] +'</th>' +
+                    '</tr>'
+                );
+            }
+
+            var capUscoreCat = capUscore + res["fornitura"]["categoria"] ;
+            // Se non c'è la categoria la creo
+            if(!$("#" + capUscoreCat).length){
+                console.log("NON ho trovato la categoria " + res["fornitura"]["categoria"]);
+                $('#' + capUscore).after(
+                    '<tr id="'+ capUscoreCat +'" class="thead-light text-white">' +
+                    '<th><i class="fas fa-long-arrow-alt-right "></i></th>' +
+                    '<th scope="row" colspan="7" class="d-none d-md-table-cell">'+ res["fornitura"]["categoria"] +'</th>' +
+                    '</tr>'
+                );
+            }
+        }
+    })
+}
 
 //funzione click del bottone di cancellazione un prodotto dall'ordine
 $(document).on('click', 'tr .togliFornitura', function (event) {
@@ -189,22 +232,9 @@ $(document).on('click', 'tr .togliFornitura', function (event) {
 
     deleteFood(id); //richiamo la funzione di cancellazione
 
+    window.location.reload();
 })
 
-
-// Funzione di aggiunta prodotto all'ordine
-function addFood(id) {
-    $.ajax({
-        url: '/table',
-        method: 'POST',
-        data: {table_id: $('h1').data('id'), food_id: id},
-        success: function (res) {
-            // TODO: Aggiornare tabella
-            $('#totaleOrdini').text(res.total + " €");
-            $('#totaleConRicarico').text(res.totalMargin + " €");
-        }
-    })
-}
 
 //funzione di cancellazione di un prodotto dall'ordine
 function deleteFood(id /*, total*/) {
@@ -213,9 +243,15 @@ function deleteFood(id /*, total*/) {
         method: 'DELETE',
         data: {table_id: $('h1').data('id'), food_id: id},
         success: function (res) {
-            // TODO: Aggiornare tabella
-            $('#totaleOrdini').text(res.total + " €");
-            $('#totaleConRicarico').text(res.totalMargin + " €");
+            // TODO: Aggiornare la tabella e il totale
+            /*
+            $('h2').text(res.total + '€');
+            res = parseInt(res.order);
+            if (parseInt(total.text()) - res)
+                total.text(parseInt(total.text()) - res);
+            else
+                total.parents('tr').remove();
+            */
         }
     })
 }

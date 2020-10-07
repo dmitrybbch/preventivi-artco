@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Food;
 use Illuminate\Http\Request;
 use App\Table;
 use App\Order;
@@ -49,8 +50,12 @@ class TableController extends Controller
 
         $new->save();
 
-        return response()->json(array('order' => $new, 'total' => Table::find($input['table_id'])->totalOrders(), 'totalMargin' => Table::find($input['table_id'])->totalPercentAdded()));
-        //TODO: Correggere la funzione totalOrders con gli amount rifatti
+        $fornituraModel = Food::find($input['food_id']);
+        $total = Table::find($input['table_id'])->totalOrders();
+        $totalMargin = Table::find($input['table_id'])->totalPercentAdded();
+
+        return response()->json(array('order' => $new, 'fornitura' => $fornituraModel, 'total' => $total, 'totalWithMargin' => $totalMargin));
+
     }
 
     public function updateOrderAmount(Request $request){
@@ -124,7 +129,7 @@ class TableController extends Controller
 
         $order = Order::where('table_id', $input['table_id'])->where('food_id', $input['food_id'])->delete();
 
-        return response()->json(array('order' => $order, 'total' => Table::find($input['table_id'])->totalOrders(), 'totalMargin' => Table::find($input['table_id'])->totalPercentAdded()));
+        return response()->json(array('order' => $order, 'total' => Table::find($input['table_id'])->totalOrders()));
     }
 
     public function empty(Request $request)

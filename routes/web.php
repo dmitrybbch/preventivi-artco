@@ -33,15 +33,14 @@ Route::post('/table', 'TableController@add');
 Route::patch('/table/{id}', 'TableController@update');
 Route::delete('/table', 'TableController@empty');
 
+// Totale di un preventivo, per aggiornarlo facilmente
+
+
 // Orders
 Route::get('/orders/{id}', 'TableController@orders');
 Route::delete('/orders', 'TableController@destroy');
 Route::patch('/ordersamount', 'TableController@updateOrderAmount');
 Route::patch('/ordersaddpercent', 'TableController@updateOrderAddpercent');
-
-//Total price for quote
-//Route::get('orderstotal/{id}', '');
-
 
 // Forniture
 Route::get('/menu', 'FoodController@index')->name('menu');
