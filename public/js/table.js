@@ -232,7 +232,7 @@ $(document).on('click', 'tr .togliFornitura', function (event) {
 
     deleteFood(id); //richiamo la funzione di cancellazione
 
-    window.location.reload();
+    //window.location.reload();
 })
 
 
