@@ -219,11 +219,11 @@ function addFood(id, price) {
             //Inserisco il prodotto nella sua categoria
             $('#'+capUscoreCat).after('' +
                 '<tr data-capitolo=' + res["fornitura"]["capitolo"] +' data-categoria='+ res["fornitura"]["categoria"] +'>' +
-                '<th scope="row">' + res["fornitura"]["food_id"] + '</th>' +
+                '<th scope="row">' + id + '</th>' +
                 '<td class="amount">' +
                     '<div class="col-md-8">' +
                         '<input class="form-control amount" type="number" step="1" name="quantitaTab" value='+ res["fornitura"]["amount"]+'>'+
-                    '</div>'+
+                    '</div>' +
                 '</td>' +
                 '<td>' + res["fornitura"]["descrizione"]+ '</td>' +
                 '<td class="total">€ '+ res["fornitura"]["prezzo"] +'</td>' +

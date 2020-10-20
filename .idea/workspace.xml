@@ -56,6 +56,7 @@
     <list default="true" id="8de6ddee-b259-45aa-aa47-acf52695d548" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/table.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/table.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tables/view.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tables/view.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -356,7 +357,7 @@
       <workItem from="1594734733115" duration="1049000" />
       <workItem from="1594740703887" duration="90000" />
       <workItem from="1594741075201" duration="2483000" />
-      <workItem from="1603179221077" duration="6962000" />
+      <workItem from="1603179221077" duration="9822000" />
     </task>
     <servers />
   </component>
@@ -405,9 +406,9 @@
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="348" y="61" width="674" height="678" key="#phpunit.xml/0.40.1366.728@0.40.1366.728" timestamp="1594743109816" />
-    <state x="405" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1603179243994">
+    <state x="405" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1603207726316">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="405" y="225" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1603179243994" />
+    <state x="405" y="225" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1603207726316" />
   </component>
 </project>

@@ -63,8 +63,7 @@
 
                         @php($capitoloTabella = "Cap_Vuoto_Error")
                         @php($categoriaTabella = "Cat_Vuoto_Error")
-
-
+                        
                         @foreach($foodOrdinati as $fornitura)
                             @if($capitoloTabella != ($capAttuale = $fornitura['capitolo']))
                                 <tr class="table-active" id="{{ str_replace(" ", "_",$capAttuale) }}">
