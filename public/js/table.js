@@ -193,7 +193,7 @@ function addFood(id, price) {
             console.log("Ammontare da scrivere in tabella grafica:" + res["order"]["amount"]);
             console.log(res["fornitura"]["nomeTavolo"]);
 
-            // Se non c'è il capitolo lo creo
+            // Se NON c'è il capitolo lo creo
             var capUscore = res["fornitura"]["capitolo"].replace(/ /g,"_");
             if(!$("#" + capUscore).length){
                 console.log("NON ho trovato il capitolo " + capUscore);
@@ -204,8 +204,8 @@ function addFood(id, price) {
                 );
             }
 
-            var capUscoreCat = capUscore + res["fornitura"]["categoria"] ;
-            // Se non c'è la categoria la creo
+            // Se NON c'è la categoria la creo
+            var capUscoreCat = capUscore + res["fornitura"]["categoria"];
             if(!$("#" + capUscoreCat).length){
                 console.log("NON ho trovato la categoria " + res["fornitura"]["categoria"]);
                 $('#' + capUscore).after(
@@ -215,6 +215,27 @@ function addFood(id, price) {
                     '</tr>'
                 );
             }
+
+            //Inserisco il prodotto nella sua categoria
+            $('#'+capUscoreCat).after('' +
+                '<tr data-capitolo=' + res["fornitura"]["capitolo"] +' data-categoria='+ res["fornitura"]["categoria"] +'>' +
+                '<th scope="row">' + res["fornitura"]["food_id"] + '</th>' +
+                '<td class="amount">' +
+                    '<div class="col-md-8">' +
+                        '<input class="form-control amount" type="number" step="1" name="quantitaTab" value='+ res["fornitura"]["amount"]+'>'+
+                    '</div>'+
+                '</td>' +
+                '<td>' + res["fornitura"]["descrizione"]+ '</td>' +
+                '<td class="total">€ '+ res["fornitura"]["prezzo"] +'</td>' +
+                '<td class="add_percent">' +
+                    '<div class="col-md-9">' +
+                        '<input class="form-control add_percent" type="number" step="0.1" name="addTab" value="'+ res["fornitura"]["add_percent"] +'">' +
+                    '</div>' +
+                '</td>' +
+                '<td class="totalR">€ '+ res["fornitura"]["prezzo"] * res["fornitura"]["amount"] + res["fornitura"]["prezzo"] * res["fornitura"]["amount"] * res["fornitura"]["add_percent"]/100 +'</td>' +
+                '<td><i class="fas fa-eraser togliFornitura" style="cursor:pointer"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>' +
+                '</tr>' +
+            '');
         }
     })
 }
@@ -232,7 +253,6 @@ $(document).on('click', 'tr .togliFornitura', function (event) {
 
     deleteFood(id); //richiamo la funzione di cancellazione
     tr.remove();
-    //window.location.reload();
 })
 
 
