@@ -356,6 +356,7 @@
       <workItem from="1594734733115" duration="1049000" />
       <workItem from="1594740703887" duration="90000" />
       <workItem from="1594741075201" duration="2483000" />
+      <workItem from="1603179221077" duration="1351000" />
     </task>
     <servers />
   </component>
@@ -400,45 +401,13 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="2486" y="266" width="549" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588702186000">
-      <screen x="1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="2486" y="266" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1588702186000" />
-    <state x="2505" y="198" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1592330483857">
-      <screen x="1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="585" y="198" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587762354124" />
-    <state x="2505" y="198" width="524" height="491" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1592330483857" />
     <state x="348" y="61" width="674" height="678" key="#phpunit.xml" timestamp="1594743109816">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
     <state x="348" y="61" width="674" height="678" key="#phpunit.xml/0.40.1366.728@0.40.1366.728" timestamp="1594743109816" />
-    <state x="830" y="418" width="354" height="142" key="NewPhpFileDialog" timestamp="1587680628613">
-      <screen x="0" y="0" width="1920" height="1080" />
-    </state>
-    <state x="830" y="418" width="354" height="142" key="NewPhpFileDialog/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587680628613" />
-    <state x="2384" y="188" width="992" height="737" key="SettingsEditor" timestamp="1589574548012">
-      <screen x="1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="2384" y="188" width="992" height="737" key="SettingsEditor/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1589574548012" />
-    <state x="287" y="423" key="com.intellij.ide.util.TipDialog" timestamp="1594741077844">
+    <state x="405" y="225" key="com.intellij.ide.util.TipDialog" timestamp="1603179243994">
       <screen x="0" y="40" width="1366" height="728" />
     </state>
-    <state x="403" y="623" key="com.intellij.ide.util.TipDialog/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587761190110" />
-    <state x="287" y="423" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1594741077844" />
-    <state x="2425" y="27" width="910" height="1047" key="find.popup" timestamp="1592309297645">
-      <screen x="1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="2425" y="27" width="910" height="1047" key="find.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1592309297645" />
-    <state x="2408" y="239" width="672" height="677" key="run.anything.popup" timestamp="1594321646751">
-      <screen x="1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="488" y="239" width="672" height="677" key="run.anything.popup/0.1080.1366.768/0.0.1920.1080@0.0.1920.1080" timestamp="1587066798654" />
-    <state x="2408" y="239" width="672" height="677" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1594321646751" />
-    <state x="346" y="124" width="673" height="644" key="search.everywhere.popup" timestamp="1594134270379">
-      <screen x="0" y="40" width="1366" height="728" />
-    </state>
-    <state x="346" y="124" width="673" height="644" key="search.everywhere.popup/0.40.1366.728@0.40.1366.728" timestamp="1594134270379" />
-    <state x="2406" y="125" width="945" height="954" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1590258367928" />
+    <state x="405" y="225" key="com.intellij.ide.util.TipDialog/0.40.1366.728@0.40.1366.728" timestamp="1603179243994" />
   </component>
 </project>

@@ -231,7 +231,7 @@ $(document).on('click', 'tr .togliFornitura', function (event) {
     console.log('delete: ' + id);
 
     deleteFood(id); //richiamo la funzione di cancellazione
-
+    tr.remove();
     //window.location.reload();
 })
 
@@ -243,7 +243,7 @@ function deleteFood(id /*, total*/) {
         method: 'DELETE',
         data: {table_id: $('h1').data('id'), food_id: id},
         success: function (res) {
-            // TODO: Aggiornare la tabella e il totale
+            // TODO: Aggiornare il totale
             /*
             $('h2').text(res.total + '€');
             res = parseInt(res.order);
