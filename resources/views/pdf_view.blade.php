@@ -87,11 +87,8 @@
                             </tr>
                         @endforeach
 
-
-
                         {{-- logger('Debag forniture riordinate, si spera:') }}
                         {{ logger($foodOrdinati) --}}
-
 
                     @else
                         <tr><td colspan="8">Nessuna Fornitura</td></tr>
@@ -118,7 +115,7 @@
                 </table>
 
             </div>
-            {{--
+
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-header bg-dark text-white" id="numTotalePrev">
@@ -149,7 +146,7 @@
                     </div>
                 </div>
             </div>
-            --}}
+
 
         </div>
 
