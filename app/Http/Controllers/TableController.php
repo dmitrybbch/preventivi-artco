@@ -116,8 +116,8 @@ class TableController extends Controller
         $table['noteAggiuntive'] = $request['note'];
         $table['ricarico'] = $request['ricarico'];
         $table['creatoDa'] = $request['creatoDa'];
-        $table['cliente'] = $request['client'];
-        logger("TableController: Log richiesta updateData: " . $request['creatoDa'] . " a " . $request['client']);
+        $table['client_id'] = $request['cliente'];
+        logger("TableController: Log richiesta updateData: " . $request['creatoDa'] . " a " . $request['cliente']);
         $table->save();
 
         //return $pdf->download('Mannaggia.pdf');

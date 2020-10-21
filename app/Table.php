@@ -9,7 +9,7 @@ class Table extends Model
 {
     //
     protected $fillable = [
-      'nomeTavolo', 'stato', 'cliente', 'noteAggiuntive', 'creatoDa', 'ricarico', 'creatoInData',
+      'nomeTavolo', 'stato', 'client_id', 'noteAggiuntive', 'creatoDa', 'ricarico', 'creatoInData',
     ];
 
 
@@ -43,6 +43,16 @@ class Table extends Model
         foreach (Table::orders() as $key => $order)
             $total += $order->amount * $order->food()->prezzo+ $order->amount * $order->food()->prezzo * ($order->add_percent/100);
         return $total;
+    }
+
+    public function currentClientDB()
+    {
+        //logger("Nais ".$this->select("client_id")->get()[0]["client_id"]);
+        $client_id = $this->select("client_id")->get()[0]["client_id"];
+        logger("Id Cliente: ".$client_id);
+        $client_name = Client::find($client_id)["nome"];
+        logger("Nome Cliente: ".$client_name);
+        return $client_name;
     }
 
     public function scopeInfo($query, $input)

@@ -63,7 +63,7 @@
 
                         @php($capitoloTabella = "Cap_Vuoto_Error")
                         @php($categoriaTabella = "Cat_Vuoto_Error")
-                        
+
                         @foreach($foodOrdinati as $fornitura)
                             @if($capitoloTabella != ($capAttuale = $fornitura['capitolo']))
                                 <tr class="table-active" id="{{ str_replace(" ", "_",$capAttuale) }}">
@@ -177,8 +177,9 @@
                                            value="@if($table->creatoDa){{$table->creatoDa}} @else{{Auth::user()->username }} @endif">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="client">Cliente:</label>
-                                    <input list="clienti" class="form-control"  name="client" value="{{ $table->cliente }}"/>
+                                    <label for="cliente">Cliente:</label>
+                                    {{--<input type="hidden" name="client_id" value="{{ $table->client_id }}">--}}
+                                    <input list="clienti" class="form-control"  name="cliente" value="{{ $table->client_id }}"/>
                                 </div>
                             </div>
                         </form>

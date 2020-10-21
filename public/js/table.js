@@ -342,7 +342,8 @@ $(document).on('click', '#anteprima', function (event) {
     var obj = $.extend({}, arrayAssociativo);
 
     var urlPathname = window.location.pathname;
-    console.log('Creato array associativo. Stringa splittata: ' + urlPathname); // /table/1
+    console.log('Creato array associativo: ' + urlPathname); // /table/1
+    alert(JSON.stringify(obj, null, 4));
 
     jQuery.ajax({
         url: urlPathname,
