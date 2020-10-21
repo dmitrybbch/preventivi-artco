@@ -22,58 +22,104 @@
 
         <div class="row">
 
-            <div class="col-md-9">
-                <table class="table table-striped" id="foodTable">
-                    <thead class="thead-dark">
-                    <tr><th scope="col">Nome</th><th scope="col">Prezzo</th><th scope="col">Quantità</th><th scope="col" class="d-none d-sm-table-cell">Descrizione</th><th scope="col" class="d-none d-sm-table-cell">Categoria</th><th scope="col" class="d-none d-sm-table-cell">Immagine</th></tr>
+            <div class="col-md-9 mx-auto">
+                <table class="table table-borderless table-sm" id="foodTable">
+                    <!--
+                    <thead class="bg-dark text-white font-weight-bold">
+                    <tr>
+                        <th scope="col" class="d-none d-md-table-cell">#</th>
+                        <td>Quantità</td>
+                        <td>Descrizione</td>
+                        <td>Prezzo</td>
+                        <td>Ricarico</td>
+                        <td>Parziale</td>
+                        <td style="padding-right: 20px"></td>
+                    </tr>
                     </thead>
+                    -->
                     <tbody>
 
                     @php ($orders = $datat->orders())
                     @if(count($orders))
                         @php($foodOrdinati = array())
-                    {{ logger($foodOrdinati) }}
+                        {{ logger($foodOrdinati) }}
 
-                    {{-- PRIMA LI INSERISCO IN UNA LISTA E LI ORDINO PER 'CATEGORIA'--}}
+                        {{-- PRIMA LI INSERISCO IN UNA LISTA E LI ORDINO PER 'CATEGORIA'--}}
+                        @foreach($orders as $order)
+                            @php($food = $order->food())
+                            @php($currentFood = array("food_id"=> ($order->food_id), "nome"=>($food->nome), "prezzo"=>($food->prezzo), "unita"=>($food->unita), "amount"=>($order->amount), "add_percent"=>($order->add_percent), "descrizione"=> ($food->descrizione), "capitolo"=> ($food->capitolo), "categoria"=> ($food->categoria), "immagine"=> ($food->immagine) ))
+                            @php(array_push($foodOrdinati, $currentFood))
+                        @endforeach
+                        @php($foodOrdinati = collect($foodOrdinati)->sortBy('categoria')->sortBy('capitolo')->all())
 
-                    @foreach($orders as $order)
-                        @php($food = $order->food())
-                        @php($currentFood = array("food_id"=> ($order->food_id), "nome"=>($food->nome), "prezzo"=>($food->prezzo), "unita"=>($food->unita), "total"=>($order->total), "descrizione"=> ($food->descrizione), "capitolo"=> ($food->capitolo), "categoria"=> ($food->categoria), "immagine"=> ($food->immagine) ))
-                        @php(sortedInsert($foodOrdinati, $currentFood, 'capitolo'))
-                    @endforeach
+                        {{-- POI LI METTO IN TABELLA A PARTIRE DALLA LISTA ORDINATA --}}
 
-                    {{-- POI LI METTO IN TABELLA A PARTIRE DALLA LISTA ORDINATA --}}
+                        @php($capitoloTabella = "Cap_Vuoto_Error")
+                        @php($categoriaTabella = "Cat_Vuoto_Error")
 
-                    @foreach($foodOrdinati as $fornitura)
-                        <tr>
-                            {{-- <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['food_id'] }}</th> --}}
-                            <td>{{ $fornitura['nome'] }}</td>
-                            <td>{{ $fornitura['prezzo'] }}€</td>
-                            <td class="total">{{$fornitura['total'] }} {{ $fornitura['unita'] }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $fornitura['descrizione'] }}</td>
-                            <td class="d-none d-sm-table-cell">{{ $fornitura['categoria'] }}</td>
-                            <td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $fornitura['immagine'])}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"> </td>
-                        </tr>
-                    @endforeach
+                        @foreach($foodOrdinati as $fornitura)
+                            @if($capitoloTabella != ($capAttuale = $fornitura['capitolo']))
+                                <tr class="table-active" id="{{ str_replace(" ", "_",$capAttuale) }}">
+                                    <th scope="row" colspan="10" class="d-none d-md-table-cell">{{$capAttuale}}</th>
+                                </tr>
+                                @php($capitoloTabella = $capAttuale)
+                            @endif
+                            @if($categoriaTabella != ($catAttuale = $fornitura['categoria']))
+                                <tr class="thead-light text-white" id="{{ str_replace(" ", "_",($capAttuale.$catAttuale)) }}">
+                                    <th><i class="fas fa-long-arrow-alt-right "></i></th><th scope="row" colspan="10" class="d-none d-md-table-cell">{{$catAttuale}}</th>
+                                </tr>
+                                @php($categoriaTabella = $catAttuale)
+                            @endif
+                            {{-- PER LE RIGHE DEI PRODOTTI inserisco --}}
+                            <tr data-capitolo="{{ $fornitura['capitolo'] }}" data-categoria="{{ $fornitura['categoria'] }}">
+                                <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['food_id'] }}</th>
+                                <td class="amount">{{$fornitura["amount"]}}</td>
+                                <td>{{ $fornitura['descrizione'] }}</td>
+                                <td class="total">€ {{$fornitura['prezzo']}}</td>
+                                <td class="add_percent">{{$fornitura["add_percent"]}}</td>
+                                {{--
+                                <td class="d-none d-sm-table-cell"><img
+                                        src="{{URL::asset('img_uploads/'. $fornitura['immagine'])}}"
+                                        class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">
+                                </td>
+                                --}}
+                                <td class="totalR"><b>€ {{$fornitura['prezzo'] * $fornitura['amount'] + $fornitura['prezzo'] * $fornitura['amount'] * $fornitura['add_percent']/100}}</b></td>
+                            </tr>
+                        @endforeach
+
+
 
                         {{-- logger('Debag forniture riordinate, si spera:') }}
                         {{ logger($foodOrdinati) --}}
+
 
                     @else
                         <tr><td colspan="8">Nessuna Fornitura</td></tr>
                     @endif
                     </tbody>
-                    <tfoot class="bg-secondary text-white">
-                    <tr><th class="text-center" colspan="12">
-                            <strong><u>Totale:  {{ $datat->totalOrders() }}€</u></strong>
+                    <tfoot class="bg-dark text-white">
+                    <tr>
+                        <th class="text-left" colspan="2">
+                            <strong>Totale:</strong>
+                        </th>
+                        <td class="text-right" id="totaleOrdini" colspan="20">
+                            <strong>{{ $datat->totalOrders()}} €</strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="text-left" colspan="2">
+                            <strong>Totale + Ricarico:</strong>
+                        </th>
+                        <th class="text-right" colspan="12" id="totaleConRicarico">
+                            <strong>{{ $datat->totalPercentAdded() }} €</strong>
                         </th>
                     </tr>
                     </tfoot>
                 </table>
 
             </div>
-
-            <div class="col-md-2">
+            {{--
+            <div class="col-md-3">
                 <div class="card">
                     <div class="card-header bg-dark text-white" id="numTotalePrev">
                         <strong>Dati aggiuntivi</strong>
@@ -103,6 +149,8 @@
                     </div>
                 </div>
             </div>
+            --}}
+
         </div>
 
 
