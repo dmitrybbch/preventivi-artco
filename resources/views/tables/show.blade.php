@@ -36,12 +36,12 @@
             <thead class="bg-secondary text-white">
             <tr>
                 <th scope="col" class="d-none d-md-table-cell" style="width: 4%">#</th>
-                <th scope="col">Nome Preventivo</th>
-                <th scope="col" class="d-none d-sm-table-cell" style="width: 10%">Cliente</th>
-                <th style="width: 4%">#OU</th>
-                <th style="width: 9%">Totale</th>
-                <th scope="col" class="d-none d-sm-table-cell" style="width: 5%">Autore</th>
-                <th scope="col" style="width: 13%">Modificato</th>
+                <th scope="col" style="cursor:pointer">Nome Preventivo</th>
+                <th scope="col" class="d-none d-sm-table-cell" style="width: 10%; cursor: pointer">Cliente</th>
+                <th style="width: 4%; cursor: pointer">#OU</th>
+                <th style="width: 9%; cursor: pointer">Totale</th>
+                <th scope="col" class="d-none d-sm-table-cell" style="width: 5%; cursor: pointer">Autore</th>
+                <th scope="col" style="width: 13%; cursor: pointer">Modificato</th>
                 <th scope="col" style="width: 4%"></th>
             </tr>
             </thead>
