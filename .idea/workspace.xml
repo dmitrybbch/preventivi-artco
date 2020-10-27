@@ -54,8 +54,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8de6ddee-b259-45aa-aa47-acf52695d548" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TablesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TablesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/tables/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tables/show.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -364,7 +364,8 @@
       <workItem from="1603326008033" duration="60000" />
       <workItem from="1603585451894" duration="1093000" />
       <workItem from="1603633072960" duration="195000" />
-      <workItem from="1603723149432" duration="945000" />
+      <workItem from="1603723149432" duration="2462000" />
+      <workItem from="1603786732181" duration="2271000" />
     </task>
     <servers />
   </component>

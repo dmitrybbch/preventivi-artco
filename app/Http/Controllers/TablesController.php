@@ -30,7 +30,7 @@ class TablesController extends Controller
     }
 
     public function clientIndex($clientId){
-        return view('tables.show', ['tables' => Table::where('cliente', $clientId)->get()]);
+        return view('tables.show', ['tables' => Table::where('client_id', $clientId)->get()]);
     }
 
     public function get()  // Restituisce tutti i tavoli con conto degli ordini e prezzo totale

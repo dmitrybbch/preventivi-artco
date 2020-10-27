@@ -34,16 +34,16 @@
 
         <table class="table table-sm table-hover table-bordereless table-striped sortable" data-reorderable-rows="true" id="quotesTable" data-sortable="true" style="margin: auto; width: 90%" >
             <thead class="bg-secondary text-white">
-            <tr>
-                <th scope="col" class="d-none d-md-table-cell" style="width: 4%">#</th>
-                <th scope="col" style="cursor:pointer">Nome Preventivo</th>
-                <th scope="col" class="d-none d-sm-table-cell" style="width: 10%; cursor: pointer">Cliente</th>
-                <th style="width: 4%; cursor: pointer">#OU</th>
-                <th style="width: 9%; cursor: pointer">Totale</th>
-                <th scope="col" class="d-none d-sm-table-cell" style="width: 5%; cursor: pointer">Autore</th>
-                <th scope="col" style="width: 13%; cursor: pointer">Modificato</th>
-                <th scope="col" style="width: 4%"></th>
-            </tr>
+                <tr>
+                    <th scope="col" class="d-none d-md-table-cell" style="width: 4%">#</th>
+                    <th scope="col" style="cursor:pointer">Nome Preventivo</th>
+                    <th scope="col" class="d-none d-sm-table-cell" style="width: 10%; cursor: pointer">Cliente</th>
+                    <th style="width: 4%; cursor: pointer">#OU</th>
+                    <th style="width: 9%; cursor: pointer">Totale</th>
+                    <th scope="col" class="d-none d-sm-table-cell" style="width: 5%; cursor: pointer">Autore</th>
+                    <th scope="col" style="width: 13%; cursor: pointer">Modificato</th>
+                    <th scope="col" style="width: 4%"></th>
+                </tr>
             </thead>
             <tbody>
                 @foreach($tables as $table)
