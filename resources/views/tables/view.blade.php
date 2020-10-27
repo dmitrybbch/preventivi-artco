@@ -18,13 +18,13 @@
             <div class="btn-toolbar mb-2 mb-md-0">
                 <div class="btn-group mr-2" id="statusTable" role="group" aria-label="First group">
                     <button type="button" class="btn btn-outline-dark @if($table->stato == 'libero') active @endif"
-                            value="0">Modulo
+                            value="0">Template
                     </button>
                     <button type="button" class="btn btn-outline-danger @if($table->stato == 'occupato') active @endif"
-                            value="1">Compilando
+                            value="1">In Corso
                     </button>
                     <button type="button" class="btn btn-outline-success @if($table->stato == 'servito') active @endif"
-                            value="2">Compilato
+                            value="2">Concluso
                     </button>
                 </div>
             </div>
