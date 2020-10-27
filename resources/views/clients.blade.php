@@ -31,7 +31,7 @@
                             <tr data-id="{{ $prev->id }}">
                                 <th> {{$prev->id}}</th>
                                 <td class="clientQuotes" style="cursor: pointer"> <b>{{$prev->nome}}</b> </td>
-                                <td> {{$prev->email}}</td>
+                                <td> <a href="mailto:{{$prev->email}}" class="text-secondary">{{$prev->email}}</a> </td>
                                 <td> {{$prev->telefono}}</td>
                                 <td> {{$prev->indirizzo}}</td>
                                 <td> {{$prev->capCittaProv}}</td>
