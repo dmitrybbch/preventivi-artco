@@ -30,7 +30,7 @@
                         @foreach($prevs as $prev)
                             <tr data-id="{{ $prev->id }}">
                                 <th> {{$prev->id}}</th>
-                                <td> <b>{{$prev->nome}}</b> </td>
+                                <td class="clientQuotes" style="cursor: pointer"> <b>{{$prev->nome}}</b> </td>
                                 <td> {{$prev->email}}</td>
                                 <td> {{$prev->telefono}}</td>
                                 <td> {{$prev->indirizzo}}</td>
