@@ -272,6 +272,8 @@ function deleteFood(id /*, total*/) {
             else
                 total.parents('tr').remove();
             */
+            $('#totaleOrdini').text(res["total"] + ' €');
+            $('#totaleConRicarico').text(res["totalWithMargin"] + ' €');
         }
     })
 }
@@ -285,6 +287,7 @@ function updateOrder(id, newVal, amountOrAddpercent) {
             method: 'patch',
             data: {table_id: $('h1').data('id'), food_id: id, amount: newVal},
             success: function (res) {
+
             }
         })
     else
@@ -293,14 +296,7 @@ function updateOrder(id, newVal, amountOrAddpercent) {
             method: 'patch',
             data: {table_id: $('h1').data('id'), food_id: id, add_percent: newVal},
             success: function (res) {
-                /*
-                $('h2').text(res.total + '€');
-                res = parseInt(res.order);
-                if (parseInt(total.text()) - res)
-                    total.text(parseInt(total.text()) - res);
-                else
-                    total.parents('tr').remove();
-                */
+
             }
         })
 }

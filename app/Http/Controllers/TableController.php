@@ -129,7 +129,9 @@ class TableController extends Controller
 
         $order = Order::where('table_id', $input['table_id'])->where('food_id', $input['food_id'])->delete();
 
-        return response()->json(array('order' => $order, 'total' => Table::find($input['table_id'])->totalOrders()));
+        $total = Table::find($input['table_id'])->totalOrders();
+        $totalMargin = Table::find($input['table_id'])->totalPercentAdded();
+        return response()->json(array('order' => $order, 'total' => $total, 'totalWithMargin' => $totalMargin));
     }
 
     public function empty(Request $request)
