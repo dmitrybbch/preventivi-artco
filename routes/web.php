@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Tables
+// Preventivi
 Route::get('/tables', 'TablesController@index')->name('tables');
 Route::get('/tables/{id}', 'TablesController@clientIndex');
 Route::get('/tables/get', 'TablesController@get');
@@ -25,6 +25,11 @@ Route::post('/tables', 'TablesController@create');
 Route::patch('/tables', 'TablesController@update')->middleware('is_admin');
 
 Route::delete('/tables', 'TablesController@destroy')->middleware('is_admin');
+
+// Archive
+Route::get('/archive', 'TablesController@archiveIndex')->name('tables');
+Route::get('/archive/get', 'TablesController@getArchived');
+Route::delete('/archive', 'TablesController@destroy')->middleware('is_admin');
 
 // Table
 Route::post('/table/{id}', 'TableController@updateData');

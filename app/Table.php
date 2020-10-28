@@ -54,7 +54,7 @@ class Table extends Model
         logger("Nome Cliente: ".$client_name);
         return $client_name;
     }
-
+    
     public function scopeInfo($query, $input)
     {
         return $query->hasMany('App\Order')->selectRaw('table_id, food_id, COUNT(food_id) AS total')->groupBy('food_id')->get();

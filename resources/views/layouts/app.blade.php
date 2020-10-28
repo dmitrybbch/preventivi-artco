@@ -28,7 +28,7 @@
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <a class="navbar-brand" href="{{ route('tables') }}">{{-- {{ config('app.name') }} --}} <img src="{{URL::asset('/img/artco_logo_trasp_slim.png')}}" class="align-middle" alt="ArtCO" style="max-height: 19px; width:auto"> </a>
+        <a class="navbar-brand" href="{{ url('tables') }}"><img src="{{URL::asset('/img/artco_logo_trasp_slim.png')}}" class="align-middle" alt="ArtCO" style="max-height: 19px; width:auto"> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

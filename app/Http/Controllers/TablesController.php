@@ -26,7 +26,12 @@ class TablesController extends Controller
      */
     public function index()
     {
-        return view('tables.show', ['tables' => Table::all()]);
+        return view('tables.show', ['tables' => Table::where('stato', '!=', 'servito')->get()]);
+    }
+
+    public function archiveIndex()
+    {
+        return view('tables.archive', ['tables' => Table::where('stato', 'servito')->get()]);
     }
 
     public function clientIndex($clientId){
