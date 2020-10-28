@@ -54,4 +54,21 @@ $('.prevTr').click(function(event){
     window.location = '/table/' + id;
 });
 
+$('#switchTemplateIncorso button').click(function () {
+    var that = $(this);
+    that.addClass('active').siblings().removeClass('active');
+
+    if(that.attr('id') === "template"){
+        $('')
+        $('.righe-in-corso').hide(200, function(){
+            $('.righe-template').show('slow');
+        });
+
+    }
+    if(that.attr('id') === "incorso"){
+        $('.righe-template').hide(200, function(){
+            $('.righe-in-corso').show('slow');
+        });
+    }
+});
 

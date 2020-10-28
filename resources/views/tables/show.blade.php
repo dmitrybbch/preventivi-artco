@@ -8,6 +8,12 @@
 <div class="container-fluid">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
         <h1 class="h2">Preventivi</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2" id="switchTemplateIncorso" role="group" aria-label="First group">
+                <button type="button" id="incorso" class="btn btn-outline-dark active" value="0">In Corso</button>
+                <button type="button" id="template" class="btn btn-outline-success" value="2">Template</button>
+            </div>
+        </div>
     </div>
 
     <div class="panel panel-default rounded-sm">
@@ -22,7 +28,7 @@
             </div>
         </form>
 
-        <table class="table table-sm table-hover table-bordereless table-striped sortable" data-reorderable-rows="true" id="quotesTable" data-sortable="true" style="margin: auto; width: 90%" >
+        <table class="table table-sm table-hover table-bordereless sortable" data-reorderable-rows="true" id="quotesTable" data-sortable="true" style="margin: auto; width: 90%" >
             <thead class="bg-secondary text-white">
                 <tr>
                     <th scope="col" class="d-none d-md-table-cell" style="width: 4%">#</th>
@@ -37,7 +43,11 @@
             </thead>
             <tbody>
                 @foreach($tables as $table)
-                    <tr class="" data-id="{{ $table->id }}">
+                    @if($table->stato == 'libero')
+                        <tr class="righe-in-corso" data-id="{{ $table->id }}">
+                    @elseif($table->stato == 'occupato')
+                        <tr class="righe-template" style="display: none" data-id="{{ $table->id }}">
+                    @endif
                         <td class="d-none d-md-table-cell"><b>{{ $table->id }}</b></td>
                         <td class="prevTr" style="cursor: pointer">{{ $table->nomeTavolo }}</td>
                         <td><b>{{ $table->cliente }}</b></td>
@@ -50,8 +60,9 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
 
+    </div>
+    <div>
 
 </div>
 

@@ -13,38 +13,28 @@ function getTables(){
     }).responseJSON;
 }
 
-function newTable(){
-    var prev = $("#nomePrevInput").val();
-    console.log('Inserisco: '+ prev);
-
-    $.ajax({
-        url: '/tables',
-        method: 'POST',
-        data: {prev: prev},
-
-        success: function(tables){
-        }
-    })
-}
 
 
 $('.eliminaPrev').click(function(event){
+    if(confirm("Stai per eliminare un preventivo concluso. Sei sicuro/a?"))
+        if(confirm("Davvero davvero?")){
+            var target = $(event.target);
+            var tr = target.parents('tr');
 
-    var target = $(event.target);
-    var tr = target.parents('tr');
+            // Recupero valori del prodotto
+            var id = tr.children('td').eq(0).text();
 
-    // Recupero valori del prodotto
-    var id = tr.children('td').eq(0).text();
-
-    $.ajax({
-        url: '/tables',
-        method: 'DELETE',
-        data: {id: id},
-        success: function(tables){
-            location.reload();
+            $.ajax({
+                url: '/tables',
+                method: 'DELETE',
+                data: {id: id},
+                success: function(tables){
+                    location.reload();
+                }
+            })
+            console.log(id);
         }
-    })
-    console.log(id);
+
 });
 
 $('.prevTr').click(function(event){
