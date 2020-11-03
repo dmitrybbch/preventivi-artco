@@ -35,15 +35,15 @@
             <div class="col-md-5">
                 <table class="table table-borderless table-sm" id="foodTable">
                     <thead class="bg-dark text-white font-weight-bold">
-                    <tr>
-                        <th scope="col" class="d-none d-md-table-cell">#</th>
-                        <td>Quantità</td>
-                        <td>Descrizione</td>
-                        <td>Prezzo</td>
-                        <td>Ricarico</td>
-                        <td>Parziale</td>
-                        <td style="padding-right: 20px"></td>
-                    </tr>
+                        <tr>
+                            <th scope="col" class="d-none d-md-table-cell">#</th>
+                            <td>Quantità</td>
+                            <td>Descrizione</td>
+                            <td>Prezzo</td>
+                            <td>Ricarico</td>
+                            <td>Parziale</td>
+                            <td style="padding-right: 20px"></td>
+                        </tr>
                     </thead>
                     <tbody>
                     @php ($orders = $table->orders())

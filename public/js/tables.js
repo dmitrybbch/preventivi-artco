@@ -59,13 +59,14 @@ $('#switchTemplateIncorso button').click(function () {
     that.addClass('active').siblings().removeClass('active');
 
     if(that.attr('id') === "template"){
-        $('')
+        $("#quotesTable").find("thead").eq(0).removeClass('bg-dark').addClass('bg-success');
         $('.righe-in-corso').hide(200, function(){
             $('.righe-template').show('slow');
         });
 
     }
     if(that.attr('id') === "incorso"){
+        $("#quotesTable").find("thead").eq(0).removeClass('bg-success').addClass('bg-dark');
         $('.righe-template').hide(200, function(){
             $('.righe-in-corso').show('slow');
         });
