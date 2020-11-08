@@ -31,7 +31,6 @@
         </div>
 
         <div class="row">
-
             <div class="col-md-5">
                 <table class="table table-borderless table-sm" id="foodTable">
                     <thead class="bg-dark text-white font-weight-bold">
