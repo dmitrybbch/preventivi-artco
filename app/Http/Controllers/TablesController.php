@@ -63,9 +63,10 @@ class TablesController extends Controller
         return response()->json($preventivo);
     }
 
-    public function cloneTable($id){
+    public function cloneTable($id, $quote_name){ //Potrebbe servire una request normale con un verbo nuovo, invece che solo id
         $table = Table::find($id);
         $new_table = $table->replicate();
+        $new_table->nomeTavolo = $quote_name;
         $new_table->push();
 
         foreach($table->orders() as $oldOrder){

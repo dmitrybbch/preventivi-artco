@@ -22,7 +22,7 @@ Route::get('/tables', 'TablesController@index')->name('tables');
 Route::get('/tables/{id}', 'TablesController@clientIndex');
 Route::get('/tables/get', 'TablesController@get');
 Route::post('/tables', 'TablesController@create');
-Route::post('/tables/{id}', 'TablesController@cloneTable');
+Route::post('/tables/{id}/{quote_name}', 'TablesController@cloneTable');
 Route::patch('/tables', 'TablesController@update')->middleware('is_admin');
 
 Route::delete('/tables', 'TablesController@destroy')->middleware('is_admin');

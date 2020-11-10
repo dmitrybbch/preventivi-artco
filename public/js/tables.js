@@ -31,9 +31,9 @@ $('.creaDaTemplate').click(function(event){
     var target = $(event.target);
     var tr = target.parents('tr');
     var id = tr.data('id');
-
+    var quote_name = prompt('Come vuoi chiamare il nuovo preventivo?', tr.children('td').eq(1).text());
     $.ajax({
-        url: '/tables/'+ id,
+        url: '/tables/'+ id + '/' + quote_name,
         method: 'POST',
         success: function(){
 
