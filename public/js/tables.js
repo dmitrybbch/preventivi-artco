@@ -27,14 +27,25 @@ function newTable(){
     })
 }
 
-
-$('.eliminaPrev').click(function(event){
-
+$('.creaDaTemplate').click(function(event){
     var target = $(event.target);
     var tr = target.parents('tr');
+    var id = tr.data('id');
 
-    // Recupero valori del prodotto
-    var id = tr.children('td').eq(0).text();
+    $.ajax({
+        url: '/tables/'+ id,
+        method: 'POST',
+        success: function(){
+
+        }
+    })
+    console.log(id);
+});
+
+$('.eliminaPrev').click(function(event){
+    var target = $(event.target);
+    var tr = target.parents('tr');
+    var id = tr.data('id');
 
     $.ajax({
         url: '/tables',

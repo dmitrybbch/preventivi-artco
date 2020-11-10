@@ -62,6 +62,12 @@ class TablesController extends Controller
         return response()->json($preventivo);
     }
 
+    public function cloneTable($id){
+        $user = Table::find($id);
+        $new_user = $user->replicate();
+        $new_user->push();
+    }
+
     public function update(Request $request)
     {
         $input = $request->all();

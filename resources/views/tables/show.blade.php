@@ -55,7 +55,12 @@
                         <td>{{ $table->totalPercentAdded() }} €</td>
                         <td>{{ $table->creatoDa }}</td>
                         <td>{{ $table->updated_at }}</td>
-                        <td><i class="far fa-trash-alt eliminaPrev" style="cursor: pointer"></i></td>
+                        <td>
+                            @if($table->stato == 'occupato')
+                                <i class="fas fa-folder-plus creaDaTemplate" style="cursor:pointer"></i>
+                            @endif
+                            <i class="far fa-trash-alt eliminaPrev" style="cursor: pointer"></i>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
