@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use Illuminate\Http\Request;
 use App\Table;
 use Illuminate\Support\Facades\Auth;
@@ -63,9 +64,18 @@ class TablesController extends Controller
     }
 
     public function cloneTable($id){
-        $user = Table::find($id);
-        $new_user = $user->replicate();
-        $new_user->push();
+        $table = Table::find($id);
+        $new_table = $table->replicate();
+        $new_table->push();
+
+        foreach($table->orders() as $oldOrder){
+            $orderCopia = new Order;
+            $orderCopia->food_id = $oldOrder->food_id;
+            $orderCopia->table_id = $new_table->id;
+            $orderCopia->amount = $oldOrder->amount;
+            $orderCopia->add_percent = $oldOrder->add_percent;
+            $orderCopia->save();
+        }
     }
 
     public function update(Request $request)
