@@ -23,7 +23,7 @@
                 <input type="text" id="nomePrevInput" name="nomePrev" class="form-control" placeholder="Nuovo Preventivo" aria-label="Nome Preventivo" aria-describedby="basic-addon2">
                 {{--<input type="text" class="form-control" aria-label="Cliente">--}}
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="submit" onclick="newTable()"><i class="fas fa-plus"> Aggiungi </i></button>
+                    <button id="newQuoteButton" class="btn btn-outline-secondary" type="button"><i class="fas fa-plus"> Aggiungi </i></button>
                 </div>
             </div>
         </form>

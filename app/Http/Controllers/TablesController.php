@@ -54,9 +54,10 @@ class TablesController extends Controller
     public function create(Request $request)
     {
         $input = $request->all();
-        logger($input['prev']);
+        //logger($input['prev']);
         $preventivo = new Table;
         $preventivo->nomeTavolo = $input['prev'];
+        $preventivo->stato = $input['stato'];
         $preventivo->creatoDa = Auth::user()->username;
         $preventivo->save();
 
@@ -69,6 +70,8 @@ class TablesController extends Controller
         $new_table->nomeTavolo = $quote_name;
         $new_table->push();
 
+        //logger($new_table->id);
+
         foreach($table->orders() as $oldOrder){
             $orderCopia = new Order;
             $orderCopia->food_id = $oldOrder->food_id;
@@ -77,6 +80,8 @@ class TablesController extends Controller
             $orderCopia->add_percent = $oldOrder->add_percent;
             $orderCopia->save();
         }
+
+        return response()->json($new_table);
     }
 
     public function update(Request $request)
