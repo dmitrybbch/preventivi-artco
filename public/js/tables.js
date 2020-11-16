@@ -26,8 +26,20 @@ $('#newQuoteButton').click(function(event){
         method: 'POST',
         data: {prev: prev, stato: stato},
 
-        success: function(tables){
+        success: function(newQuote){
+            var table_class = (newQuote.stato.localeCompare('libero') ? 'righe-in-corso' : 'righe-template');
 
+            $('#quotesTable').append('' +
+            '<tr class="'+ table_class +'" data-id="'+ newQuote.id +'">' +
+            '<td class="d-none d-md-table-cell"><b>'+ newQuote.id +'</b></td>' +
+            '<td class="prevTr" style="cursor: pointer">'+ newQuote.nomeTavolo +'</td>' +
+            '<td></td>' +
+            '<td>'+ '0' +'</td>' +
+            '<td>0 €</td>' +
+            '<td>'+ newQuote.creatoDa +'</td>' +
+            '<td>'+ newQuote.creatoInData +'</td>' +
+            '<td>'
+            );
         }
     })
 });
