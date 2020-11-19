@@ -56,22 +56,6 @@ $('.creaDaTemplate').click(function(event){
         method: 'POST',
         success: function(copia){
             window.location = '/table/' + copia.id;
-            /*
-            var table_class = (copia.stato.localeCompare('libero') ? 'righe-in-corso' : 'righe-template');
-            $('#quotesTable').append('' +
-                '<tr class="'+ table_class +'" data-id="'+ copia.id +'">' +
-                '<td class="d-none d-md-table-cell"><b>'+ copia.id +'</b></td>' +
-                '<td class="prevTr" style="cursor: pointer">'+ copia.nomeTavolo +'</td>' +
-                '<td><b>'+ copia.cliente +'</b></td>' +
-                '<td>'+ 'contoOrdini' +'</td>' +
-                '<td>'+ 'copiaTOtalePercent' +'€</td>' +
-                '<td>'+ copia.creatoDa +'</td>' +
-                '<td>'+ copia.updatedAt +'</td>' +
-                '<td>' +
-                '');
-            console.log(copia.id);
-            */
-
         }
     })
     console.log(id);
@@ -87,7 +71,9 @@ $('.eliminaPrev').click(function(event){
         method: 'DELETE',
         data: {id: id},
         success: function(tables){
-            location.reload();
+            //location.reload(); Via ste cose da trogloditi pls
+            if(confirm('Vuoi davvero ELIMINARE il preventivo?'))
+                tr.remove();
         }
     })
     console.log(id);
