@@ -56,17 +56,23 @@
 
                         @php($capitoloTabella = "Cap_Vuoto_Error")
                         @php($categoriaTabella = "Cat_Vuoto_Error")
+                        @php($totaleCapitolo = 0)
+                        @php($totaleCategoria = 0)
 
                         @foreach($foodOrdinati as $fornitura)
                             @if($capitoloTabella != ($capAttuale = $fornitura['capitolo']))
                                 <tr class="table-active" id="{{ str_replace(" ", "_",$capAttuale) }}">
                                     <th scope="row" colspan="10" class="d-none d-md-table-cell">{{$capAttuale}}</th>
+                                    <th>€ {{$datat->totalPercentAddedChapter($capAttuale)}}</th>
                                 </tr>
                                 @php($capitoloTabella = $capAttuale)
+                                @php($totaleCapitolo = 0)
                             @endif
                             @if($categoriaTabella != ($catAttuale = $fornitura['categoria']))
                                 <tr class="thead-light text-white" id="{{ str_replace(" ", "_",($capAttuale.$catAttuale)) }}">
-                                    <th><i class="fas fa-long-arrow-alt-right "></i></th><th scope="row" colspan="10" class="d-none d-md-table-cell">{{$catAttuale}}</th>
+                                    <th><i class="fas fa-long-arrow-alt-right "></i></th>
+                                    <th scope="row" colspan="10" class="d-none d-md-table-cell">{{$catAttuale}}</th>
+                            
                                 </tr>
                                 @php($categoriaTabella = $catAttuale)
                             @endif

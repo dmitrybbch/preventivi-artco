@@ -8,24 +8,19 @@
     <div class="container-fluid">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
             <h1 class="h2" data-id="{{ $table->id }}">
-                @if($table->nomeTavolo)
-                    {{ $table->nomeTavolo }}
-                @else
-                    Prev. {{ $table->id }}
+                @if($table->nomeTavolo)     {{ $table->nomeTavolo }}
+                @else                       Prev. {{ $table->id }}
                 @endif
             </h1>
 
             <div class="btn-toolbar mb-2 mb-md-0">
                 <div class="btn-group mr-2" id="statusTable" role="group" aria-label="First group">
                     <button type="button" class="btn btn-outline-dark @if($table->stato == 'libero') active @endif"
-                            value="0">In Corso
-                    </button>
+                            value="0">In Corso</button>
                     <button type="button" class="btn btn-outline-success @if($table->stato == 'occupato') active @endif"
-                            value="1">Template
-                    </button>
+                            value="1">Template</button>
                     <button type="button" class="btn btn-outline-danger @if($table->stato == 'servito') active @endif"
-                            value="2">Concluso
-                    </button>
+                            value="2">Concluso</button>
                 </div>
             </div>
         </div>
@@ -62,17 +57,20 @@
 
                         @php($capitoloTabella = "Cap_Vuoto_Error")
                         @php($categoriaTabella = "Cat_Vuoto_Error")
+                    
 
                         @foreach($foodOrdinati as $fornitura)
                             @if($capitoloTabella != ($capAttuale = $fornitura['capitolo']))
                                 <tr class="table-active" id="{{ str_replace(" ", "_",$capAttuale) }}">
                                     <th scope="row" colspan="10" class="d-none d-md-table-cell">{{$capAttuale}}</th>
+                                    
                                 </tr>
                                 @php($capitoloTabella = $capAttuale)
                             @endif
                             @if($categoriaTabella != ($catAttuale = $fornitura['categoria']))
                                 <tr class="thead-light text-white" id="{{ str_replace(" ", "_",($capAttuale.$catAttuale)) }}">
-                                    <th><i class="fas fa-long-arrow-alt-right "></i></th><th scope="row" colspan="10" class="d-none d-md-table-cell">{{$catAttuale}}</th>
+                                    <th><i class="fas fa-long-arrow-alt-right "></i></th>
+                                    <th scope="row" colspan="10" class="d-none d-md-table-cell">{{$catAttuale}}</th>
                                 </tr>
                                 @php($categoriaTabella = $catAttuale)
                             @endif

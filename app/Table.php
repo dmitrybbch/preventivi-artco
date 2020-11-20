@@ -37,11 +37,28 @@ class Table extends Model
         return $total;
     }
 
-    public function totalPercentAdded()
+    public function totalPercentAdded() //TODO: si potrebbe mettere togliere questa funzione ed aggiungere un parametro a quella originale
     {
         $total = 0;
-        foreach (Table::orders() as $key => $order)
-            $total += $order->amount * $order->food()->prezzo+ $order->amount * $order->food()->prezzo * ($order->add_percent/100);
+        foreach (Table::orders() as $key => $order){
+            $total += $order->amount * $order->food()->prezzo;
+            $total += $order->amount * $order->food()->prezzo * ($order->add_percent/100);
+        }
+            
+        return $total;
+    }
+
+    public function totalPercentAddedChapter($chapter) //TODO: si potrebbe mettere togliere questa funzione ed aggiungere un parametro a quella originale
+    {
+        $total = 0;
+        foreach (Table::orders() as $key => $order){
+            if( strcmp($order->food()->capitolo, $chapter) == 0){
+                $total += $order->amount * $order->food()->prezzo;
+                $total += $order->amount * $order->food()->prezzo * ($order->add_percent/100);
+            }
+        
+        }
+            
         return $total;
     }
 
