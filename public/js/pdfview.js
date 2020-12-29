@@ -27,7 +27,7 @@ $("#generaPdf").click(function() {
 
     //var obj = $.extend({}, arrayAssociativo);
 
-    var urlPathname = window.location.href;
+    var urlPathname = window.location.pathname;
     console.log('Creato array associativo. Stringa splittata: ' + urlPathname); // /pdf_view/1
 
     jQuery.ajax({

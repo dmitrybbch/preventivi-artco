@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Provision;
 use Illuminate\Http\Request;
-use App\Food;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
-
-class FoodController extends Controller
+class ProvisionController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,9 +21,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        //return view('menu', ['foods' => Food::All()]);
-        return view('menu');
-
+        return view('menu', ['foods' => Provision::All()]);
     }
 
     /**
@@ -36,24 +33,24 @@ class FoodController extends Controller
     {
         $input = $request->all();
 
-        $food = new Food;
-        $food->nome = $input['nome'];
-        $food->prezzo = $input['prezzo'];
-        $food->unita = $input['unita'];
-        $food->descrizione = $input['descrizione'];
+        $food = new Provision;
+        $food->name = $input['name'];
+        $food->cost = $input['cost'];
+        $food->unit = $input['unit'];
+        $food->description = $input['description'];
 
-        $food->capitolo = $input['capitolo'];
-        $food->categoria = $input['categoria'];
-        $food->capitolo_categoria = $food->capitolo . "_" . $food->categoria;
+        $food->chapter = $input['chapter'];
+        $food->category = $input['category'];
+        $food->chapter_category = $food->chapter . "_" . $food->category;
 
-        if($request->hasFile('immagine')){
-            $file_immagine = $request->file('immagine');
-            $food->immagine = $file_immagine->getClientOriginalName();
+        if($request->hasFile('image')){
+            $file_immagine = $request->file('image');
+            $food->image = $file_immagine->getClientOriginalName();
             Image::make($file_immagine)->resize(null, 600, function ($constraint) {
                 $constraint->aspectRatio();
-            })->save(public_path('img_uploads') . '/' . $food->immagine);
+            })->save(public_path('img_uploads') . '/' . $food->image);
         } else {
-            $food->immagine = "";
+            $food->image = "";
         }
 
         $food->save();
@@ -69,14 +66,14 @@ class FoodController extends Controller
     {
         $input = $request->all();
 
-        $food = Food::find($input['id']);
-        $food->nome = $input['nome'];
-        $food->prezzo = $input['prezzo'];
-        $food->unita = $input['unita'];
-        $food->descrizione = $input['descrizione'];
-        $food->capitolo = $input['capitolo'];
-        $food->categoria = $input['categoria'];
-        $food->capitolo_categoria = $food->capitolo . "_" . $food->categoria;
+        $food = Provision::find($input['id']);
+        $food->name = $input['name'];
+        $food->cost = $input['cost'];
+        $food->unit = $input['unit'];
+        $food->description = $input['description'];
+        $food->chapter = $input['chapter'];
+        $food->category = $input['category'];
+        $food->chapter_category = $food->chapter . "_" . $food->category;
 
         $food->save();
         return response()->json($food);
@@ -90,7 +87,7 @@ class FoodController extends Controller
     public function destroy(Request $request)
     {
         $input = $request->all();
-        $food = Food::find($input['id']);
+        $food = Provision::find($input['id']);
         $food->delete();
 
         //return redirect('/expense');
@@ -107,7 +104,7 @@ class FoodController extends Controller
         ->orwhere('descrizione' , 'like' , "%{$input}%")
         ->get();*/
 
-        $food["results"] = Food::search($input)->orderBy('capitolo', 'ASC')->orderBy('categoria', 'ASC')->get();
+        $food["results"] = Provision::search($input)->orderBy('chapter', 'ASC')->orderBy('category', 'ASC')->get();
         $food["admin"] = Auth::user()->isAdmin() ? 1 : 0;
         return response()->json($food);
     }

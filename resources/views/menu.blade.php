@@ -35,27 +35,27 @@ Forniture
                 @if( count($foods) )
                     @php($capitoloTabella = "Cap_Vuoto_Error")
                     @php($categoriaTabella = "Cat_Vuoto_Error")
-                    @php($foods = collect($foods)->sortBy('categoria')->sortBy('capitolo')->all())
+                    @php($foods = collect($foods)->sortBy('category')->sortBy('chapter')->all())
                     @foreach($foods as $food)
 
-                        @if($capitoloTabella != ($capAttuale = $food->capitolo))
+                        @if($capitoloTabella != ($capAttuale = $food->chapter))
                             <tr id="{{ str_replace(" ", "_",$capAttuale) }}" class="table-active">
                                 <th scope="row" colspan="8" class="d-none d-md-table-cell">{{$capAttuale}}</th>
                             </tr>
                             @php($capitoloTabella = $capAttuale)
                         @endif
-                        @if($categoriaTabella != ($catAttuale = $food->categoria))
+                        @if($categoriaTabella != ($catAttuale = $food->category))
                             <tr id="{{ str_replace(" ", "_",($capAttuale.$catAttuale)) }}" class="thead-light text-white"> {{--id per facilitare l'inserimento--}}
                                 <th><i class="fas fa-long-arrow-alt-right "></i></th><th scope="row" colspan="7" class="d-none d-md-table-cell">{{$catAttuale}}</th>
                             </tr>
                             @php($categoriaTabella = $catAttuale)
                         @endif
-                        <tr data-capitolo="{{ $food->capitolo }}" data-categoria="{{ $food->categoria }}">
+                        <tr data-capitolo="{{ $food->chapter }}" data-categoria="{{ $food->category }}">
                             <th scope="row" class="d-none d-md-table-cell">{{ $food->id }}</th>
-                            <td>{{ $food->nome }}</td>
-                            <td>€ {{ $food->prezzo }}  @if($food->unita) x {{ $food->unita }}@endif </td>
-                            <td class="d-none d-sm-table-cell">{{ $food->descrizione }}</td>
-                            <td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $food->immagine)}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"></td>
+                            <td>{{ $food->name }}</td>
+                            <td>€ {{ $food->cost }}  @if($food->unit) x {{ $food->unit }}@endif </td>
+                            <td class="d-none d-sm-table-cell">{{ $food->description }}</td>
+                            <td class="d-none d-sm-table-cell"> <img src="{{URL::asset('img_uploads/'. $food->image)}}" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto"></td>
                             <td><i class="far fa-trash-alt" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;<i class="far fa-edit" style="font-size: 20px;cursor: pointer"></i>&nbsp;&nbsp;&nbsp;<i class="far fa-copy" style="font-size: 20px;cursor: pointer"></i></td>
                         </tr>
                     @endforeach
@@ -75,40 +75,40 @@ Forniture
                     @csrf
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="capitolo">Capitolo:</label>
-                            <input list="capitoli" class="form-control"  name="capitolo" id="capitoloForm"/>
+                            <label for="chapter">Capitolo:</label>
+                            <input list="capitoli" class="form-control"  name="chapter" id="chapterForm"/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="categoria">Categoria:</label>
-                            <input list="categorie" class="form-control" name="categoria" id="categoriaForm"/>
+                            <label for="category">Categoria:</label>
+                            <input list="categorie" class="form-control" name="category" id="categoryForm"/>
                         </div>
 
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label for="nome">Nome</label>
-                            <input class="form-control" id="nome" type="text" name="nome">
+                            <label for="name">Nome</label>
+                            <input class="form-control" id="name" type="text" name="name">
                         </div>
                         <div class="form-group col-md-4">
-                            <label for="prezzo">Prezzo</label>
-                            <input class="form-control" id="prezzo" type="number" step="0.10" name="prezzo" placeholder="Prezzo unitario">
+                            <label for="cost">Prezzo</label>
+                            <input class="form-control" id="cost" type="number" step="0.10" name="cost" placeholder="Costo unitario">
                         </div>
                         <div class="form-group col-md-2">
-                            <label for="unita">Unità:</label>
-                            <input list="unitaMisura" id="unita" class="form-control"  name="unita" />
+                            <label for="unit">Unità:</label>
+                            <input list="unitaMisura" id="unit" class="form-control"  name="unit" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label for="descrizione">Descrizione</label>
-                            <textarea class="form-control" id="descrizione" name="descrizione"></textarea>
+                            <label for="description">Descrizione</label>
+                            <textarea class="form-control" id="description" name="description"></textarea>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label for="immagine">Immagine</label><br>
-                            <input type="file" class="form-control-file" id="immagine" name="immagine" />
+                            <label for="image">Immagine</label><br>
+                            <input type="file" class="form-control-file" id="image" name="image" />
                         </div>
                     </div>
 
@@ -144,44 +144,44 @@ Forniture
                         </div>
 
                         <div class="form-group row">
-                            <label for="nomeModal" class="col-md-4 col-form-label text-md-right">Nome</label>
+                            <label for="nameModal" class="col-md-4 col-form-label text-md-right">Nome</label>
                             <div class="col-md-6">
-                                <input class="form-control" id="nomeModal" type="text">
+                                <input class="form-control" id="nameModal" type="text">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="prezzoModal" class="col-md-4 col-form-label text-md-right">Prezzo</label>
+                            <label for="costModal" class="col-md-4 col-form-label text-md-right">Prezzo</label>
                             <div class="col-md-6">
-                                <input class="form-control"id="prezzoModal" type="number" step="0.10">
+                                <input class="form-control"id="costModal" type="number" step="0.10">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="unitaModal" class="col-md-4 col-form-label text-md-right">Unità</label>
+                            <label for="unitModal" class="col-md-4 col-form-label text-md-right">Unità</label>
                             <div class="col-sm-6">
-                                <input list="unitaMisura" id="unitaModal" class="form-control"/>
+                                <input list="unitaMisura" id="unitModal" class="form-control"/>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="descrizioneModal" class="col-md-4 col-form-label text-md-right">Descrizione</label>
+                            <label for="decriptionModal" class="col-md-4 col-form-label text-md-right">Descrizione</label>
                             <div class="col-sm-6">
-                                <textarea class="form-control" id="descrizioneModal"></textarea>
+                                <textarea class="form-control" id="descriptionModal"></textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="capitoloModal" class="col-form-label col-md-4 text-md-right">Capitolo:</label>
+                            <label for="chapterModal" class="col-form-label col-md-4 text-md-right">Capitolo:</label>
                             <div class="col-sm-6">
-                                <input id="capitoloModal" class="form-control" list="capitoli"/>
+                                <input id="chapterModal" class="form-control" list="capitoli"/>
                             </div>
 
                         </div>
                         <div class="form-group row">
-                            <label for="categoriaModal" class="col-md-4 col-form-label text-md-right">Categoria:</label>
+                            <label for="categoryModal" class="col-md-4 col-form-label text-md-right">Categoria:</label>
                             <div class="col-sm-6">
-                                <input id="categoriaModal" class="form-control" list="categorie"/>
+                                <input id="categoryModal" class="form-control" list="categorie"/>
                             </div>
 
                         </div>

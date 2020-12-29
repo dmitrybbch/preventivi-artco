@@ -49,11 +49,11 @@ Route::patch('/ordersamount', 'TableController@updateOrderAmount');
 Route::patch('/ordersaddpercent', 'TableController@updateOrderAddpercent');
 
 // Forniture
-Route::get('/menu', 'FoodController@index')->name('menu');
-Route::post('/menu', 'FoodController@create');
-Route::post('/menu/search', 'FoodController@search');
-Route::delete('/menu', 'FoodController@destroy');
-Route::patch('/menu', 'FoodController@edit');
+Route::get('/menu', 'ProvisionController@index')->name('menu');
+Route::post('/menu', 'ProvisionController@create');
+Route::post('/menu/search', 'ProvisionController@search');
+Route::delete('/menu', 'ProvisionController@destroy');
+Route::patch('/menu', 'ProvisionController@edit');
 
 // Categories
 Route::get('/categories', 'CategoriesController@index')->name('cats', 'secs');
