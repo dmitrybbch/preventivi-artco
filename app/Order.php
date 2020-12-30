@@ -13,7 +13,7 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'table_id', 'food_id', 'amount', 'add_percent',
+        'table_id', 'provision_id', 'amount', 'add_percent',
     ];
 
 
@@ -24,7 +24,7 @@ class Order extends Model
 
     public function food()
     {
-        return $this->hasOne('App\Food', 'id', 'food_id')->get()[0];
+        return $this->hasOne('App\Provision', 'id', 'provision_id')->get()[0];
     }
 
 

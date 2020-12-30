@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Food;
+use App\Provision;
 use Illuminate\Http\Request;
 use App\Table;
 use App\Order;
@@ -44,13 +45,13 @@ class TableController extends Controller
         // TODO: si creano duplicati. Fare una query per vedere se ci sono già le righe da inserire. NON è urgente, cancellare cancella tutto
         $new = new Order;
         $new->table_id = $input["table_id"];
-        $new->food_id = $input["food_id"];
+        $new->provision_id = $input["provision_id"];
         $new->amount = 1;
         $new->add_percent = 0;
 
         $new->save();
 
-        $fornituraModel = Food::find($input['food_id']);
+        $fornituraModel = Provision::find($input['provision_id']);
         $total = Table::find($input['table_id'])->totalOrders();
         $totalMargin = Table::find($input['table_id'])->totalPercentAdded();
 
@@ -61,11 +62,11 @@ class TableController extends Controller
     public function updateOrderAmount(Request $request){
 
         $input = $request->all();
-        logger("Aggiorno l'amount dell'ordine " . $input['table_id'] . "-" . $input['food_id'] );
+        logger("Aggiorno l'amount dell'ordine " . $input['table_id'] . "-" . $input['provision_id'] );
 
         $ordine = DB::table('orders')
             ->where('table_id', $input['table_id'])
-            ->where('food_id', $input['food_id'])
+            ->where('provision_id', $input['provision_id'])
             ->update(['amount' => $input["amount"] ]);
 
     }
@@ -73,11 +74,11 @@ class TableController extends Controller
     public function updateOrderAddpercent(Request $request){
 
         $input = $request->all();
-        logger("Aggiorno l'add_percentage dell'ordine " . $input['table_id'] . "-" . $input['food_id'] );
+        logger("Aggiorno l'add_percentage dell'ordine " . $input['table_id'] . "-" . $input['provision_id'] );
 
         $ordine = DB::table('orders')
             ->where('table_id', $input['table_id'])
-            ->where('food_id', $input['food_id'])
+            ->where('provision_id', $input['provision_id'])
             ->update(['add_percent' => $input["add_percent"] ]);
 
     }
@@ -88,7 +89,7 @@ class TableController extends Controller
 
         foreach (Table::find($id)->orders() as $key => $order) {
             $food = $order->food();
-            $json[] = array('id' => $order->food_id, 'nome' => $food->nome, 'prezzo' => $food->prezzo, 'unita' => $food->unita, 'total' => $order->total, 'descrizione' => $food->descrizione, 'capitolo' => $food->capitolo, 'categoria' => $food->categoria, 'immagine' => $food->immagine);
+            $json[] = array('id' => $order->provision_id, 'name' => $food->name, 'cost' => $food->cost, 'unit' => $food->unit, 'total' => $order->total, 'description' => $food->description, 'chapter' => $food->chapter, 'category' => $food->category, 'image' => $food->image);
         }
         return response()->json($json);
     }
@@ -127,7 +128,8 @@ class TableController extends Controller
     {
         $input = $request->all();
 
-        $order = Order::where('table_id', $input['table_id'])->where('food_id', $input['food_id'])->delete();
+        // Cancello gli ordini a lui associati
+        $order = Order::where('table_id', $input['table_id'])->where('provision_id', $input['provision_id'])->delete();
 
         $total = Table::find($input['table_id'])->totalOrders();
         $totalMargin = Table::find($input['table_id'])->totalPercentAdded();
@@ -140,7 +142,7 @@ class TableController extends Controller
 
         $order = Order::where('table_id', $input['table_id'])->delete();
 
-        $response = ['messaggio' => 'prodotto eliminato'];
+        $response = ['messaggio' => 'Preventivo svuotato.'];
         return response()->json($response);
     }
 
