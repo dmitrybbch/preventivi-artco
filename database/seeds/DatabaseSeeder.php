@@ -19,53 +19,54 @@ class DatabaseSeeder extends Seeder
             'type' => 'admin',
         ]);
 
-        DB::table('foods')->insert([
-            'nome' => 'Sedia di legno',
-            'prezzo' => '1.20',
-            'descrizione' => 'Una bella sedia di compensato.',
+        DB::table('provisions')->insert([
+            'name' => 'Sedia di legno',
+            'cost' => '1.20',
+            'description' => 'Una bella sedia di compensato.',
 
-            'capitolo' => 'EEE',
-            'categoria' => 'BBB',
-            'capitolo_categoria' => 'EEE_BBB'
+            'chapter' => 'EEE',
+            'category' => 'BBB',
+            'chapter_category' => 'EEE_BBB'
         ]);
 
-        DB::table('foods')->insert([
-            'nome' => 'WC',
-            'prezzo' => '1.00',
-            'descrizione' => 'Heh!',
+        DB::table('provisions')->insert([
+            'name' => 'WC',
+            'cost' => '1.00',
+            'description' => 'Heh!',
 
-            'capitolo' => 'EEE',
-            'categoria' => 'BBB',
-            'capitolo_categoria' => 'EEE_BBB'
+            'chapter' => 'EEE',
+            'category' => 'BBB',
+            'chapter_category' => 'EEE_BBB'
 
         ]);
 
-        DB::table('foods')->insert([
-            'nome' => 'Piantina',
-            'prezzo' => '5.00',
-            'unita' => 'kg',
-            'descrizione' => 'Un vaso o una mappa?',
-            'capitolo' => 'EEE',
-            'categoria' => 'AAA',
-            'capitolo_categoria' => 'EEE_AAA'
+        DB::table('provisions')->insert([
+            'name' => 'Piantina',
+            'cost' => '5.00',
+            'unit' => 'kg',
+            'description' => 'Un vaso o una mappa?',
+            'chapter' => 'EEE',
+            'category' => 'AAA',
+            'chapter_category' => 'EEE_AAA'
         ]);
 
-        DB::table('foods')->insert([
-            'nome' => 'Letto matrimoniale per nani.',
-            'prezzo' => '2.50',
-            'descrizione' => 'Quindi un letto singolo.',
+        DB::table('provisions')->insert([
+            'name' => 'Letto matrimoniale per nani.',
+            'cost' => '2.50',
+            'description' => 'Quindi un letto singolo.',
 
-            'capitolo' => 'EEE',
-            'categoria' => 'AAA',
-            'capitolo_categoria' => 'EEE_AAA'
+            'chapter' => 'EEE',
+            'category' => 'AAA',
+            'chapter_category' => 'EEE_AAA'
         ]);
-        DB::table('foods')->insert([
-            'nome' => 'Bomba Nucleare',
-            'prezzo' => '9999999.99',
-            'descrizione' => 'Il sogno di Mohammad.',
-            'capitolo' => 'HEYH',
-            'categoria' => 'Demolizioni',
-            'capitolo_categoria' => 'HEYH_Demolizioni'
+
+        DB::table('provisions')->insert([
+            'name' => 'Bomba Nucleare',
+            'cost' => '9999999.99',
+            'description' => 'Il sogno di Mohammad.',
+            'chapter' => 'HEYH',
+            'category' => 'Demolizioni',
+            'chapter_category' => 'HEYH_Demolizioni'
         ]);
 
         DB::table('clients')->insert([
@@ -74,34 +75,6 @@ class DatabaseSeeder extends Seeder
             'telefono' => '34234223',
             'indirizzo' => 'Via Coma 30',
             'capCittaProv' => "20202 Como (CO)"
-        ]);
-
-        DB::table('chapters')->insert([
-            'name' => 'A) Camion Cino',
-        ]);
-        DB::table('chapters')->insert([
-            'name' => 'B) Alpa Cino',
-        ]);
-        DB::table('chapters')->insert([
-            'name' => 'C) Man Cino',
-        ]);
-
-
-        DB::table('categories')->insert([
-            'name' => 'ABC',
-            //'section_id' => 1,
-        ]);
-        DB::table('categories')->insert([
-            'name' => 'AAA',
-            //'section_id' => 1,
-        ]);
-        DB::table('categories')->insert([
-            'name' => 'BBB',
-            //'section_id' => 1,
-        ]);
-        DB::table('categories')->insert([
-            'name' => 'CCC',
-            //'section_id' => 1,
         ]);
 
 
