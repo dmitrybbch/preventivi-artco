@@ -74,7 +74,7 @@ class TablesController extends Controller
 
         foreach($table->orders() as $oldOrder){
             $orderCopia = new Order;
-            $orderCopia->food_id = $oldOrder->food_id;
+            $orderCopia->provision_id = $oldOrder->provision_id;
             $orderCopia->table_id = $new_table->id;
             $orderCopia->amount = $oldOrder->amount;
             $orderCopia->add_percent = $oldOrder->add_percent;

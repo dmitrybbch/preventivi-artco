@@ -127,7 +127,7 @@ function doSearch(input) {
                 var capitoloTabella = "Errore: Cap. Vuoto";
                 var categoriaTabella = "Errore: Cat. Vuota";
                 res.results.forEach(function (food) {
-                    var capAttuale = food.capitolo;
+                    var capAttuale = food.chapter;
                     if(capitoloTabella.localeCompare(capAttuale)){
                         $('#fornitureTable').append('' +
                             '<tr class="table-active">' +
@@ -135,7 +135,7 @@ function doSearch(input) {
                             '</tr>');
                         capitoloTabella = capAttuale;
                     }
-                    var catAttuale = food.categoria;
+                    var catAttuale = food.category;
                     if(categoriaTabella.localeCompare(catAttuale)){
                         $('#fornitureTable').append('' +
                             '<tr class="thead-light text-white">' +
@@ -145,12 +145,12 @@ function doSearch(input) {
                     }
 
                     $('#fornitureTable').append('' +
-                        '<tr data-capitolo="'+ food.capitolo +'" data-categoria="'+ food.categoria +'" data-price="' + food.prezzo + '">' +
+                        '<tr data-capitolo="'+ food.chapter +'" data-categoria="'+ food.category +'" data-price="' + food.cost + '">' +
                         '<td><i class="fas fa-chevron-left inputRicerca" style="cursor: pointer"></i></td>' +
                         '<th scope="row" class="d-none d-md-table-cell">' + food.id + '</th>' +
-                        '<td>€ ' + food.prezzo + '</td>' +
-                        '<td>' + food.nome + '</td>' +
-                        '<td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.immagine + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td>' +
+                        '<td>€ ' + food.cost + '</td>' +
+                        '<td>' + food.name + '</td>' +
+                        '<td class="d-none d-sm-table-cell">' + '<img src="/img_uploads/' + food.image + '" class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">' + '</td>' +
                         '</tr>');
                 })
             } else {
@@ -181,7 +181,7 @@ function addFood(id, price) {
     $.ajax({
         url: '/table',
         method: 'POST',
-        data: {table_id: $('h1').data('id'), food_id: id},
+        data: {table_id: $('h1').data('id'), provision_id: id},
         success: function (res) {
             // res['order'] = ordine, res['fornitura'] = fornitura
             $('#totaleOrdini').text(res["total"] + ' €');
@@ -194,45 +194,45 @@ function addFood(id, price) {
             console.log(res["fornitura"]["nomeTavolo"]);
 
             // Se NON c'è il capitolo lo creo
-            var capUscore = res["fornitura"]["capitolo"].replace(/ /g,"_");
+            var capUscore = res["fornitura"]["chapter"].replace(/ /g,"_");
             if(!$("#" + capUscore).length){
                 console.log("NON ho trovato il capitolo " + capUscore);
                 $('#foodTable').prepend(
                     '<tr id="'+ capUscore +'" class="table-active">' +
-                    '<th scope="row" colspan="8" class="d-none d-md-table-cell">'+ res["fornitura"]["capitolo"] +'</th>' +
+                    '<th scope="row" colspan="8" class="d-none d-md-table-cell">'+ res["fornitura"]["chapter"] +'</th>' +
                     '</tr>'
                 );
             }
 
             // Se NON c'è la categoria la creo
-            var capUscoreCat = capUscore + res["fornitura"]["categoria"];
+            var capUscoreCat = capUscore + res["fornitura"]["category"];
             if(!$("#" + capUscoreCat).length){
-                console.log("NON ho trovato la categoria " + res["fornitura"]["categoria"]);
+                console.log("NON ho trovato la categoria " + res["fornitura"]["category"]);
                 $('#' + capUscore).after(
                     '<tr id="'+ capUscoreCat +'" class="thead-light text-white">' +
                     '<th><i class="fas fa-long-arrow-alt-right "></i></th>' +
-                    '<th scope="row" colspan="7" class="d-none d-md-table-cell">'+ res["fornitura"]["categoria"] +'</th>' +
+                    '<th scope="row" colspan="7" class="d-none d-md-table-cell">'+ res["fornitura"]["category"] +'</th>' +
                     '</tr>'
                 );
             }
 
             //Inserisco il prodotto nella sua categoria. WARNING: magic numbers (quantità, parziale, ricarico)
             $('#'+capUscoreCat).after('' +
-                '<tr data-capitolo=' + res["fornitura"]["capitolo"] +' data-categoria='+ res["fornitura"]["categoria"] +'>' +
+                '<tr data-capitolo=' + res["fornitura"]["chapter"] +' data-categoria='+ res["fornitura"]["category"] +'>' +
                 '<th scope="row">' + id + '</th>' +
                 '<td class="amount">' +
                     '<div class="col-md-8">' +
                         '<input class="form-control amount" type="number" step="1" name="quantitaTab" value='+ 1 +'>'+
                     '</div>' +
                 '</td>' +
-                '<td>' + res["fornitura"]["descrizione"]+ '</td>' +
-                '<td class="total">€ '+ res["fornitura"]["prezzo"] +'</td>' +
+                '<td>' + res["fornitura"]["description"]+ '</td>' +
+                '<td class="total">€ '+ res["fornitura"]["cost"] +'</td>' +
                 '<td class="add_percent">' +
                     '<div class="col-md-9">' +
                         '<input class="form-control add_percent" type="number" step="0.1" name="addTab" value="0.0">' +
                     '</div>' +
                 '</td>' +
-                '<td class="totalR">€ '+res["fornitura"]["prezzo"] +'</td>' + //Semi-magic number, operazioni non svolte
+                '<td class="totalR">€ '+res["fornitura"]["cost"] +'</td>' + //Semi-magic number, operazioni non svolte
                 '<td><i class="fas fa-eraser togliFornitura" style="cursor:pointer"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>' +
                 '</tr>' +
             '');
@@ -393,10 +393,10 @@ $(document).on('change', '.add_percent', function (event) {
 
 
 function compare(a, b) {
-    if (a.capitolo < b.capitolo) {
+    if (a.chapter < b.chapter) {
         return -1;
     }
-    if (a.capitolo > b.capitolo) {
+    if (a.chapter > b.chapter) {
         return 1;
     }
     return 0;

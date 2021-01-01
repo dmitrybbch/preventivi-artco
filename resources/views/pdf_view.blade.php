@@ -18,8 +18,6 @@
             </div>
         </div>
 
-
-
         <div class="row">
 
             <div class="col-md-9 mx-auto">
@@ -47,7 +45,7 @@
                         {{-- PRIMA LI INSERISCO IN UNA LISTA E LI ORDINO PER 'CATEGORIA'--}}
                         @foreach($orders as $order)
                             @php($food = $order->food())
-                            @php($currentFood = array("food_id"=> ($order->food_id), "nome"=>($food->nome), "prezzo"=>($food->prezzo), "unita"=>($food->unita), "amount"=>($order->amount), "add_percent"=>($order->add_percent), "descrizione"=> ($food->descrizione), "capitolo"=> ($food->capitolo), "categoria"=> ($food->categoria), "immagine"=> ($food->immagine) ))
+                            @php($currentFood = array("provisions_id"=> ($order->provisions_id), "nome"=>($food->name), "prezzo"=>($food->cost), "unita"=>($food->unit), "amount"=>($order->amount), "add_percent"=>($order->add_percent), "descrizione"=> ($food->description), "capitolo"=> ($food->chapter), "categoria"=> ($food->category), "immagine"=> ($food->image) ))
                             @php(array_push($foodOrdinati, $currentFood))
                         @endforeach
                         @php($foodOrdinati = collect($foodOrdinati)->sortBy('categoria')->sortBy('capitolo')->all())
@@ -72,7 +70,7 @@
                                 <tr class="thead-light text-white" id="{{ str_replace(" ", "_",($capAttuale.$catAttuale)) }}">
                                     <th><i class="fas fa-long-arrow-alt-right "></i></th>
                                     <th scope="row" colspan="10" class="d-none d-md-table-cell">{{$catAttuale}}</th>
-                            
+
                                 </tr>
                                 @php($categoriaTabella = $catAttuale)
                             @endif

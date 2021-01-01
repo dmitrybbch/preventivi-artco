@@ -15,18 +15,18 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->integer('table_id')->unsigned();
-            $table->integer('food_id')->unsigned();
+            $table->integer('provision_id')->unsigned();
             $table->integer('amount')->unsigned();
             $table->float('add_percent');
 
-            $table->primary(['table_id', 'food_id']);
+            $table->primary(['table_id', 'provision_id']);
 
             $table->timestamps();
         });
 
         Schema::table('orders', function($table) {
             $table->foreign('table_id')->references('id')->on('tables')->onDelete('cascade');
-            $table->foreign('food_id')->references('id')->on('foods')->onDelete('cascade');
+            $table->foreign('provision_id')->references('id')->on('provisions')->onDelete('cascade');
         });
     }
 
