@@ -73,6 +73,6 @@ Route::delete('/users', 'AdminController@destroy')->name('users');
 Route::patch('/users', 'AdminController@editUser')->name('users');
 
 // PDF Generation
-Route::get('/pdf_view/{id}', 'PrintController@index')->name('datat');
-Route::post('/pdf_view/{id}', 'PrintController@printpdf');
+Route::get('/pdf/{id}', 'TableController@createPDF');
+
 

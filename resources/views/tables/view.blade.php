@@ -174,9 +174,9 @@
                                            value="@if($table->creatoDa){{$table->creatoDa}} @else{{Auth::user()->username }} @endif">
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="cliente">Cliente:</label>
+                                    <label for="client_id">Cliente:</label>
                                     {{--<input type="hidden" name="client_id" value="{{ $table->client_id }}">--}}
-                                    <input list="clienti" class="form-control"  name="cliente" value="{{ $table->client_id }}"/>
+                                    <input list="clienti" class="form-control"  name="client_id" value="{{ $table->client_id }}"/>
                                 </div>
                             </div>
                         </form>

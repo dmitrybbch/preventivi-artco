@@ -45,10 +45,10 @@
                         {{-- PRIMA LI INSERISCO IN UNA LISTA E LI ORDINO PER 'CATEGORIA'--}}
                         @foreach($orders as $order)
                             @php($food = $order->food())
-                            @php($currentFood = array("provisions_id"=> ($order->provisions_id), "nome"=>($food->name), "prezzo"=>($food->cost), "unita"=>($food->unit), "amount"=>($order->amount), "add_percent"=>($order->add_percent), "descrizione"=> ($food->description), "capitolo"=> ($food->chapter), "categoria"=> ($food->category), "immagine"=> ($food->image) ))
+                            @php($currentFood = array("provision_id"=> ($order->provision_id), "name"=>($food->name), "cost"=>($food->cost), "unit"=>($food->unit), "amount"=>($order->amount), "add_percent"=>($order->add_percent), "description"=> ($food->description), "chapter"=> ($food->chapter), "category"=> ($food->category), "image"=> ($food->image) ))
                             @php(array_push($foodOrdinati, $currentFood))
                         @endforeach
-                        @php($foodOrdinati = collect($foodOrdinati)->sortBy('categoria')->sortBy('capitolo')->all())
+                        @php($foodOrdinati = collect($foodOrdinati)->sortBy('category')->sortBy('chapter')->all())
 
                         {{-- POI LI METTO IN TABELLA A PARTIRE DALLA LISTA ORDINATA --}}
 
@@ -58,7 +58,7 @@
                         @php($totaleCategoria = 0)
 
                         @foreach($foodOrdinati as $fornitura)
-                            @if($capitoloTabella != ($capAttuale = $fornitura['capitolo']))
+                            @if($capitoloTabella != ($capAttuale = $fornitura['chapter']))
                                 <tr class="table-active" id="{{ str_replace(" ", "_",$capAttuale) }}">
                                     <th scope="row" colspan="10" class="d-none d-md-table-cell">{{$capAttuale}}</th>
                                     <th>€ {{$datat->totalPercentAddedChapter($capAttuale)}}</th>
@@ -66,7 +66,7 @@
                                 @php($capitoloTabella = $capAttuale)
                                 @php($totaleCapitolo = 0)
                             @endif
-                            @if($categoriaTabella != ($catAttuale = $fornitura['categoria']))
+                            @if($categoriaTabella != ($catAttuale = $fornitura['category']))
                                 <tr class="thead-light text-white" id="{{ str_replace(" ", "_",($capAttuale.$catAttuale)) }}">
                                     <th><i class="fas fa-long-arrow-alt-right "></i></th>
                                     <th scope="row" colspan="10" class="d-none d-md-table-cell">{{$catAttuale}}</th>
@@ -75,11 +75,11 @@
                                 @php($categoriaTabella = $catAttuale)
                             @endif
                             {{-- PER LE RIGHE DEI PRODOTTI inserisco --}}
-                            <tr data-capitolo="{{ $fornitura['capitolo'] }}" data-categoria="{{ $fornitura['categoria'] }}">
-                                <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['food_id'] }}</th>
+                            <tr data-capitolo="{{ $fornitura['chapter'] }}" data-categoria="{{ $fornitura['category'] }}">
+                                <th scope="row" class="d-none d-md-table-cell">{{ $fornitura['provision_id'] }}</th>
                                 <td class="amount">{{$fornitura["amount"]}}</td>
-                                <td>{{ $fornitura['descrizione'] }}</td>
-                                <td class="total">€ {{$fornitura['prezzo']}}</td>
+                                <td>{{ $fornitura['description'] }}</td>
+                                <td class="total">€ {{$fornitura['cost']}}</td>
                                 <td class="add_percent">{{$fornitura["add_percent"]}}</td>
                                 {{--
                                 <td class="d-none d-sm-table-cell"><img
@@ -87,7 +87,7 @@
                                         class="align-middle" alt="ArtCO" style="max-height: 60px; width:auto">
                                 </td>
                                 --}}
-                                <td class="totalR"><b>€ {{$fornitura['prezzo'] * $fornitura['amount'] + $fornitura['prezzo'] * $fornitura['amount'] * $fornitura['add_percent']/100}}</b></td>
+                                <td class="totalR"><b>€ {{$fornitura['cost'] * $fornitura['amount'] + $fornitura['cost'] * $fornitura['amount'] * $fornitura['add_percent']/100}}</b></td>
                             </tr>
                         @endforeach
 

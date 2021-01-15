@@ -116,7 +116,7 @@ class TableController extends Controller
         $table['noteAggiuntive'] = $request['note'];
         $table['ricarico'] = $request['ricarico'];
         $table['creatoDa'] = $request['creatoDa'];
-        $table['cliente'] = $request['cliente'];
+        $table['client_id'] = $request['client_id'];
         logger("TableController: Log richiesta updateData: " . $request['creatoDa'] . " a " . $request['cliente']);
         $table->save();
 
@@ -145,5 +145,16 @@ class TableController extends Controller
         return response()->json($response);
     }
 
+    public function createPDF($id) {
+        // retrieve all records from db
+        $datat = Table::find($id);
+
+        // share data to view
+        view()->share('datat',$datat);
+        $pdf = PDF::loadView('pdf', $datat);
+
+        // download PDF file with download method
+        return $pdf->download('Preventivo.pdf');
+    }
 
 }

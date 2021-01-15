@@ -343,7 +343,7 @@ $(document).on('click', '#anteprima', function (event) {
 
     jQuery.ajax({
         url: urlPathname,
-        method: 'post',
+        method: 'POST',
         data: obj,
         success: function (result) {
             // jQuery('.alert').show();
