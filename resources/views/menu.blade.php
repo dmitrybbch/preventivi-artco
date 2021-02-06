@@ -262,6 +262,6 @@ Forniture
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/food.js') }}"></script>
+<script src="{{ asset('js/provision.js') }}"></script>
 <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
 @endsection

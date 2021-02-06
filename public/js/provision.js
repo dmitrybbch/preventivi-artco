@@ -141,9 +141,9 @@ $(document).on("click", "tr .fa-copy", function (event) {
 
     var tr = target.parents('tr');
 
-    $('#capitoloForm').val(tr.data('capitolo'));
-    $('#categoriaForm').val(tr.data('categoria'));
-    $('#nome').val(tr.children('td').eq(0).text());
+    $('#chapterForm').val(tr.data('capitolo'));
+    $('#categoryForm').val(tr.data('categoria'));
+    $('#name').val(tr.children('td').eq(0).text());
 
     var prezzoUnitaSplit = tr.children('td').eq(1).text().split(" ");
     var prezzo = prezzoUnitaSplit[1];
@@ -151,10 +151,10 @@ $(document).on("click", "tr .fa-copy", function (event) {
 
     if(prezzoUnitaSplit.length > 3) {
         var unita = prezzoUnitaSplit[5]; // Per qualche motivo la posizione 5 è quella dell'unità
-        $('#unita').val(unita);
-    } else $('#unita').val("");
+        $('#unit').val(unita);
+    } else $('#unit').val("");
 
-    $('#descrizione').val(tr.children('td').eq(2).text());
+    $('#description').val(tr.children('td').eq(2).text());
 
     $("#form").fadeOut(200).fadeIn(200).fadeOut(200).fadeIn(200);
 
@@ -171,13 +171,13 @@ $(document).on("click", "tr .fa-copy", function (event) {
 $(document).on("click", "#btnSave", function () {
 
     var id = $('#idModal').val();
-    var nome = $('#nomeModal').val();
-    var prezzo = $('#prezzoModal').val();
-    var unita = $('#unitaModal').val();
-    var descrizione = $('#descrizioneModal').val();
-    var capitolo = $('#capitoloModal').val();
-    var categoria = $('#categoriaModal').val();
-    var immagine = $('#immagineModal').val();
+    var name = $('#nameModal').val();
+    var cost = $('#costModal').val();
+    var unit = $('#unitModal').val();
+    var description = $('#descriptionModal').val();
+    var chapter = $('#chapterModal').val();
+    var category = $('#categoryModal').val();
+    var imnage = $('#imageModal').val();
 
 
     $.ajax({
@@ -185,21 +185,21 @@ $(document).on("click", "#btnSave", function () {
         method: "PATCH",
         data: {
             id: id,
-            nome: nome,
-            prezzo: prezzo,
-            unita: unita,
-            descrizione: descrizione,
-            capitolo: capitolo,
-            categoria: categoria,
-            immagine: immagine
+            name: name,
+            cost: cost,
+            unit: unit,
+            description: description,
+            chapter: chapter,
+            category: category,
+            image: image
         },
         success: function (res) { //recupero valori aggiornati
-            tempr.children('td').eq(0).text(res.nome);
-            tempr.children('td').eq(1).text(res.prezzo + " x " + res.unita);
-            tempr.children('td').eq(2).text(res.descrizione);
-            tempr.children('td').eq(3).text(res.capitolo);
-            tempr.children('td').eq(4).text(res.categoria);
-            tempr.children('td').eq(5).text(res.immagine);
+            tempr.children('td').eq(0).text(res.name);
+            tempr.children('td').eq(1).text(res.cost + " x " + res.unit);
+            tempr.children('td').eq(2).text(res.description);
+            tempr.children('td').eq(3).text(res.chapter);
+            tempr.children('td').eq(4).text(res.category);
+            tempr.children('td').eq(5).text(res.image);
         }
     })
 
@@ -226,7 +226,7 @@ function doSearch(input) {
             if (res.results.length) {
                 $('tbody').html("");
                 res.results.forEach(function (pvsn) {
-                    $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + pvsn.id + '</th><td>' + pvsn.nome + '</td><td>' + pvsn.prezzo + ' x ' + pvsn.unita + '</td><td class="d-none d-sm-table-cell">' + (pvsn.descrizione ? pvsn.descrizione : "") + '</td><td class="d-none d-sm-table-cell">' + (pvsn.capitolo ? pvsn.capitolo : "") + '</td><td class="d-none d-sm-table-cell">' + (pvsn.categoria ? pvsn.categoria : "") + '</td><td class="d-none d-sm-table-cell">' + (pvsn.immagine ? pvsn.immagine : "") + '</td><td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');
+                    $('tbody').append('<tr><th scope="row" class="d-none d-md-table-cell">' + pvsn.id + '</th><td>' + pvsn.name + '</td><td>' + pvsn.cost + ' x ' + pvsn.unit + '</td><td class="d-none d-sm-table-cell">' + (pvsn.description ? pvsn.description : "") + '</td><td class="d-none d-sm-table-cell">' + (pvsn.chapter ? pvsn.chapter : "") + '</td><td class="d-none d-sm-table-cell">' + (pvsn.category ? pvsn.category : "") + '</td><td class="d-none d-sm-table-cell">' + (pvsn.image ? pvsn.image : "") + '</td><td><button type="button" class="btn btn-outline-danger mr-2"> <i class="far fa-trash-alt"></i></button> <button type="button" class="btn btn-outline-info"><i class="far fa-edit"></i></button></td></tr>');
                 })
             } else {
                 $('tbody').html('<tr><td colspan="8">Nessun risultato per "' + input + '"</td></tr>');

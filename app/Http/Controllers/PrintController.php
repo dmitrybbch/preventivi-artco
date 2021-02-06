@@ -18,11 +18,15 @@ class PrintController extends Controller
         //This  $data array will be passed to our PDF blade
         logger('PrintController: Lancio della funzione printpdf.');
         $prev = Table::find($id);
-        $ordini = $prev->orders();
+        //$ordini = $prev->orders();
+
+        // share data to view
+        //view()->share('employee',$data);
+        //$pdf = PDF::loadView('pdf_view', $data);
         logger("Anteprimo il preventivo: " . $prev->nomeTavolo);
-        
-        $pdf = PDF::loadView('pdf');
-        return $pdf->download('medium.pdf');
+        $datat = $prev;
+        $pdf = PDF::loadView('pdf', ['datat' => Table::find($id)]);
+        return $pdf->download('preventivo.pdf');
 
 
     }
