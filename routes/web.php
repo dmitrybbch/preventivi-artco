@@ -74,6 +74,6 @@ Route::patch('/users', 'AdminController@editUser')->name('users');
 
 // PDF Generation
 Route::get('/pdf_view/{id}', 'PrintController@index')->name('datat');
-Route::post('/pdf_view/{id}', 'PrintController@printpdf');
-
+//Route::post('/pdf_view/{id}', 'PrintController@printpdf');
+Route::GET('/pdf/{id}', 'TableController@createPDF');
 

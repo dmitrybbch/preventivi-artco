@@ -1,6 +1,5 @@
-@extends('layouts.app')
-@section('content')
-
+<!doctype html>
+<html lang="en" style="margin-top: 40px; margin-left: 10px; margin-right: 10px">
     <div class="container-fluid">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center mb-3 border-bottom">
             <h1 class="h2" data-id="{{ $datat->id}}">
@@ -144,10 +143,6 @@
                         </form>
                     </div>
 
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-danger" id="correggi">Correggi</button>
-                        <button type="button" class="btn btn-info" id="generaPdf">Genera PDF</button>
-                    </div>
                 </div>
             </div>
 
@@ -157,13 +152,3 @@
 
     </div>
 
-
-
-
-
-@endsection
-
-@section('scripts')
-    <script src="{{ asset('js/pdfview.js') }}"></script>
-@endsection
-{{-- Aggiungere chiamata ajax, in qualche modo i dati --}}

@@ -27,9 +27,11 @@ $("#generaPdf").click(function() {
 
     //var obj = $.extend({}, arrayAssociativo);
 
-    var urlPathname = window.location.pathname;
+    var id = window.location.href;
+    id = id.split("/");
+    window.location = '/pdf/' + id[id.length - 1];
     console.log('Creato array associativo. Stringa splittata: ' + urlPathname); // /pdf_view/1
-
+    /*
     jQuery.ajax({
         url: urlPathname,
         method: 'post',
@@ -46,5 +48,5 @@ $("#generaPdf").click(function() {
             console.log("Chebrutto :((((((((((");
         }
     });
-
+    */
 })
