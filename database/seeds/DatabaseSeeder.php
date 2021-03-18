@@ -26,7 +26,8 @@ class DatabaseSeeder extends Seeder
 
             'chapter' => 'EEE',
             'category' => 'BBB',
-            'chapter_category' => 'EEE_BBB'
+            'chapter_category' => 'EEE_BBB',
+            'order' => '0'
         ]);
 
         DB::table('provisions')->insert([
@@ -36,7 +37,8 @@ class DatabaseSeeder extends Seeder
 
             'chapter' => 'EEE',
             'category' => 'BBB',
-            'chapter_category' => 'EEE_BBB'
+            'chapter_category' => 'EEE_BBB',
+            'order' => '1'
 
         ]);
 
@@ -47,7 +49,8 @@ class DatabaseSeeder extends Seeder
             'description' => 'Un vaso o una mappa?',
             'chapter' => 'EEE',
             'category' => 'AAA',
-            'chapter_category' => 'EEE_AAA'
+            'chapter_category' => 'EEE_AAA',
+            'order' => '1'
         ]);
 
         DB::table('provisions')->insert([
@@ -57,7 +60,8 @@ class DatabaseSeeder extends Seeder
 
             'chapter' => 'EEE',
             'category' => 'AAA',
-            'chapter_category' => 'EEE_AAA'
+            'chapter_category' => 'EEE_AAA',
+            'order' => '0'
         ]);
 
         DB::table('provisions')->insert([
@@ -66,7 +70,8 @@ class DatabaseSeeder extends Seeder
             'description' => 'Il sogno di Mohammad.',
             'chapter' => 'HEYH',
             'category' => 'Demolizioni',
-            'chapter_category' => 'HEYH_Demolizioni'
+            'chapter_category' => 'HEYH_Demolizioni',
+            'order' => '0'
         ]);
 
         DB::table('clients')->insert([

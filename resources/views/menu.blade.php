@@ -50,7 +50,7 @@ Forniture
                             </tr>
                             @php($categoriaTabella = $catAttuale)
                         @endif
-                        <tr data-capitolo="{{ $food->chapter }}" data-categoria="{{ $food->category }}">
+                        <tr data-capitolo="{{ $food->chapter }}" data-categoria="{{ $food->category }}" @if($food->order) class="font-weight-bold" @endif>
                             <th scope="row" class="d-none d-md-table-cell">{{ $food->id }}</th>
                             <td>{{ $food->name }}</td>
                             <td>€ {{ $food->cost }}  @if($food->unit) x {{ $food->unit }}@endif </td>
@@ -112,6 +112,12 @@ Forniture
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="image">Immagine</label><br>
+                            <input type="file" class="form-control-file" id="order" name="order" />
+                        </div>
+                    </div>
                 </form>
                 </div>
                 <div class="card-footer">

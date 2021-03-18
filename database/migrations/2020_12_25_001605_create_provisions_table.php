@@ -26,6 +26,8 @@ class CreateProvisionsTable extends Migration
 
             $table->string('image')->nullable();
 
+            $table->boolean('order')->default(0);
+
             $table->timestamps();
         });
     }
