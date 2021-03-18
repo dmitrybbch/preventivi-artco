@@ -106,22 +106,20 @@ Forniture
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-6">
                             <label for="image">Immagine</label><br>
                             <input type="file" class="form-control-file" id="image" name="image" />
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group col-md-12">
-                            <label for="image">Immagine</label><br>
-                            <input type="file" class="form-control-file" id="order" name="order" />
+                        <div class="form-group col-md-6">
+                            <input type="checkbox" class="form-check-input" id="order" name="order" />&nbsp;
+                            <label class="form-check-label font-weight-bold" for="image">Lista ordini (grassetto)</label>
                         </div>
                     </div>
+
                 </form>
                 </div>
                 <div class="card-footer">
-                    <button type="button" onclick="newFood()" class="btn btn-info">
+                    <button type="button" onclick="newProvision()" class="btn btn-info">
                         Crea
                     </button>
                 </div>

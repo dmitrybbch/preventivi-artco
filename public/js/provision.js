@@ -19,7 +19,7 @@ function newProvision() {
         processData: false,
         contentType: false,
         success: function (pvsn) {
-            console.log("Cerco il tr #" + (pvsn.capitolo+pvsn.categoria).replace(/ /g,"_"));
+            //console.log("Cerco il tr #" + (pvsn.capitolo + pvsn.categoria).replace(/ /g,"_"));
 
             //Inserisco la sintesi nella tabella sopra, degli appena inseriti
             $('#inseritiTable').append('<tr>' +
